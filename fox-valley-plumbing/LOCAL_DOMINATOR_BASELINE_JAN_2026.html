@@ -1,7 +1,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar { display: none !important; } }
 body { font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.4; }
 h1 { font-size: 18pt; color: #1a73e8; border-bottom: 2px solid #1a73e8; padding-bottom: 8px; }
 h2 { font-size: 14pt; color: #333; background-color: #f0f0f0; padding: 8px; margin-top: 24px; }
@@ -20,6 +30,28 @@ li { margin: 4px 0; }
 </style>
 </head>
 <body>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+
+<script>
+function downloadPDF() {
+    const element = document.body;
+    const opt = {
+        margin: 0.5,
+        filename: 'LocalDominator_Baseline_Jan_2026_Fox_Valley_Plumbing.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    document.querySelector('.download-bar').style.display = 'none';
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-bar').style.display = 'flex';
+    });
+}
+</script>
 
 <h1>Fox Valley Plumbing & Backflow Services</h1>
 <h2 style="background: none; border: none; color: #666; font-size: 16pt;">LocalDominator Baseline - January 2026</h2>

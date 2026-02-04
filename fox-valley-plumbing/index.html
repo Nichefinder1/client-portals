@@ -2,7 +2,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Fox Valley Plumbing - Client Portal | Nichefinder AI</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar { display: none !important; } }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
 
@@ -86,6 +96,28 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 </style>
 </head>
 <body>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+
+<script>
+function downloadPDF() {
+    const element = document.body;
+    const opt = {
+        margin: 0.3,
+        filename: 'Client_Portal_Fox_Valley_Plumbing.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    document.querySelector('.download-bar').style.display = 'none';
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-bar').style.display = 'flex';
+    });
+}
+</script>
 
 <div class="header">
 <h1>Fox Valley Plumbing & Backflow</h1>
