@@ -1,0 +1,354 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>All South Lightning Protection - Client Portal | Nichefinder AI</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar { display: none !important; } }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
+.header h1 { margin: 0; font-size: 28pt; }
+.header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 12pt; }
+
+/* Container */
+.container { max-width: 1200px; margin: 0 auto; padding: 30px; }
+
+/* Critical Alert banner */
+.alert-banner { background-color: #fadbd8; border: 2px solid #c0392b; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+.alert-banner h3 { margin: 0 0 10px 0; color: #c0392b; }
+.alert-banner p { margin: 0; color: #922b21; }
+
+/* Status banner */
+.status-banner { background-color: #fdebd0; border: 2px solid #f39c12; padding: 20px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.status-banner h3 { margin: 0; color: #9a7d0a; }
+.status-metric { text-align: center; padding: 0 20px; }
+.status-metric .number { font-size: 24pt; font-weight: bold; color: #1a5276; display: block; }
+.status-metric .number.critical { color: #c0392b; }
+.status-metric .label { font-size: 9pt; color: #7f8c8d; }
+
+/* Quick stats */
+.quick-stats { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px; }
+.stat-box { background: white; border-radius: 10px; padding: 20px; text-align: center; flex: 1; margin: 5px; min-width: 150px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.stat-box .number { font-size: 32pt; font-weight: bold; color: #1a5276; display: block; }
+.stat-box .number.bad { color: #c0392b; }
+.stat-box .label { font-size: 10pt; color: #7f8c8d; }
+.stat-box .change { font-size: 11pt; margin-top: 5px; }
+.stat-box .change.positive { color: #27ae60; }
+.stat-box .change.negative { color: #c0392b; }
+.stat-box .change.neutral { color: #f39c12; }
+
+/* Card grid */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+.card { background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+.card-header { background-color: #1a5276; color: white; padding: 15px 20px; }
+.card-header h3 { margin: 0; font-size: 14pt; }
+.card-header .date { font-size: 9pt; opacity: 0.8; }
+.card-body { padding: 20px; }
+.card-body p { margin: 0 0 15px 0; color: #7f8c8d; font-size: 10pt; }
+.card-link { display: block; background-color: #f8f9f9; padding: 12px 20px; text-align: center; color: #1a5276; text-decoration: none; font-weight: bold; border-top: 1px solid #ecf0f1; }
+.card-link:hover { background-color: #1a5276; color: white; }
+
+/* Section headers */
+.section-header { margin: 30px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #1a5276; }
+.section-header h2 { margin: 0; color: #1a5276; font-size: 18pt; }
+.section-header p { margin: 5px 0 0 0; color: #7f8c8d; font-size: 10pt; }
+
+/* Badges */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 15px; font-size: 9pt; font-weight: bold; margin-left: 10px; }
+
+/* Contact section */
+.contact-section { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-top: 30px; }
+.contact-section h3 { margin-top: 0; color: #1a5276; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.contact-item { text-align: center; padding: 15px; }
+.contact-item .icon { font-size: 24pt; margin-bottom: 10px; }
+.contact-item .value { font-weight: bold; color: #1a5276; }
+.contact-item .value a { color: #1a5276; text-decoration: none; }
+.contact-item .value a:hover { text-decoration: underline; }
+.contact-item .label { font-size: 10pt; color: #7f8c8d; }
+
+/* Location status grid */
+.location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.location-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+.location-card.exists { border-left: 5px solid #27ae60; }
+.location-card.missing { border-left: 5px solid #c0392b; background-color: #fadbd8; }
+.location-card h4 { margin: 0 0 5px 0; color: #1a5276; }
+.location-card .status { font-size: 10pt; font-weight: bold; }
+.location-card .status.good { color: #27ae60; }
+.location-card .status.bad { color: #c0392b; }
+
+/* Footer */
+.footer { text-align: center; padding: 20px; color: #95a5a6; font-size: 9pt; }
+
+/* Print styles */
+@media print {
+    body { background: white; }
+    .container { padding: 0; }
+    .card:hover { transform: none; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+}
+</style>
+</head>
+<body>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+
+<script>
+function downloadPDF() {
+    const element = document.body;
+    const opt = {
+        margin: 0.3,
+        filename: 'Client_Portal_All_South_Lightning.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    document.querySelector('.download-bar').style.display = 'none';
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-bar').style.display = 'flex';
+    });
+}
+</script>
+
+<div class="header">
+<h1>All South Lightning Protection</h1>
+<p>Client Portal | Local SEO & Digital Marketing</p>
+</div>
+
+<div class="container">
+
+<!-- Critical Alert Banner -->
+<div class="alert-banner">
+<h3>CRITICAL: 2 of 3 Office Locations Have No Google Business Profile</h3>
+<p>Sunrise and Jacksonville offices are currently invisible on Google Maps. This is costing an estimated $150,000-$400,000/year in lost leads. Creating these profiles is the #1 priority for February 2026.</p>
+</div>
+
+<!-- Status Banner -->
+<div class="status-banner">
+<div>
+<h3>Campaign Status: Active - GBP Setup Phase</h3>
+<p>Last Updated: February 04, 2026</p>
+</div>
+<div class="status-metric">
+<span class="number critical">1/3</span>
+<span class="label">GBP Listings</span>
+</div>
+<div class="status-metric">
+<span class="number">42/100</span>
+<span class="label">GBP Score</span>
+</div>
+<div class="status-metric">
+<span class="number">D</span>
+<span class="label">Grade</span>
+</div>
+</div>
+
+<!-- Location Status -->
+<div class="section-header">
+<h2>Location GBP Status</h2>
+<p>Google Business Profile status for each office location</p>
+</div>
+
+<div class="location-grid">
+<div class="location-card exists">
+<h4>Tampa (HQ)</h4>
+<p class="status good">GBP EXISTS</p>
+<p style="font-size: 9pt; color: #7f8c8d;">4.7 stars, 76 reviews</p>
+<p style="font-size: 9pt; color: #f39c12;">Needs optimization</p>
+</div>
+<div class="location-card missing">
+<h4>Sunrise, FL</h4>
+<p class="status bad">NO GBP</p>
+<p style="font-size: 9pt; color: #922b21;">Invisible in South FL</p>
+</div>
+<div class="location-card missing">
+<h4>Jacksonville, FL</h4>
+<p class="status bad">NO GBP</p>
+<p style="font-size: 9pt; color: #922b21;">Invisible in NE FL</p>
+</div>
+</div>
+
+<!-- Quick Stats -->
+<div class="quick-stats">
+<div class="stat-box">
+<span class="number bad">1</span>
+<span class="label">GBP Listings (of 3)</span>
+<span class="change negative">CRITICAL GAP</span>
+</div>
+<div class="stat-box">
+<span class="number">76</span>
+<span class="label">Google Reviews</span>
+<span class="change positive">4.7 stars (Tampa)</span>
+</div>
+<div class="stat-box">
+<span class="number">--</span>
+<span class="label">GBP Phone Calls</span>
+<span class="change neutral">Pending access</span>
+</div>
+<div class="stat-box">
+<span class="number">~5</span>
+<span class="label">Active Citations</span>
+<span class="change neutral">BBB, BuildZoom</span>
+</div>
+</div>
+
+<!-- Strategy & Audits Section -->
+<div class="section-header">
+<h2>Strategy & Audits</h2>
+<p>Critical assessments and analysis documents</p>
+</div>
+
+<div class="card-grid">
+
+<div class="card">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>GBP Audit (Multi-Location) <span class="badge" style="background-color: #c0392b; color: white;">CRITICAL</span></h3>
+<span class="date">February 4, 2026</span>
+</div>
+<div class="card-body">
+<p>Critical finding: Only 1 of 3 offices has GBP. Score: 42/100 (D). Missing $150K-$400K/yr in leads from Sunrise & Jacksonville.</p>
+</div>
+<a href="GBP_Audit.html" class="card-link">View Audit &rarr;</a>
+</div>
+
+</div>
+
+<!-- Implementation Checklists Section -->
+<div class="section-header">
+<h2>Implementation Checklists</h2>
+<p>Monthly deliverables and action items</p>
+</div>
+
+<div class="card-grid">
+
+<div class="card">
+<div class="card-header" style="background-color: #3498db;">
+<h3>February 2026 Deliverables <span class="badge" style="background-color: #3498db; color: white;">CURRENT</span></h3>
+<span class="date">February 4, 2026</span>
+</div>
+<div class="card-body">
+<p>Monthly action items prioritized by week. Focus: Create missing GBPs for Sunrise & Jacksonville, optimize Tampa.</p>
+</div>
+<a href="February_2026_Deliverables.html" class="card-link">View Checklist &rarr;</a>
+</div>
+
+</div>
+
+<!-- Monthly Reports Section -->
+<div class="section-header">
+<h2>Monthly Reports</h2>
+<p>Recurring reports delivered each month showing progress</p>
+</div>
+
+<div class="card-grid">
+
+<div class="card">
+<div class="card-header">
+<h3>Monthly Progress Report <span class="badge" style="background-color: #95a5a6; color: white;">Coming Soon</span></h3>
+<span class="date">February 2026</span>
+</div>
+<div class="card-body">
+<p>Complete overview of GBP setup progress, content published, and metrics.</p>
+</div>
+<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Available February 28</a>
+</div>
+
+</div>
+
+<!-- Key Findings Summary -->
+<div class="section-header">
+<h2>Key Findings Summary</h2>
+<p>Critical insights from audits and analysis</p>
+</div>
+
+<div class="card-grid">
+<div class="card" style="border-left: 5px solid #c0392b;">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>Critical Issues</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li>NO GBP for Sunrise, FL office (invisible in South Florida)</li>
+<li>NO GBP for Jacksonville, FL office (invisible in Northeast Florida)</li>
+<li>Tampa GBP missing services, description, service area</li>
+</ul>
+<p style="margin-top: 10px; font-size: 9pt; color: #c0392b; font-weight: bold;">Estimated $150,000-$400,000/year revenue at risk</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #27ae60;">
+<div class="card-header" style="background-color: #27ae60;">
+<h3>Strengths to Leverage</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li>Tampa GBP: 4.7 stars, 76 reviews</li>
+<li>Active GBP posting (recent post)</li>
+<li>BBB Accredited (Tampa)</li>
+<li>BuildZoom top 8% of FL contractors</li>
+<li>40+ years experience</li>
+</ul>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #3498db;">
+<div class="card-header" style="background-color: #3498db;">
+<h3>Next Focus Areas</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li><strong>CREATE</strong> GBP for Sunrise office (Week 1)</li>
+<li><strong>CREATE</strong> GBP for Jacksonville office (Week 1)</li>
+<li>Add 10+ services to Tampa GBP</li>
+<li>Add business description to Tampa</li>
+<li>Launch review generation campaign</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Contact Section -->
+<div class="contact-section">
+<h3>Contact Your Account Team</h3>
+<div class="contact-grid">
+<div class="contact-item">
+<div class="icon">&#128231;</div>
+<div class="value"><a href="mailto:nichefindersai@gmail.com">nichefindersai@gmail.com</a></div>
+<div class="label">Email</div>
+</div>
+<div class="contact-item">
+<div class="icon">&#128222;</div>
+<div class="value">[Agency Phone]</div>
+<div class="label">Phone</div>
+</div>
+<div class="contact-item">
+<div class="icon">&#128197;</div>
+<div class="value"><a href="#">Schedule a Call</a></div>
+<div class="label">Calendar</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+<p>&copy; 2026 Nichefinder AI Agency | Client Portal</p>
+<p>Reports are updated monthly. Questions? Contact us anytime.</p>
+</div>
+
+</body>
+</html>

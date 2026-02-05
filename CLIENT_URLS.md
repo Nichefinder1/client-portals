@@ -9,6 +9,7 @@ Quick reference for all client portal links.
 | Client | Portal URL | Status |
 |--------|------------|--------|
 | Fox Valley Plumbing & Backflow | [View Portal](https://nichefinder1.github.io/client-portals/fox-valley-plumbing/) | Active |
+| All South Lightning Protection | [View Portal](https://nichefinder1.github.io/client-portals/all-south-lightning/) | Active |
 
 ---
 
@@ -26,6 +27,17 @@ Quick reference for all client portal links.
 | LLM Visibility Analysis | https://nichefinder1.github.io/client-portals/fox-valley-plumbing/LLM_Visibility_Analysis.html |
 | Local Dominator Baseline | https://nichefinder1.github.io/client-portals/fox-valley-plumbing/LOCAL_DOMINATOR_BASELINE_JAN_2026.html |
 | Monthly Progress Report (Feb 2026) | https://nichefinder1.github.io/client-portals/fox-valley-plumbing/2026-02/Monthly_Progress_Report_Feb_2026.html |
+
+---
+
+### All South Lightning Protection
+
+**Portal:** https://nichefinder1.github.io/client-portals/all-south-lightning/
+
+| Report | URL |
+|--------|-----|
+| GBP Audit (Multi-Location) | https://nichefinder1.github.io/client-portals/all-south-lightning/GBP_Audit.html |
+| February 2026 Deliverables | https://nichefinder1.github.io/client-portals/all-south-lightning/February_2026_Deliverables.html |
 
 ---
 

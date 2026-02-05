@@ -1,0 +1,296 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar { display: none !important; } }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 1in; color: #333; }
+h1 { font-size: 24pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
+h2 { font-size: 18pt; color: #2874a6; margin-top: 24pt; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
+h3 { font-size: 14pt; color: #1a5276; margin-top: 18pt; }
+table { border-collapse: collapse; width: 100%; margin: 12pt 0; font-size: 10pt; }
+th { background-color: #1a5276; color: white; padding: 10px; text-align: left; font-weight: bold; }
+td { padding: 8px 10px; border: 1px solid #d5d8dc; }
+tr:nth-child(even) { background-color: #f8f9f9; }
+.critical-issue { background-color: #fadbd8; border-left: 5px solid #c0392b; padding: 15px; margin: 15px 0; }
+.high-issue { background-color: #fdebd0; border-left: 5px solid #f39c12; padding: 15px; margin: 15px 0; }
+.positive { background-color: #d5f5e3; border-left: 5px solid #27ae60; padding: 15px; margin: 15px 0; }
+hr { border: none; border-top: 1px solid #d5d8dc; margin: 20px 0; }
+ul { margin: 10px 0; padding-left: 25px; }
+li { margin-bottom: 5px; }
+.header-info { font-size: 10pt; color: #7f8c8d; margin-bottom: 20px; }
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 30px; border-top: 1px solid #d5d8dc; padding-top: 10px; }
+.good { color: #27ae60; }
+.bad { color: #c0392b; }
+.week-section { border: 2px solid #1a5276; border-radius: 10px; padding: 20px; margin: 20px 0; }
+.week-header { background-color: #1a5276; color: white; padding: 10px 15px; margin: -20px -20px 15px -20px; border-radius: 8px 8px 0 0; font-size: 14pt; font-weight: bold; }
+.checklist { list-style: none; padding-left: 0; }
+.checklist li { padding: 8px 0; border-bottom: 1px solid #eee; }
+.checklist li:before { content: ""; margin-right: 10px; }
+.priority-critical { color: #c0392b; font-weight: bold; }
+.priority-high { color: #f39c12; font-weight: bold; }
+.priority-medium { color: #3498db; }
+.summary-box { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 25px; border-radius: 10px; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+
+<script>
+function downloadPDF() {
+    const element = document.body;
+    const opt = {
+        margin: 0.5,
+        filename: 'February_2026_Deliverables_All_South_Lightning.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    document.querySelector('.download-bar').style.display = 'none';
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-bar').style.display = 'flex';
+    });
+}
+</script>
+
+<h1>February 2026 Deliverables Checklist</h1>
+
+<div class="header-info">
+<strong>Client:</strong> All South Lightning Protection Inc.<br>
+<strong>Package:</strong> Tier 2 - Growth System ($8,500/month)<br>
+<strong>Month:</strong> February 2026<br>
+<strong>Prepared By:</strong> Nichefinder AI Agency
+</div>
+
+<div class="summary-box">
+<h2 style="color: white; border: none; margin-top: 0;">Monthly Focus: GBP Critical Setup</h2>
+<p style="margin-bottom: 0;">This month's priority is creating Google Business Profiles for the missing Sunrise and Jacksonville locations, and optimizing the existing Tampa profile. This addresses the critical visibility gap identified in our GBP audit.</p>
+</div>
+
+<hr>
+
+<h2>Deliverables Summary</h2>
+
+<table>
+<tr><th>Deliverable</th><th>Quantity</th><th>Due</th><th>Status</th></tr>
+<tr><td><strong>GBP Profiles Created</strong></td><td>2 (Sunrise, Jacksonville)</td><td>Feb 7</td><td>Pending</td></tr>
+<tr><td><strong>Tampa GBP Services Added</strong></td><td>10+ services</td><td>Feb 7</td><td>Pending</td></tr>
+<tr><td><strong>Tampa GBP Description</strong></td><td>1 (750 chars)</td><td>Feb 7</td><td>Pending</td></tr>
+<tr><td><strong>Blog Posts Published</strong></td><td>4</td><td>Weekly</td><td>Per calendar</td></tr>
+<tr><td><strong>Social Media Posts</strong></td><td>24 (12/platform)</td><td>Weekly</td><td>Per calendar</td></tr>
+<tr><td><strong>GBP Posts</strong></td><td>4+ (across locations)</td><td>Weekly</td><td>Pending</td></tr>
+<tr><td><strong>Review Requests Sent</strong></td><td>20+</td><td>Feb 14</td><td>Pending</td></tr>
+<tr><td><strong>Monthly Performance Report</strong></td><td>1</td><td>Feb 28</td><td>Pending</td></tr>
+</table>
+
+<hr>
+
+<div class="week-section">
+<div class="week-header">WEEK 1: February 3-7 (CRITICAL)</div>
+
+<h3 class="priority-critical">GBP Setup - New Locations</h3>
+
+<ul class="checklist">
+<li><strong>Create Sunrise, FL Google Business Profile</strong>
+    <ul>
+        <li>Address: 4759 NW 103rd Ave, Sunrise, FL 33351</li>
+        <li>Phone: (954) 742-4164</li>
+        <li>Request verification (postcard/phone)</li>
+        <li>Add business description</li>
+        <li>Add all services (10+)</li>
+        <li>Upload 10+ photos</li>
+        <li>Set service areas (Broward, Miami-Dade, Palm Beach)</li>
+    </ul>
+</li>
+<li><strong>Create Jacksonville, FL Google Business Profile</strong>
+    <ul>
+        <li>Address: 1036 Dunn Avenue Ste 4 211, Jacksonville, FL 32218</li>
+        <li>Phone: (813) 842-6172</li>
+        <li>Request verification (postcard/phone)</li>
+        <li>Add business description</li>
+        <li>Add all services (10+)</li>
+        <li>Upload 10+ photos</li>
+        <li>Set service areas (Duval, St. Johns, Clay, Nassau)</li>
+    </ul>
+</li>
+</ul>
+
+<h3 class="priority-critical">GBP Optimization - Tampa (Existing)</h3>
+
+<ul class="checklist">
+<li><strong>Add 10+ services to Tampa GBP:</strong>
+    <ul style="column-count: 2;">
+        <li>Lightning Protection Systems</li>
+        <li>Surge Suppression (TVSS)</li>
+        <li>Grounding & Bonding</li>
+        <li>Data Surge Solutions</li>
+        <li>System Inspections</li>
+        <li>CAD Design Services</li>
+        <li>Faraday Cage Systems</li>
+        <li>Commercial Lightning Protection</li>
+        <li>Industrial Lightning Protection</li>
+        <li>Residential Lightning Protection</li>
+    </ul>
+</li>
+<li><strong>Add business description to Tampa GBP</strong> (750 chars max)</li>
+<li><strong>Update/add secondary categories to Tampa GBP</strong></li>
+<li><strong>Define service areas for Tampa GBP</strong></li>
+</ul>
+</div>
+
+<div class="week-section">
+<div class="week-header">WEEK 2: February 10-14 (HIGH PRIORITY)</div>
+
+<h3>Content Execution</h3>
+
+<ul class="checklist">
+<li><strong>Publish Week 5 Blog Post</strong> - Per content calendar, optimize for target keywords</li>
+<li><strong>Publish Week 6 Blog Post</strong> - Per content calendar, optimize for target keywords</li>
+<li><strong>Weekly Social Media Posts</strong> - LinkedIn: 3 posts/week, Facebook: 3 posts/week</li>
+</ul>
+
+<h3>Review Generation</h3>
+
+<ul class="checklist">
+<li><strong>Create review request email template</strong></li>
+<li><strong>Create review request SMS template</strong></li>
+<li><strong>Send to recent clients</strong> (past 90 days)</li>
+<li><strong>Target:</strong> 10+ new reviews for Tampa</li>
+</ul>
+</div>
+
+<div class="week-section">
+<div class="week-header">WEEK 3: February 17-21 (MEDIUM PRIORITY)</div>
+
+<h3>Content Execution (Continued)</h3>
+
+<ul class="checklist">
+<li><strong>Publish Week 7 Blog Post</strong></li>
+<li><strong>Weekly Social Media Posts</strong></li>
+</ul>
+
+<h3>GBP Maintenance</h3>
+
+<ul class="checklist">
+<li><strong>Create GBP post for Tampa</strong> (project highlight or educational)</li>
+<li><strong>Create GBP post for Sunrise</strong> (once verified)</li>
+<li><strong>Create GBP post for Jacksonville</strong> (once verified)</li>
+<li><strong>Respond to any new reviews</strong></li>
+</ul>
+
+<h3>Photo Optimization</h3>
+
+<ul class="checklist">
+<li><strong>Upload 10+ new photos to Tampa GBP</strong> (projects, team, equipment)</li>
+<li><strong>Prepare photo assets for Sunrise & Jacksonville</strong></li>
+</ul>
+</div>
+
+<div class="week-section">
+<div class="week-header">WEEK 4: February 24-28</div>
+
+<h3>Content Execution (Continued)</h3>
+
+<ul class="checklist">
+<li><strong>Publish Week 8 Blog Post</strong></li>
+<li><strong>Weekly Social Media Posts</strong></li>
+<li><strong>Month-end content audit</strong></li>
+</ul>
+
+<h3>Reporting & Analysis</h3>
+
+<ul class="checklist">
+<li><strong>GBP Insights Report</strong> (all 3 locations) - Views, searches, actions</li>
+<li><strong>Review velocity tracking</strong> - Tampa review count, new location progress</li>
+<li><strong>Content performance report</strong> - Blog traffic, social engagement</li>
+</ul>
+
+<h3>Planning</h3>
+
+<ul class="checklist">
+<li><strong>March content calendar finalization</strong></li>
+<li><strong>Q2 strategy review prep</strong></li>
+</ul>
+</div>
+
+<hr>
+
+<h2>Success Metrics for February</h2>
+
+<table>
+<tr><th>Metric</th><th>Current</th><th>February Target</th></tr>
+<tr><td>Total GBP Listings</td><td class="bad">1</td><td class="good">3</td></tr>
+<tr><td>Tampa Reviews</td><td>76</td><td>85+</td></tr>
+<tr><td>Blog Posts Published (Q1 total)</td><td>4 (W1-4)</td><td>8 (W1-8)</td></tr>
+<tr><td>Social Posts Published</td><td>TBD</td><td>+24</td></tr>
+<tr><td>GBP Calls (Tampa)</td><td>Baseline TBD</td><td>Track</td></tr>
+<tr><td>GBP Direction Requests</td><td>Baseline TBD</td><td>Track</td></tr>
+</table>
+
+<hr>
+
+<h2>Dependencies / Blockers</h2>
+
+<div class="critical-issue">
+<h3>Items Blocking Progress</h3>
+
+<table>
+<tr><th>Item</th><th>Dependency</th><th>Status</th></tr>
+<tr><td>GBP creation</td><td>Client GBP access or agency manager invite</td><td class="bad">NEEDED</td></tr>
+<tr><td>Verification</td><td>Mail/phone at physical addresses</td><td>Pending</td></tr>
+<tr><td>Photos</td><td>Project photos from client</td><td class="bad">NEEDED</td></tr>
+<tr><td>Review requests</td><td>Customer contact list</td><td class="bad">NEEDED</td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2>Client Action Items Required</h2>
+
+<div class="high-issue">
+<p>The following items require client input/action before we can proceed:</p>
+
+<ol>
+<li><strong>Provide GBP access</strong> - Add agency as manager OR share login</li>
+<li><strong>Confirm Sunrise office can receive mail</strong> - For verification postcard</li>
+<li><strong>Confirm Jacksonville office can receive mail</strong> - For verification postcard</li>
+<li><strong>Provide 20+ project photos</strong> - Labeled by location if possible</li>
+<li><strong>Provide customer list</strong> - For review request campaign (past 6-12 months)</li>
+<li><strong>Confirm service list</strong> - Is accurate for GBP listings</li>
+<li><strong>Review and approve</strong> - Business description copy</li>
+</ol>
+</div>
+
+<hr>
+
+<div class="positive">
+<h2>Why This Month Matters</h2>
+
+<p><strong>Critical Gap Identified:</strong> All South only has 1 GBP listing despite 3 physical offices</p>
+
+<p><strong>Revenue at Risk:</strong> Estimated $150,000-$400,000/year in lost leads from missing Sunrise & Jacksonville GBPs</p>
+
+<p><strong>Immediate Action:</strong> GBP creation for additional locations is the highest priority this month. Every week without these profiles costs potential leads in South Florida and Northeast Florida markets.</p>
+</div>
+
+<div class="footer">
+<p><em>Checklist Created: February 4, 2026</em></p>
+<p><em>Mid-Month Check-in: February 14, 2026</em></p>
+<p><em>Month-End Review: February 28, 2026</em></p>
+<p><em>Prepared by Nichefinder AI Agency</em></p>
+</div>
+
+</body>
+</html>

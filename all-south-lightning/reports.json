@@ -1,0 +1,89 @@
+{
+  "client": {
+    "name": "All South Lightning Protection",
+    "slug": "all-south-lightning",
+    "industry": "Lightning Protection (Commercial B2B)",
+    "location": "Tampa, Sunrise, Jacksonville FL",
+    "campaign_status": "Active",
+    "start_date": "December 2025",
+    "goal": "Establish GBP presence in all 3 markets, rank for commercial lightning protection keywords"
+  },
+  "metrics": {
+    "gbp_listings": 1,
+    "gbp_listings_target": 3,
+    "gbp_listings_note": "CRITICAL: Missing Sunrise & Jacksonville",
+    "keywords_tracked": "TBD",
+    "organic_clicks": "--",
+    "gbp_calls": "--",
+    "gbp_calls_note": "Pending access",
+    "reviews": 76,
+    "review_rating": 4.7,
+    "reviews_note": "Tampa only",
+    "citations": "~5",
+    "citations_note": "BBB, BuildZoom, Birdeye, Procore"
+  },
+  "one_time_reports": [
+    {
+      "title": "GBP Audit (Multi-Location)",
+      "file": "GBP_Audit.html",
+      "date": "February 4, 2026",
+      "description": "Critical finding: Only 1 of 3 offices has GBP. Score: 42/100 (D). Missing $150K-$400K/yr in leads.",
+      "badge": "CRITICAL",
+      "badge_color": "red"
+    }
+  ],
+  "checklists": [
+    {
+      "title": "February 2026 Deliverables",
+      "file": "February_2026_Deliverables.html",
+      "date": "February 4, 2026",
+      "description": "Monthly action items prioritized by week. Focus: Create missing GBPs, optimize Tampa.",
+      "badge": "CURRENT",
+      "badge_color": "blue"
+    }
+  ],
+  "monthly_reports": [
+    {
+      "month": "2026-02",
+      "month_name": "February 2026",
+      "is_current": true,
+      "reports": [
+        {
+          "title": "Monthly Progress Report",
+          "file": null,
+          "description": "Complete overview of GBP setup progress, content published, and metrics.",
+          "badge": "Coming Soon",
+          "badge_color": "gray",
+          "available_date": "February 28"
+        }
+      ]
+    }
+  ],
+  "key_findings": {
+    "critical_issues": [
+      "NO GBP for Sunrise, FL office (invisible in South Florida)",
+      "NO GBP for Jacksonville, FL office (invisible in Northeast Florida)",
+      "Tampa GBP missing services, description, service area"
+    ],
+    "critical_note": "Estimated $150,000-$400,000/year revenue at risk",
+    "strengths": [
+      "Tampa GBP: 4.7 stars, 76 reviews",
+      "Active GBP posting (recent post)",
+      "BBB Accredited (Tampa)",
+      "BuildZoom top 8% of FL contractors",
+      "40+ years experience"
+    ],
+    "next_focus": [
+      "CREATE GBP for Sunrise office (Week 1)",
+      "CREATE GBP for Jacksonville office (Week 1)",
+      "Add 10+ services to Tampa GBP",
+      "Add business description to Tampa",
+      "Launch review generation campaign"
+    ]
+  },
+  "contact": {
+    "email": "nichefindersai@gmail.com",
+    "phone": "[Agency Phone]",
+    "calendar": "#"
+  }
+}
