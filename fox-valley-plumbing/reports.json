@@ -1,0 +1,126 @@
+{
+  "client": {
+    "name": "Fox Valley Plumbing & Backflow",
+    "slug": "fox-valley-plumbing",
+    "industry": "Plumbing Services",
+    "location": "Fox Valley, IL",
+    "campaign_status": "Active",
+    "start_date": "January 2026",
+    "goal": "Rank #1 for all 58 keywords by December 2026"
+  },
+  "metrics": {
+    "keywords_at_1": 11,
+    "total_keywords": 58,
+    "goal_progress": 19,
+    "organic_clicks": "1,522",
+    "gbp_calls": "--",
+    "gbp_calls_note": "Pending access",
+    "reviews": 124,
+    "review_rating": 4.8,
+    "citations": "~10",
+    "citations_note": "Building to 50"
+  },
+  "one_time_reports": [
+    {
+      "title": "GBP Audit",
+      "file": "GBP_Audit.html",
+      "date": "Updated February 4, 2026",
+      "description": "Google Business Profile audit. Score improved: 37/70 (D+) → 62/70 (A-). All critical issues resolved.",
+      "badge": "UPDATED",
+      "badge_color": "green"
+    },
+    {
+      "title": "Website Optimization Roadmap",
+      "file": "Website_Optimization_Roadmap.html",
+      "date": "January 28, 2026",
+      "description": "Full-year website SEO plan: 34 pages to create, keyword assignments, quarterly timeline.",
+      "badge": "Strategy",
+      "badge_color": "purple"
+    },
+    {
+      "title": "LLM Visibility Analysis",
+      "file": "LLM_Visibility_Analysis.html",
+      "date": "January 28, 2026",
+      "description": "AI/ChatGPT visibility assessment. Finding: Not appearing in AI recommendations. Action plan included.",
+      "badge": "One-Time",
+      "badge_color": "purple"
+    },
+    {
+      "title": "Local Dominator Baseline",
+      "file": "LOCAL_DOMINATOR_BASELINE_JAN_2026.html",
+      "date": "January 19, 2026",
+      "description": "Starting keyword rankings: 58 keywords tracked across 5 tiers. 11 keywords at #1 (19%).",
+      "badge": "Baseline",
+      "badge_color": "purple"
+    }
+  ],
+  "checklists": [
+    {
+      "title": "GBP Optimization Checklist",
+      "file": "GBP_Optimization_Checklist.html",
+      "date": "Completed February 4, 2026",
+      "description": "Phase 1 Complete: Hours set, 24 services added, description added, service area defined. Phase 2-3 ongoing.",
+      "badge": "Phase 1 Done",
+      "badge_color": "green"
+    },
+    {
+      "title": "Citation Building Checklist",
+      "file": null,
+      "date": "Starting March 2026",
+      "description": "35+ directory citations to build. Tier 1 high-authority sites first, then industry and local directories.",
+      "badge": "Pending",
+      "badge_color": "gray"
+    }
+  ],
+  "monthly_reports": [
+    {
+      "month": "2026-02",
+      "month_name": "February 2026",
+      "is_current": true,
+      "reports": [
+        {
+          "title": "Monthly Progress Report",
+          "file": "2026-02/Monthly_Progress_Report_Feb_2026.html",
+          "description": "Complete overview of work completed, metrics, ranking changes, and next month's priorities.",
+          "badge": "NEW",
+          "badge_color": "red"
+        },
+        {
+          "title": "Ranking Movement Report",
+          "file": null,
+          "description": "Detailed keyword ranking changes, tier distribution, and recommendations.",
+          "badge": "Coming Soon",
+          "badge_color": "blue",
+          "available_date": "March 1"
+        }
+      ]
+    }
+  ],
+  "key_findings": {
+    "resolved": [
+      "Business hours now set (Mon-Sun)",
+      "24 services now listed in GBP",
+      "Business description added",
+      "12-city service area defined"
+    ],
+    "resolved_note": "Score: D+ → A- (+67% improvement)",
+    "strengths": [
+      "#1 for ALL backflow keywords",
+      "Strong 4.8 star rating (124 reviews)",
+      "15+ years in business",
+      "Active GBP posting",
+      "More services listed than competitors"
+    ],
+    "next_focus": [
+      "Continue review generation (+10/month)",
+      "Consider 24/7 hours for emergency keywords",
+      "Claim/update BBB profile",
+      "Monitor ranking improvements (March check)"
+    ]
+  },
+  "contact": {
+    "email": "nichefindersai@gmail.com",
+    "phone": "[Agency Phone]",
+    "calendar": "#"
+  }
+}

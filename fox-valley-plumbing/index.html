@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Fox Valley Plumbing - Client Portal | Nichefinder AI</title>
+<title>Fox Valley Plumbing & Backflow - Client Portal | Nichefinder AI</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 /* Download buttons */
@@ -20,7 +20,6 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
 .header h1 { margin: 0; font-size: 28pt; }
 .header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 12pt; }
-.header .logo { max-height: 60px; margin-bottom: 15px; }
 
 /* Container */
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
@@ -59,12 +58,8 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .section-header h2 { margin: 0; color: #1a5276; font-size: 18pt; }
 .section-header p { margin: 5px 0 0 0; color: #7f8c8d; font-size: 10pt; }
 
-/* Category badges */
+/* Badges */
 .badge { display: inline-block; padding: 3px 10px; border-radius: 15px; font-size: 9pt; font-weight: bold; margin-left: 10px; }
-.badge-new { background-color: #e74c3c; color: white; }
-.badge-monthly { background-color: #3498db; color: white; }
-.badge-onetime { background-color: #9b59b6; color: white; }
-.badge-checklist { background-color: #1abc9c; color: white; }
 
 /* Contact section */
 .contact-section { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-top: 30px; }
@@ -83,6 +78,10 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .progress-container { background-color: #ecf0f1; border-radius: 10px; height: 30px; margin: 10px 0; overflow: hidden; }
 .progress-bar { background: linear-gradient(90deg, #27ae60, #2ecc71); height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
 .goal-details { display: flex; justify-content: space-between; margin-top: 10px; font-size: 10pt; color: #7f8c8d; }
+
+/* Archive section */
+.archive-month { margin-bottom: 30px; }
+.archive-month h4 { color: #1a5276; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #d5d8dc; }
 
 /* Footer */
 .footer { text-align: center; padding: 20px; color: #95a5a6; font-size: 9pt; }
@@ -107,7 +106,7 @@ function downloadPDF() {
     const element = document.body;
     const opt = {
         margin: 0.3,
-        filename: 'Client_Portal_Fox_Valley_Plumbing.pdf',
+        filename: 'Client_Portal_fox_valley_plumbing.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -130,7 +129,7 @@ function downloadPDF() {
 <div class="status-banner">
 <div>
 <h3>Campaign Status: Active</h3>
-<p>Last Updated: February 4, 2026 (GBP Optimizations Complete)</p>
+<p>Last Updated: February 04, 2026</p>
 </div>
 <div class="status-metric">
 <span class="number">11</span>
@@ -148,12 +147,12 @@ function downloadPDF() {
 
 <!-- Goal Tracker -->
 <div class="goal-tracker">
-<h3>2026 Goal: Rank #1 for All 58 Keywords</h3>
+<h3>Rank #1 for all 58 keywords by December 2026</h3>
 <div class="progress-container">
 <div class="progress-bar" style="width: 19%;">19% Complete (11 of 58)</div>
 </div>
 <div class="goal-details">
-<span>Start: 11 keywords (Jan 2026)</span>
+<span>Start: 11 keywords (January 2026)</span>
 <span>Target: 58 keywords (Dec 2026)</span>
 </div>
 </div>
@@ -189,9 +188,10 @@ function downloadPDF() {
 </div>
 
 <div class="card-grid">
+
 <div class="card">
 <div class="card-header">
-<h3>Monthly Progress Report <span class="badge badge-new">NEW</span></h3>
+<h3>Monthly Progress Report <span class="badge" style="background-color: #e74c3c; color: white;">NEW</span></h3>
 <span class="date">February 2026</span>
 </div>
 <div class="card-body">
@@ -202,7 +202,7 @@ function downloadPDF() {
 
 <div class="card">
 <div class="card-header">
-<h3>Ranking Movement Report <span class="badge badge-monthly">Coming Soon</span></h3>
+<h3>Ranking Movement Report <span class="badge" style="background-color: #3498db; color: white;">Coming Soon</span></h3>
 <span class="date">February 2026</span>
 </div>
 <div class="card-body">
@@ -210,6 +210,7 @@ function downloadPDF() {
 </div>
 <a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Available March 1</a>
 </div>
+
 </div>
 
 <!-- Strategy & Audits Section -->
@@ -219,49 +220,51 @@ function downloadPDF() {
 </div>
 
 <div class="card-grid">
+
 <div class="card">
 <div class="card-header" style="background-color: #27ae60;">
-<h3>GBP Audit <span class="badge" style="background-color: white; color: #27ae60;">UPDATED</span></h3>
+<h3>GBP Audit <span class="badge" style="background-color: #27ae60; color: white;">UPDATED</span></h3>
 <span class="date">Updated February 4, 2026</span>
 </div>
 <div class="card-body">
-<p>Google Business Profile audit. <strong style="color: #27ae60;">Score improved: 37/70 (D+) → 62/70 (A-)</strong>. All critical issues resolved.</p>
+<p>Google Business Profile audit. Score improved: 37/70 (D+) → 62/70 (A-). All critical issues resolved.</p>
 </div>
-<a href="GBP_Audit.html" class="card-link">View Audit &rarr;</a>
+<a href="GBP_Audit.html" class="card-link">View Report &rarr;</a>
 </div>
 
 <div class="card">
-<div class="card-header">
-<h3>Website Optimization Roadmap <span class="badge badge-onetime">Strategy</span></h3>
+<div class="card-header" >
+<h3>Website Optimization Roadmap <span class="badge" style="background-color: #9b59b6; color: white;">Strategy</span></h3>
 <span class="date">January 28, 2026</span>
 </div>
 <div class="card-body">
 <p>Full-year website SEO plan: 34 pages to create, keyword assignments, quarterly timeline.</p>
 </div>
-<a href="Website_Optimization_Roadmap.html" class="card-link">View Roadmap &rarr;</a>
+<a href="Website_Optimization_Roadmap.html" class="card-link">View Report &rarr;</a>
 </div>
 
 <div class="card">
-<div class="card-header">
-<h3>LLM Visibility Analysis <span class="badge badge-onetime">One-Time</span></h3>
+<div class="card-header" >
+<h3>LLM Visibility Analysis <span class="badge" style="background-color: #9b59b6; color: white;">One-Time</span></h3>
 <span class="date">January 28, 2026</span>
 </div>
 <div class="card-body">
 <p>AI/ChatGPT visibility assessment. Finding: Not appearing in AI recommendations. Action plan included.</p>
 </div>
-<a href="LLM_Visibility_Analysis.html" class="card-link">View Analysis &rarr;</a>
+<a href="LLM_Visibility_Analysis.html" class="card-link">View Report &rarr;</a>
 </div>
 
 <div class="card">
-<div class="card-header">
-<h3>Local Dominator Baseline <span class="badge badge-onetime">Baseline</span></h3>
+<div class="card-header" >
+<h3>Local Dominator Baseline <span class="badge" style="background-color: #9b59b6; color: white;">Baseline</span></h3>
 <span class="date">January 19, 2026</span>
 </div>
 <div class="card-body">
 <p>Starting keyword rankings: 58 keywords tracked across 5 tiers. 11 keywords at #1 (19%).</p>
 </div>
-<a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html" class="card-link">View Baseline &rarr;</a>
+<a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html" class="card-link">View Report &rarr;</a>
 </div>
+
 </div>
 
 <!-- Implementation Checklists Section -->
@@ -271,20 +274,21 @@ function downloadPDF() {
 </div>
 
 <div class="card-grid">
+
 <div class="card">
 <div class="card-header" style="background-color: #27ae60;">
-<h3>GBP Optimization Checklist <span class="badge" style="background-color: white; color: #27ae60;">Phase 1 Done</span></h3>
+<h3>GBP Optimization Checklist <span class="badge" style="background-color: #27ae60; color: white;">Phase 1 Done</span></h3>
 <span class="date">Completed February 4, 2026</span>
 </div>
 <div class="card-body">
-<p><strong style="color: #27ae60;">✅ Phase 1 Complete:</strong> Hours set, 24 services added, description added, service area defined. Phase 2-3 ongoing.</p>
+<p>Phase 1 Complete: Hours set, 24 services added, description added, service area defined. Phase 2-3 ongoing.</p>
 </div>
 <a href="GBP_Optimization_Checklist.html" class="card-link">View Checklist &rarr;</a>
 </div>
 
 <div class="card">
-<div class="card-header">
-<h3>Citation Building Checklist <span class="badge badge-checklist">Pending</span></h3>
+<div class="card-header" >
+<h3>Citation Building Checklist <span class="badge" style="background-color: #95a5a6; color: white;">Pending</span></h3>
 <span class="date">Starting March 2026</span>
 </div>
 <div class="card-body">
@@ -292,7 +296,10 @@ function downloadPDF() {
 </div>
 <a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Starting Soon</a>
 </div>
+
 </div>
+
+
 
 <!-- Key Findings Summary -->
 <div class="section-header">

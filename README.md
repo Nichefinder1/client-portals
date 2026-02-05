@@ -1,46 +1,64 @@
 # Nichefinder AI - Client Portals
 
-This repository hosts client-facing reports and dashboards for Nichefinder AI Agency clients.
+Client-facing report portals hosted on GitHub Pages.
 
 ## Live Site
 
 **URL:** https://nichefinder1.github.io/client-portals/
 
+## Quick Commands
+
+```bash
+# Update a specific client portal
+./update-portal.sh fox-valley-plumbing
+
+# Update all client portals
+./update-portal.sh
+
+# Deploy changes
+git add . && git commit -m "Update reports" && git push
+```
+
+## Monthly Updates
+
+See **[MONTHLY_WORKFLOW.md](MONTHLY_WORKFLOW.md)** for detailed steps.
+
+**Quick version (2 min per client):**
+1. Add report files to new month folder
+2. Edit `reports.json` (update metrics, add new month)
+3. Run `./update-portal.sh [client]`
+4. `git add . && git commit && git push`
+
 ## Structure
 
 ```
 client-portals/
-├── index.html                    # Main portal listing all clients
-├── fox-valley-plumbing/          # Fox Valley Plumbing & Backflow
-│   ├── index.html                # Client dashboard
-│   ├── GBP_Audit.html
-│   ├── GBP_Optimization_Checklist.html
-│   ├── LLM_Visibility_Analysis.html
-│   ├── Website_Optimization_Roadmap.html
-│   ├── LOCAL_DOMINATOR_BASELINE_JAN_2026.html
-│   └── 2026-02/
-│       └── Monthly_Progress_Report_Feb_2026.html
-└── [future-client]/              # Additional clients
+├── generate-portal.py      # Portal generator script
+├── update-portal.sh        # Quick update wrapper
+├── MONTHLY_WORKFLOW.md     # Monthly update guide
+├── index.html              # Main portal (all clients)
+│
+└── fox-valley-plumbing/
+    ├── reports.json        # Client config (edit monthly)
+    ├── index.html          # Generated portal
+    ├── [report files...]
+    └── 2026-02/
+        └── Monthly_Progress_Report_Feb_2026.html
 ```
 
-## Adding New Clients
+## How It Works
 
-1. Create a new folder with URL-friendly client name (lowercase, hyphens)
-2. Copy `index.html` template and customize
-3. Add client card to main `index.html`
-4. Commit and push
+1. **reports.json** - Contains all client data, metrics, and report links
+2. **generate-portal.py** - Reads JSON, generates index.html
+3. **GitHub Pages** - Hosts the static HTML files
 
-## Updating Reports
+## Features
 
-1. Add new HTML files to client folder
-2. Update client's `index.html` with new links
-3. Commit and push
-
-## GitHub Pages Setup
-
-This site is hosted via GitHub Pages from the `main` branch.
-
-**Settings:** Repository Settings → Pages → Source: Deploy from branch (main)
+- PDF download button on every report
+- Print button on every report
+- Archive section for historical reports
+- Mobile responsive
+- No backend required ($0 hosting)
 
 ---
 
