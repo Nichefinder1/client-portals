@@ -98,7 +98,7 @@
   ],
   "key_findings": {
     "resolved": [
-      "Business hours now set (Mon-Sun)",
+      "Business hours set to 24/7",
       "24 services now listed in GBP",
       "Business description added",
       "12-city service area defined"
@@ -113,7 +113,6 @@
     ],
     "next_focus": [
       "Continue review generation (+10/month)",
-      "Consider 24/7 hours for emergency keywords",
       "Claim/update BBB profile",
       "Monitor ranking improvements (March check)"
     ]
