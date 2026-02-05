@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fox Valley Plumbing - Service FAQs</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); min-height: 100vh; padding: 20px; }
+
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-print { background-color: #27ae60; color: white; }
+@media print { .download-bar { display: none !important; } body { background: white; padding: 0; } }
+
+.container { max-width: 900px; margin: 0 auto; }
+
+/* Header */
+.header { background: white; border-radius: 15px; padding: 40px; margin-bottom: 30px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.logo-area { margin-bottom: 20px; }
+.company-name { font-size: 32px; font-weight: bold; color: #1e3a5f; margin-bottom: 5px; }
+.tagline { font-size: 16px; color: #666; margin-bottom: 20px; }
+.header h1 { font-size: 28px; color: #2d5a87; margin-bottom: 10px; }
+.header p { color: #666; font-size: 14px; }
+.credentials { display: flex; justify-content: center; gap: 30px; margin-top: 25px; flex-wrap: wrap; }
+.credential { background: #f0f7ff; padding: 10px 20px; border-radius: 25px; font-size: 13px; color: #1e3a5f; font-weight: 500; }
+
+/* Service Section */
+.service-section { background: white; border-radius: 15px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.service-header { background: linear-gradient(135deg, #1e3a5f, #2d5a87); color: white; padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.service-header:hover { background: linear-gradient(135deg, #2d5a87, #3d6a97); }
+.service-title { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+.service-icon { font-size: 24px; }
+.toggle-icon { font-size: 24px; transition: transform 0.3s; }
+.service-section.open .toggle-icon { transform: rotate(180deg); }
+.service-content { padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+.service-section.open .service-content { padding: 25px; max-height: 2000px; }
+
+/* FAQ Item */
+.faq-item { border-bottom: 1px solid #eee; padding: 15px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-question { font-weight: 600; color: #1e3a5f; margin-bottom: 8px; font-size: 16px; display: flex; align-items: flex-start; gap: 10px; }
+.faq-question::before { content: "Q:"; color: #2d5a87; font-weight: bold; min-width: 25px; }
+.faq-answer { color: #555; line-height: 1.7; padding-left: 35px; font-size: 15px; }
+.faq-answer strong { color: #1e3a5f; }
+
+/* Highlight Box */
+.highlight-box { background: linear-gradient(135deg, #e8f4fd, #d0e8f7); border-left: 4px solid #2d5a87; padding: 15px 20px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.highlight-box strong { color: #1e3a5f; }
+
+/* Service Area Section */
+.service-area { background: white; border-radius: 15px; padding: 30px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.service-area h2 { color: #1e3a5f; margin-bottom: 20px; text-align: center; }
+.cities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.city-tag { background: #f0f7ff; padding: 10px 15px; border-radius: 8px; text-align: center; font-size: 14px; color: #1e3a5f; }
+
+/* CTA Section */
+.cta-section { background: linear-gradient(135deg, #27ae60, #2ecc71); border-radius: 15px; padding: 40px; text-align: center; color: white; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.cta-section h2 { font-size: 28px; margin-bottom: 15px; }
+.cta-section p { font-size: 18px; margin-bottom: 25px; opacity: 0.95; }
+.cta-phone { font-size: 36px; font-weight: bold; background: white; color: #27ae60; padding: 15px 40px; border-radius: 50px; display: inline-block; }
+.cta-details { margin-top: 20px; font-size: 14px; opacity: 0.9; }
+
+/* Footer */
+.footer { text-align: center; padding: 30px; color: rgba(255,255,255,0.7); font-size: 13px; }
+
+@media (max-width: 768px) {
+    .cities-grid { grid-template-columns: repeat(2, 1fr); }
+    .credentials { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">📄 Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">🖨️ Print</button>
+</div>
+
+<script>
+function downloadPDF() {
+    const element = document.querySelector('.container');
+    const opt = {
+        margin: 0.5,
+        filename: 'Fox_Valley_Plumbing_Service_FAQs.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    document.querySelector('.download-bar').style.display = 'none';
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-bar').style.display = 'flex';
+    });
+}
+
+function toggleSection(element) {
+    element.parentElement.classList.toggle('open');
+}
+</script>
+
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+    <div class="logo-area">
+        <div class="company-name">Fox Valley Plumbing & Backflow Services</div>
+        <div class="tagline">Professional Plumbing Services • Available 24/7</div>
+    </div>
+    <h1>Service FAQs</h1>
+    <p>Common questions answered about our plumbing services</p>
+    <div class="credentials">
+        <span class="credential">🏆 Licensed Master Plumber (IL #058-161084)</span>
+        <span class="credential">⭐ 4.8 Stars (124+ Reviews)</span>
+        <span class="credential">🕐 24/7 Emergency Service</span>
+    </div>
+</div>
+
+<!-- Backflow Services -->
+<div class="service-section open">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">🔄</span> Backflow Testing & Certification</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">What is backflow testing and why do I need it?</div>
+            <div class="faq-answer">Backflow testing ensures your backflow prevention device is working properly to prevent contaminated water from flowing back into the clean water supply. <strong>Illinois requires annual testing</strong> for all commercial properties and residential irrigation systems to protect public health.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How often do I need backflow testing?</div>
+            <div class="faq-answer">Backflow preventers must be tested <strong>annually</strong> by a certified tester. You'll receive a notice from your municipality when testing is due. We handle the testing and submit all required paperwork directly to your city.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What types of backflow devices do you service?</div>
+            <div class="faq-answer">We test, repair, and install all types including <strong>RPZ (Reduced Pressure Zone)</strong>, <strong>PVB (Pressure Vacuum Breaker)</strong>, <strong>Double Check Valves</strong>, and <strong>Atmospheric Vacuum Breakers</strong>. Our technicians are Illinois-certified backflow testers.</div>
+        </div>
+        <div class="highlight-box">
+            <strong>💡 Good to Know:</strong> We're backflow specialists! This is one of our core services, and we maintain certifications to test and repair all device types.
+        </div>
+    </div>
+</div>
+
+<!-- Emergency Plumbing -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">🚨</span> 24/7 Emergency Plumbing</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">What's considered a plumbing emergency?</div>
+            <div class="faq-answer">Plumbing emergencies include: <strong>burst pipes</strong>, <strong>sewer backups</strong>, <strong>no water</strong>, <strong>gas leaks</strong>, <strong>overflowing toilets</strong>, <strong>water heater failures</strong>, and any situation causing water damage or safety hazards. When in doubt, call us!</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What's your response time for emergencies?</div>
+            <div class="faq-answer">We prioritize emergencies and typically respond within <strong>1-2 hours</strong> for urgent situations. Our technicians are on call 24/7, including weekends and holidays.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Are there extra charges for after-hours service?</div>
+            <div class="faq-answer">We're transparent about pricing. While after-hours calls may have different rates, we'll always provide upfront pricing before beginning any work. <strong>No surprise charges.</strong></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What should I do while waiting for emergency service?</div>
+            <div class="faq-answer">For water emergencies: <strong>Shut off the main water valve</strong> (usually near the water meter). For gas leaks: <strong>Leave immediately and call from outside.</strong> We'll guide you through any immediate steps when you call.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Drain Cleaning -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">🚿</span> Drain Cleaning & Hydro Jetting</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">What's the difference between drain cleaning and hydro jetting?</div>
+            <div class="faq-answer"><strong>Drain cleaning</strong> uses mechanical cables (snakes) to break through clogs. <strong>Hydro jetting</strong> uses high-pressure water (3,000-4,000 PSI) to completely clean pipe walls, removing grease, scale, and debris. Hydro jetting provides a more thorough, longer-lasting clean.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What are signs I need drain cleaning?</div>
+            <div class="faq-answer">Warning signs include: <strong>slow drains</strong>, <strong>gurgling sounds</strong>, <strong>bad odors</strong>, <strong>water backing up</strong>, <strong>multiple clogged drains</strong>, or <strong>fruit flies near drains</strong>. Don't wait until you have a complete blockage!</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How often should I have my drains professionally cleaned?</div>
+            <div class="faq-answer">For preventive maintenance, we recommend professional cleaning <strong>every 1-2 years</strong>. Restaurants and commercial kitchens may need more frequent service due to grease buildup.</div>
+        </div>
+        <div class="highlight-box">
+            <strong>💡 Pro Tip:</strong> Avoid chemical drain cleaners! They can damage pipes and often don't solve the underlying problem. Professional cleaning is safer and more effective.
+        </div>
+    </div>
+</div>
+
+<!-- Water Heaters -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">🔥</span> Water Heater Services</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">How long does a water heater last?</div>
+            <div class="faq-answer">Traditional tank water heaters typically last <strong>8-12 years</strong>. Tankless water heaters can last <strong>15-20 years</strong> with proper maintenance. Age, water quality, and maintenance all affect lifespan.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">When should I repair vs. replace my water heater?</div>
+            <div class="faq-answer">Consider replacement if: the unit is <strong>over 10 years old</strong>, you're seeing <strong>rust-colored water</strong>, there's <strong>water pooling around the base</strong>, or <strong>repair costs exceed 50% of replacement</strong>. We'll give you honest recommendations.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What's the difference between tank and tankless water heaters?</div>
+            <div class="faq-answer"><strong>Tank heaters</strong> store 40-80 gallons of hot water, cost less upfront, but use more energy. <strong>Tankless heaters</strong> heat water on demand, are more energy-efficient (save 20-30%), but cost more initially. We can help you choose the right option.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How long does water heater installation take?</div>
+            <div class="faq-answer">Standard tank water heater replacement takes <strong>2-4 hours</strong>. Tankless installations may take <strong>4-8 hours</strong> depending on whether gas line or electrical modifications are needed.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Sump Pumps -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">💧</span> Sump Pump Services</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">How do I know if my sump pump is working?</div>
+            <div class="faq-answer">Test it by pouring a bucket of water into the pit. The pump should turn on, remove the water, then shut off. You should also hear it run during heavy rains. <strong>Test quarterly</strong> to ensure it's ready when you need it.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do I need a battery backup sump pump?</div>
+            <div class="faq-answer"><strong>Yes, we highly recommend it!</strong> Power outages often happen during severe storms—exactly when you need your sump pump most. A battery backup provides peace of mind and can prevent thousands in water damage.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How long do sump pumps last?</div>
+            <div class="faq-answer">Average lifespan is <strong>7-10 years</strong>, but this varies based on usage frequency and maintenance. If your pump runs frequently or is over 7 years old, consider replacement before it fails.</div>
+        </div>
+        <div class="highlight-box">
+            <strong>💡 Illinois Weather Alert:</strong> With our weather, a working sump pump is essential for basement protection. Don't wait for a flood to find out yours has failed!
+        </div>
+    </div>
+</div>
+
+<!-- Gas Line Services -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">⚡</span> Gas Line Services</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">What are signs of a gas leak?</div>
+            <div class="faq-answer">Warning signs include: <strong>rotten egg smell</strong>, <strong>hissing sounds</strong> near gas lines, <strong>dead plants</strong> near gas lines, <strong>higher gas bills</strong>, or <strong>physical symptoms</strong> (headaches, dizziness). If you suspect a leak, leave immediately and call us or 911.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do you need a permit for gas line work?</div>
+            <div class="faq-answer"><strong>Yes.</strong> Gas line installation and major repairs require permits and inspections in Illinois. As a licensed contractor, we handle all permit requirements and ensure work meets code.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can you install gas lines for new appliances?</div>
+            <div class="faq-answer">Absolutely! We install gas lines for <strong>stoves/ranges</strong>, <strong>dryers</strong>, <strong>outdoor grills</strong>, <strong>fire pits</strong>, <strong>pool heaters</strong>, and <strong>generators</strong>. We'll ensure proper sizing and safe installation.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Leak Detection -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">🔍</span> Leak Detection</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">How do you find hidden leaks?</div>
+            <div class="faq-answer">We use <strong>electronic leak detection equipment</strong> that can locate leaks behind walls, under floors, and underground without destructive digging. This technology pinpoints the exact location, minimizing repair costs.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What are signs of a hidden water leak?</div>
+            <div class="faq-answer">Watch for: <strong>unexplained high water bills</strong>, <strong>water meter running when nothing's on</strong>, <strong>wet spots on floors/walls</strong>, <strong>mold or mildew smell</strong>, <strong>foundation cracks</strong>, or <strong>sound of running water</strong> when fixtures are off.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How much water can a small leak waste?</div>
+            <div class="faq-answer">A <strong>dripping faucet</strong> can waste 3,000+ gallons per year. A <strong>running toilet</strong> can waste 200 gallons per day! Hidden slab leaks can waste even more while causing structural damage. Early detection saves money.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Sewer & Video Inspection -->
+<div class="service-section">
+    <div class="service-header" onclick="toggleSection(this)">
+        <span class="service-title"><span class="service-icon">📹</span> Sewer Line & Video Inspection</span>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="service-content">
+        <div class="faq-item">
+            <div class="faq-question">What is video sewer inspection?</div>
+            <div class="faq-answer">We insert a <strong>waterproof camera</strong> into your sewer line to see exactly what's happening inside. This reveals <strong>clogs</strong>, <strong>tree root intrusion</strong>, <strong>cracks</strong>, <strong>bellied pipes</strong>, and <strong>deterioration</strong>—all without digging.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">When should I get a sewer inspection?</div>
+            <div class="faq-answer">We recommend inspection for: <strong>recurring clogs</strong>, <strong>slow drains throughout home</strong>, <strong>before buying a home</strong>, <strong>trees near sewer line</strong>, or if your home is <strong>over 25 years old</strong>. It's a small investment that can prevent major surprises.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What if you find a problem?</div>
+            <div class="faq-answer">We'll show you the video footage, explain the issue, and provide repair options. Solutions range from <strong>hydro jetting</strong> for clogs to <strong>trenchless repair</strong> or <strong>traditional replacement</strong> for damaged pipes. We'll recommend the most cost-effective solution.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Service Area -->
+<div class="service-area">
+    <h2>📍 Our Service Area</h2>
+    <p style="text-align: center; margin-bottom: 20px; color: #666;">Proudly serving Elgin and surrounding communities within a 10-mile radius</p>
+    <div class="cities-grid">
+        <div class="city-tag">Elgin</div>
+        <div class="city-tag">South Elgin</div>
+        <div class="city-tag">Bartlett</div>
+        <div class="city-tag">Streamwood</div>
+        <div class="city-tag">Carpentersville</div>
+        <div class="city-tag">West Dundee</div>
+        <div class="city-tag">East Dundee</div>
+        <div class="city-tag">Sleepy Hollow</div>
+        <div class="city-tag">Hanover Park</div>
+        <div class="city-tag">Hoffman Estates</div>
+        <div class="city-tag">St. Charles</div>
+        <div class="city-tag">Wayne</div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="cta-section">
+    <h2>Ready to Get Started?</h2>
+    <p>Call us anytime for fast, reliable plumbing service</p>
+    <div class="cta-phone">(847) 624-3872</div>
+    <div class="cta-details">
+        Available 24/7 • Licensed & Insured • 100% Satisfaction Guarantee<br>
+        Family-Owned • Serving Elgin for 15+ Years
+    </div>
+</div>
+
+<div class="footer">
+    <p>Fox Valley Plumbing & Backflow Services</p>
+    <p>953 1/2 Grace St, Elgin, IL 60120 • www.foxvalleyplumbing.com</p>
+    <p style="margin-top: 10px;">Prepared by Nichefinder AI Agency • February 2026</p>
+</div>
+
+</div>
+
+</body>
+</html>
