@@ -83,6 +83,26 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .archive-month { margin-bottom: 30px; }
 .archive-month h4 { color: #1a5276; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #d5d8dc; }
 
+/* LLM visibility table */
+.llm-table { width: 100%; border-collapse: collapse; font-size: 10pt; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.llm-table th { background-color: #1a5276; color: white; padding: 10px 15px; text-align: left; }
+.llm-table td { padding: 10px 15px; border-bottom: 1px solid #ecf0f1; vertical-align: top; }
+.llm-table tr:last-child td { border-bottom: none; }
+.llm-table tr:nth-child(even) { background-color: #f8f9fa; }
+.vis-strong { color: #27ae60; font-weight: bold; }
+.vis-partial { color: #f39c12; font-weight: bold; }
+.vis-absent { color: #c0392b; font-weight: bold; }
+
+/* Metrics tracker table */
+.metrics-table { width: 100%; border-collapse: collapse; font-size: 10pt; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.metrics-table th { background-color: #1a5276; color: white; padding: 10px 15px; text-align: left; }
+.metrics-table td { padding: 10px 15px; border-bottom: 1px solid #ecf0f1; }
+.metrics-table tr:last-child td { border-bottom: none; }
+.metrics-table tr:nth-child(even) { background-color: #f8f9fa; }
+.trend-up { color: #27ae60; }
+.trend-down { color: #c0392b; }
+.trend-flat { color: #f39c12; }
+
 /* Footer */
 .footer { text-align: center; padding: 20px; color: #95a5a6; font-size: 9pt; }
 
@@ -156,6 +176,34 @@ function downloadPDF() {
 <span>Target: 58 keywords (Dec 2026)</span>
 </div>
 </div>
+
+<!-- Monthly Metrics Tracker -->
+<div class="section-header">
+<h2>Monthly Metrics Tracker</h2>
+<p>Key numbers tracked every month — updated each reporting cycle through December 2026</p>
+</div>
+<table class="metrics-table">
+<tr>
+<th>Metric</th>
+<th>Baseline (Jan 2026)</th>
+<th>Feb 2026</th>
+<th>Mar 2026</th>
+<th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+</tr>
+<tr><td>Google Reviews</td><td>124</td><td>124</td><td><strong>125</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Star Rating</td><td>4.8</td><td>4.8</td><td><strong>4.8</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Yelp Reviews</td><td>—</td><td>16</td><td><strong>16</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Keywords at #1 (Map Pack)</td><td>11</td><td>11</td><td><strong>11+</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Keywords Improved (vs baseline)</td><td>—</td><td>—</td><td><strong class="trend-up">26 ↑</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>GBP Score</td><td>37/70 (D+)</td><td>62/70 (A-)</td><td><strong>62/70 (A-)</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>BBB Accreditation</td><td>None</td><td>A+ ✅</td><td><strong>A+ ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Active Citations</td><td>~10</td><td>~10</td><td><strong>In Progress</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Expertise.com Listed</td><td>No</td><td>No</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Three Best Rated Listed</td><td>No</td><td>No</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Blog Posts Published</td><td>0</td><td>3</td><td><strong>5+</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>LLM Visibility (backflow)</td><td>Weak</td><td>Good</td><td><strong class="trend-up">Strong ↑</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>LLM Visibility (general plumber)</td><td>Absent</td><td>Absent</td><td><strong class="trend-flat">Partial →</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
 
 <!-- Quick Stats -->
 <div class="quick-stats">
@@ -458,6 +506,164 @@ function downloadPDF() {
 <li>3 posts per week per platform</li>
 <li>Rotating through all 11 service cities</li>
 </ul>
+</div>
+</div>
+</div>
+
+<!-- LLM Visibility Analysis -->
+<div class="section-header">
+<h2>LLM Visibility Analysis</h2>
+<p>How Fox Valley Plumbing appears when people ask ChatGPT, Perplexity, and AI search tools — updated March 2026</p>
+</div>
+
+<div class="quick-stats" style="margin-bottom: 20px;">
+<div class="stat-box">
+<span class="number" style="color: #27ae60;">4</span>
+<span class="label">Queries — Strong/Present</span>
+<span class="change positive">AI visible</span>
+</div>
+<div class="stat-box">
+<span class="number" style="color: #f39c12;">4</span>
+<span class="label">Queries — Partial</span>
+<span class="change neutral">Improving</span>
+</div>
+<div class="stat-box">
+<span class="number" style="color: #c0392b;">2</span>
+<span class="label">Queries — Absent</span>
+<span class="change negative">Gap to close</span>
+</div>
+<div class="stat-box">
+<span class="number">10</span>
+<span class="label">Total Queries Tested</span>
+<span class="change neutral">Monthly check</span>
+</div>
+</div>
+
+<table class="llm-table">
+<tr>
+<th>Search Query</th>
+<th>AI Visibility</th>
+<th>Notes</th>
+</tr>
+<tr><td>"backflow testing Elgin IL"</td><td><span class="vis-strong">STRONG ✅</span></td><td>Consistently named; foxvalleyplumbing.com appears in top results. Verified badge on FindBackflowTesters.com.</td></tr>
+<tr><td>"who does backflow testing in Elgin IL"</td><td><span class="vis-strong">STRONG ✅</span></td><td>Specifically cited by name in AI-style summaries and backflow directories.</td></tr>
+<tr><td>"emergency plumber Elgin IL"</td><td><span class="vis-strong">PRESENT ✅</span></td><td>Listed among top 8 organic results. Emergency plumbing page indexed.</td></tr>
+<tr><td>"24 hour plumber Elgin IL"</td><td><span class="vis-strong">PRESENT ✅</span></td><td>Appears in results. Emergency/24-hour page found by AI crawlers.</td></tr>
+<tr><td>"best plumber in Elgin IL"</td><td><span class="vis-partial">PARTIAL ⚠️</span></td><td>Mentioned in some aggregator summaries but not in top AI answer slots. Expertise.com & ThreeBestRated exclusion hurts here.</td></tr>
+<tr><td>"best plumbers near Elgin Illinois"</td><td><span class="vis-partial">PARTIAL ⚠️</span></td><td>Appears in search snippets but not in AI-curated top lists.</td></tr>
+<tr><td>"plumbing company Elgin IL"</td><td><span class="vis-partial">PARTIAL ⚠️</span></td><td>Appears in some aggregator results. Not dominant for this term yet.</td></tr>
+<tr><td>"drain cleaning Elgin IL"</td><td><span class="vis-partial">PARTIAL ⚠️</span></td><td>Services page appears. Not in top 3. Drain cleaning ranking drop (Local Dominator) mirrors this.</td></tr>
+<tr><td>"licensed plumber Elgin Illinois"</td><td><span class="vis-absent">ABSENT ❌</span></td><td>No direct page targeting "licensed plumber." Homepage title tag doesn't include "Elgin" — key SEO gap.</td></tr>
+<tr><td>"plumber South Elgin IL"</td><td><span class="vis-absent">ABSENT ❌</span></td><td>No dedicated South Elgin page detected. Roto-Rooter has a dedicated South Elgin page — direct competitive disadvantage.</td></tr>
+</table>
+
+<div class="card-grid" style="margin-bottom: 30px;">
+<div class="card" style="border-left: 5px solid #27ae60;">
+<div class="card-header" style="background-color: #27ae60;">
+<h3>LLM Strength: Backflow</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;">Fox Valley is the clear AI-recommended backflow specialist in Elgin. FindBackflowTesters.com verification (10/10 match score) and consistent organic backflow rankings make this the strongest LLM visibility asset to protect.</p>
+</div>
+</div>
+<div class="card" style="border-left: 5px solid #c0392b;">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>LLM Gap: "Best Plumber" Lists</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;">Not listed on Expertise.com or ThreeBestRated.com — the two sites AI tools most commonly cite when answering "best plumber in Elgin." Getting listed on these is the single highest-impact action for improving AI visibility.</p>
+</div>
+</div>
+</div>
+
+<!-- Competitor Intelligence -->
+<div class="section-header">
+<h2>Competitor Intelligence</h2>
+<p>Monthly snapshot of the competitive landscape — updated March 2026</p>
+</div>
+
+<div class="card-grid" style="margin-bottom: 30px;">
+<div class="card" style="border-left: 5px solid #1a5276;">
+<div class="card-header">
+<h3>Map Pack Top Competitors</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li><strong>Restore Plumbing & Drain</strong> — #1 ThreeBestRated, strong local signals</li>
+<li><strong>Amy Home Services</strong> — 35+ years, A+ BBB, dominant for emergency/drain</li>
+<li><strong>Advantage Plumbing</strong> — 3,959 reviews, extreme review velocity</li>
+</ul>
+<p style="margin-top: 10px; font-size: 9pt; color: #7f8c8d;">Fox Valley's 125 reviews vs. Advantage's 3,959 = the largest competitive gap to close</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #1a5276;">
+<div class="card-header">
+<h3>Review Count Comparison</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li>Advantage Plumbing: <strong>3,959 reviews</strong></li>
+<li>S&J Plumbing: <strong>1,301 reviews</strong></li>
+<li>Lifeline Plumbing: <strong>2,500+ reviews</strong></li>
+<li>Restore Plumbing: <strong>24 reviews</strong></li>
+<li>Walter Plumbing: <strong>60 reviews</strong></li>
+<li><strong>Fox Valley Plumbing: 125 reviews ← </strong></li>
+</ul>
+<p style="margin-top: 10px; font-size: 9pt; color: #27ae60; font-weight: bold;">Better than Restore & Walter. Review campaign is the path to catching larger players.</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #f39c12;">
+<div class="card-header" style="background-color: #f39c12;">
+<h3>Emerging Competitors to Watch</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li><strong>FloTek Plumbing</strong> — growing visibility for emergency Elgin searches</li>
+<li><strong>HD Plumbing & Heating</strong> — ranking for South Elgin & licensed plumber</li>
+<li><strong>Elgin Plumbing Co</strong> — new entrant appearing for "plumber Elgin IL"</li>
+<li><strong>Mumma Plumbing</strong> — appearing for 24-hour/emergency queries</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Website SEO Alerts -->
+<div class="section-header">
+<h2>Website SEO Alerts</h2>
+<p>Technical and on-page issues flagged during monthly audit</p>
+</div>
+
+<div class="card-grid" style="margin-bottom: 30px;">
+<div class="card" style="border-left: 5px solid #c0392b;">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>Homepage Title Tag — Critical Fix Needed</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;"><strong>Current:</strong> "Residential &amp; Commercial Plumber in Illinois"<br>
+<strong>Problem:</strong> No mention of "Elgin" — the most important geo-modifier for local SEO. This directly suppresses rankings for all "plumber Elgin IL" head terms.<br>
+<strong>Recommended:</strong> "Fox Valley Plumbing &amp; Backflow | Elgin, IL Plumber | (847) 624-3872"</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #f39c12;">
+<div class="card-header" style="background-color: #f39c12;">
+<h3>Blog Posts Not Targeting Elgin</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;">Recent blog posts target Schaumburg, Algonquin, and St. Charles — but NOT Elgin. Since Elgin is the primary city for rankings, at least 50% of blog posts should target Elgin directly.<br>
+<strong>Recommended:</strong> Next 2 posts should be Elgin-focused (e.g., "Emergency Plumber in Elgin IL" + "Drain Cleaning Elgin IL")</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #f39c12;">
+<div class="card-header" style="background-color: #f39c12;">
+<h3>No Dedicated South Elgin Page</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;">Competitor Roto-Rooter has a dedicated South Elgin plumber page — giving them an AI and organic ranking advantage for that city. South Elgin is 3 miles away and a top-tier market.<br>
+<strong>Recommended:</strong> Create /south-elgin-plumber dedicated service page.</p>
 </div>
 </div>
 </div>
