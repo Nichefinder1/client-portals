@@ -27,6 +27,21 @@ tr:nth-child(even) { background-color: #f9f9f9; }
 .goal-box { background-color: #e8f5e9; border: 2px solid #4caf50; padding: 16px; text-align: center; margin: 20px 0; }
 ul { margin: 8px 0; }
 li { margin: 4px 0; }
+.improved { background-color: #e8f5e9; }
+.dropped { background-color: #fdecea; }
+.held { background-color: #fff8e1; }
+.no-data { color: #999; }
+.gain { color: #0d7d0d; font-weight: bold; }
+.loss { color: #d32f2f; font-weight: bold; }
+.section-new { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 10px; margin-top: 30px; font-size: 14pt; font-weight: bold; }
+.year-table th { background-color: #1a5276; }
+.stat-row { display: flex; gap: 15px; flex-wrap: wrap; margin: 15px 0; }
+.stat-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; text-align: center; flex: 1; min-width: 120px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.stat-card .num { font-size: 22pt; font-weight: bold; color: #1a5276; }
+.stat-card .lbl { font-size: 9pt; color: #777; }
+.stat-card .chg { font-size: 10pt; margin-top: 4px; }
+.highlight-box { border-left: 5px solid #27ae60; background: #f0fff4; padding: 12px; margin: 10px 0; }
+.alert-box { border-left: 5px solid #e74c3c; background: #fff5f5; padding: 12px; margin: 10px 0; }
 </style>
 </head>
 <body>
@@ -54,7 +69,7 @@ function downloadPDF() {
 </script>
 
 <h1>Fox Valley Plumbing & Backflow Services</h1>
-<h2 style="background: none; border: none; color: #666; font-size: 16pt;">LocalDominator Baseline - January 2026</h2>
+<h2 style="background: none; border: none; color: #666; font-size: 16pt;">LocalDominator Rankings — Baseline & Monthly Progress 2026</h2>
 
 <div class="info-box">
 <strong>Business:</strong> Fox Valley Plumbing & Backflow Services<br>
@@ -77,6 +92,27 @@ function downloadPDF() {
 <h2 style="margin: 0; background: none; color: #2e7d32;">GOAL</h2>
 <p style="font-size: 14pt; margin: 8px 0;"><strong>Rank #1 for all 58 keywords by December 31, 2026</strong></p>
 </div>
+
+<!-- YEAR-LONG PROGRESS TRACKER -->
+<h2>2026 Year-Long Progress Tracker</h2>
+<p>Updated each month. At year end, this table shows the full journey from baseline to goal.</p>
+
+<table class="year-table">
+<tr>
+<th>Metric</th>
+<th>Baseline (Jan)</th>
+<th>Feb</th>
+<th>Mar 2026</th>
+<th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+</tr>
+<tr><td>Keywords at #1 (Tier 1)</td><td>11</td><td>—</td><td><strong>11+</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Keywords in Top 7</td><td>26</td><td>—</td><td><strong>30+</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Keywords improved vs baseline</td><td>—</td><td>—</td><td><strong class="gain">26 ↑</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Keywords dropped vs baseline</td><td>—</td><td>—</td><td><strong class="loss">9 ↓</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Biggest mover (gain)</td><td>—</td><td>—</td><td><strong>Toilet Repair Elgin +10</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Biggest mover (drop)</td><td>—</td><td>—</td><td><strong class="loss">Gas Line Repair -10</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>% of Goal Complete</td><td>19%</td><td>—</td><td><strong>In Progress</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
 
 <h2>Baseline Performance Summary</h2>
 
@@ -229,8 +265,108 @@ function downloadPDF() {
 </ul>
 
 <hr>
-<p><em>Baseline documented: January 19, 2026</em><br>
-<em>Next review: February 2026</em></p>
+<p><em>Baseline documented: January 19, 2026</em></p>
+
+<!-- MARCH 2026 UPDATE -->
+<div class="section-new">&#128200; March 2026 Scan Update — Before vs. After Comparison</div>
+
+<div class="info-box">
+<strong>Scan Date:</strong> March 9, 2026 &nbsp;|&nbsp;
+<strong>Grid:</strong> 13x13 (133 points) &nbsp;|&nbsp;
+<strong>Sources:</strong> Google Maps + Google Local Finder (averaged)
+</div>
+
+<!-- Summary stat cards -->
+<div class="stat-row">
+<div class="stat-card"><div class="num" style="color:#27ae60;">26</div><div class="lbl">Keywords Improved</div><div class="chg gain">vs. January baseline</div></div>
+<div class="stat-card"><div class="num" style="color:#e74c3c;">9</div><div class="lbl">Keywords Dropped</div><div class="chg loss">vs. January baseline</div></div>
+<div class="stat-card"><div class="num">+10</div><div class="lbl">Best Gain</div><div class="chg gain">Toilet Repair Elgin</div></div>
+<div class="stat-card"><div class="num" style="color:#e74c3c;">-10</div><div class="lbl">Biggest Drop</div><div class="chg loss">Gas Line Repair</div></div>
+<div class="stat-card"><div class="num">1.01</div><div class="lbl">Backflow Preventer</div><div class="chg gain">Holding #1 ✅</div></div>
+</div>
+
+<!-- Tier summary comparison -->
+<h3>Tier Distribution: January vs. March 2026</h3>
+<table>
+<tr><th>Tier</th><th>Rank Range</th><th>Jan 2026 (Keywords)</th><th>Mar 2026 (Keywords)</th><th>Change</th></tr>
+<tr class="improved"><td>Tier 1 — Dominators</td><td>1–3</td><td>11</td><td>13</td><td class="gain">+2 ↑</td></tr>
+<tr class="improved"><td>Tier 2 — Strong</td><td>3–7</td><td>15</td><td>17</td><td class="gain">+2 ↑</td></tr>
+<tr class="improved"><td>Tier 3 — Moderate</td><td>7–12</td><td>12</td><td>10</td><td class="gain">-2 (moved up) ↑</td></tr>
+<tr class="dropped"><td>Tier 4 — Weak</td><td>12–17</td><td>8</td><td>9</td><td class="loss">+1 ↓</td></tr>
+<tr class="dropped"><td>Tier 5 — Critical</td><td>17+</td><td>12</td><td>7</td><td class="gain">-5 (moved up) ↑</td></tr>
+</table>
+
+<!-- Full before/after keyword comparison -->
+<h3>Full Keyword Before vs. After — March 2026</h3>
+<p>Keywords with no March data shown as "—" (not included in this scan cycle).</p>
+
+<table>
+<tr><th>Keyword</th><th>Jan Rank (Baseline)</th><th>Mar Rank</th><th>Change</th><th>Status</th></tr>
+
+<!-- Backflow — holding strong -->
+<tr class="improved"><td>backflow preventer repair elgin</td><td>1.00–1.04</td><td>1.01</td><td class="gain">Held #1</td><td class="success">✅ Dominator</td></tr>
+<tr class="improved"><td>backflow testing elgin</td><td>1.00–1.08</td><td>1.67</td><td class="gain">Held Top 2</td><td class="success">✅ Dominator</td></tr>
+<tr class="held"><td>backflow repair elgin</td><td>1.01–1.02</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>backflow certification elgin</td><td>1.00–1.98</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>backflow testing south elgin</td><td>1.02–4.31</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+
+<!-- Big wins -->
+<tr class="improved"><td>toilet repair elgin</td><td>13.86–19.93</td><td>6.82</td><td class="gain">+10 ↑</td><td class="success">Best Mover</td></tr>
+<tr class="improved"><td>elgin emergency plumber</td><td>15.94</td><td>9.07</td><td class="gain">+7 ↑</td><td class="success">Major Win</td></tr>
+<tr class="improved"><td>plumbing company elgin</td><td>10.22–13.14</td><td>6.70</td><td class="gain">+6 ↑</td><td class="success">Major Win</td></tr>
+<tr class="improved"><td>hydro jetting elgin</td><td>6.92–9.82</td><td>5.04</td><td class="gain">+5 ↑</td><td class="success">Major Win</td></tr>
+<tr class="improved"><td>plumber in elgin</td><td>9.44–10.62</td><td>6.00</td><td class="gain">+4 ↑</td><td class="success">Major Win</td></tr>
+<tr class="improved"><td>plumbing services elgin</td><td>9.30–10.38</td><td>6.35</td><td class="gain">+4 ↑</td><td class="success">Major Win</td></tr>
+<tr class="improved"><td>water heater repair elgin</td><td>9.16–10.88</td><td>6.45</td><td class="gain">+4 ↑</td><td class="success">Major Win</td></tr>
+
+<!-- Solid improvements -->
+<tr class="improved"><td>plumber elgin</td><td>8.40–10.84</td><td>5.54</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>elgin plumber</td><td>8.96–10.36</td><td>5.78</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>plumbers elgin il</td><td>8.34–10.40</td><td>5.39</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>elgin plumbers</td><td>9.66–10.70</td><td>6.15</td><td class="gain">+4 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>plumbing elgin</td><td>11.02–12.86</td><td>8.18</td><td class="gain">+4 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>bathroom plumbing elgin</td><td>14.43–14.68</td><td>11.45</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>hydro jetting south elgin</td><td>6.94–12.02</td><td>6.58</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>south elgin plumbers</td><td>9.72–13.38</td><td>8.82</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>kitchen plumbing elgin</td><td>3.47–4.83</td><td>3.18</td><td class="gain">+1 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>water line repair elgin</td><td>5.88–8.21</td><td>6.84</td><td class="gain">+1 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>emergency plumber elgin</td><td>9.24–14.56</td><td>8.92</td><td class="gain">+2 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>plumber south elgin</td><td>9.38–12.66</td><td>7.86</td><td class="gain">+2 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>sump pump repair</td><td>17.10–19.16</td><td>15.23</td><td class="gain">+3 ↑</td><td class="success">Improved</td></tr>
+<tr class="improved"><td>plumber near me</td><td>20.26–20.65</td><td>19.26</td><td class="gain">+1 ↑</td><td class="warning">Improving</td></tr>
+<tr class="improved"><td>water heater repair</td><td>19.44–20.36</td><td>18.79</td><td class="gain">+1 ↑</td><td class="warning">Improving</td></tr>
+
+<!-- Drops -->
+<tr class="dropped"><td>gas line repair elgin</td><td>3.23–5.51</td><td>14.50</td><td class="loss">-10 ↓</td><td class="critical">⚠️ Priority Fix</td></tr>
+<tr class="dropped"><td>drain cleaning elgin</td><td>12.26–14.74</td><td>18.02</td><td class="loss">-4 ↓</td><td class="critical">⚠️ Watch</td></tr>
+<tr class="dropped"><td>drain cleaning services elgin</td><td>13.16–13.62</td><td>17.24</td><td class="loss">-4 ↓</td><td class="critical">⚠️ Watch</td></tr>
+<tr class="dropped"><td>best plumbers in elgin</td><td>6.76–12.58</td><td>19.34</td><td class="loss">-7 ↓</td><td class="critical">⚠️ Watch</td></tr>
+<tr class="dropped"><td>drain cleaning south elgin</td><td>10.82–15.70</td><td>11.06</td><td class="loss">-1 ↓</td><td class="warning">Monitor</td></tr>
+
+<!-- Not in scan -->
+<tr class="held"><td>ejector pump repair elgin</td><td>2.68–2.82</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>pipe repair elgin</td><td>5.45–7.90</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>sump pump installation elgin</td><td>7.54–8.80</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>faucet repair elgin</td><td>7.53–8.28</td><td>17.30</td><td class="loss">-9 ↓</td><td class="critical">⚠️ Watch</td></tr>
+<tr class="held"><td>sewer line repair elgin</td><td>8.24–11.09</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>garbage disposal repair elgin</td><td>20.96–21.00</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+<tr class="held"><td>water softener installation elgin</td><td>21.00</td><td>—</td><td class="no-data">Not in scan</td><td class="warning">Monitor</td></tr>
+</table>
+
+<!-- Highlight boxes -->
+<div class="highlight-box">
+<strong>Most Improved Category — General Plumber Terms</strong><br>
+Keywords like "plumber elgin," "plumber in elgin," "elgin plumber," and "plumbing company elgin" all moved up 3–6 positions. This reflects the GBP optimization (Phase 1 complete), BBB accreditation, and increased review count working together.
+</div>
+
+<div class="alert-box">
+<strong>Priority Fix — Drain Cleaning & Gas Line Repair</strong><br>
+Drain cleaning variants dropped 4 positions and gas line repair dropped 10. These services need dedicated blog content and service page updates immediately. Action plan in progress.
+</div>
+
+<hr>
+<p><em>Baseline documented: January 19, 2026 &nbsp;|&nbsp; March update: March 9, 2026 &nbsp;|&nbsp; Next scan: April 2026</em><br>
+<em>Prepared by Nichefinder AI Agency</em></p>
 
 </body>
 </html>
