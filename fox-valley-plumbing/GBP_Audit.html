@@ -11,8 +11,15 @@
 .btn-pdf:hover { background-color: #a93226; }
 .btn-print { background-color: #1a5276; color: white; }
 .btn-print:hover { background-color: #154360; }
-@media print { .download-bar { display: none !important; } }
+@media print { .download-bar, .portal-nav { display: none !important; } }
 body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 1in; color: #333; }
+/* Portal Navigation */
+.portal-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background-color: #1a5276; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.portal-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; }
+.portal-nav-brand { color: rgba(255,255,255,0.6); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.25); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 11px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
 h1 { font-size: 24pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
 h2 { font-size: 18pt; color: #2874a6; margin-top: 24pt; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
 h3 { font-size: 14pt; color: #1a5276; margin-top: 18pt; }
@@ -44,6 +51,22 @@ code { background-color: #f4f6f6; padding: 10px; display: block; font-family: Co
 </style>
 </head>
 <body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">FVP Portal</span>
+<div class="portal-nav-links">
+<a href="index.html">&#127968; Home</a>
+<a href="GBP_Audit.html" class="active">GBP Audit</a>
+<a href="GBP_Optimization_Checklist.html">GBP Checklist</a>
+<a href="LLM_Visibility_Analysis.html">LLM Analysis</a>
+<a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html">Rankings</a>
+<a href="Website_Optimization_Roadmap.html">Website Roadmap</a>
+<a href="Service_FAQs.html">Service FAQs</a>
+<a href="2026-02/Monthly_Progress_Report_Feb_2026.html">Feb 2026 Report</a>
+</div>
+</div>
+</nav>
 
 <div class="download-bar">
 <button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
@@ -108,7 +131,7 @@ function downloadPDF() {
 <tr><th>Field</th><th>Status</th><th>Value</th><th>Change</th></tr>
 <tr><td>Business Name</td><td class="good">✅ Good</td><td>Fox Valley Plumbing & Backflow Services</td><td>-</td></tr>
 <tr><td>Rating</td><td class="good">✅ Strong</td><td>4.8 stars</td><td>-</td></tr>
-<tr><td>Review Count</td><td class="good">✅ Good</td><td>124+ reviews</td><td>-</td></tr>
+<tr><td>Review Count</td><td class="good">✅ Good</td><td>125 reviews (4.8 stars)</td><td>-</td></tr>
 <tr><td>Primary Category</td><td class="good">✅ Good</td><td>Plumber</td><td>-</td></tr>
 <tr><td>Secondary Category</td><td class="good">✅ Good</td><td>Contractor</td><td>-</td></tr>
 <tr><td>Address</td><td class="good">✅ Good</td><td>953 1/2 Grace St, Elgin, IL 60120</td><td>-</td></tr>
@@ -223,7 +246,7 @@ function downloadPDF() {
 
 <div class="high-issue">
 <h3>⚠️ Ongoing: Review Growth</h3>
-<p><strong>Current:</strong> 124 reviews (4.8 rating)</p>
+<p><strong>Current:</strong> 125 reviews (4.8 rating) — up from 124 at baseline</p>
 <p><strong>Competitors:</strong> 200-3,700+ reviews</p>
 <p><strong>Target:</strong> 200+ reviews by end of 2026</p>
 
@@ -243,17 +266,11 @@ function downloadPDF() {
 <p>Profile now fully optimized for emergency and 24/7 search queries.</p>
 </div>
 
-<div class="high-issue">
-<h3>⚠️ Minor: BBB Accreditation</h3>
-<p>BBB profile shows "Not Accredited" and has incorrect address listed.</p>
-
-<div class="fix-box">
-<strong>Recommendation:</strong>
-<ul>
-<li>Claim and update BBB profile with correct address</li>
-<li>Consider BBB accreditation for trust signals</li>
-</ul>
-</div>
+<div class="resolved">
+<h3>✅ RESOLVED: BBB Accreditation — A+ Earned</h3>
+<p><strong>Previous Status:</strong> Not Accredited</p>
+<p><strong>Current Status:</strong> BBB Accredited — <strong>A+ Rating</strong> earned February 13, 2026. 0 complaints on file. This is a direct trust signal upgrade that now matches top competitors like Restore Plumbing (A+).</p>
+<p><strong>Impact:</strong> Active trust signal for AI recommendation systems, citation directories, and customer decision-making. BBB badge available for website use.</p>
 </div>
 
 <hr>
@@ -294,8 +311,8 @@ function downloadPDF() {
 </table>
 
 <div class="positive">
-<h3>Next Ranking Check: March 1, 2026</h3>
-<p>We will run a new Local Dominator scan to measure the impact of these GBP optimizations on keyword rankings.</p>
+<h3>✅ March 9, 2026 Ranking Scan Complete</h3>
+<p>Local Dominator scan completed March 9, 2026. <strong>26 keywords improved</strong> vs. January baseline. Key wins: toilet repair Elgin (+10 positions), emergency plumber Elgin (+7), plumbing company Elgin (+6). See <a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html">Rankings page</a> for full before/after breakdown.</p>
 </div>
 
 <hr>
@@ -305,7 +322,7 @@ function downloadPDF() {
 <table>
 <tr><th>Metric</th><th>Fox Valley (Now)</th><th>Tom's Plumbing</th><th>Lifeline Plumbing</th></tr>
 <tr><td>Rating</td><td>4.8</td><td>4.9</td><td>4.9</td></tr>
-<tr><td>Reviews</td><td>124</td><td>422+</td><td>3,713+</td></tr>
+<tr><td>Reviews</td><td>125</td><td>422+</td><td>3,713+</td></tr>
 <tr><td>Hours Set</td><td class="good">✅ Yes</td><td class="good">✅ Yes</td><td class="good">✅ Yes</td></tr>
 <tr><td>Services Listed</td><td class="good">24</td><td>10+</td><td>15+</td></tr>
 <tr><td>Description</td><td class="good">✅ Yes</td><td class="good">✅ Yes</td><td class="good">✅ Yes</td></tr>
@@ -336,14 +353,14 @@ function downloadPDF() {
 <tr><th>Priority</th><th>Action</th><th>Impact</th><th>Status</th></tr>
 <tr><td>P1</td><td>Continue review generation campaign</td><td>High</td><td>Ongoing</td></tr>
 <tr><td>P2</td><td>24/7 hours configured</td><td>High</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE</td></tr>
-<tr><td>P3</td><td>Claim/update BBB profile</td><td>Low</td><td>Pending</td></tr>
+<tr style="background-color:#d5f5e3;"><td>P3</td><td>BBB Accreditation</td><td>High</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE — A+ (Feb 13, 2026)</td></tr>
 <tr><td>P4</td><td>Add more photos monthly</td><td>Low</td><td>Ongoing</td></tr>
 </table>
 
 <div class="footer">
 <p><em>Original Audit: January 28, 2026</em></p>
 <p><em>Updated: February 4, 2026</em></p>
-<p><em>Next Full Audit: March 1, 2026</em></p>
+<p><em>Next Full Audit: April 2026</em></p>
 <p><em>Prepared by Nichefinder AI Agency</em></p>
 </div>
 

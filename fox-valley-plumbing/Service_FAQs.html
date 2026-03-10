@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); min-height: 100vh; padding: 20px; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); min-height: 100vh; padding: 20px; padding-top: 60px; }
 
 /* Download buttons */
 .download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
@@ -14,7 +14,14 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 .download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 .btn-pdf { background-color: #c0392b; color: white; }
 .btn-print { background-color: #27ae60; color: white; }
-@media print { .download-bar { display: none !important; } body { background: white; padding: 0; } }
+@media print { .download-bar, .portal-nav { display: none !important; } body { background: white; padding: 0; } }
+/* Portal Navigation */
+.portal-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background-color: #1a5276; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
 
 .container { max-width: 900px; margin: 0 auto; }
 
@@ -75,6 +82,22 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 </head>
 <body>
 
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">FVP Portal</span>
+<div class="portal-nav-links">
+<a href="index.html">&#127968; Home</a>
+<a href="GBP_Audit.html">GBP Audit</a>
+<a href="GBP_Optimization_Checklist.html">GBP Checklist</a>
+<a href="LLM_Visibility_Analysis.html">LLM Analysis</a>
+<a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html">Rankings</a>
+<a href="Website_Optimization_Roadmap.html">Website Roadmap</a>
+<a href="Service_FAQs.html" class="active">Service FAQs</a>
+<a href="2026-02/Monthly_Progress_Report_Feb_2026.html">Feb 2026 Report</a>
+</div>
+</div>
+</nav>
+
 <div class="download-bar">
 <button class="download-btn btn-pdf" onclick="downloadPDF()">📄 Download PDF</button>
 <button class="download-btn btn-print" onclick="window.print()">🖨️ Print</button>
@@ -113,8 +136,9 @@ function toggleSection(element) {
     <p>Common questions answered about our plumbing services</p>
     <div class="credentials">
         <span class="credential">🏆 Licensed Master Plumber (IL #058-161084)</span>
-        <span class="credential">⭐ 4.8 Stars (124+ Reviews)</span>
+        <span class="credential">⭐ 4.8 Stars (125 Reviews)</span>
         <span class="credential">🕐 24/7 Emergency Service</span>
+        <span class="credential">✅ BBB Accredited A+</span>
     </div>
 </div>
 

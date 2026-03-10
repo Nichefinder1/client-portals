@@ -12,9 +12,16 @@
 .btn-pdf:hover { background-color: #a93226; }
 .btn-print { background-color: #1a5276; color: white; }
 .btn-print:hover { background-color: #154360; }
-@media print { .download-bar { display: none !important; } }
+@media print { .download-bar, .portal-nav { display: none !important; } }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
+/* Portal Navigation */
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
 
 /* Header */
 .header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
@@ -115,6 +122,22 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 </style>
 </head>
 <body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">FVP Portal</span>
+<div class="portal-nav-links">
+<a href="index.html" class="active">&#127968; Home</a>
+<a href="GBP_Audit.html">GBP Audit</a>
+<a href="GBP_Optimization_Checklist.html">GBP Checklist</a>
+<a href="LLM_Visibility_Analysis.html">LLM Analysis</a>
+<a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html">Rankings</a>
+<a href="Website_Optimization_Roadmap.html">Website Roadmap</a>
+<a href="Service_FAQs.html">Service FAQs</a>
+<a href="2026-02/Monthly_Progress_Report_Feb_2026.html">Feb 2026 Report</a>
+</div>
+</div>
+</nav>
 
 <div class="download-bar">
 <button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
@@ -734,12 +757,12 @@ function downloadPDF() {
 </div>
 <div class="contact-item">
 <div class="icon">&#128222;</div>
-<div class="value">[Agency Phone]</div>
+<div class="value"><a href="tel:8639999152">(863) 999-9152</a></div>
 <div class="label">Phone</div>
 </div>
 <div class="contact-item">
 <div class="icon">&#128197;</div>
-<div class="value"><a href="#">Schedule a Call</a></div>
+<div class="value"><a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM" target="_blank">Schedule a Call</a></div>
 <div class="label">Calendar</div>
 </div>
 </div>
