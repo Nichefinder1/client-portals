@@ -12,9 +12,17 @@
 .btn-pdf:hover { background-color: #a93226; }
 .btn-print { background-color: #1a5276; color: white; }
 .btn-print:hover { background-color: #154360; }
-@media print { .download-bar { display: none !important; } }
+@media print { .download-bar, .portal-nav { display: none !important; } }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
+
+/* Portal Navigation */
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
 
 /* Header */
 .header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
@@ -24,7 +32,7 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 /* Container */
 .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
 
-/* Critical Alert banner */
+/* Alert banner */
 .alert-banner { background-color: #fadbd8; border: 2px solid #c0392b; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
 .alert-banner h3 { margin: 0 0 10px 0; color: #c0392b; }
 .alert-banner p { margin: 0; color: #922b21; }
@@ -68,16 +76,22 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 /* Badges */
 .badge { display: inline-block; padding: 3px 10px; border-radius: 15px; font-size: 9pt; font-weight: bold; margin-left: 10px; }
 
-/* Contact section */
-.contact-section { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-top: 30px; }
-.contact-section h3 { margin-top: 0; color: #1a5276; }
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-.contact-item { text-align: center; padding: 15px; }
-.contact-item .icon { font-size: 24pt; margin-bottom: 10px; }
-.contact-item .value { font-weight: bold; color: #1a5276; }
-.contact-item .value a { color: #1a5276; text-decoration: none; }
-.contact-item .value a:hover { text-decoration: underline; }
-.contact-item .label { font-size: 10pt; color: #7f8c8d; }
+/* Goal tracker */
+.goal-tracker { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.goal-tracker h3 { margin: 0 0 15px 0; color: #1a5276; }
+.progress-container { background-color: #ecf0f1; border-radius: 10px; height: 30px; margin: 10px 0; overflow: hidden; }
+.progress-bar { background: linear-gradient(90deg, #f39c12, #e67e22); height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 10pt; }
+.goal-details { display: flex; justify-content: space-between; margin-top: 10px; font-size: 10pt; color: #7f8c8d; }
+
+/* Metrics tracker table */
+.metrics-table { width: 100%; border-collapse: collapse; font-size: 10pt; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.metrics-table th { background-color: #1a5276; color: white; padding: 10px 15px; text-align: left; }
+.metrics-table td { padding: 10px 15px; border-bottom: 1px solid #ecf0f1; }
+.metrics-table tr:last-child td { border-bottom: none; }
+.metrics-table tr:nth-child(even) { background-color: #f8f9fa; }
+.trend-up { color: #27ae60; }
+.trend-down { color: #c0392b; }
+.trend-flat { color: #f39c12; }
 
 /* Location status grid */
 .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
@@ -88,6 +102,17 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .location-card .status { font-size: 10pt; font-weight: bold; }
 .location-card .status.good { color: #27ae60; }
 .location-card .status.bad { color: #c0392b; }
+
+/* Contact section */
+.contact-section { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-top: 30px; }
+.contact-section h3 { margin-top: 0; color: #1a5276; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.contact-item { text-align: center; padding: 15px; }
+.contact-item .icon { font-size: 24pt; margin-bottom: 10px; }
+.contact-item .value { font-weight: bold; color: #1a5276; }
+.contact-item .value a { color: #1a5276; text-decoration: none; }
+.contact-item .value a:hover { text-decoration: underline; }
+.contact-item .label { font-size: 10pt; color: #7f8c8d; }
 
 /* Footer */
 .footer { text-align: center; padding: 20px; color: #95a5a6; font-size: 9pt; }
@@ -101,6 +126,17 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 </style>
 </head>
 <body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">ASLP Portal</span>
+<div class="portal-nav-links">
+<a href="index.html" class="active">&#127968; Home</a>
+<a href="GBP_Audit.html">GBP Audit</a>
+<a href="February_2026_Deliverables.html">Feb Deliverables</a>
+</div>
+</div>
+</nav>
 
 <div class="download-bar">
 <button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
@@ -126,22 +162,22 @@ function downloadPDF() {
 
 <div class="header">
 <h1>All South Lightning Protection</h1>
-<p>Client Portal | Local SEO & Digital Marketing</p>
+<p>Client Portal | Local SEO & GBP Expansion</p>
 </div>
 
 <div class="container">
 
 <!-- Critical Alert Banner -->
 <div class="alert-banner">
-<h3>CRITICAL: 2 of 3 Office Locations Have No Google Business Profile</h3>
-<p>Sunrise and Jacksonville offices are currently invisible on Google Maps. This is costing an estimated $150,000-$400,000/year in lost leads. Creating these profiles is the #1 priority for February 2026.</p>
+<h3>&#9888; CRITICAL: 2 of 3 Office Locations Have No Google Business Profile</h3>
+<p>Sunrise and Jacksonville offices are invisible on Google Maps. Estimated $150,000–$400,000/year in lost leads. Creating these profiles is the #1 priority for Q1–Q2 2026.</p>
 </div>
 
 <!-- Status Banner -->
 <div class="status-banner">
 <div>
-<h3>Campaign Status: Active - GBP Setup Phase</h3>
-<p>Last Updated: February 04, 2026</p>
+<h3>Campaign Status: Active — GBP Setup Phase</h3>
+<p>Last Updated: March 11, 2026</p>
 </div>
 <div class="status-metric">
 <span class="number critical">1/3</span>
@@ -149,80 +185,222 @@ function downloadPDF() {
 </div>
 <div class="status-metric">
 <span class="number">42/100</span>
-<span class="label">GBP Score</span>
+<span class="label">Tampa GBP Score</span>
 </div>
 <div class="status-metric">
 <span class="number">D</span>
-<span class="label">Grade</span>
+<span class="label">Current Grade</span>
+</div>
+<div class="status-metric">
+<span class="number">76</span>
+<span class="label">Tampa Reviews</span>
 </div>
 </div>
 
-<!-- Location Status -->
+<!-- Goal Tracker -->
+<div class="goal-tracker">
+<h3>Goal: All 3 Locations Active, Optimized & in Map Pack Top 3 by December 2026</h3>
+<div class="progress-container">
+<div class="progress-bar" style="width: 11%;">11% — GBP Setup Phase</div>
+</div>
+<div class="goal-details">
+<span>Start: 1/3 GBP listings, Tampa score 42/100 (December 2025)</span>
+<span>Target: 3/3 listings, all locations Map Pack Top 3 (Dec 2026)</span>
+</div>
+</div>
+
+<!-- Monthly Metrics Tracker -->
+<div class="section-header">
+<h2>Monthly Metrics Tracker</h2>
+<p>Key numbers tracked every month — updated each reporting cycle through December 2026</p>
+</div>
+<table class="metrics-table">
+<tr>
+<th>Metric</th>
+<th>Baseline (Dec 2025)</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar 2026</th>
+<th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+</tr>
+<tr><td>GBP Listings (of 3)</td><td>1</td><td>—</td><td>1</td><td><strong>1</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa GBP Score</td><td>42/100 (D)</td><td>—</td><td>42/100 (D)</td><td><strong>42/100 (D)</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa Google Reviews</td><td>76</td><td>—</td><td>—</td><td><strong>Pending</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa Star Rating</td><td>4.7</td><td>—</td><td>—</td><td><strong>Pending</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Sunrise GBP</td><td>None</td><td>—</td><td>None</td><td><strong>None</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Jacksonville GBP</td><td>None</td><td>—</td><td>None</td><td><strong>None</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Organic Clicks (GSC)</td><td>—</td><td>—</td><td>—</td><td><strong>Pending Access</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>GBP Phone Calls</td><td>—</td><td>—</td><td>—</td><td><strong>Pending Access</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>GBP Website Clicks</td><td>—</td><td>—</td><td>—</td><td><strong>Pending Access</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Active Citations</td><td>~5</td><td>—</td><td>~5</td><td><strong>~5</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Blog Posts Published</td><td>0</td><td>—</td><td>0</td><td><strong>In Progress</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Social Posts Published</td><td>0</td><td>—</td><td>0</td><td><strong>In Progress</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<!-- Quick Stats -->
+<div class="quick-stats">
+<div class="stat-box">
+<span class="number bad">1/3</span>
+<span class="label">GBP Listings Live</span>
+<span class="change negative">CRITICAL GAP</span>
+</div>
+<div class="stat-box">
+<span class="number">76</span>
+<span class="label">Google Reviews (Tampa)</span>
+<span class="change positive">4.7 stars ⭐</span>
+</div>
+<div class="stat-box">
+<span class="number">—</span>
+<span class="label">GBP Phone Calls</span>
+<span class="change neutral">Pending Access</span>
+</div>
+<div class="stat-box">
+<span class="number">~5</span>
+<span class="label">Active Citations</span>
+<span class="change neutral">BBB, BuildZoom+</span>
+</div>
+</div>
+
+<!-- Monthly Reports Section -->
+<div class="section-header">
+<h2>Monthly Reports</h2>
+<p>Recurring reports delivered each month showing progress and work completed</p>
+</div>
+
+<div class="card-grid">
+
+<div class="card">
+<div class="card-header">
+<h3>Monthly Progress Report <span class="badge" style="background-color: #e74c3c; color: white;">NEW</span></h3>
+<span class="date">March 2026</span>
+</div>
+<div class="card-body">
+<p>Complete overview of GBP setup progress, content published, and metrics for the month.</p>
+</div>
+<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Coming March 31</a>
+</div>
+
+<div class="card">
+<div class="card-header">
+<h3>February 2026 Deliverables</h3>
+<span class="date">February 2026</span>
+</div>
+<div class="card-body">
+<p>Monthly action items prioritized by week. Focus: Create missing GBPs for Sunrise & Jacksonville, optimize Tampa.</p>
+</div>
+<a href="February_2026_Deliverables.html" class="card-link">View Deliverables &rarr;</a>
+</div>
+
+</div>
+
+<!-- Location GBP Status -->
 <div class="section-header">
 <h2>Location GBP Status</h2>
-<p>Google Business Profile status for each office location</p>
+<p>Google Business Profile status for each office location — updated March 2026</p>
 </div>
 
 <div class="location-grid">
 <div class="location-card exists">
 <h4>Tampa (HQ)</h4>
-<p class="status good">GBP EXISTS</p>
-<p style="font-size: 9pt; color: #7f8c8d;">4.7 stars, 76 reviews</p>
-<p style="font-size: 9pt; color: #f39c12;">Needs optimization</p>
+<p class="status good">&#10003; GBP EXISTS</p>
+<p style="font-size: 9pt; color: #7f8c8d; margin-top: 5px;">4.7 stars · 76 reviews</p>
+<p style="font-size: 9pt; color: #f39c12; margin-top: 3px;">Score: 42/100 — Needs optimization</p>
 </div>
 <div class="location-card missing">
 <h4>Sunrise, FL</h4>
-<p class="status bad">NO GBP</p>
-<p style="font-size: 9pt; color: #922b21;">Invisible in South FL</p>
+<p class="status bad">&#10007; NO GBP</p>
+<p style="font-size: 9pt; color: #922b21; margin-top: 5px;">Invisible in South Florida</p>
+<p style="font-size: 9pt; color: #c0392b; margin-top: 3px; font-weight: bold;">Action Required: Create GBP</p>
 </div>
 <div class="location-card missing">
 <h4>Jacksonville, FL</h4>
-<p class="status bad">NO GBP</p>
-<p style="font-size: 9pt; color: #922b21;">Invisible in NE FL</p>
+<p class="status bad">&#10007; NO GBP</p>
+<p style="font-size: 9pt; color: #922b21; margin-top: 5px;">Invisible in Northeast Florida</p>
+<p style="font-size: 9pt; color: #c0392b; margin-top: 3px; font-weight: bold;">Action Required: Create GBP</p>
 </div>
 </div>
 
-<!-- Quick Stats -->
-<div class="quick-stats">
-<div class="stat-box">
-<span class="number bad">1</span>
-<span class="label">GBP Listings (of 3)</span>
-<span class="change negative">CRITICAL GAP</span>
+<!-- Deliverables Launched -->
+<div class="section-header">
+<h2>Deliverables Launched</h2>
+<p>Major assets built and completed for your campaign</p>
 </div>
-<div class="stat-box">
-<span class="number">76</span>
-<span class="label">Google Reviews</span>
-<span class="change positive">4.7 stars (Tampa)</span>
+
+<div class="card-grid" style="margin-bottom: 30px;">
+<div class="card">
+<div class="card-header" style="background-color: #27ae60;">
+<h3>GBP Multi-Location Audit <span class="badge" style="background-color: #1e8449; color: white;">COMPLETE</span></h3>
+<span class="date">Completed February 4, 2026</span>
 </div>
-<div class="stat-box">
-<span class="number">--</span>
-<span class="label">GBP Phone Calls</span>
-<span class="change neutral">Pending access</span>
+<div class="card-body">
+<p>Full audit of all 3 Florida locations. Tampa scored 42/100 (D). Sunrise and Jacksonville confirmed missing — quantified $150K–$400K/year revenue at risk.</p>
+<ul style="margin: 5px 0 0 0; padding-left: 20px; font-size: 10pt;">
+<li>All 3 locations audited</li>
+<li>Missing GBPs identified and prioritized</li>
+<li>Tampa optimization roadmap created</li>
+<li>Revenue impact quantified</li>
+</ul>
 </div>
-<div class="stat-box">
-<span class="number">~5</span>
-<span class="label">Active Citations</span>
-<span class="change neutral">BBB, BuildZoom</span>
+<a href="GBP_Audit.html" class="card-link">View Audit &rarr;</a>
+</div>
+
+<div class="card">
+<div class="card-header" style="background-color: #3498db;">
+<h3>2026 Content Calendar <span class="badge" style="background-color: #2980b9; color: white;">READY</span></h3>
+<span class="date">Completed January 2026</span>
+</div>
+<div class="card-body">
+<p>Full-year blog and social media calendar built for all platforms. 52 weeks of content planned and ready to execute.</p>
+<ul style="margin: 5px 0 0 0; padding-left: 20px; font-size: 10pt;">
+<li>12 blog posts planned (quarterly themes)</li>
+<li>52-week social media calendar</li>
+<li>LinkedIn, Facebook, Instagram content</li>
+<li>Sector-focused: Data Centers, Education, Healthcare</li>
+</ul>
+</div>
+<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Internal Document</a>
 </div>
 </div>
 
 <!-- Strategy & Audits Section -->
 <div class="section-header">
 <h2>Strategy & Audits</h2>
-<p>Critical assessments and analysis documents</p>
+<p>One-time assessments and long-term strategy documents</p>
 </div>
 
 <div class="card-grid">
 
 <div class="card">
 <div class="card-header" style="background-color: #c0392b;">
-<h3>GBP Audit (Multi-Location) <span class="badge" style="background-color: #c0392b; color: white;">CRITICAL</span></h3>
+<h3>GBP Audit (Multi-Location) <span class="badge" style="background-color: #a93226; color: white;">CRITICAL</span></h3>
 <span class="date">February 4, 2026</span>
 </div>
 <div class="card-body">
-<p>Critical finding: Only 1 of 3 offices has GBP. Score: 42/100 (D). Missing $150K-$400K/yr in leads from Sunrise & Jacksonville.</p>
+<p>Critical finding: Only 1 of 3 offices has GBP. Tampa score: 42/100 (D). Missing $150K–$400K/yr in leads from Sunrise & Jacksonville.</p>
 </div>
 <a href="GBP_Audit.html" class="card-link">View Audit &rarr;</a>
+</div>
+
+<div class="card">
+<div class="card-header">
+<h3>Local SEO Roadmap <span class="badge" style="background-color: #95a5a6; color: white;">Coming Soon</span></h3>
+<span class="date">Q2 2026</span>
+</div>
+<div class="card-body">
+<p>Full keyword strategy, location-sector landing page plan, and 12-month ranking roadmap across all 3 Florida markets.</p>
+</div>
+<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Coming Q2 2026</a>
+</div>
+
+<div class="card">
+<div class="card-header">
+<h3>LLM Visibility Analysis <span class="badge" style="background-color: #95a5a6; color: white;">Coming Soon</span></h3>
+<span class="date">Q2 2026</span>
+</div>
+<div class="card-body">
+<p>How All South Lightning Protection appears when decision-makers ask ChatGPT, Perplexity, and AI search tools about lightning protection in Florida.</p>
+</div>
+<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Coming Q2 2026</a>
 </div>
 
 </div>
@@ -230,63 +408,114 @@ function downloadPDF() {
 <!-- Implementation Checklists Section -->
 <div class="section-header">
 <h2>Implementation Checklists</h2>
-<p>Monthly deliverables and action items</p>
+<p>Step-by-step guides tracking implementation progress</p>
 </div>
 
 <div class="card-grid">
 
 <div class="card">
-<div class="card-header" style="background-color: #3498db;">
-<h3>February 2026 Deliverables <span class="badge" style="background-color: #3498db; color: white;">CURRENT</span></h3>
-<span class="date">February 4, 2026</span>
+<div class="card-header" style="background-color: #f39c12;">
+<h3>GBP Setup & Optimization Checklist <span class="badge" style="background-color: #d68910; color: white;">In Progress</span></h3>
+<span class="date">Started February 2026</span>
 </div>
 <div class="card-body">
-<p>Monthly action items prioritized by week. Focus: Create missing GBPs for Sunrise & Jacksonville, optimize Tampa.</p>
+<p>Create Sunrise + Jacksonville GBPs. Optimize Tampa with services, description, photos, and service area. Target score: 90/100.</p>
 </div>
 <a href="February_2026_Deliverables.html" class="card-link">View Checklist &rarr;</a>
 </div>
 
-</div>
-
-<!-- Monthly Reports Section -->
-<div class="section-header">
-<h2>Monthly Reports</h2>
-<p>Recurring reports delivered each month showing progress</p>
-</div>
-
-<div class="card-grid">
-
 <div class="card">
 <div class="card-header">
-<h3>Monthly Progress Report <span class="badge" style="background-color: #95a5a6; color: white;">Coming Soon</span></h3>
-<span class="date">February 2026</span>
+<h3>Citation Building Checklist <span class="badge" style="background-color: #95a5a6; color: white;">Not Started</span></h3>
+<span class="date">Planned Q2 2026</span>
 </div>
 <div class="card-body">
-<p>Complete overview of GBP setup progress, content published, and metrics.</p>
+<p>Build 40+ directory citations across all 3 Florida locations. Tier 1 high-authority sites first, then industry and local directories.</p>
 </div>
-<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Available February 28</a>
+<a href="#" class="card-link" style="color: #95a5a6; pointer-events: none;">Coming Q2 2026</a>
 </div>
 
+</div>
+
+<!-- Content & Blog Section -->
+<div class="section-header">
+<h2>Content & Blog</h2>
+<p>2026 content calendar — blog posts, LinkedIn, Facebook, Instagram, and Google Business Profile posts</p>
+</div>
+
+<div class="quick-stats" style="margin-bottom: 30px;">
+<div class="stat-box">
+<span class="number">12</span>
+<span class="label">Blog Posts Planned</span>
+<span class="change neutral">In Progress</span>
+</div>
+<div class="stat-box">
+<span class="number">52</span>
+<span class="label">Weeks of Social Content</span>
+<span class="change positive">Calendar Ready</span>
+</div>
+<div class="stat-box">
+<span class="number">3</span>
+<span class="label">Platforms</span>
+<span class="change positive">LinkedIn · FB · Instagram</span>
+</div>
+<div class="stat-box">
+<span class="number">Q1</span>
+<span class="label">2026 Calendar</span>
+<span class="change neutral">Execution Phase</span>
+</div>
+</div>
+
+<div class="card-grid" style="margin-bottom: 30px;">
+<div class="card" style="border-left: 5px solid #3498db;">
+<div class="card-header" style="background-color: #3498db;">
+<h3>Blog Content Strategy</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li>12 posts planned for 2026 — quarterly themes</li>
+<li>Sectors: Data Centers, Education, Healthcare, Commercial</li>
+<li>Topics: NFPA 780 compliance, surge suppression, grounding systems</li>
+<li>Target: Florida commercial decision-makers</li>
+</ul>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #3498db;">
+<div class="card-header" style="background-color: #3498db;">
+<h3>Social Media Calendar</h3>
+</div>
+<div class="card-body">
+<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li>52-week calendar — all platforms built out</li>
+<li>LinkedIn: Authority + B2B lead content</li>
+<li>Facebook: Educational + community awareness</li>
+<li>Instagram: Project showcases + safety tips</li>
+<li>GBP Posts: Per-location updates when listings exist</li>
+</ul>
+</div>
+</div>
 </div>
 
 <!-- Key Findings Summary -->
 <div class="section-header">
 <h2>Key Findings Summary</h2>
-<p>Critical insights from audits and analysis</p>
+<p>Current status across all audit and strategy work</p>
 </div>
 
 <div class="card-grid">
-<div class="card" style="border-left: 5px solid #c0392b;">
-<div class="card-header" style="background-color: #c0392b;">
-<h3>Critical Issues</h3>
+<div class="card" style="border-left: 5px solid #27ae60;">
+<div class="card-header" style="background-color: #27ae60;">
+<h3>Completed Wins</h3>
 </div>
 <div class="card-body">
 <ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
-<li>NO GBP for Sunrise, FL office (invisible in South Florida)</li>
-<li>NO GBP for Jacksonville, FL office (invisible in Northeast Florida)</li>
-<li>Tampa GBP missing services, description, service area</li>
+<li>&#10003; GBP multi-location audit complete (Feb 4, 2026)</li>
+<li>&#10003; Revenue impact quantified ($150K–$400K/year)</li>
+<li>&#10003; Full-year content calendar built (52 weeks)</li>
+<li>&#10003; Tampa GBP: 76 reviews, 4.7 stars confirmed</li>
+<li>&#10003; Prioritized action plan created for Q1–Q2</li>
 </ul>
-<p style="margin-top: 10px; font-size: 9pt; color: #c0392b; font-weight: bold;">Estimated $150,000-$400,000/year revenue at risk</p>
 </div>
 </div>
 
@@ -296,11 +525,12 @@ function downloadPDF() {
 </div>
 <div class="card-body">
 <ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
-<li>Tampa GBP: 4.7 stars, 76 reviews</li>
-<li>Active GBP posting (recent post)</li>
+<li>Tampa GBP: 4.7 stars, 76 reviews — strong foundation</li>
+<li>40+ years of industry experience</li>
 <li>BBB Accredited (Tampa)</li>
 <li>BuildZoom top 8% of FL contractors</li>
-<li>40+ years experience</li>
+<li>National + international reach — unique differentiator</li>
+<li>In-house CAD/sealed engineering drawings</li>
 </ul>
 </div>
 </div>
@@ -311,11 +541,12 @@ function downloadPDF() {
 </div>
 <div class="card-body">
 <ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
-<li><strong>CREATE</strong> GBP for Sunrise office (Week 1)</li>
-<li><strong>CREATE</strong> GBP for Jacksonville office (Week 1)</li>
+<li><strong>CREATE</strong> GBP for Sunrise office (Priority #1)</li>
+<li><strong>CREATE</strong> GBP for Jacksonville office (Priority #2)</li>
 <li>Add 10+ services to Tampa GBP</li>
-<li>Add business description to Tampa</li>
-<li>Launch review generation campaign</li>
+<li>Add business description to Tampa (keyword-rich)</li>
+<li>Launch review generation campaign (target: 100+ reviews)</li>
+<li>Connect GSC + Google Analytics for tracking</li>
 </ul>
 </div>
 </div>
@@ -332,12 +563,12 @@ function downloadPDF() {
 </div>
 <div class="contact-item">
 <div class="icon">&#128222;</div>
-<div class="value">[Agency Phone]</div>
+<div class="value"><a href="tel:8639999152">(863) 999-9152</a></div>
 <div class="label">Phone</div>
 </div>
 <div class="contact-item">
 <div class="icon">&#128197;</div>
-<div class="value"><a href="#">Schedule a Call</a></div>
+<div class="value"><a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM" target="_blank">Schedule a Call</a></div>
 <div class="label">Calendar</div>
 </div>
 </div>
