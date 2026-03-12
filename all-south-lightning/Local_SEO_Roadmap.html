@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local SEO Roadmap — All South Lightning Protection</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+@media print { .download-bar, .portal-nav { display: none !important; } }
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-print { background-color: #1a5276; color: white; }
+
+/* Portal Nav */
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background: #f5f6fa; }
+.page { max-width: 1100px; margin: 0 auto; padding: 40px 30px; }
+
+h1 { font-size: 26pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 12px; margin-bottom: 6px; }
+h2 { font-size: 17pt; color: #1a5276; margin: 30px 0 12px 0; padding-bottom: 8px; border-bottom: 2px solid #d5d8dc; }
+h3 { font-size: 13pt; color: #2874a6; margin: 20px 0 8px 0; }
+p { margin-bottom: 10px; color: #555; }
+
+.meta { font-size: 10pt; color: #888; margin-bottom: 25px; }
+
+/* Summary box */
+.summary-box { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 28px 32px; border-radius: 12px; margin-bottom: 30px; }
+.summary-box h2 { color: white; border: none; margin: 0 0 10px 0; }
+.summary-box p { color: rgba(255,255,255,0.9); margin: 0; }
+
+/* Score cards */
+.score-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
+.score-card { background: white; border-radius: 10px; padding: 20px 24px; flex: 1; min-width: 160px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+.score-card .num { font-size: 36pt; font-weight: bold; line-height: 1; display: block; margin-bottom: 4px; }
+.score-card .lbl { font-size: 9pt; color: #888; display: block; }
+.score-card .sub { font-size: 9pt; margin-top: 5px; font-weight: bold; }
+.green .num { color: #27ae60; }
+.blue .num { color: #1a5276; }
+.orange .num { color: #e67e22; }
+.red .num { color: #c0392b; }
+
+/* Tables */
+table { border-collapse: collapse; width: 100%; margin: 14px 0 24px 0; font-size: 10pt; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.08); }
+th { background-color: #1a5276; color: white; padding: 10px 14px; text-align: left; }
+td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background-color: #f8f9fa; }
+
+/* Rank badges */
+.r1 { background: #27ae60; color: white; padding: 2px 9px; border-radius: 12px; font-weight: bold; font-size: 9pt; }
+.r2 { background: #2ecc71; color: white; padding: 2px 9px; border-radius: 12px; font-weight: bold; font-size: 9pt; }
+.r3 { background: #f39c12; color: white; padding: 2px 9px; border-radius: 12px; font-weight: bold; font-size: 9pt; }
+.rnone { background: #c0392b; color: white; padding: 2px 9px; border-radius: 12px; font-weight: bold; font-size: 9pt; }
+.rnew { background: #8e44ad; color: white; padding: 2px 9px; border-radius: 12px; font-weight: bold; font-size: 9pt; }
+
+/* Timeline */
+.timeline { margin: 20px 0; }
+.tl-item { display: flex; gap: 20px; margin-bottom: 20px; }
+.tl-marker { flex: 0 0 90px; text-align: right; }
+.tl-dot { display: inline-block; background: #1a5276; color: white; font-size: 8pt; font-weight: bold; padding: 5px 10px; border-radius: 20px; }
+.tl-bar { flex: 0 0 3px; background: #d5d8dc; position: relative; margin: 0 10px; }
+.tl-bar::before { content: ''; position: absolute; top: 8px; left: -5px; width: 13px; height: 13px; background: #1a5276; border-radius: 50%; }
+.tl-content { flex: 1; background: white; border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); }
+.tl-content h4 { color: #1a5276; margin: 0 0 8px 0; font-size: 12pt; }
+.tl-content ul { margin: 6px 0 0 0; padding-left: 18px; font-size: 10pt; color: #555; }
+.tl-content li { margin-bottom: 4px; }
+.tl-done { border-left: 4px solid #27ae60; }
+.tl-active { border-left: 4px solid #f39c12; }
+.tl-future { border-left: 4px solid #bdc3c7; }
+
+/* Section cards */
+.card { background: white; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); padding: 22px 26px; margin-bottom: 20px; }
+.card h3 { margin-top: 0; }
+
+/* Status pills */
+.pill { display: inline-block; padding: 3px 11px; border-radius: 12px; font-size: 9pt; font-weight: bold; }
+.pill-green { background: #d5f5e3; color: #1e8449; }
+.pill-orange { background: #fdebd0; color: #935116; }
+.pill-red { background: #fadbd8; color: #922b21; }
+.pill-blue { background: #d6eaf8; color: #1a5276; }
+.pill-purple { background: #e8daef; color: #6c3483; }
+
+/* Priority list */
+.priority-list { list-style: none; padding: 0; }
+.priority-list li { padding: 10px 14px; border-bottom: 1px solid #ecf0f1; display: flex; align-items: flex-start; gap: 12px; font-size: 10pt; }
+.priority-list li:last-child { border-bottom: none; }
+.priority-num { background: #1a5276; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 9pt; font-weight: bold; flex-shrink: 0; margin-top: 1px; }
+
+/* Competitor grid */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.comp-card { background: white; border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); border-left: 4px solid #c0392b; }
+.comp-card h4 { margin: 0 0 6px 0; color: #1a5276; font-size: 11pt; }
+.comp-card p { margin: 0; font-size: 9.5pt; color: #666; }
+
+.good { color: #27ae60; font-weight: bold; }
+.bad { color: #c0392b; font-weight: bold; }
+.warn { color: #e67e22; font-weight: bold; }
+
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 40px; border-top: 1px solid #d5d8dc; padding-top: 12px; }
+</style>
+</head>
+<body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">All South Lightning</span>
+<div class="portal-nav-links">
+<a href="index.html">&#127968; Dashboard</a>
+<a href="GBP_Audit.html">&#128269; GBP Audit</a>
+<a href="February_2026_Deliverables.html">&#9989; Feb Deliverables</a>
+<a href="Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+<a href="LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+<a href="GBP_UPDATE_CONTENT_AGENCY.html" style="background-color:rgba(39,174,96,0.25);color:#90ee90;">&#128203; GBP Copy Kit</a>
+</div>
+</div>
+</nav>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+<script>
+function downloadPDF() {
+  const el = document.querySelector('.page');
+  const opt = { margin: 0.5, filename: 'All_South_Local_SEO_Roadmap_2026.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+  document.querySelector('.download-bar').style.display = 'none';
+  html2pdf().set(opt).from(el).save().then(() => { document.querySelector('.download-bar').style.display = 'flex'; });
+}
+</script>
+
+<div class="page">
+
+<h1>Local SEO Roadmap — 2026</h1>
+<p class="meta"><strong>Client:</strong> All South Lightning Protection Inc. &nbsp;|&nbsp; <strong>Markets:</strong> Tampa · Sunrise · Jacksonville &nbsp;|&nbsp; <strong>Prepared:</strong> March 11, 2026 &nbsp;|&nbsp; <strong>Goal:</strong> All 3 locations Top 3 Map Pack by December 2026</p>
+
+<div class="summary-box">
+<h2>Strategic Overview</h2>
+<p>All South Lightning Protection is already the <strong>#1 ranked lightning protection company in Tampa</strong> on Google Maps — ranking first across all 3 scanned keywords with an average rank of 1.08 before optimization. With Sunrise and Jacksonville GBPs now live (March 11, 2026), the 2026 roadmap focuses on building those markets to Top 3 while deepening Tampa's dominance. The path to all-market Top 3 runs through citations, review velocity, sector landing pages, and consistent GBP post cadence.</p>
+</div>
+
+<!-- Current Ranking Snapshot -->
+<h2>&#128200; Current Ranking Data — Local Dominator Scan (Feb 12, 2026)</h2>
+<p style="font-size:10pt;color:#888;margin-bottom:12px;">Baseline scan captured before March 11 GBP optimization. Rankings reflect Tampa-only data — Sunrise and Jacksonville GBPs did not exist at scan time.</p>
+
+<div class="score-row">
+<div class="score-card green">
+<span class="num">#1.08</span>
+<span class="lbl">Tampa Avg Rank — Google Maps</span>
+<span class="sub" style="color:#27ae60;">Dominating ✅</span>
+</div>
+<div class="score-card blue">
+<span class="num">#1.51</span>
+<span class="lbl">Tampa Avg Rank — Local Finder</span>
+<span class="sub" style="color:#2874a6;">Strong ✅</span>
+</div>
+<div class="score-card orange">
+<span class="num">NEW</span>
+<span class="lbl">Sunrise Avg Rank</span>
+<span class="sub" style="color:#e67e22;">GBP Live Mar 11</span>
+</div>
+<div class="score-card orange">
+<span class="num">NEW</span>
+<span class="lbl">Jacksonville Avg Rank</span>
+<span class="sub" style="color:#e67e22;">GBP Live Mar 11</span>
+</div>
+</div>
+
+<table>
+<tr>
+  <th>Keyword</th>
+  <th>Google Maps Rank</th>
+  <th>Local Finder Rank</th>
+  <th>Grid Size</th>
+  <th>Scan Date</th>
+  <th>Status</th>
+</tr>
+<tr>
+  <td>Tampa lightning protection services</td>
+  <td><span class="r1">#1.00</span></td>
+  <td><span class="r1">#1.00</span></td>
+  <td>13×13</td>
+  <td>Feb 12, 2026</td>
+  <td class="good">Dominating</td>
+</tr>
+<tr>
+  <td>affordable lightning rod installation Tampa</td>
+  <td><span class="r1">#1.00</span></td>
+  <td><span class="r1">#1.09</span></td>
+  <td>13×13</td>
+  <td>Feb 12, 2026</td>
+  <td class="good">Dominating</td>
+</tr>
+<tr>
+  <td>best lightning protection contractors near me</td>
+  <td><span class="r1">#1.17</span></td>
+  <td><span class="r2">#2.45</span></td>
+  <td>13×13</td>
+  <td>Feb 12, 2026</td>
+  <td class="good">Top 3</td>
+</tr>
+<tr>
+  <td>lightning protection contractor Sunrise FL</td>
+  <td><span class="rnew">NEW GBP</span></td>
+  <td><span class="rnew">NEW GBP</span></td>
+  <td>—</td>
+  <td>Scan needed</td>
+  <td class="warn">Building</td>
+</tr>
+<tr>
+  <td>lightning protection contractor Jacksonville FL</td>
+  <td><span class="rnew">NEW GBP</span></td>
+  <td><span class="rnew">NEW GBP</span></td>
+  <td>—</td>
+  <td>Scan needed</td>
+  <td class="warn">Building</td>
+</tr>
+</table>
+
+<p style="font-size:9.5pt;color:#888;"><strong>Note:</strong> Tampa rankings were achieved with an under-optimized GBP (no services, no description, 1 category). Post-optimization rankings (Mar 11+) are expected to strengthen further. New scans for all 3 markets recommended April 2026.</p>
+<div style="background:#fdebd0;border-left:4px solid #f39c12;border-radius:6px;padding:12px 16px;margin-top:10px;font-size:10pt;">
+<strong>&#9200; Sunrise &amp; Jacksonville Scan Timing:</strong> Both GBPs were verified March 11, 2026. New GBPs require a minimum of <strong>3–4 weeks post-verification</strong> for Google to build sufficient map pack signals before a heatmap scan is meaningful. Running a scan too early produces misleading data. <strong>Earliest recommended scan date: April 8–15, 2026.</strong>
+</div>
+
+<!-- Market Status -->
+<h2>&#128205; Market Status by Location</h2>
+
+<div class="comp-grid" style="grid-template-columns:repeat(3,1fr);">
+
+<div style="background:white;border-radius:10px;padding:20px;box-shadow:0 1px 8px rgba(0,0,0,0.08);border-top:4px solid #27ae60;">
+<h3 style="margin-top:0;color:#27ae60;">&#9989; Tampa (HQ)</h3>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Status:</strong> <span class="pill pill-green">Dominating</span></p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Map Pack:</strong> #1 avg on Google Maps</p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Reviews:</strong> 78 · 4.7 stars</p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>GBP:</strong> 16 services · description · photos ✅</p>
+<p style="font-size:10pt;margin-bottom:0;"><strong>Focus:</strong> Maintain dominance, grow reviews to 100+, citations</p>
+</div>
+
+<div style="background:white;border-radius:10px;padding:20px;box-shadow:0 1px 8px rgba(0,0,0,0.08);border-top:4px solid #f39c12;">
+<h3 style="margin-top:0;color:#e67e22;">&#128338; Sunrise, FL</h3>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Status:</strong> <span class="pill pill-orange">Building</span></p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Map Pack:</strong> New — 3–6 months to rank</p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Reviews:</strong> 0 (new GBP)</p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>GBP:</strong> 16 services · description ✅ · photos pending</p>
+<p style="font-size:10pt;margin-bottom:0;"><strong>Competition:</strong> Low — no dominant specialist in Broward</p>
+</div>
+
+<div style="background:white;border-radius:10px;padding:20px;box-shadow:0 1px 8px rgba(0,0,0,0.08);border-top:4px solid #f39c12;">
+<h3 style="margin-top:0;color:#e67e22;">&#128338; Jacksonville, FL</h3>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Status:</strong> <span class="pill pill-orange">Building</span></p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Map Pack:</strong> New — 3–6 months to rank</p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>Reviews:</strong> 0 (new GBP)</p>
+<p style="font-size:10pt;margin-bottom:8px;"><strong>GBP:</strong> 16 services · description ✅ · photos pending</p>
+<p style="font-size:10pt;margin-bottom:0;"><strong>Competition:</strong> American Electric, Maxwell LP, Gulf Coast</p>
+</div>
+
+</div>
+
+<!-- Keyword Strategy -->
+<h2>&#128269; Keyword Strategy — All 3 Markets</h2>
+
+<h3>Primary Keywords (Map Pack Targets)</h3>
+<table>
+<tr><th>Keyword</th><th>Market</th><th>Intent</th><th>Priority</th><th>Current Rank</th></tr>
+<tr><td>Tampa lightning protection services</td><td>Tampa</td><td>Local / Transactional</td><td><span class="pill pill-green">P1</span></td><td><span class="r1">#1.00</span></td></tr>
+<tr><td>lightning protection contractor Tampa FL</td><td>Tampa</td><td>Transactional</td><td><span class="pill pill-green">P1</span></td><td>Est. Top 3</td></tr>
+<tr><td>commercial lightning protection Tampa</td><td>Tampa</td><td>Commercial B2B</td><td><span class="pill pill-green">P1</span></td><td>Est. Top 3</td></tr>
+<tr><td>best lightning protection contractors near me</td><td>All Markets</td><td>Transactional</td><td><span class="pill pill-green">P1</span></td><td><span class="r1">#1.17</span> Tampa</td></tr>
+<tr><td>lightning protection contractor Sunrise FL</td><td>Sunrise</td><td>Local / Transactional</td><td><span class="pill pill-green">P1</span></td><td><span class="rnew">NEW</span></td></tr>
+<tr><td>lightning protection Fort Lauderdale</td><td>Sunrise</td><td>Local / Transactional</td><td><span class="pill pill-green">P1</span></td><td><span class="rnew">NEW</span></td></tr>
+<tr><td>lightning protection Broward County</td><td>Sunrise</td><td>Local / Transactional</td><td><span class="pill pill-green">P1</span></td><td><span class="rnew">NEW</span></td></tr>
+<tr><td>lightning protection contractor Jacksonville FL</td><td>Jacksonville</td><td>Local / Transactional</td><td><span class="pill pill-green">P1</span></td><td><span class="rnew">NEW</span></td></tr>
+<tr><td>commercial lightning protection Jacksonville</td><td>Jacksonville</td><td>Commercial B2B</td><td><span class="pill pill-green">P1</span></td><td><span class="rnew">NEW</span></td></tr>
+</table>
+
+<h3>Secondary Keywords (Organic / Content Targets)</h3>
+<table>
+<tr><th>Keyword</th><th>Sector</th><th>Intent</th><th>Content Type</th></tr>
+<tr><td>NFPA 780 lightning protection Florida</td><td>All</td><td>Compliance / Research</td><td>Blog / Landing Page</td></tr>
+<tr><td>UL 96A certified lightning protection</td><td>All</td><td>Compliance</td><td>Service Page</td></tr>
+<tr><td>data center lightning protection Florida</td><td>Data Centers</td><td>B2B / High-Value</td><td>Sector Landing Page</td></tr>
+<tr><td>hospital lightning protection systems</td><td>Healthcare</td><td>B2B / High-Value</td><td>Sector Landing Page</td></tr>
+<tr><td>school lightning protection Florida</td><td>Education</td><td>B2B</td><td>Sector Landing Page</td></tr>
+<tr><td>lightning protection system cost commercial</td><td>All</td><td>Transactional</td><td>Blog / FAQ</td></tr>
+<tr><td>surge suppression commercial Florida</td><td>All</td><td>Transactional</td><td>Service Page</td></tr>
+<tr><td>lightning rod installation Florida commercial</td><td>All</td><td>Transactional</td><td>Service Page + GBP</td></tr>
+<tr><td>grounding bonding systems Florida</td><td>Industrial</td><td>Technical / B2B</td><td>Service Page</td></tr>
+<tr><td>lightning protection sports stadium arena</td><td>Sports / Venues</td><td>B2B</td><td>Sector Landing Page</td></tr>
+</table>
+
+<!-- Competitor Landscape -->
+<h2>&#127942; Competitor Landscape</h2>
+
+<div class="comp-grid">
+<div class="comp-card">
+<h4>Bonded Lightning Protection</h4>
+<p><strong>Markets:</strong> Tampa + Southeast FL (Jupiter office)<br>
+<strong>Strength:</strong> Founded 1892 — extreme brand heritage. Dominant Tampa competitor.<br>
+<strong>Weakness:</strong> National brand, less local feel. No Broward-specific presence.</p>
+</div>
+<div class="comp-card">
+<h4>Coastal Lightning Rods</h4>
+<p><strong>Markets:</strong> Tampa + Jacksonville<br>
+<strong>Strength:</strong> Claims "#1" — aggressive SEO title tags.<br>
+<strong>Weakness:</strong> No verified credentials publicly listed. No Broward office.</p>
+</div>
+<div class="comp-card">
+<h4>WB Lightning Rods</h4>
+<p><strong>Markets:</strong> Tampa + Jacksonville<br>
+<strong>Strength:</strong> Since 1950, large national operation.<br>
+<strong>Weakness:</strong> No Florida-specific GBP — competes from out of state.</p>
+</div>
+<div class="comp-card">
+<h4>American Electric of Jacksonville</h4>
+<p><strong>Markets:</strong> Jacksonville only<br>
+<strong>Strength:</strong> Local contractor, established in market.<br>
+<strong>Weakness:</strong> General electrician — not a lightning protection specialist.</p>
+</div>
+<div class="comp-card">
+<h4>Gulf Coast Lightning Rods</h4>
+<p><strong>Markets:</strong> Jacksonville + Gulf Coast<br>
+<strong>Strength:</strong> Family-owned, specialist focus.<br>
+<strong>Weakness:</strong> Small operation, limited reviews.</p>
+</div>
+<div class="comp-card" style="border-left-color:#27ae60;">
+<h4>&#128313; Sunrise / Broward Gap</h4>
+<p><strong>Opportunity:</strong> No dominant lightning protection specialist in Broward County. Bonded (Jupiter) and Advanced Roofing are the only competitors — neither is a dedicated lightning contractor.<br><strong>All South advantage: physical office + new GBP = local proximity signals.</strong></p>
+</div>
+</div>
+
+<!-- 12-Month Roadmap -->
+<h2>&#128197; 12-Month Roadmap — December 2025 to December 2026</h2>
+
+<div class="timeline">
+
+<div class="tl-item">
+<div class="tl-marker"><span class="tl-dot">Q1 2026</span></div>
+<div class="tl-bar"></div>
+<div class="tl-content tl-done">
+<h4>&#9989; GBP Foundation Phase — COMPLETE</h4>
+<ul>
+<li>GBP audit completed — Tampa score 42/100 (D), Sunrise/JAX missing</li>
+<li>Local Dominator baseline scan — Tampa #1.08 avg Google Maps</li>
+<li>Tampa GBP fully optimized — 16 services, description, service areas, 20+ photos</li>
+<li>Sunrise GBP created, verified & optimized — March 11, 2026</li>
+<li>Jacksonville GBP created, verified & optimized — March 11, 2026</li>
+<li>GBP Copy Kit v2.0 built (2 new services added per Feb 13 client meeting)</li>
+<li>52-week content calendar built · 14 months of social media content created</li>
+</ul>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-marker"><span class="tl-dot" style="background:#f39c12;">Q2 2026</span></div>
+<div class="tl-bar"></div>
+<div class="tl-content tl-active">
+<h4>&#128338; Citation Building + Review Velocity</h4>
+<ul>
+<li>Build 40+ directory citations — all 3 locations (Tier 1: Google, Bing, Apple Maps, Yelp, BBB, Angi, Houzz)</li>
+<li>NAP consistency audit across all existing citations</li>
+<li>Launch review generation campaign — target 100+ Tampa reviews</li>
+<li>Upload 10+ photos to Sunrise GBP (pending client delivery)</li>
+<li>Upload 10+ photos to Jacksonville GBP (pending client delivery)</li>
+<li>Connect Google Search Console + Google Analytics for all 3 markets</li>
+<li>Run new Local Dominator scan — Sunrise + Jacksonville + Tampa re-scan (<strong>earliest April 8–15</strong> — GBPs need 3–4 weeks post-verification before scan data is meaningful)</li>
+<li>Birdeye review count update — sync with actual Google review count</li>
+<li>Build sector landing pages: Data Centers · Healthcare · Education (3 pages)</li>
+</ul>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-marker"><span class="tl-dot" style="background:#95a5a6;">Q3 2026</span></div>
+<div class="tl-bar"></div>
+<div class="tl-content tl-future">
+<h4>Location × Sector Landing Pages</h4>
+<ul>
+<li>Build location + sector pages: Tampa Data Centers, Jacksonville Healthcare, Sunrise Commercial</li>
+<li>Expand to 5 total sector pages (+ Government/Military + Sports/Venues)</li>
+<li>GBP post cadence — 4 posts/month/location = 12 posts/month total</li>
+<li>Mid-year rankings check — all 3 markets (Local Dominator scan July 2026)</li>
+<li>Respond to all GBP reviews (Tampa backlog + Sunrise/JAX new reviews)</li>
+<li>Q2 citation audit — verify all 40+ directories are live and consistent</li>
+<li>Target: Sunrise Top 10 Map Pack · Jacksonville Top 10 Map Pack</li>
+</ul>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-marker"><span class="tl-dot" style="background:#95a5a6;">Q4 2026</span></div>
+<div class="tl-bar"></div>
+<div class="tl-content tl-future">
+<h4>Map Pack Top 3 — All 3 Markets</h4>
+<ul>
+<li>Final push — all 3 locations targeting Top 3 Map Pack</li>
+<li>Advanced citations: industry directories (AGC, CFMA, Associated Builders)</li>
+<li>Case study content — 3+ completed projects documented per location</li>
+<li>Q3 citation audit + NAP clean-up round</li>
+<li>Local Dominator full scan — October 2026 (all 3 markets, 5+ keywords each)</li>
+<li>Reviews: Tampa 150+ · Sunrise 20+ · Jacksonville 20+</li>
+<li>Full-year SEO report + 2027 strategy planning</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<!-- KPI Targets -->
+<h2>&#127919; KPI Targets — 2026</h2>
+
+<table>
+<tr>
+  <th>Metric</th>
+  <th>Baseline (Feb 2026)</th>
+  <th>Q2 Target (Jun 2026)</th>
+  <th>Q3 Target (Sep 2026)</th>
+  <th>Goal (Dec 2026)</th>
+</tr>
+<tr><td>Tampa Map Pack Avg Rank</td><td><span class="r1">#1.08</span></td><td>#1.00 (maintain)</td><td>#1.00 (maintain)</td><td><strong>#1.00</strong></td></tr>
+<tr><td>Sunrise Map Pack Avg Rank</td><td><span class="rnew">NEW</span></td><td>Est. Top 10</td><td>Est. Top 5</td><td><strong>Top 3</strong></td></tr>
+<tr><td>Jacksonville Map Pack Avg Rank</td><td><span class="rnew">NEW</span></td><td>Est. Top 10</td><td>Est. Top 5</td><td><strong>Top 3</strong></td></tr>
+<tr><td>Tampa Google Reviews</td><td>78</td><td>100+</td><td>125+</td><td><strong>150+</strong></td></tr>
+<tr><td>Sunrise Reviews</td><td>0</td><td>5+</td><td>15+</td><td><strong>20+</strong></td></tr>
+<tr><td>Jacksonville Reviews</td><td>0</td><td>5+</td><td>15+</td><td><strong>20+</strong></td></tr>
+<tr><td>Directory Citations (per location)</td><td>~5</td><td>20+</td><td>35+</td><td><strong>40+</strong></td></tr>
+<tr><td>Sector Landing Pages</td><td>0</td><td>3</td><td>5</td><td><strong>8+</strong></td></tr>
+<tr><td>Keywords Ranking Top 10 (organic)</td><td>Unknown</td><td>10+</td><td>25+</td><td><strong>50+</strong></td></tr>
+<tr><td>Monthly Organic Leads</td><td>Unknown</td><td>5–10</td><td>10–15</td><td><strong>15–25</strong></td></tr>
+</table>
+
+<!-- Priority Actions Now -->
+<h2>&#128204; Immediate Priority Actions (Q2 2026)</h2>
+
+<div class="card">
+<ul class="priority-list">
+<li><span class="priority-num">1</span><div><strong>Upload photos to Sunrise + Jacksonville GBPs</strong> — 10+ per location. Awaiting client delivery. Photos accelerate trust signals for new GBPs. <span class="pill pill-orange">Pending Client</span></div></li>
+<li><span class="priority-num">2</span><div><strong>Launch review generation campaign — Tampa</strong> — Customer contact list needed. Target: 22 new reviews to hit 100. Template ready to deploy. <span class="pill pill-orange">Pending Client List</span></div></li>
+<li><span class="priority-num">3</span><div><strong>Connect Google Search Console</strong> — Verify all 3 domains/locations. Unlocks keyword impression data and page indexing visibility. <span class="pill pill-orange">Pending Access</span></div></li>
+<li><span class="priority-num">4</span><div><strong>Run Local Dominator re-scan — April 2026</strong> — All 3 markets, same 3 Tampa keywords + new Sunrise/Jacksonville keywords. Baseline for new locations. <span class="pill pill-blue">Agency Action</span></div></li>
+<li><span class="priority-num">5</span><div><strong>Start citation building — Tier 1 directories</strong> — Submit all 3 locations to Google, Bing Places, Apple Maps, Yelp, Angi, Houzz, Yellow Pages, Manta. Exact NAP match required. <span class="pill pill-blue">Agency Action</span></div></li>
+<li><span class="priority-num">6</span><div><strong>Build Data Center sector landing page</strong> — Highest revenue sector. Target keyword: "data center lightning protection Florida." 1,500–2,000 words, NFPA 780 compliant messaging, Tampa/Sunrise/Jacksonville CTAs. <span class="pill pill-blue">Agency Action</span></div></li>
+<li><span class="priority-num">7</span><div><strong>Respond to all Tampa GBP reviews</strong> — 78 reviews with limited responses. Response rate is a Map Pack ranking signal. Agency can draft, client approves. <span class="pill pill-blue">Agency Action</span></div></li>
+</ul>
+</div>
+
+<div class="footer">
+<p><em>Local SEO Roadmap · All South Lightning Protection Inc. · Prepared March 11, 2026</em></p>
+<p><em>Ranking data source: Local Dominator heatmap scan, February 12, 2026 (13×13 grid, Tampa GBP)</em></p>
+<p><em>Prepared by Nichefinder AI Agency | nichefindersai@gmail.com | (863) 999-9152</em></p>
+</div>
+
+</div><!-- end .page -->
+</body>
+</html>

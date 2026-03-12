@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LLM Visibility Analysis — All South Lightning Protection</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+@media print { .download-bar, .portal-nav { display: none !important; } }
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-print { background-color: #1a5276; color: white; }
+
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background: #f5f6fa; }
+.page { max-width: 1100px; margin: 0 auto; padding: 40px 30px; }
+
+h1 { font-size: 26pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 12px; margin-bottom: 6px; }
+h2 { font-size: 17pt; color: #1a5276; margin: 30px 0 12px 0; padding-bottom: 8px; border-bottom: 2px solid #d5d8dc; }
+h3 { font-size: 13pt; color: #2874a6; margin: 20px 0 8px 0; }
+p { margin-bottom: 10px; color: #555; }
+.meta { font-size: 10pt; color: #888; margin-bottom: 25px; }
+
+.summary-box { background: linear-gradient(135deg, #4a235a, #6c3483); color: white; padding: 28px 32px; border-radius: 12px; margin-bottom: 30px; }
+.summary-box h2 { color: white; border: none; margin: 0 0 10px 0; }
+.summary-box p { color: rgba(255,255,255,0.9); margin: 0; }
+
+.score-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
+.score-card { background: white; border-radius: 10px; padding: 20px 24px; flex: 1; min-width: 150px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+.score-card .num { font-size: 32pt; font-weight: bold; line-height: 1; display: block; margin-bottom: 4px; }
+.score-card .lbl { font-size: 9pt; color: #888; display: block; }
+.score-card .sub { font-size: 9pt; margin-top: 5px; font-weight: bold; }
+
+table { border-collapse: collapse; width: 100%; margin: 14px 0 24px 0; font-size: 10pt; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.08); }
+th { background-color: #4a235a; color: white; padding: 10px 14px; text-align: left; }
+td { padding: 9px 14px; border-bottom: 1px solid #ecf0f1; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background-color: #f8f9fa; }
+
+.pill { display: inline-block; padding: 3px 11px; border-radius: 12px; font-size: 9pt; font-weight: bold; }
+.pill-green { background: #d5f5e3; color: #1e8449; }
+.pill-orange { background: #fdebd0; color: #935116; }
+.pill-red { background: #fadbd8; color: #922b21; }
+.pill-blue { background: #d6eaf8; color: #1a5276; }
+.pill-purple { background: #e8daef; color: #6c3483; }
+
+.card { background: white; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); padding: 22px 26px; margin-bottom: 20px; }
+
+.query-card { background: white; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); padding: 18px 22px; margin-bottom: 14px; }
+.query-card .q { font-size: 10pt; color: #888; font-style: italic; margin-bottom: 10px; }
+.query-card .q strong { color: #4a235a; font-style: normal; }
+.result-row { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 10pt; }
+.result-row:last-child { border-bottom: none; }
+.result-icon { font-size: 14pt; flex-shrink: 0; width: 24px; text-align: center; }
+.result-text strong { color: #333; }
+.result-text span { color: #888; font-size: 9.5pt; }
+
+.gap-list { list-style: none; padding: 0; }
+.gap-list li { padding: 10px 14px; border-bottom: 1px solid #ecf0f1; display: flex; align-items: flex-start; gap: 12px; font-size: 10pt; }
+.gap-list li:last-child { border-bottom: none; }
+.gap-icon { font-size: 14pt; flex-shrink: 0; width: 24px; }
+
+.source-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.source-card { border-radius: 8px; padding: 14px 18px; font-size: 10pt; }
+.source-live { background: #d5f5e3; border-left: 4px solid #27ae60; }
+.source-weak { background: #fdebd0; border-left: 4px solid #f39c12; }
+.source-missing { background: #fadbd8; border-left: 4px solid #c0392b; }
+.source-card h4 { margin: 0 0 4px 0; font-size: 10pt; }
+.source-card p { margin: 0; color: #666; font-size: 9.5pt; }
+
+.action-list { list-style: none; padding: 0; }
+.action-list li { padding: 11px 14px; border-bottom: 1px solid #ecf0f1; display: flex; align-items: flex-start; gap: 12px; font-size: 10pt; }
+.action-list li:last-child { border-bottom: none; }
+.action-num { background: #4a235a; color: white; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 9pt; font-weight: bold; flex-shrink: 0; margin-top: 1px; }
+
+.good { color: #27ae60; font-weight: bold; }
+.bad { color: #c0392b; font-weight: bold; }
+.warn { color: #e67e22; font-weight: bold; }
+
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 40px; border-top: 1px solid #d5d8dc; padding-top: 12px; }
+</style>
+</head>
+<body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">All South Lightning</span>
+<div class="portal-nav-links">
+<a href="index.html">&#127968; Dashboard</a>
+<a href="GBP_Audit.html">&#128269; GBP Audit</a>
+<a href="February_2026_Deliverables.html">&#9989; Feb Deliverables</a>
+<a href="Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+<a href="LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+<a href="GBP_UPDATE_CONTENT_AGENCY.html" style="background-color:rgba(39,174,96,0.25);color:#90ee90;">&#128203; GBP Copy Kit</a>
+</div>
+</div>
+</nav>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+<script>
+function downloadPDF() {
+  const el = document.querySelector('.page');
+  const opt = { margin: 0.5, filename: 'All_South_LLM_Visibility_Analysis_2026.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+  document.querySelector('.download-bar').style.display = 'none';
+  html2pdf().set(opt).from(el).save().then(() => { document.querySelector('.download-bar').style.display = 'flex'; });
+}
+</script>
+
+<div class="page">
+
+<h1>LLM Visibility Analysis — 2026</h1>
+<p class="meta"><strong>Client:</strong> All South Lightning Protection Inc. &nbsp;|&nbsp; <strong>Markets:</strong> Tampa · Sunrise · Jacksonville &nbsp;|&nbsp; <strong>Prepared:</strong> March 11, 2026 &nbsp;|&nbsp; <strong>AI Tools Analyzed:</strong> ChatGPT · Perplexity · Google SGE · AI-powered web search</p>
+
+<div class="summary-box">
+<h2>&#129504; What This Report Covers</h2>
+<p>LLM Visibility measures how All South Lightning Protection appears when commercial decision-makers — facility managers, IT directors, engineers, and procurement officers — ask AI tools like ChatGPT, Perplexity, and Google's AI Overview about lightning protection in Florida. AI search is rapidly replacing traditional "10 blue links" for research queries. If All South isn't in the sources AI tools cite, it won't be recommended — even if it ranks #1 on Google Maps.</p>
+</div>
+
+<!-- Overall Score -->
+<h2>&#127775; Overall LLM Visibility Score</h2>
+
+<div class="score-row">
+<div class="score-card" style="border-top:4px solid #27ae60;">
+<span class="num" style="color:#27ae60;">&#9989;</span>
+<span class="lbl">Tampa LLM Visibility</span>
+<span class="sub" style="color:#27ae60;">Appearing in AI Results</span>
+</div>
+<div class="score-card" style="border-top:4px solid #c0392b;">
+<span class="num" style="color:#c0392b;">&#10060;</span>
+<span class="lbl">Sunrise LLM Visibility</span>
+<span class="sub" style="color:#c0392b;">Not Appearing</span>
+</div>
+<div class="score-card" style="border-top:4px solid #f39c12;">
+<span class="num" style="color:#f39c12;">&#9888;</span>
+<span class="lbl">Jacksonville LLM Visibility</span>
+<span class="sub" style="color:#e67e22;">Partial — Website Only</span>
+</div>
+<div class="score-card" style="border-top:4px solid #c0392b;">
+<span class="num" style="color:#c0392b;">&#10060;</span>
+<span class="lbl">Forum / Community Mentions</span>
+<span class="sub" style="color:#c0392b;">Not Found Anywhere</span>
+</div>
+</div>
+
+<!-- Query Results -->
+<h2>&#128269; AI Query Results — What We Found</h2>
+<p style="font-size:10pt;color:#888;margin-bottom:16px;">The following queries simulate how commercial buyers research lightning protection. Results reflect AI-generated summaries pulled from live web search data (March 2026).</p>
+
+<div class="query-card">
+<p class="q"><strong>Query 1:</strong> "Best lightning protection company Tampa Florida commercial"</p>
+<div class="result-row"><span class="result-icon">&#9989;</span><div class="result-text"><strong>All South Lightning Protection — Appears in AI Summary</strong><br><span>Listed as a top option with 40+ years experience, commercial/institutional focus, Tampa HQ. AI describes their Faraday Preventors, TVSS systems, and Florida coverage. Source: allsouthlightningprotection.com</span></div></div>
+<div class="result-row"><span class="result-icon">&#128308;</span><div class="result-text"><strong>Bonded Lightning Protection — Also Appearing</strong><br><span>Described as "North America's oldest," since 1892. Strong brand signals pulling weight in AI results. Competes directly for the same AI recommendation slot.</span></div></div>
+<div class="result-row"><span class="result-icon">&#128308;</span><div class="result-text"><strong>Coastal Lightning Rods, WB Lightning Rods — Also Appearing</strong><br><span>Both have aggressive SEO title tags claiming "#1 Best" — these signals are picked up by AI tools even without being factually verified.</span></div></div>
+</div>
+
+<div class="query-card">
+<p class="q"><strong>Query 2:</strong> "Lightning protection contractor Jacksonville Florida"</p>
+<div class="result-row"><span class="result-icon">&#9888;</span><div class="result-text"><strong>All South — Partially Appearing (Website Only)</strong><br><span>The /jacksonville page on allsouthlightningprotection.com is indexed and appearing, but All South is listed #2 behind American Electric of Jacksonville. The new Jacksonville GBP (Mar 11, 2026) has not yet built enough signals to appear in AI-generated local results.</span></div></div>
+<div class="result-row"><span class="result-icon">&#128308;</span><div class="result-text"><strong>American Electric of Jacksonville — Top Result</strong><br><span>A general electrician with a lightning protection page — not a specialist — but outranking All South in AI results due to stronger local citation profile.</span></div></div>
+<div class="result-row"><span class="result-icon">&#128308;</span><div class="result-text"><strong>Gulf Coast Lightning Rods, Maxwell Lightning, WB Lightning Rods — Appearing</strong><br><span>All three listed ahead of or alongside All South in AI summaries for Jacksonville searches.</span></div></div>
+</div>
+
+<div class="query-card">
+<p class="q"><strong>Query 3:</strong> "Commercial lightning protection contractor Fort Lauderdale / Broward County Florida"</p>
+<div class="result-row"><span class="result-icon">&#10060;</span><div class="result-text"><strong>All South — NOT Appearing</strong><br><span>All South Lightning Protection does not appear in any AI-generated results for Broward County / Fort Lauderdale / Sunrise searches. Despite having a physical office at 4759 NW 103rd Ave, Sunrise, the new GBP has not yet built map pack or citation signals. The Sunrise/Broward market is effectively invisible in AI search for All South right now.</span></div></div>
+<div class="result-row"><span class="result-icon">&#128308;</span><div class="result-text"><strong>Bonded Lightning (Jupiter office) — Appearing</strong><br><span>Their Southeast Florida presence (Jupiter, FL) gives them proximity signals for Broward County queries.</span></div></div>
+<div class="result-row"><span class="result-icon">&#128308;</span><div class="result-text"><strong>Advanced Roofing — Appearing</strong><br><span>A general commercial roofing contractor with a lightning protection add-on service. Not a specialist, but appearing due to strong domain authority and local citations.</span></div></div>
+<div class="result-row"><span class="result-icon">&#127919;</span><div class="result-text"><strong style="color:#27ae60;">Opportunity: No dominant specialist exists in Broward.</strong><br><span>The first credible lightning protection specialist to build citation and review signals in Broward County will own this market in AI search. All South is positioned to do exactly that.</span></div></div>
+</div>
+
+<div class="query-card">
+<p class="q"><strong>Query 4:</strong> "Who should I hire for lightning protection in Florida?" (Forum / Quora / Reddit style)</p>
+<div class="result-row"><span class="result-icon">&#10060;</span><div class="result-text"><strong>All South — NOT Mentioned Anywhere</strong><br><span>Searched Reddit, Quora, Talk of the Villages FL, Mike Holt electrical forums, Sailing Anarchy (South FL boat community), and contractor forums. All South does not appear in any organic community recommendation. Bonded Lightning and WB Lightning Rods are the only brands with any forum-level mentions.</span></div></div>
+</div>
+
+<!-- Citation Audit -->
+<h2>&#128196; Citation &amp; Source Audit — What AI Tools Are Reading</h2>
+<p style="font-size:10pt;color:#888;margin-bottom:14px;">AI language models and AI-powered search tools pull recommendations from structured web sources. The more authoritative sources cite All South, the more likely it appears in AI recommendations. Here is the current citation inventory:</p>
+
+<div class="source-grid">
+<div class="source-card source-live">
+<h4>&#9989; Google Business Profile (Tampa)</h4>
+<p>Fully optimized. 78 reviews, 4.7 stars. 16 services. Primary GBP signal for AI local results.</p>
+</div>
+<div class="source-card source-live">
+<h4>&#9989; BBB — Tampa (Accredited Sept 2025)</h4>
+<p>High-authority trust signal. AI tools frequently cite BBB-accredited businesses in recommendations.</p>
+</div>
+<div class="source-card source-live">
+<h4>&#9989; Procore Network (Tampa + Sunrise)</h4>
+<p>Both Tampa and Sunrise listed on Procore. Strong B2B contractor credibility signal.</p>
+</div>
+<div class="source-card source-live">
+<h4>&#9989; Blue Book (since 1998)</h4>
+<p>Subcontractor directory — construction industry signal. Long-standing listing.</p>
+</div>
+<div class="source-card source-live">
+<h4>&#9989; allsouthlightningprotection.com</h4>
+<p>Website indexed and ranking. /jacksonville and /tampa location pages pulling organic traffic.</p>
+</div>
+<div class="source-card source-live">
+<h4>&#9989; LinkedIn Company Page</h4>
+<p>Active profile — B2B trust signal. AI tools reference LinkedIn for company legitimacy.</p>
+</div>
+<div class="source-card source-weak">
+<h4>&#9888; Yelp (Tampa)</h4>
+<p>Listed but limited reviews. Yelp is an AI-cited source — review volume matters.</p>
+</div>
+<div class="source-card source-weak">
+<h4>&#9888; Birdeye (19 reviews — outdated)</h4>
+<p>Profile shows 19 reviews but Tampa GBP has 78. Sync gap means AI may underreport reputation.</p>
+</div>
+<div class="source-card source-weak">
+<h4>&#9888; GBP — Sunrise (New, Mar 11)</h4>
+<p>Created and optimized but no reviews yet. Needs 3–4 weeks to build map signals.</p>
+</div>
+<div class="source-card source-weak">
+<h4>&#9888; GBP — Jacksonville (New, Mar 11)</h4>
+<p>Created and optimized but no reviews yet. Needs 3–4 weeks to build map signals.</p>
+</div>
+<div class="source-card source-missing">
+<h4>&#10060; Angi / HomeAdvisor</h4>
+<p>Not listed. AI tools heavily reference Angi for contractor recommendations in FL.</p>
+</div>
+<div class="source-card source-missing">
+<h4>&#10060; Houzz</h4>
+<p>Not listed. Relevant for residential and institutional projects.</p>
+</div>
+<div class="source-card source-missing">
+<h4>&#10060; Expertise.com</h4>
+<p>Not listed. "Best Lightning Protection in Tampa" roundup articles — AI tools cite these directly.</p>
+</div>
+<div class="source-card source-missing">
+<h4>&#10060; Three Best Rated</h4>
+<p>Not listed. High-DA directory AI tools use for "best [service] in [city]" queries.</p>
+</div>
+<div class="source-card source-missing">
+<h4>&#10060; AGC / CFMA / Industry Directories</h4>
+<p>No listings in Associated General Contractors or construction finance associations.</p>
+</div>
+<div class="source-card source-missing">
+<h4>&#10060; Quora / Reddit / Forums</h4>
+<p>No organic community mentions anywhere. Zero forum-level brand presence in Florida.</p>
+</div>
+</div>
+
+<!-- Gap Analysis -->
+<h2>&#128683; Visibility Gap Analysis</h2>
+
+<div class="card">
+<h3 style="margin-top:0;color:#c0392b;">What's Keeping All South Out of AI Recommendations</h3>
+<ul class="gap-list">
+<li><span class="gap-icon">&#10060;</span><div><strong>Missing from high-DA "Best of" directories</strong> — Expertise.com, Three Best Rated, and Angi are the directories AI tools pull from most frequently for "best [contractor] in [city]" queries. All South is not listed on any of them.</div></li>
+<li><span class="gap-icon">&#10060;</span><div><strong>Zero forum / community presence</strong> — AI tools increasingly weight organic community mentions (Reddit, Quora, contractor forums) as trust signals. All South has no presence in any Florida community forum where lightning protection is discussed.</div></li>
+<li><span class="gap-icon">&#10060;</span><div><strong>Birdeye review gap</strong> — AI aggregators like ChatGPT sometimes pull from Birdeye and similar review aggregators. Birdeye still shows 19 reviews while Google shows 78 — this discrepancy makes All South appear less established to AI systems reading Birdeye data.</div></li>
+<li><span class="gap-icon">&#10060;</span><div><strong>Sunrise / Broward: no AI visibility at all</strong> — Despite a physical office, All South has zero AI search presence in the Broward County market. No citations, no reviews, no directory listings tied to that location yet.</div></li>
+<li><span class="gap-icon">&#10060;</span><div><strong>No sector-specific content pages</strong> — When a data center manager asks "who does lightning protection for data centers in Tampa," AI tools look for dedicated pages. All South has no sector landing pages — competitors with thin generic pages are appearing instead.</div></li>
+<li><span class="gap-icon">&#10060;</span><div><strong>Competitor title tag manipulation</strong> — Coastal Lightning Rods and WB Lightning Rods both use "#1 Best" in their page titles and H1 tags. AI tools sometimes surface these as signals of authority, even without substantiation. All South's site does not use this language.</div></li>
+</ul>
+</div>
+
+<!-- Competitive Comparison -->
+<h2>&#9878; LLM Visibility vs. Key Competitors</h2>
+
+<table>
+<tr>
+  <th>Company</th>
+  <th>Tampa AI Visibility</th>
+  <th>Jacksonville AI Visibility</th>
+  <th>Broward AI Visibility</th>
+  <th>Forum Mentions</th>
+  <th>Overall LLM Score</th>
+</tr>
+<tr>
+  <td><strong>All South Lightning</strong></td>
+  <td><span class="pill pill-green">✅ Appearing</span></td>
+  <td><span class="pill pill-orange">⚠️ Partial</span></td>
+  <td><span class="pill pill-red">❌ Not Found</span></td>
+  <td><span class="pill pill-red">❌ None</span></td>
+  <td><span class="warn">Medium</span></td>
+</tr>
+<tr>
+  <td>Bonded Lightning Protection</td>
+  <td><span class="pill pill-green">✅ Strong</span></td>
+  <td><span class="pill pill-orange">⚠️ Partial</span></td>
+  <td><span class="pill pill-green">✅ Jupiter office</span></td>
+  <td><span class="pill pill-orange">⚠️ Some</span></td>
+  <td><span class="good">High</span></td>
+</tr>
+<tr>
+  <td>WB Lightning Rods</td>
+  <td><span class="pill pill-green">✅ Appearing</span></td>
+  <td><span class="pill pill-green">✅ Appearing</span></td>
+  <td><span class="pill pill-orange">⚠️ Partial</span></td>
+  <td><span class="pill pill-orange">⚠️ Some</span></td>
+  <td><span class="good">High</span></td>
+</tr>
+<tr>
+  <td>Coastal Lightning Rods</td>
+  <td><span class="pill pill-green">✅ Appearing</span></td>
+  <td><span class="pill pill-green">✅ Appearing</span></td>
+  <td><span class="pill pill-red">❌ Not Found</span></td>
+  <td><span class="pill pill-red">❌ None</span></td>
+  <td><span class="warn">Medium</span></td>
+</tr>
+<tr>
+  <td>American Electric Jacksonville</td>
+  <td><span class="pill pill-red">❌ Not Found</span></td>
+  <td><span class="pill pill-green">✅ Strong</span></td>
+  <td><span class="pill pill-red">❌ Not Found</span></td>
+  <td><span class="pill pill-red">❌ None</span></td>
+  <td><span class="warn">Low-Med</span></td>
+</tr>
+</table>
+
+<!-- Action Plan -->
+<h2>&#128204; LLM Visibility Action Plan — 2026</h2>
+
+<div class="card">
+<ul class="action-list">
+<li><span class="action-num">1</span><div><strong>Submit to Expertise.com and Three Best Rated — Tampa, Jacksonville, Sunrise</strong><br>These "Best Of" directories are heavily cited by AI tools when generating recommendations for local contractors. Getting listed = getting into ChatGPT and Perplexity answers. <span class="pill pill-purple">Q2 2026</span></div></li>
+<li><span class="action-num">2</span><div><strong>Create Angi / HomeAdvisor profile — all 3 locations</strong><br>Angi is one of the top sources AI tools reference for contractor recommendations in Florida. Free to list. Requires NAP match to GBP. <span class="pill pill-purple">Q2 2026</span></div></li>
+<li><span class="action-num">3</span><div><strong>Sync Birdeye profile with current Google review count</strong><br>Birdeye still shows 19 reviews while Google shows 78. AI tools reading Birdeye data underestimate All South's reputation. Claim and update the profile. <span class="pill pill-purple">Q2 2026</span></div></li>
+<li><span class="action-num">4</span><div><strong>Build sector landing pages with authority content</strong><br>When a data center manager asks AI "who does lightning protection for data centers in Florida?" — All South needs a dedicated, keyword-rich page to appear. Build: Data Centers · Healthcare · Education · Government. <span class="pill pill-purple">Q2–Q3 2026</span></div></li>
+<li><span class="action-num">5</span><div><strong>Create a Quora presence — answer Florida lightning protection questions</strong><br>Quora answers are indexed, cited by AI tools, and show up in search results. One well-written answer about NFPA 780 compliance or "do I need lightning protection in Florida?" can drive qualified B2B awareness for years. <span class="pill pill-purple">Q2 2026</span></div></li>
+<li><span class="action-num">6</span><div><strong>Build location-specific citation profiles — Sunrise and Jacksonville</strong><br>Both new markets have zero citations beyond the GBP. Every directory citation (Yelp, Angi, Houzz, BBB, Yellow Pages, Manta, Foursquare, Apple Maps, Bing) added to Sunrise and Jacksonville strengthens the signal AI tools use to surface local recommendations. <span class="pill pill-purple">Q2 2026</span></div></li>
+<li><span class="action-num">7</span><div><strong>Submit All South to AGC and construction industry directories</strong><br>Associated General Contractors (AGC), CFMA, and similar B2B industry directories are trusted sources AI tools reference for institutional contractor recommendations. <span class="pill pill-purple">Q3 2026</span></div></li>
+<li><span class="action-num">8</span><div><strong>Develop a case study content library</strong><br>AI tools surface businesses with documented project portfolios. Three published case studies (Tropicana Field, Tampa General Hospital, a data center) with location, scope, and NFPA compliance details will drive AI citation authority in the institutional sector. <span class="pill pill-purple">Q3 2026</span></div></li>
+</ul>
+</div>
+
+<!-- What Good Looks Like -->
+<h2>&#127775; What Full LLM Visibility Looks Like — 12-Month Target</h2>
+
+<div class="card" style="border-left:4px solid #6c3483;">
+<p style="margin:0;font-size:10pt;color:#555;">When a facility manager types into ChatGPT or Perplexity:</p>
+<p style="margin:8px 0 16px 0;font-size:12pt;color:#4a235a;font-style:italic;">"Who are the best lightning protection contractors in Tampa / Fort Lauderdale / Jacksonville?"</p>
+<p style="font-size:10pt;color:#555;margin-bottom:10px;">The answer should include All South Lightning Protection with:</p>
+<ul style="font-size:10pt;color:#555;padding-left:20px;margin-bottom:0;">
+<li>40+ years experience and NFPA 780 / UL 96A compliance highlighted</li>
+<li>4.7-star rating with 150+ reviews referenced</li>
+<li>Three Florida office locations mentioned (Tampa, Sunrise, Jacksonville)</li>
+<li>Sector expertise called out (data centers, hospitals, schools)</li>
+<li>Links to Expertise.com, BBB, Angi, and the All South website as sources</li>
+</ul>
+</div>
+
+<div class="footer">
+<p><em>LLM Visibility Analysis · All South Lightning Protection Inc. · Prepared March 11, 2026</em></p>
+<p><em>Research methodology: Live web search queries simulating AI tool behavior · Competitor citation audit · Directory inventory</em></p>
+<p><em>Prepared by Nichefinder AI Agency | nichefindersai@gmail.com | (863) 999-9152</em></p>
+</div>
+
+</div><!-- end .page -->
+</body>
+</html>
