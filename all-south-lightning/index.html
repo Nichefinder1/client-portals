@@ -174,24 +174,24 @@ function downloadPDF() {
 <!-- Status Banner -->
 <div class="status-banner" style="background-color: #d5f5e3; border: 2px solid #27ae60;">
 <div>
-<h3 style="color: #1e8449;">Campaign Status: Active — Phase 2: Citations & Reviews</h3>
-<p>Last Updated: March 11, 2026</p>
+<h3 style="color: #1e8449;">Campaign Status: Active — <span id="status-phase">Phase 2: Citations & Reviews</span></h3>
+<p>Last Updated: <span id="status-updated">March 11, 2026</span></p>
 </div>
 <div class="status-metric">
-<span class="number" style="color: #27ae60;">3/3</span>
-<span class="label">GBP Listings Live</span>
+<span class="number" id="tile-1-value" style="color: #27ae60;">3/3</span>
+<span class="label" id="tile-1-label">GBP Listings Live</span>
 </div>
 <div class="status-metric">
-<span class="number" style="color: #27ae60; font-size: 14pt; line-height: 1.2;">Optimized</span>
-<span class="label">Tampa GBP · Rescore Q2</span>
+<span class="number" id="tile-2-value" style="color: #27ae60; font-size: 14pt; line-height: 1.2;">Optimized</span>
+<span class="label" id="tile-2-label">Tampa GBP · Rescore Q2</span>
 </div>
 <div class="status-metric">
-<span class="number" style="color: #27ae60;">17/22</span>
-<span class="label">Keywords #1–2 Maps</span>
+<span class="number" id="tile-3-value" style="color: #27ae60;">17/22</span>
+<span class="label" id="tile-3-label">Keywords #1–2 Maps</span>
 </div>
 <div class="status-metric">
-<span class="number">78</span>
-<span class="label">Tampa Reviews</span>
+<span class="number" id="tile-4-value">78</span>
+<span class="label" id="tile-4-label">Tampa Reviews</span>
 </div>
 </div>
 
@@ -199,11 +199,11 @@ function downloadPDF() {
 <div class="goal-tracker">
 <h3>Goal: All 3 Locations Active, Optimized & in Map Pack Top 3 by December 2026</h3>
 <div class="progress-container">
-<div class="progress-bar" style="width: 65%;">65% — GBPs + Keyword Scan + SEO Roadmap + LLM Analysis Complete. Now: Citations + Reviews.</div>
+<div class="progress-bar" id="goal-bar" style="width: 65%;"><span id="goal-bar-label">65% — GBPs + Keyword Scan + SEO Roadmap + LLM Analysis Complete. Now: Citations + Reviews.</span></div>
 </div>
 <div class="goal-details">
-<span>Start: 1/3 GBP listings, Tampa score 42/100 (December 2025)</span>
-<span>Target: 3/3 listings, all locations Map Pack Top 3 (Dec 2026)</span>
+<span id="goal-start">Start: 1/3 GBP listings, Tampa score 42/100 (December 2025)</span>
+<span id="goal-target">Target: 3/3 listings, all locations Map Pack Top 3 (Dec 2026)</span>
 </div>
 </div>
 
@@ -221,42 +221,42 @@ function downloadPDF() {
 <th>Mar 2026</th>
 <th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
 </tr>
-<tr><td>GBP Listings (of 3)</td><td>1</td><td>—</td><td>1</td><td><strong class="trend-up">3 ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Tampa GBP Score</td><td>42/100 (D)</td><td>—</td><td>42/100 (D)</td><td><strong class="trend-up">Optimized · Rescore Q2</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Tampa Map Pack Rank (Median)</td><td>—</td><td>—</td><td>—</td><td><strong class="trend-up">#1.00 (17/22 kw)</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Tampa Google Reviews</td><td>76</td><td>—</td><td>76</td><td><strong>78</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Tampa Star Rating</td><td>4.7</td><td>—</td><td>4.7</td><td><strong>4.7</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Sunrise GBP</td><td>None</td><td>—</td><td>None</td><td><strong class="trend-up">Verified ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Jacksonville GBP</td><td>None</td><td>—</td><td>None</td><td><strong class="trend-up">Verified ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Organic Clicks (GSC)</td><td>—</td><td>—</td><td>—</td><td><strong class="trend-up">Connected ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>GBP Website Clicks</td><td>—</td><td>—</td><td>—</td><td><strong class="trend-up">Connected ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Active Citations</td><td>5</td><td>—</td><td>5</td><td><strong>5</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Tampa GBP Posts Published</td><td>0</td><td><strong class="trend-up">Jan ✅</strong></td><td><strong class="trend-up">Feb ✅</strong></td><td><strong class="trend-up">In Progress</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Blog Posts Published</td><td>0</td><td>—</td><td>0</td><td><strong>0</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Social Posts (LinkedIn/FB/IG)</td><td>0</td><td>—</td><td>0</td><td><strong>0</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>GBP Listings (of 3)</td><td>1</td><td>—</td><td>1</td><td data-metric="gbp_listings"><strong class="trend-up">3 ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa GBP Score</td><td>42/100 (D)</td><td>—</td><td>42/100 (D)</td><td data-metric="tampa_gbp_score"><strong class="trend-up">Optimized · Rescore Q2</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa Map Pack Rank (Median)</td><td>—</td><td>—</td><td>—</td><td data-metric="tampa_map_pack"><strong class="trend-up">#1.00 (17/22 kw)</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa Google Reviews</td><td>76</td><td>—</td><td>76</td><td data-metric="tampa_reviews"><strong>78</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa Star Rating</td><td>4.7</td><td>—</td><td>4.7</td><td data-metric="tampa_rating"><strong>4.7</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Sunrise GBP</td><td>None</td><td>—</td><td>None</td><td data-metric="sunrise_gbp"><strong class="trend-up">Verified ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Jacksonville GBP</td><td>None</td><td>—</td><td>None</td><td data-metric="jacksonville_gbp"><strong class="trend-up">Verified ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Organic Clicks (GSC)</td><td>—</td><td>—</td><td>—</td><td data-metric="organic_clicks"><strong class="trend-up">Connected ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>GBP Website Clicks</td><td>—</td><td>—</td><td>—</td><td data-metric="gbp_website_clicks"><strong class="trend-up">Connected ✅</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Active Citations</td><td>5</td><td>—</td><td>5</td><td data-metric="citations"><strong>5</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Tampa GBP Posts Published</td><td>0</td><td><strong class="trend-up">Jan ✅</strong></td><td><strong class="trend-up">Feb ✅</strong></td><td data-metric="gbp_posts"><strong class="trend-up">In Progress</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Blog Posts Published</td><td>0</td><td>—</td><td>0</td><td data-metric="blog_posts"><strong>0</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Social Posts (LinkedIn/FB/IG)</td><td>0</td><td>—</td><td>0</td><td data-metric="social_posts"><strong>0</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
 </table>
 
 <!-- Quick Stats -->
 <div class="quick-stats">
 <div class="stat-box">
-<span class="number" style="color: #27ae60;">3/3</span>
+<span class="number" id="stat-listings" style="color: #27ae60;">3/3</span>
 <span class="label">GBP Listings Live</span>
 <span class="change positive">ALL VERIFIED ✅</span>
 </div>
 <div class="stat-box">
-<span class="number">78</span>
+<span class="number" id="stat-reviews">78</span>
 <span class="label">Google Reviews (Tampa)</span>
-<span class="change positive">4.7 stars ⭐</span>
+<span class="change positive" id="stat-reviews-sub">4.7 stars ⭐</span>
 </div>
 <div class="stat-box">
-<span class="number">5</span>
+<span class="number" id="stat-citations">5</span>
 <span class="label">Active Citations</span>
 <span class="change neutral">BBB, BuildZoom+</span>
 </div>
 <div class="stat-box">
-<span class="number" style="font-size: 22pt; color: #27ae60;">17/22</span>
-<span class="label">Keywords #1–2 Google Maps</span>
-<span class="change positive">Mar 11, 2026 Scan ✅</span>
+<span class="number" id="stat-keywords" style="font-size: 22pt; color: #27ae60;">17/22</span>
+<span class="label" id="stat-keywords-label">Keywords #1–2 Google Maps</span>
+<span class="change positive" id="stat-keywords-sub">Mar 11, 2026 Scan ✅</span>
 </div>
 </div>
 
@@ -298,7 +298,7 @@ function downloadPDF() {
 <p>Google Business Profile status for each office location — updated March 2026</p>
 </div>
 
-<div class="location-grid">
+<div class="location-grid" id="location-grid">
 <div class="location-card exists">
 <h4>Tampa (HQ)</h4>
 <p class="status good">&#10003; GBP OPTIMIZED</p>
@@ -519,7 +519,7 @@ function downloadPDF() {
 <h3>Completed Wins</h3>
 </div>
 <div class="card-body">
-<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<ul id="completed-wins-list" style="margin: 0; padding-left: 20px; font-size: 10pt;">
 <li>&#10003; GBP multi-location audit complete (Feb 4, 2026)</li>
 <li>&#10003; Revenue impact quantified ($150K–$400K/year)</li>
 <li>&#10003; Full-year content calendar built (52 weeks)</li>
@@ -530,12 +530,12 @@ function downloadPDF() {
 <li>&#10003; <strong>All 3 locations now visible on Google Maps</strong></li>
 <li>&#10003; <strong>16 services + descriptions added to all 3 GBPs (Mar 11, 2026)</strong></li>
 <li>&#10003; <strong>Business descriptions, service areas & categories set on all 3 (Mar 11, 2026)</strong></li>
-<li>&#10003; <strong>Tampa #1 avg rank confirmed — Local Dominator scan (Feb 12, 2026)</strong></li>
+<li>&#10003; <strong>17/22 Tampa keywords ranking #1–2 — Local Dominator scan, 13×13 grid (Mar 11, 2026)</strong></li>
 <li>&#10003; <strong>Local SEO Roadmap published — 12-month plan, keywords, competitor map (Mar 11, 2026)</strong></li>
 <li>&#10003; <strong>LLM Visibility Analysis complete — Tampa visible, Sunrise/JAX gap identified (Mar 11, 2026)</strong></li>
-<li>&#10003; <strong>17/22 Tampa keywords ranking #1–2 — Local Dominator scan, 13×13 grid (Mar 11, 2026)</strong></li>
 <li>&#10003; <strong>Tampa Keywords page published — one-click copy for Local Dominator (Mar 11, 2026)</strong></li>
 <li>&#10003; <strong>Tampa GBP content posts published — January & February 2026</strong></li>
+<li>&#10003; <strong>GSC + Google Analytics connected — March 2026</strong></li>
 </ul>
 </div>
 </div>
@@ -561,18 +561,15 @@ function downloadPDF() {
 <h3>Next Focus Areas</h3>
 </div>
 <div class="card-body">
-<ul style="margin: 0; padding-left: 20px; font-size: 10pt;">
-<li>&#10003; Sunrise & Jacksonville GBPs created & verified — Done</li>
-<li>&#10003; 16 services + descriptions added to all 3 GBPs — Done</li>
-<li>&#10003; Upload 20+ photos to Tampa GBP — Done</li>
+<ul id="next-focus-list" style="margin: 0; padding-left: 20px; font-size: 10pt;">
 <li><strong>Upload 10+ photos to Sunrise GBP</strong> — Pending client photos</li>
 <li><strong>Upload 10+ photos to Jacksonville GBP</strong> — Pending client photos</li>
-<li><strong>Launch review generation campaign</strong> (target: 100+ Tampa)</li>
-<li>&#10003; <strong>Connect GSC + Google Analytics</strong> — Connected March 2026 ✅</li>
-<li><strong>Strategic: Build "commercial lightning protection contractor" content</strong> — currently ranking Maps #3.35 (gap)</li>
-<li><strong>Strategic: Pursue "hospital lightning protection Tampa FL" citations &amp; authority signals</strong> — Maps #4.26 (gap)</li>
-<li><strong>Strategic: Add NFPA 780 / UL 96A compliance page</strong> — "Florida lightning protection code" Maps #3.26 (gap)</li>
-<li><strong>Strategic: April 8–15 re-scan for Sunrise + Jacksonville</strong> (post-verification window)</li>
+<li><strong>Launch review generation campaign</strong> — Tampa target: 100+ reviews (currently 78)</li>
+<li><strong>Build citation profile</strong> — 40+ directory citations across all 3 FL locations (Tier 1 first)</li>
+<li><strong>April 8–15: Run Sunrise + Jacksonville Local Dominator scan</strong> (post-verification window)</li>
+<li><strong>Strategic: Build "commercial lightning protection contractor" content</strong> — Maps #3.35 gap</li>
+<li><strong>Strategic: Pursue "hospital lightning protection Tampa FL" authority signals</strong> — Maps #4.26 gap</li>
+<li><strong>Strategic: Add NFPA 780 / UL 96A compliance page</strong> — FL lightning protection code Maps #3.26 gap</li>
 </ul>
 </div>
 </div>
@@ -606,6 +603,92 @@ function downloadPDF() {
 <p>&copy; 2026 Nichefinder AI Agency | Client Portal</p>
 <p>Reports are updated monthly. Questions? Contact us anytime.</p>
 </div>
+
+<script>
+/* =========================================================
+   DATA-DRIVEN DASHBOARD — reads from reports.json
+   To update the dashboard: edit reports.json, commit & push.
+   No HTML edits needed for metrics, wins, or focus areas.
+   ========================================================= */
+(async function() {
+  try {
+    const res = await fetch('reports.json');
+    if (!res.ok) return;
+    const d = await res.json();
+    const db = d.dashboard || {};
+    const m  = d.metrics   || {};
+    const kf = d.key_findings || {};
+    const cl = d.client    || {};
+
+    // --- Status Banner ---
+    const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.innerHTML = val; };
+    set('status-phase',   db.campaign_phase);
+    set('status-updated', cl.last_updated);
+
+    (db.status_tiles || []).forEach((t, i) => {
+      const v = document.getElementById('tile-' + (i+1) + '-value');
+      const l = document.getElementById('tile-' + (i+1) + '-label');
+      if (v) { v.textContent = t.value; v.style.color = t.color || ''; if (t.small) { v.style.fontSize = '14pt'; v.style.lineHeight = '1.2'; } }
+      if (l) l.textContent = t.label;
+    });
+
+    // --- Goal Tracker ---
+    const pct = db.goal_pct || 0;
+    const bar = document.getElementById('goal-bar');
+    if (bar) bar.style.width = pct + '%';
+    set('goal-bar-label', pct + '% — ' + (db.goal_label || ''));
+    set('goal-start',  db.goal_start);
+    set('goal-target', db.goal_target);
+
+    // --- Quick Stats ---
+    set('stat-listings',      m.gbp_listings);
+    set('stat-reviews',       m.reviews);
+    set('stat-reviews-sub',   (m.review_rating || '') + ' stars ⭐');
+    set('stat-citations',     m.citations);
+    set('stat-keywords',      db.keywords_rank);
+    set('stat-keywords-label', db.keywords_rank_label);
+    set('stat-keywords-sub',  db.keywords_rank_sub);
+
+    // --- Metrics Table: current month column ---
+    const cm = db.current_metrics || {};
+    Object.keys(cm).forEach(key => {
+      const cell = document.querySelector('[data-metric="' + key + '"]');
+      if (!cell) return;
+      const entry = cm[key];
+      const cls = entry.trend === 'up' ? 'trend-up' : entry.trend === 'down' ? 'trend-down' : 'trend-flat';
+      cell.innerHTML = '<strong class="' + cls + '">' + entry.value + '</strong>';
+    });
+
+    // --- Location Cards ---
+    const grid = document.getElementById('location-grid');
+    if (grid && db.location_cards && db.location_cards.length) {
+      grid.innerHTML = db.location_cards.map(loc => `
+        <div class="location-card ${loc.class}">
+          <h4>${loc.name}</h4>
+          <p class="status ${loc.status_class}">&#10003; ${loc.status}</p>
+          <p style="font-size:9pt;color:#7f8c8d;margin-top:5px;">${loc.line1}</p>
+          <p style="font-size:9pt;color:#27ae60;margin-top:3px;">${loc.line2}</p>
+        </div>`).join('');
+    }
+
+    // --- Completed Wins ---
+    const cwList = document.getElementById('completed-wins-list');
+    if (cwList && kf.completed_wins && kf.completed_wins.length) {
+      cwList.innerHTML = kf.completed_wins.map(w => `<li>&#10003; ${w}</li>`).join('');
+    }
+
+    // --- Next Focus Areas ---
+    const nfList = document.getElementById('next-focus-list');
+    if (nfList && kf.next_focus && kf.next_focus.length) {
+      nfList.innerHTML = kf.next_focus.map(f => `<li>${f}</li>`).join('');
+    }
+
+  } catch(e) {
+    // Silent fail — HTML fallback values remain visible
+    console.warn('Portal data load failed:', e);
+  }
+})();
+</script>
 
 </body>
 </html>

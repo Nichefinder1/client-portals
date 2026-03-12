@@ -25,6 +25,64 @@
     "citations": "5",
     "citations_note": "BBB, BuildZoom, Birdeye, Procore, Yelp"
   },
+  "dashboard": {
+    "campaign_phase": "Phase 2: Citations & Reviews",
+    "goal_pct": 65,
+    "goal_label": "GBPs + Keyword Scan + SEO Roadmap + LLM Analysis Complete. Now: Citations + Reviews.",
+    "goal_start": "Start: 1/3 GBP listings, Tampa score 42/100 (December 2025)",
+    "goal_target": "Target: 3/3 listings, all locations Map Pack Top 3 (Dec 2026)",
+    "keywords_rank": "17/22",
+    "keywords_rank_label": "Keywords #1–2 Google Maps",
+    "keywords_rank_sub": "Mar 11, 2026 Scan ✅",
+    "status_tiles": [
+      {"value": "3/3", "label": "GBP Listings Live", "color": "#27ae60", "small": false},
+      {"value": "Optimized", "label": "Tampa GBP · Rescore Q2", "color": "#27ae60", "small": true},
+      {"value": "17/22", "label": "Keywords #1–2 Maps", "color": "#27ae60", "small": false},
+      {"value": "78", "label": "Tampa Reviews", "color": "#1a5276", "small": false}
+    ],
+    "current_month_col": "Mar 2026",
+    "current_metrics": {
+      "gbp_listings":        {"value": "3 ✅",                   "trend": "up"},
+      "tampa_gbp_score":     {"value": "Optimized · Rescore Q2", "trend": "up"},
+      "tampa_map_pack":      {"value": "#1.00 (17/22 kw)",       "trend": "up"},
+      "tampa_reviews":       {"value": "78",                      "trend": "flat"},
+      "tampa_rating":        {"value": "4.7",                     "trend": "flat"},
+      "sunrise_gbp":         {"value": "Verified ✅",             "trend": "up"},
+      "jacksonville_gbp":    {"value": "Verified ✅",             "trend": "up"},
+      "organic_clicks":      {"value": "Connected ✅",            "trend": "up"},
+      "gbp_website_clicks":  {"value": "Connected ✅",            "trend": "up"},
+      "citations":           {"value": "5",                       "trend": "flat"},
+      "gbp_posts":           {"value": "In Progress",             "trend": "up"},
+      "blog_posts":          {"value": "0",                       "trend": "flat"},
+      "social_posts":        {"value": "0",                       "trend": "flat"}
+    },
+    "location_cards": [
+      {
+        "name": "Tampa (HQ)",
+        "class": "exists",
+        "status": "GBP OPTIMIZED",
+        "status_class": "good",
+        "line1": "4.7 stars · 78 reviews",
+        "line2": "16 services · description · service area ✅"
+      },
+      {
+        "name": "Sunrise, FL",
+        "class": "exists",
+        "status": "GBP OPTIMIZED",
+        "status_class": "good",
+        "line1": "Verified March 11, 2026",
+        "line2": "16 services · description · service area ✅"
+      },
+      {
+        "name": "Jacksonville, FL",
+        "class": "exists",
+        "status": "GBP OPTIMIZED",
+        "status_class": "good",
+        "line1": "Verified March 11, 2026",
+        "line2": "16 services · description · service area ✅"
+      }
+    ]
+  },
   "one_time_reports": [
     {
       "title": "GBP Audit (Multi-Location)",
@@ -119,7 +177,8 @@
       "LLM Visibility Analysis complete — Tampa visible, Sunrise/JAX gap identified (Mar 11, 2026)",
       "Tampa Keywords page published — 22 keywords with one-click copy for Local Dominator",
       "Tampa GBP content posts published — January & February 2026",
-      "Full-year content calendar built (52 weeks)"
+      "Full-year content calendar built (52 weeks)",
+      "GSC + Google Analytics connected — March 2026"
     ],
     "strengths": [
       "Tampa GBP: 4.7 stars, 78 reviews — strong foundation",
@@ -130,12 +189,14 @@
       "In-house CAD/sealed engineering drawings"
     ],
     "next_focus": [
-      "Upload 10+ photos to Sunrise & Jacksonville GBPs (pending client delivery)",
-      "Launch review generation campaign — Tampa target: 100+ reviews",
-      "Connect Google Search Console & Analytics — Connected March 2026 ✅",
-      "Build citation profile — 40+ directory citations across all 3 FL locations (Q2 2026)",
-      "April 8–15: Run Sunrise + Jacksonville Local Dominator scan (post-verification window)",
-      "Strategic: Build content targeting 4 keyword gaps (commercial contractor, hospital, FL code, NFPA 780)"
+      "<strong>Upload 10+ photos to Sunrise GBP</strong> — Pending client photos",
+      "<strong>Upload 10+ photos to Jacksonville GBP</strong> — Pending client photos",
+      "<strong>Launch review generation campaign</strong> — Tampa target: 100+ reviews (currently 78)",
+      "<strong>Build citation profile</strong> — 40+ directory citations across all 3 FL locations (Tier 1 first)",
+      "<strong>April 8–15: Run Sunrise + Jacksonville Local Dominator scan</strong> (post-verification window)",
+      "<strong>Strategic: Build \"commercial lightning protection contractor\" content</strong> — Maps #3.35 gap",
+      "<strong>Strategic: Pursue \"hospital lightning protection Tampa FL\" authority signals</strong> — Maps #4.26 gap",
+      "<strong>Strategic: Add NFPA 780 / UL 96A compliance page</strong> — FL lightning protection code Maps #3.26 gap"
     ]
   },
   "contact": {
