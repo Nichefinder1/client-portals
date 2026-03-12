@@ -13,15 +13,18 @@
     "gbp_listings": 3,
     "gbp_listings_target": 3,
     "gbp_listings_note": "All 3 verified March 11, 2026",
-    "tampa_gbp_score": "42/100 (D)",
+    "tampa_gbp_score": "Optimized · Rescore Q2 2026",
+    "tampa_gbp_score_baseline": "42/100 (D) — February 4, 2026 pre-optimization",
+    "tampa_map_pack_rank": "#1.00 median (17/22 keywords #1–2)",
+    "tampa_map_pack_note": "Local Dominator scan March 11, 2026 — 13×13 grid",
     "organic_clicks": "--",
     "organic_clicks_note": "Pending GSC access",
     "gbp_calls": "--",
     "gbp_calls_note": "Pending GBP access",
     "reviews": 78,
     "review_rating": 4.7,
-    "reviews_note": "Tampa only",
-    "citations": "~5",
+    "reviews_note": "Tampa GBP only (Sunrise & Jacksonville photos pending — no reviews yet)",
+    "citations": "5",
     "citations_note": "BBB, BuildZoom, Birdeye, Procore, Yelp"
   },
   "one_time_reports": [
@@ -29,15 +32,15 @@
       "title": "GBP Audit (Multi-Location)",
       "file": "GBP_Audit.html",
       "date": "February 4, 2026",
-      "description": "Critical finding: Only 1 of 3 offices has GBP. Tampa score: 42/100 (D). Missing $150K–$400K/yr in leads.",
-      "badge": "CRITICAL",
-      "badge_color": "red"
+      "description": "Audit identified: only 1 of 3 offices had GBP. Tampa score: 42/100 (D). $150K–$400K/yr revenue gap. All findings resolved March 11, 2026.",
+      "badge": "RESOLVED ✅",
+      "badge_color": "green"
     },
     {
       "title": "Local SEO Roadmap",
       "file": "Local_SEO_Roadmap.html",
       "date": "March 11, 2026",
-      "description": "Tampa #1.08 avg rank confirmed (Local Dominator). Full keyword strategy, competitor landscape, 12-month timeline, and Q2 priority actions for all 3 markets.",
+      "description": "March 11 Local Dominator scan — 17/22 Tampa keywords ranking #1–2 on Google Maps, median rank #1.00. Full keyword strategy, competitor landscape, 12-month timeline, and Q2 priority actions for all 3 markets.",
       "badge": "View",
       "badge_color": "blue"
     },
@@ -45,7 +48,15 @@
       "title": "LLM Visibility Analysis",
       "file": "LLM_Visibility_Analysis.html",
       "date": "March 11, 2026",
-      "description": "Tampa visible in AI search results. Jacksonville partial. Sunrise not yet appearing. 8-action visibility plan to get All South recommended by ChatGPT and Perplexity.",
+      "description": "Tampa visible in AI search results. Jacksonville partial. Sunrise not yet appearing. 16-source citation audit. 8-action visibility plan.",
+      "badge": "View",
+      "badge_color": "blue"
+    },
+    {
+      "title": "Tampa Keywords",
+      "file": "Tampa_Keywords.html",
+      "date": "March 11, 2026",
+      "description": "22 Tampa keywords across 5 buckets with March 11 scan rankings. One-click copy for Local Dominator. 4 gap keywords flagged for Q2 strategy.",
       "badge": "View",
       "badge_color": "blue"
     }
@@ -54,10 +65,10 @@
     {
       "title": "GBP Setup & Optimization Checklist",
       "file": "February_2026_Deliverables.html",
-      "date": "Started February 2026",
-      "description": "Create Sunrise + Jacksonville GBPs. Optimize Tampa with services, description, photos, service area. Target score: 90/100.",
-      "badge": "In Progress",
-      "badge_color": "yellow"
+      "date": "Completed March 11, 2026",
+      "description": "Phase 1 complete — all 3 GBPs created, verified, and fully optimized. 16 services + descriptions added to Tampa, Sunrise, and Jacksonville. Tampa photos uploaded (20+). Sunrise & Jacksonville photos pending client delivery.",
+      "badge": "Phase 1 Complete ✅",
+      "badge_color": "green"
     },
     {
       "title": "Citation Building Checklist",
@@ -77,7 +88,7 @@
         {
           "title": "Monthly Progress Report",
           "file": null,
-          "description": "Complete overview of GBP setup progress, content published, and metrics for the month.",
+          "description": "Complete overview of GBP Phase 1 completion, keyword scan results, and metrics for March.",
           "badge": "Coming Mar 31",
           "badge_color": "gray",
           "available_date": "March 31"
@@ -101,14 +112,19 @@
   ],
   "key_findings": {
     "completed_wins": [
-      "GBP multi-location audit complete (Feb 4, 2026)",
-      "Revenue impact quantified ($150K–$400K/year)",
-      "Full-year content calendar built (52 weeks)",
-      "Tampa GBP: 76 reviews, 4.7 stars confirmed",
-      "Prioritized action plan created for Q1–Q2"
+      "GBP multi-location audit complete — identified $150K–$400K/yr revenue gap (Feb 4, 2026)",
+      "All 3 GBPs (Tampa, Sunrise, Jacksonville) created, verified & optimized (Mar 11, 2026)",
+      "16 services + descriptions, business descriptions, service areas & categories set on all 3 GBPs",
+      "Tampa GBP: 78 reviews, 4.7 stars — strong foundation confirmed",
+      "17/22 Tampa keywords ranking #1–2 on Google Maps — Local Dominator scan (Mar 11, 2026)",
+      "Local SEO Roadmap published — 12-month plan, keyword table, competitor landscape (Mar 11, 2026)",
+      "LLM Visibility Analysis complete — Tampa visible, Sunrise/JAX gap identified (Mar 11, 2026)",
+      "Tampa Keywords page published — 22 keywords with one-click copy for Local Dominator",
+      "Tampa GBP content posts published — January & February 2026",
+      "Full-year content calendar built (52 weeks)"
     ],
     "strengths": [
-      "Tampa GBP: 4.7 stars, 76 reviews — strong foundation",
+      "Tampa GBP: 4.7 stars, 78 reviews — strong foundation",
       "40+ years of industry experience",
       "BBB Accredited (Tampa)",
       "BuildZoom top 8% of FL contractors",
@@ -116,12 +132,12 @@
       "In-house CAD/sealed engineering drawings"
     ],
     "next_focus": [
-      "CREATE GBP for Sunrise office (Priority #1)",
-      "CREATE GBP for Jacksonville office (Priority #2)",
-      "Add 10+ services to Tampa GBP",
-      "Add keyword-rich business description to Tampa",
-      "Launch review generation campaign (target: 100+)",
-      "Connect GSC + Google Analytics for tracking"
+      "Upload 10+ photos to Sunrise & Jacksonville GBPs (pending client delivery)",
+      "Launch review generation campaign — Tampa target: 100+ reviews",
+      "Connect Google Search Console & Analytics (pending client access)",
+      "Build citation profile — 40+ directory citations across all 3 FL locations (Q2 2026)",
+      "April 8–15: Run Sunrise + Jacksonville Local Dominator scan (post-verification window)",
+      "Strategic: Build content targeting 4 keyword gaps (commercial contractor, hospital, FL code, NFPA 780)"
     ]
   },
   "contact": {

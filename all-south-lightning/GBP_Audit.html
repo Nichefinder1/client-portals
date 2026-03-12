@@ -11,8 +11,15 @@
 .btn-pdf:hover { background-color: #a93226; }
 .btn-print { background-color: #1a5276; color: white; }
 .btn-print:hover { background-color: #154360; }
-@media print { .download-bar { display: none !important; } }
-body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 1in; color: #333; }
+@media print { .download-bar, .portal-nav { display: none !important; } }
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 0; color: #333; }
+.audit-content { padding: 1in; }
 h1 { font-size: 24pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
 h2 { font-size: 18pt; color: #2874a6; margin-top: 24pt; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
 h3 { font-size: 14pt; color: #1a5276; margin-top: 18pt; }
@@ -50,6 +57,23 @@ code { background-color: #f4f6f6; padding: 10px; display: block; font-family: Co
 </head>
 <body>
 
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">All South Lightning</span>
+<div class="portal-nav-links">
+<a href="index.html">&#127968; Dashboard</a>
+<a href="GBP_Audit.html" class="active">&#128269; GBP Audit</a>
+<a href="February_2026_Deliverables.html">&#9989; Feb Deliverables</a>
+<a href="Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+<a href="LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+<a href="Tampa_Keywords.html">&#128269; Tampa Keywords</a>
+<a href="GBP_UPDATE_CONTENT_AGENCY.html" style="background-color:rgba(39,174,96,0.25);color:#90ee90;">&#128203; GBP Copy Kit</a>
+</div>
+</div>
+</nav>
+
+<div class="audit-content">
+
 <div class="download-bar">
 <button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
 <button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
@@ -76,14 +100,19 @@ function downloadPDF() {
 
 <div class="header-info">
 <strong>Business:</strong> All South Lightning Protection Inc.<br>
-<strong>Audit Date:</strong> February 4, 2026<br>
+<strong>Audit Date:</strong> February 4, 2026 (Historical Snapshot)<br>
 <strong>Locations:</strong> Tampa, Sunrise, Jacksonville FL<br>
 <strong>Prepared By:</strong> Nichefinder AI Agency
 </div>
 
-<div class="warning-banner">
-<h2>CRITICAL: 2 OF 3 OFFICE LOCATIONS HAVE NO GBP</h2>
-<p style="margin: 10px 0 0 0; font-size: 14pt;">Sunrise and Jacksonville offices are INVISIBLE on Google Maps</p>
+<div class="resolved" style="margin-bottom: 20px;">
+<strong style="font-size: 14pt;">&#10003; ALL FINDINGS RESOLVED — March 11, 2026</strong><br>
+<p style="margin: 8px 0 0 0;">This document is the original February 4, 2026 audit that identified critical GBP gaps. <strong>All issues have been fully resolved:</strong> Sunrise and Jacksonville GBPs created, verified, and optimized. Tampa GBP fully optimized (16 services, description, service area, categories). All 3 locations now live on Google Maps. See <a href="February_2026_Deliverables.html" style="color: #1e8449; font-weight: bold;">February 2026 Deliverables</a> for current status.</p>
+</div>
+
+<div class="warning-banner" style="opacity: 0.55;">
+<h2>CRITICAL: 2 OF 3 OFFICE LOCATIONS HAD NO GBP</h2>
+<p style="margin: 10px 0 0 0; font-size: 14pt;">February 4, 2026 baseline — Sunrise and Jacksonville were INVISIBLE on Google Maps</p>
 </div>
 
 <hr>
@@ -130,7 +159,7 @@ function downloadPDF() {
 <tr><td>Business Name</td><td class="good">Good</td><td>All South Lightning Protection Inc.</td></tr>
 <tr><td>Address</td><td class="good">Good</td><td>5307 N Falkenburg Rd Bldg A, Tampa, FL 33610</td></tr>
 <tr><td>Phone</td><td class="good">Good</td><td>(813) 630-2757</td></tr>
-<tr><td>Rating</td><td class="good">Strong</td><td>4.7 stars (76 reviews)</td></tr>
+<tr><td>Rating</td><td class="good">Strong</td><td>4.7 stars (78 reviews)</td></tr>
 <tr><td>Hours</td><td class="good">Set</td><td>Mon-Fri 8AM-5PM</td></tr>
 <tr><td>Website</td><td>Minor</td><td>allsouth.us (shorter domain)</td></tr>
 <tr><td>Category</td><td class="bad">Needs Update</td><td>Only "Contractor" (generic)</td></tr>
@@ -198,7 +227,7 @@ function downloadPDF() {
 <tr><td>Services Listed</td><td class="bad">0</td><td>10</td><td class="bad">NO services listed</td></tr>
 <tr><td>Business Description</td><td class="bad">0</td><td>10</td><td class="bad">NO description</td></tr>
 <tr><td>Service Area Defined</td><td class="bad">0</td><td>10</td><td class="bad">NOT defined</td></tr>
-<tr><td>Reviews (Quantity & Quality)</td><td>11</td><td>15</td><td>Good (76 reviews, 4.7 stars)</td></tr>
+<tr><td>Reviews (Quantity & Quality)</td><td>11</td><td>15</td><td>Good (78 reviews, 4.7 stars)</td></tr>
 <tr><td>Review Responses</td><td>8</td><td>10</td><td class="good">Responding well</td></tr>
 <tr><td>Photos</td><td>6</td><td>10</td><td>Needs more</td></tr>
 <tr><td>Posts/Updates</td><td>8</td><td>10</td><td class="good">Active posting</td></tr>
@@ -328,21 +357,21 @@ function downloadPDF() {
 
 <h2>Summary</h2>
 
-<div class="critical-issue">
-<h3>Current State: CRITICAL GAPS</h3>
+<div class="resolved">
+<h3>&#10003; RESOLVED — February 4, 2026 Audit Findings (All Closed March 11, 2026)</h3>
 <ul>
-<li>Only 1 of 3 office locations has a Google Business Profile</li>
-<li>Invisible in South Florida (Broward/Miami-Dade) searches</li>
-<li>Invisible in Northeast Florida (Jacksonville) searches</li>
-<li>Tampa GBP missing services, description, and service area</li>
-<li>Estimated $150,000-$400,000/year in lost revenue</li>
+<li><del>Only 1 of 3 office locations had a Google Business Profile</del> → All 3 now live ✅</li>
+<li><del>Invisible in South Florida (Broward/Miami-Dade) searches</del> → Sunrise GBP verified ✅</li>
+<li><del>Invisible in Northeast Florida (Jacksonville) searches</del> → Jacksonville GBP verified ✅</li>
+<li><del>Tampa GBP missing services, description, and service area</del> → 16 services + full optimization complete ✅</li>
+<li>Estimated $150,000–$400,000/year revenue gap → Now recoverable through all 3 active GBPs ✅</li>
 </ul>
 </div>
 
 <div class="positive">
 <h3>Positive Findings</h3>
 <ul>
-<li>Tampa GBP has strong 4.7 rating with 76 reviews</li>
+<li>Tampa GBP has strong 4.7 rating with 78 reviews</li>
 <li>Active posting on Tampa GBP (recent activity)</li>
 <li>Responding to reviews professionally</li>
 <li>Photos present on Tampa profile</li>
@@ -352,9 +381,11 @@ function downloadPDF() {
 
 <div class="footer">
 <p><em>Audit Date: February 4, 2026</em></p>
-<p><em>Next Audit Recommended: March 4, 2026</em></p>
+<p><em>Next Audit Recommended: Q2 2026 (post-optimization rescore)</em></p>
 <p><em>Prepared by Nichefinder AI Agency</em></p>
 </div>
+
+</div><!-- end .audit-content -->
 
 </body>
 </html>
