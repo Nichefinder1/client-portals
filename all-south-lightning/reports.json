@@ -10,9 +10,9 @@
     "last_updated": "March 11, 2026"
   },
   "metrics": {
-    "gbp_listings": 1,
+    "gbp_listings": 3,
     "gbp_listings_target": 3,
-    "gbp_listings_note": "CRITICAL: Missing Sunrise & Jacksonville",
+    "gbp_listings_note": "All 3 verified March 11, 2026",
     "tampa_gbp_score": "42/100 (D)",
     "organic_clicks": "--",
     "organic_clicks_note": "Pending GSC access",
