@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press Release Intake — All South Lightning Protection</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
+
+/* Portal Navigation */
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
+.header h1 { margin: 0; font-size: 26pt; }
+.header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 11pt; max-width: 700px; margin: 10px auto 0; }
+
+/* Container */
+.container { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
+
+/* Info banner */
+.info-banner { background: #eaf4fb; border-left: 5px solid #2874a6; padding: 18px 20px; border-radius: 6px; margin-bottom: 28px; }
+.info-banner h3 { color: #1a5276; margin-bottom: 6px; font-size: 11pt; }
+.info-banner p { color: #2c5282; font-size: 10pt; margin: 0; }
+
+/* Section card */
+.section-card { background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 30px; margin-bottom: 24px; border-top: 4px solid #2874a6; }
+.section-card h2 { font-size: 14pt; color: #1a5276; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.section-card .section-desc { font-size: 9.5pt; color: #7f8c8d; margin-bottom: 22px; }
+.section-number { background: #2874a6; color: white; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10pt; font-weight: bold; flex-shrink: 0; }
+
+/* Form fields */
+.field-group { margin-bottom: 18px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+@media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+label { display: block; font-size: 9.5pt; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+label span.req { color: #c0392b; }
+label span.hint { font-weight: normal; color: #7f8c8d; font-size: 9pt; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"],
+select, textarea {
+  width: 100%; padding: 10px 12px; border: 1.5px solid #d5d8dc; border-radius: 6px;
+  font-family: Calibri, Arial, sans-serif; font-size: 10.5pt; color: #333;
+  background: #fdfdfd; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: #2874a6; box-shadow: 0 0 0 3px rgba(40,116,166,0.12);
+}
+textarea { resize: vertical; min-height: 90px; }
+select { cursor: pointer; }
+
+/* Checkbox / radio rows */
+.check-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.check-item { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 10pt; }
+.check-item input { width: auto; cursor: pointer; accent-color: #2874a6; }
+.check-item label { font-weight: normal; color: #333; margin: 0; cursor: pointer; }
+
+/* Help-write toggle */
+.help-toggle { background: #eaf4fb; border: 1.5px dashed #7fb3d3; border-radius: 6px; padding: 12px 14px; margin-top: 8px; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.help-toggle input { width: auto; accent-color: #2874a6; }
+.help-toggle label { font-size: 9.5pt; color: #1a5276; cursor: pointer; margin: 0; font-weight: normal; }
+
+/* Character counter */
+.char-counter { font-size: 8.5pt; color: #a0a0a0; text-align: right; margin-top: 3px; }
+.char-counter.warn { color: #e67e22; }
+
+/* Pre-fill note */
+.prefill-note { font-size: 9pt; color: #27ae60; font-style: italic; margin-top: 4px; }
+
+/* Submit section */
+.submit-section { text-align: center; margin-top: 10px; }
+.btn-submit { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; border: none; padding: 16px 48px; font-size: 13pt; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(26,82,118,0.35); transition: all 0.2s; letter-spacing: 0.3px; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(26,82,118,0.45); }
+.btn-submit:active { transform: translateY(0); }
+.submit-note { font-size: 9pt; color: #7f8c8d; margin-top: 10px; }
+
+/* Generated brief */
+#brief-section { display: none; }
+.brief-header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 22px 28px; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 12px; }
+.brief-header h2 { margin: 0; font-size: 14pt; }
+.brief-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-copy { background: rgba(255,255,255,0.2); color: white; border: 1.5px solid rgba(255,255,255,0.5); padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; font-weight: bold; transition: background 0.2s; }
+.btn-copy:hover { background: rgba(255,255,255,0.3); }
+.btn-print { background: white; color: #1a5276; border: none; padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; font-weight: bold; }
+.btn-edit { background: transparent; color: rgba(255,255,255,0.85); border: 1.5px solid rgba(255,255,255,0.35); padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; }
+.brief-body { background: white; border: 1px solid #d5d8dc; border-top: none; border-radius: 0 0 10px 10px; padding: 30px 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.brief-label { font-size: 8pt; font-weight: bold; color: #2874a6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; margin-top: 18px; }
+.brief-value { font-size: 10.5pt; color: #222; padding: 8px 12px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #2874a6; white-space: pre-wrap; }
+.brief-value.empty { color: #aaa; font-style: italic; }
+.brief-divider { border: none; border-top: 1px solid #e8eaed; margin: 20px 0 4px; }
+.brief-section-title { font-size: 11pt; font-weight: bold; color: #1a5276; margin-top: 24px; margin-bottom: 4px; padding-bottom: 6px; border-bottom: 2px solid #eaf4fb; }
+.copied-toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #27ae60; color: white; padding: 12px 28px; border-radius: 30px; font-size: 10pt; font-weight: bold; box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 9999; display: none; }
+
+@media print {
+  .portal-nav, .btn-submit, .submit-section, .info-banner, .section-card, .brief-actions { display: none !important; }
+  #brief-section { display: block !important; }
+  .brief-header { background: #1a5276 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: white; }
+  .container { padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="portal-nav">
+  <div class="portal-nav-inner">
+    <div class="portal-nav-brand">All South Lightning Protection — Client Portal</div>
+    <div class="portal-nav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="Local_SEO_Roadmap.html">SEO Roadmap</a>
+      <a href="GBP_Audit.html">GBP Audit</a>
+      <a href="Tampa_Keywords.html">Keywords</a>
+      <a href="LLM_Visibility_Analysis.html">LLM Visibility</a>
+      <a href="Press_Release_Intake.html" class="active" style="background:rgba(255,255,255,0.18);color:white;">Press Release</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="header">
+  <h1>Press Release Intake</h1>
+  <p>Fill out each section below and we'll write a press release designed to get picked up by news outlets across Tampa Bay, South Florida, Jacksonville, and beyond.</p>
+</div>
+
+<div class="container">
+
+  <div class="info-banner">
+    <h3>How this works</h3>
+    <p>Complete all sections marked with <strong style="color:#c0392b;">*</strong> — the rest is optional but helps us write a stronger release. When you're done, click <strong>Generate My Press Release Brief</strong> at the bottom. We'll use your answers to write your first draft within 24–48 hours.</p>
+  </div>
+
+  <!-- FORM -->
+  <form id="intake-form" novalidate>
+
+    <!-- SECTION 1: Contact -->
+    <div class="section-card">
+      <h2><span class="section-number">1</span> Your Contact Information</h2>
+      <p class="section-desc">Who should we contact if we have follow-up questions about this release?</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="contact-name">Full Name <span class="req">*</span></label>
+          <input type="text" id="contact-name" placeholder="e.g. John Smith">
+        </div>
+        <div class="field-group">
+          <label for="contact-title">Job Title</label>
+          <input type="text" id="contact-title" placeholder="e.g. Owner, General Manager">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="contact-email">Email <span class="req">*</span></label>
+          <input type="email" id="contact-email" placeholder="you@company.com">
+        </div>
+        <div class="field-group">
+          <label for="contact-phone">Phone</label>
+          <input type="tel" id="contact-phone" placeholder="(555) 000-0000">
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="company-name">Company Name <span class="req">*</span></label>
+        <input type="text" id="company-name" value="All South Lightning Protection" placeholder="Your company name">
+        <div class="prefill-note">✓ Pre-filled — update if needed</div>
+      </div>
+      <div class="field-group">
+        <label>Which location(s) does this announcement involve? <span class="req">*</span></label>
+        <div class="check-group" style="margin-top:8px;">
+          <div class="check-item"><input type="checkbox" id="loc-tampa" value="Tampa (HQ)"><label for="loc-tampa">Tampa (HQ) — (813) 630-2757</label></div>
+          <div class="check-item"><input type="checkbox" id="loc-sunrise" value="Sunrise (Broward County)"><label for="loc-sunrise">Sunrise — Broward County · (954) 742-4164</label></div>
+          <div class="check-item"><input type="checkbox" id="loc-jacksonville" value="Jacksonville"><label for="loc-jacksonville">Jacksonville — (813) 842-6172</label></div>
+          <div class="check-item"><input type="checkbox" id="loc-all" value="All Locations (Statewide)"><label for="loc-all">All Locations (Statewide)</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: The News -->
+    <div class="section-card">
+      <h2><span class="section-number">2</span> What's the News?</h2>
+      <p class="section-desc">Tell us what you're announcing. The more specific you are here, the stronger the headline.</p>
+      <div class="field-group">
+        <label for="announcement-type">Type of Announcement <span class="req">*</span></label>
+        <select id="announcement-type">
+          <option value="">— Select the best fit —</option>
+          <option value="new-service">New Service or Product Offering</option>
+          <option value="award">Award or Recognition</option>
+          <option value="new-hire">New Hire or Promotion</option>
+          <option value="partnership">Partnership or Certification</option>
+          <option value="milestone">Business Milestone (anniversary, # of installs, etc.)</option>
+          <option value="community">Community Involvement or Charitable Work</option>
+          <option value="expansion">Business Expansion (new location, new territory)</option>
+          <option value="safety">Safety Alert or Public Education</option>
+          <option value="seasonal">Seasonal Preparation Campaign</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="headline-idea">Your Headline Idea <span class="req">*</span> <span class="hint">— Don't worry about making it perfect, just capture the core idea</span></label>
+        <input type="text" id="headline-idea" placeholder='e.g. "All South Lightning Protection Expands to Broward County, Brings 40 Years of Florida Lightning Expertise to South Florida"'>
+      </div>
+      <div class="field-group">
+        <label for="announcement-summary">Summarize the Announcement in 2–3 Sentences <span class="req">*</span></label>
+        <textarea id="announcement-summary" rows="4" placeholder="Write it as if you're explaining it to a friend. What happened? What does it mean?"></textarea>
+        <div class="char-counter" id="summary-counter">0 / 500 characters</div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Story Details -->
+    <div class="section-card">
+      <h2><span class="section-number">3</span> The Story Details</h2>
+      <p class="section-desc">The "5 Ws" — this is the core of your release. Answer as many as apply.</p>
+      <div class="field-group">
+        <label for="detail-what">What exactly happened or is happening? <span class="req">*</span></label>
+        <textarea id="detail-what" rows="4" placeholder="Describe the event, achievement, launch, or news in specific detail. Include names, numbers, and any facts that make this real and credible."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="detail-when">When did this happen (or when will it happen)?</label>
+          <input type="date" id="detail-when">
+        </div>
+        <div class="field-group">
+          <label for="detail-where">Where? <span class="hint">(specific city, county, or region)</span></label>
+          <input type="text" id="detail-where" placeholder="e.g. Tampa Bay area · Broward County · Jacksonville · Statewide Florida">
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="detail-why">Why does this matter to your customers or the community? <span class="req">*</span></label>
+        <textarea id="detail-why" rows="3" placeholder="What problem does this solve? Why should a homeowner or business owner care? What's the real-world benefit?"></textarea>
+      </div>
+      <div class="field-group">
+        <label for="detail-who">Who benefits from this news? <span class="hint">(your target audience)</span></label>
+        <input type="text" id="detail-who" placeholder="e.g. Florida homeowners, commercial property managers, Broward County builders, Jacksonville facility managers">
+      </div>
+    </div>
+
+    <!-- SECTION 4: Quote -->
+    <div class="section-card">
+      <h2><span class="section-number">4</span> Your Spokesperson Quote</h2>
+      <p class="section-desc">Every great press release includes a quote from a company leader. This adds credibility and gives reporters something to publish directly.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="quote-name">Spokesperson Name <span class="req">*</span></label>
+          <input type="text" id="quote-name" placeholder="e.g. John Smith">
+        </div>
+        <div class="field-group">
+          <label for="quote-title">Spokesperson Title</label>
+          <input type="text" id="quote-title" placeholder="e.g. Owner, Founder, Director of Operations">
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="quote-text">The Quote <span class="hint">— Speak directly, use "I" or "we", and focus on impact or purpose</span></label>
+        <textarea id="quote-text" rows="3" placeholder='e.g. "We\'ve protected over a thousand Florida families from lightning damage, and every installation reminds us why this work matters. Lightning isn\'t a matter of if — it\'s when."'></textarea>
+      </div>
+      <div class="help-toggle" onclick="document.getElementById('draft-quote-cb').click()">
+        <input type="checkbox" id="draft-quote-cb">
+        <label for="draft-quote-cb">I'd like Nichefinder to draft a quote for me based on the story details above — I'll review and approve before it goes out.</label>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Proof & Stats -->
+    <div class="section-card">
+      <h2><span class="section-number">5</span> Supporting Facts & Proof Points</h2>
+      <p class="section-desc">Hard numbers and credentials make your release more credible and more likely to get picked up by editors. Share what you have — even rough estimates help.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="years-in-business">Years in Business</label>
+          <input type="text" id="years-in-business" placeholder="e.g. 15 years, Since 2009">
+        </div>
+        <div class="field-group">
+          <label for="systems-installed">Total Systems Installed (approx.)</label>
+          <input type="text" id="systems-installed" placeholder="e.g. 1,200+, Over 500">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="service-area">Service Area</label>
+          <input type="text" id="service-area" value="Tampa Bay · Broward County (Sunrise) · Jacksonville · Statewide Florida" placeholder="Counties, cities, or regions served">
+          <div class="prefill-note">✓ Pre-filled with all 3 locations — edit if this release is location-specific</div>
+        </div>
+        <div class="field-group">
+          <label for="certifications">Certifications or Licenses</label>
+          <input type="text" id="certifications" placeholder="e.g. LPI Certified, UL Listed, State Licensed">
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="other-stats">Any Other Data, Stats, or Proof Points</label>
+        <textarea id="other-stats" rows="3" placeholder="e.g. insurance partnerships, BBB rating, customer testimonial nuggets, notable clients (commercial, government, historical), awards won..."></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION 6: Company Boilerplate -->
+    <div class="section-card">
+      <h2><span class="section-number">6</span> About Your Company</h2>
+      <p class="section-desc">This appears at the end of every press release as the standard "About" paragraph. Edit or confirm the text below — we can also write this from scratch if you prefer.</p>
+      <div class="field-group">
+        <label for="boilerplate">Company "About" Paragraph</label>
+        <textarea id="boilerplate" rows="5" placeholder="Example: All South Lightning Protection is a Florida-based lightning protection company with offices in Tampa, Sunrise (Broward County), and Jacksonville. With 40+ years of experience and [X+] installations completed statewide, the company provides UL-listed lightning protection and surge suppression systems for residential, commercial, and institutional clients. Learn more at allsouthlightningprotection.com."></textarea>
+      </div>
+      <div class="help-toggle" onclick="document.getElementById('draft-boilerplate-cb').click()">
+        <input type="checkbox" id="draft-boilerplate-cb">
+        <label for="draft-boilerplate-cb">I'd like Nichefinder to write our "About" paragraph using the facts I've provided above.</label>
+      </div>
+    </div>
+
+    <!-- SECTION 7: Distribution -->
+    <div class="section-card">
+      <h2><span class="section-number">7</span> Distribution & Timing</h2>
+      <p class="section-desc">Help us understand where and when you want this release to land.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="release-date">Preferred Release Date</label>
+          <input type="date" id="release-date">
+        </div>
+        <div class="field-group">
+          <label for="embargo-date">Embargo Date <span class="hint">— if this is under embargo until a certain date</span></label>
+          <input type="date" id="embargo-date">
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Target Audience <span class="hint">(check all that apply)</span></label>
+        <div class="check-group">
+          <div class="check-item"><input type="checkbox" id="aud-homeowners"><label for="aud-homeowners">Florida Homeowners</label></div>
+          <div class="check-item"><input type="checkbox" id="aud-commercial"><label for="aud-commercial">Commercial Property Owners</label></div>
+          <div class="check-item"><input type="checkbox" id="aud-builders"><label for="aud-builders">Builders & Contractors</label></div>
+          <div class="check-item"><input type="checkbox" id="aud-insurance"><label for="aud-insurance">Insurance Industry</label></div>
+          <div class="check-item"><input type="checkbox" id="aud-govt"><label for="aud-govt">Government / Municipal</label></div>
+          <div class="check-item"><input type="checkbox" id="aud-industry"><label for="aud-industry">Industry / Trade</label></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="target-outlets">Any Specific News Outlets or Journalists You Want to Reach?</label>
+        <input type="text" id="target-outlets" placeholder="e.g. Tampa Bay Times, Sun Sentinel (Broward), Florida Times-Union (Jacksonville), Business Observer, WTSP / WSVN / WJXT, trade publications...">
+      </div>
+      <div class="field-group">
+        <label for="distribution-notes">Distribution Notes</label>
+        <input type="text" id="distribution-notes" placeholder="e.g. Tampa Bay only · Broward / South Florida only · Jacksonville only · All 3 markets · Statewide Florida · National wire">
+      </div>
+    </div>
+
+    <!-- SECTION 8: Media -->
+    <div class="section-card">
+      <h2><span class="section-number">8</span> Supporting Media</h2>
+      <p class="section-desc">Photos dramatically increase the chance your release gets picked up. Releases with a strong image are far more likely to be published.</p>
+      <div class="field-group">
+        <label>Do you have photos to include with this release?</label>
+        <div class="check-group" style="margin-top:8px;">
+          <div class="check-item"><input type="radio" name="has-photos" id="photos-yes" value="yes"><label for="photos-yes">Yes — I can send them</label></div>
+          <div class="check-item"><input type="radio" name="has-photos" id="photos-no" value="no"><label for="photos-no">No — not at this time</label></div>
+          <div class="check-item"><input type="radio" name="has-photos" id="photos-help" value="help"><label for="photos-help">I need help sourcing photos</label></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="photo-description">Describe any photos you have or want included</label>
+        <textarea id="photo-description" rows="2" placeholder="e.g. Job site photo of system installation on a residential home in Clearwater, headshot of owner, aerial photo of commercial project..."></textarea>
+      </div>
+      <div class="field-group">
+        <label for="links">Relevant Links <span class="hint">(website, project page, social proof, news coverage, etc.)</span></label>
+        <input type="text" id="links" placeholder="e.g. https://allsouthlightning.com/blog/...">
+      </div>
+    </div>
+
+    <!-- SECTION 9: Extras -->
+    <div class="section-card">
+      <h2><span class="section-number">9</span> Anything Else?</h2>
+      <p class="section-desc">Is there anything we should know that doesn't fit the questions above? Context, sensitivities, background story, or notes for our writer?</p>
+      <div class="field-group">
+        <label for="extra-notes">Additional Notes for Our Writer</label>
+        <textarea id="extra-notes" rows="4" placeholder="Open field — share anything that helps tell this story better. No detail is too small."></textarea>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-section">
+      <button type="button" class="btn-submit" onclick="generateBrief()">Generate My Press Release Brief →</button>
+      <p class="submit-note">Your answers will be compiled into a brief our writer uses to craft your release. You'll review and approve before anything is published.</p>
+    </div>
+
+  </form>
+
+  <!-- GENERATED BRIEF -->
+  <div id="brief-section" style="margin-top: 36px;">
+    <div class="brief-header">
+      <div>
+        <h2>Press Release Brief — All South Lightning Protection</h2>
+        <div style="font-size:9pt; opacity:0.8; margin-top:4px;" id="brief-timestamp"></div>
+      </div>
+      <div class="brief-actions">
+        <button class="btn-edit" onclick="editForm()">← Edit Answers</button>
+        <button class="btn-copy" onclick="copyBrief()">Copy All</button>
+        <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+    <div class="brief-body" id="brief-body"></div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="copied-toast" id="copied-toast">Copied to clipboard!</div>
+
+<script>
+// Character counter
+const summaryField = document.getElementById('announcement-summary');
+const summaryCounter = document.getElementById('summary-counter');
+summaryField.addEventListener('input', () => {
+  const len = summaryField.value.length;
+  summaryCounter.textContent = len + ' / 500 characters';
+  summaryCounter.className = 'char-counter' + (len > 400 ? ' warn' : '');
+});
+
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function checked(id) {
+  const el = document.getElementById(id);
+  return el && el.checked;
+}
+
+function radioVal(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : '';
+}
+
+function getLocations() {
+  const locs = ['loc-tampa','loc-sunrise','loc-jacksonville','loc-all'];
+  return locs.filter(id => checked(id)).map(id => document.getElementById(id).value).join(', ') || '';
+}
+
+function getAudiences() {
+  const opts = [
+    ['aud-homeowners', 'Florida Homeowners'],
+    ['aud-commercial', 'Commercial Property Owners'],
+    ['aud-builders', 'Builders & Contractors'],
+    ['aud-insurance', 'Insurance Industry'],
+    ['aud-govt', 'Government / Municipal'],
+    ['aud-industry', 'Industry / Trade'],
+  ];
+  return opts.filter(o => checked(o[0])).map(o => o[1]).join(', ') || '';
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  const parts = d.split('-');
+  if (parts.length !== 3) return d;
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return months[parseInt(parts[1])-1] + ' ' + parseInt(parts[2]) + ', ' + parts[0];
+}
+
+function fieldHTML(label, value, required) {
+  const empty = !value;
+  const display = empty ? (required ? '⚠ Required — please go back and fill this in' : '(not provided)') : value;
+  return `<div class="brief-label">${label}</div><div class="brief-value${empty ? ' empty' : ''}">${escHtml(display)}</div>`;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function sectionTitle(title) {
+  return `<div class="brief-section-title">${title}</div>`;
+}
+
+function generateBrief() {
+  // Validate required fields
+  const required = [
+    ['contact-name', 'Your Name (Section 1)'],
+    ['contact-email', 'Your Email (Section 1)'],
+    ['company-name', 'Company Name (Section 1)'],
+    [null, 'Location(s) involved — please check at least one (Section 1)'],
+    ['announcement-type', 'Type of Announcement (Section 2)'],
+    ['headline-idea', 'Headline Idea (Section 2)'],
+    ['announcement-summary', 'Announcement Summary (Section 2)'],
+    ['detail-what', 'What Happened (Section 3)'],
+    ['detail-why', 'Why It Matters (Section 3)'],
+    ['quote-name', 'Spokesperson Name (Section 4)'],
+  ];
+  let missing = [];
+  required.forEach(([id, label]) => {
+    if (id === null) {
+      if (!getLocations()) missing.push(label);
+    } else if (!val(id)) {
+      missing.push(label);
+    }
+  });
+  if (missing.length) {
+    alert('Please complete the required fields before generating your brief:\n\n• ' + missing.join('\n• '));
+    return;
+  }
+
+  // Build HTML
+  let html = '';
+
+  html += sectionTitle('Contact Information');
+  html += fieldHTML('Spokesperson / Contact', val('contact-name') + (val('contact-title') ? ', ' + val('contact-title') : ''));
+  html += fieldHTML('Email', val('contact-email'));
+  html += fieldHTML('Phone', val('contact-phone') || '—');
+  html += fieldHTML('Company', val('company-name'));
+  html += fieldHTML('Location(s) Involved', getLocations(), true);
+
+  html += sectionTitle('The Announcement');
+  html += fieldHTML('Type of Announcement', val('announcement-type'));
+  html += fieldHTML('Proposed Headline', val('headline-idea'), true);
+  html += fieldHTML('Summary (in their words)', val('announcement-summary'), true);
+
+  html += sectionTitle('Story Details');
+  html += fieldHTML('What Happened', val('detail-what'), true);
+  html += fieldHTML('When', formatDate(val('detail-when')) || '—');
+  html += fieldHTML('Where', val('detail-where') || '—');
+  html += fieldHTML('Why It Matters', val('detail-why'), true);
+  html += fieldHTML('Who Benefits', val('detail-who') || '—');
+
+  html += sectionTitle('Quote');
+  html += fieldHTML('Spokesperson', val('quote-name') + (val('quote-title') ? ', ' + val('quote-title') : ''), true);
+  if (val('quote-text')) {
+    html += fieldHTML('Provided Quote', '"' + val('quote-text') + '"');
+  } else if (checked('draft-quote-cb')) {
+    html += fieldHTML('Quote', '✏ Client requested Nichefinder draft a quote for approval.');
+  } else {
+    html += fieldHTML('Quote', '(none provided — follow up with client)');
+  }
+
+  html += sectionTitle('Proof Points & Credentials');
+  html += fieldHTML('Years in Business', val('years-in-business') || '—');
+  html += fieldHTML('Systems Installed', val('systems-installed') || '—');
+  html += fieldHTML('Service Area', val('service-area') || '—');
+  html += fieldHTML('Certifications / Licenses', val('certifications') || '—');
+  html += fieldHTML('Additional Stats', val('other-stats') || '—');
+
+  html += sectionTitle('Company Boilerplate');
+  if (val('boilerplate')) {
+    html += fieldHTML('Provided "About" Paragraph', val('boilerplate'));
+  } else if (checked('draft-boilerplate-cb')) {
+    html += fieldHTML('Boilerplate', '✏ Client requested Nichefinder write the "About" paragraph.');
+  } else {
+    html += fieldHTML('Boilerplate', '(none provided — follow up or use standard)');
+  }
+
+  html += sectionTitle('Distribution & Timing');
+  html += fieldHTML('Preferred Release Date', formatDate(val('release-date')) || 'ASAP / No preference');
+  html += fieldHTML('Embargo Date', formatDate(val('embargo-date')) || 'None');
+  html += fieldHTML('Target Audience', getAudiences() || '—');
+  html += fieldHTML('Target Outlets', val('target-outlets') || '—');
+  html += fieldHTML('Distribution Notes', val('distribution-notes') || '—');
+
+  html += sectionTitle('Media & Supporting Materials');
+  const photoStatus = { 'yes': 'Yes — client will send photos', 'no': 'No photos available', 'help': 'Needs help sourcing photos' };
+  html += fieldHTML('Photos Available', photoStatus[radioVal('has-photos')] || '—');
+  html += fieldHTML('Photo Description', val('photo-description') || '—');
+  html += fieldHTML('Links', val('links') || '—');
+
+  html += sectionTitle('Writer Notes');
+  html += fieldHTML('Additional Context', val('extra-notes') || '—');
+
+  // Stamp
+  const now = new Date();
+  document.getElementById('brief-timestamp').textContent = 'Submitted: ' + now.toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'}) + ' at ' + now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+
+  document.getElementById('brief-body').innerHTML = html;
+  document.getElementById('brief-section').style.display = 'block';
+  document.getElementById('intake-form').style.display = 'none';
+
+  // Smooth scroll to brief
+  setTimeout(() => {
+    document.getElementById('brief-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function editForm() {
+  document.getElementById('intake-form').style.display = 'block';
+  document.getElementById('brief-section').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function copyBrief() {
+  const body = document.getElementById('brief-body');
+  // Build plain text version
+  let text = 'PRESS RELEASE BRIEF — All South Lightning Protection\n';
+  text += document.getElementById('brief-timestamp').textContent + '\n';
+  text += '='.repeat(60) + '\n\n';
+
+  const labels = body.querySelectorAll('.brief-label');
+  const values = body.querySelectorAll('.brief-value');
+  const sectionTitles = body.querySelectorAll('.brief-section-title');
+
+  // Walk all children in order
+  const children = body.children;
+  for (let el of children) {
+    if (el.classList.contains('brief-section-title')) {
+      text += '\n' + el.textContent.toUpperCase() + '\n' + '-'.repeat(40) + '\n';
+    } else if (el.classList.contains('brief-label')) {
+      text += '\n' + el.textContent + '\n';
+    } else if (el.classList.contains('brief-value')) {
+      text += el.textContent + '\n';
+    }
+  }
+
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copied-toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2500);
+  }).catch(() => {
+    alert('Copy failed — please use Ctrl+A / Cmd+A to select and copy manually.');
+  });
+}
+</script>
+</body>
+</html>
