@@ -229,8 +229,8 @@
       position: relative;
       min-height: 100vh;
       background: linear-gradient(180deg, #002855 0%, #003D7A 50%, #002855 100%);
-      overflow: visible;
-      z-index: 3;
+      overflow: hidden;
+      z-index: 1;
     }
 
     #graph-container {
@@ -238,7 +238,7 @@
       top: 0;
       width: 100%;
       height: 100vh;
-      overflow: visible;
+      overflow: hidden;
     }
 
     #graph-svg {
@@ -4280,8 +4280,10 @@ const Graph = (function () {
         id: cluster.id,
         name: cluster.name,
         color: cluster.color,
-        x: Math.random() * width * 0.8 + width * 0.1,
-        y: Math.random() * height * 0.8 + height * 0.1,
+        // Spread nodes across the viewport in a rough grid with jitter
+        // avoids the initial clump before simulation forces take over
+        x: (i % 5) / 5 * width * 0.8 + width * 0.1 + (Math.random() - 0.5) * 80,
+        y: Math.floor(i / 5) / 3 * height * 0.75 + height * 0.12 + (Math.random() - 0.5) * 80,
         fx: null,
         fy: null,
         structuredX: cluster.structuredPos.x * width,
@@ -4381,6 +4383,15 @@ const Graph = (function () {
   //  Tick — update positions
   // ─────────────────────────────────────────────
   function ticked() {
+    // Keep cluster nodes within viewport
+    const pad = 60;
+    clusterNodes.forEach(d => {
+      if (d.fx == null) {
+        d.x = Math.max(pad, Math.min(width - pad, d.x));
+        d.y = Math.max(pad, Math.min(height - pad, d.y));
+      }
+    });
+
     // Update cluster node positions (covers both clusterGroup and activeClusterGroup)
     svg.selectAll('.node-cluster')
       .attr('transform', d => `translate(${d.x},${d.y})`);
@@ -5023,10 +5034,10 @@ const Graph = (function () {
 
     // D3 force simulation — full chaos drift
     simulation = d3.forceSimulation(clusterNodes)
-      .force('link', d3.forceLink(links).id(d => d.id).distance(220).strength(0.3))
-      .force('charge', d3.forceManyBody().strength(-600))
-      .force('center', d3.forceCenter(width / 2, height / 2 - 150))
-      .force('collide', d3.forceCollide(85).strength(0.8))
+      .force('link', d3.forceLink(links).id(d => d.id).distance(260).strength(0.3))
+      .force('charge', d3.forceManyBody().strength(-1800))
+      .force('center', d3.forceCenter(width / 2, height / 2 - 80).strength(0.04))
+      .force('collide', d3.forceCollide(100).strength(0.9))
       .on('tick', ticked);
 
     addChaosDrift();
