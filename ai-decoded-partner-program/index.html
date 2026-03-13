@@ -140,6 +140,10 @@
 
     .hero-cta {
       opacity: 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn-primary {
@@ -158,6 +162,25 @@
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
       text-decoration: none;
       box-shadow: 0 4px 18px rgba(204,85,0,0.35);
+    }
+
+    .btn-outline-hero {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline-hero:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.07);
     }
 
     .btn-primary:hover {
@@ -1360,6 +1383,9 @@
         <button class="btn-primary" onclick="scrollToGraph()">
           Show me what I'm missing
         </button>
+        <a href="program-overview.html" target="_blank" class="btn-outline-hero">
+          Download Program Overview
+        </a>
       </div>
     </div>
     <div class="scroll-hint">
