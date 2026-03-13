@@ -1554,9 +1554,6 @@
   <!-- ============================================================
        FLOATING UI ELEMENTS
   ============================================================ -->
-  <!-- Back button — isolation mode -->
-  <button id="back-to-all-btn" onclick="collapseCluster()">← Back to All</button>
-
   <!-- Gap counter (shown after first click) -->
   <div id="gap-counter-bar">
     <div class="gap-counter-inner">
@@ -4224,6 +4221,7 @@ const Graph = (function () {
   let links = [];
   let componentNodes = [];
   let componentLinks = [];
+  let interCompLinks = [];
   let activeCluster = null;
   let isStructuredMode = false;
   let driftHandle = null;
@@ -4423,6 +4421,25 @@ const Graph = (function () {
             const n = componentNodes.find(n => n.id === d.target);
             return n ? n.y : parent.y;
           });
+
+        // Update inter-component connector lines
+        componentGroup.selectAll('.inter-comp-link')
+          .attr('x1', d => {
+            const n = componentNodes.find(n => n.id === d.source);
+            return n ? n.x : parent.x;
+          })
+          .attr('y1', d => {
+            const n = componentNodes.find(n => n.id === d.source);
+            return n ? n.y : parent.y;
+          })
+          .attr('x2', d => {
+            const n = componentNodes.find(n => n.id === d.target);
+            return n ? n.x : parent.x;
+          })
+          .attr('y2', d => {
+            const n = componentNodes.find(n => n.id === d.target);
+            return n ? n.y : parent.y;
+          });
       }
     }
   }
@@ -4579,6 +4596,35 @@ const Graph = (function () {
       .attr('x2', parent.x)
       .attr('y2', parent.y);
 
+    // Build inter-component connector lines from each component's connections array
+    interCompLinks = [];
+    const compIdSet = new Set(clusterData.components.map(c => c.id));
+    clusterData.components.forEach(comp => {
+      if (!comp.connections) return;
+      comp.connections.forEach(targetId => {
+        if (!compIdSet.has(targetId)) return;
+        const key = [comp.id, targetId].sort().join('--');
+        if (!interCompLinks.find(l => l.key === key)) {
+          interCompLinks.push({ key, source: comp.id, target: targetId });
+        }
+      });
+    });
+
+    componentGroup.selectAll('.inter-comp-link').remove();
+    componentGroup.selectAll('.inter-comp-link')
+      .data(interCompLinks)
+      .enter()
+      .insert('line', ':first-child')
+      .attr('class', 'inter-comp-link')
+      .attr('stroke', clusterData.color)
+      .attr('stroke-opacity', 0.55)
+      .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '5 4')
+      .attr('x1', parent.x)
+      .attr('y1', parent.y)
+      .attr('x2', parent.x)
+      .attr('y2', parent.y);
+
     // Raise component group above cluster nodes
     componentGroup.raise();
 
@@ -4612,9 +4658,6 @@ const Graph = (function () {
       }
     });
 
-    // Show back button
-    const backBtn = document.getElementById('back-to-all-btn');
-    if (backBtn) backBtn.classList.add('visible');
 
     // Draw component nodes
     componentGroup.selectAll('.node-component').remove();
@@ -4696,10 +4739,10 @@ const Graph = (function () {
       );
     });
 
-    // Update prompt text
+    // Update prompt text with collapse hint built in
     const promptEl = document.getElementById('graph-prompt-text');
     if (promptEl) {
-      promptEl.textContent = `${clusterData.name} — Click a component to see the full picture`;
+      promptEl.textContent = `${clusterData.name} — Click a component to explore  ·  Click ${clusterData.name} again or press ESC to go back`;
     }
 
     simulation.alpha(0.15).restart();
@@ -4728,9 +4771,6 @@ const Graph = (function () {
       parent.fy = null;
     }
 
-    // Hide back button
-    const backBtn = document.getElementById('back-to-all-btn');
-    if (backBtn) backBtn.classList.remove('visible');
 
     // Animate component nodes back to cluster center then remove
     const compEls = componentGroup.selectAll('.node-component');
@@ -4767,6 +4807,8 @@ const Graph = (function () {
   function _finishCollapse() {
     componentGroup.selectAll('.node-component').remove();
     componentGroup.selectAll('.comp-link').remove();
+    componentGroup.selectAll('.inter-comp-link').remove();
+    interCompLinks = [];
     // Restore original SVG draw order: links → components → clusters
     clusterGroup.raise();
     componentNodes = [];
