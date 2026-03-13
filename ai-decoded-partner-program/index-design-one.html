@@ -1151,44 +1151,6 @@
     }
 
     /* =============================================
-       BACK BUTTON — ISOLATION MODE
-    ============================================= */
-    #back-to-all-btn {
-      position: fixed;
-      top: 1.5rem;
-      left: 1.5rem;
-      background: rgba(0, 40, 85, 0.92);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.65rem 1.25rem;
-      cursor: pointer;
-      z-index: 150;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, background 0.2s;
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #back-to-all-btn.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #back-to-all-btn:hover {
-      background: rgba(0, 60, 130, 0.95);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    /* =============================================
        BACKDROP / DIMMER
     ============================================= */
     #panel-backdrop {
@@ -1554,9 +1516,6 @@
   <!-- ============================================================
        FLOATING UI ELEMENTS
   ============================================================ -->
-  <!-- Back button — isolation mode -->
-  <button id="back-to-all-btn" onclick="collapseCluster()">← Back to All</button>
-
   <!-- Gap counter (shown after first click) -->
   <div id="gap-counter-bar">
     <div class="gap-counter-inner">
@@ -4252,7 +4211,7 @@ const Graph = (function () {
   //  Orbit positions for component expansion
   // ─────────────────────────────────────────────
   function getOrbitPositions(clusterNode, count) {
-    const radius = 260;
+    const radius = 170;
     return Array.from({ length: count }, (_, i) => {
       const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
       return {
@@ -4579,42 +4538,28 @@ const Graph = (function () {
       .attr('x2', parent.x)
       .attr('y2', parent.y);
 
-    // Raise component group above cluster nodes
+    // Raise component group above cluster nodes so expanded components aren't blocked
     componentGroup.raise();
 
-    // ISOLATION MODE: hide all other clusters and all links
+    // Dim all other cluster nodes and darken the active one so components glow on top
     clusterGroup.selectAll('.node-cluster')
-      .filter(d => d.id !== clusterId)
-      .transition().duration(350)
-      .style('opacity', 0)
-      .style('pointer-events', 'none');
+      .transition().duration(300)
+      .style('opacity', d => d.id === clusterId ? 1 : 0.3);
 
-    linksGroup.selectAll('.cluster-link')
-      .transition().duration(350)
-      .style('opacity', 0);
+    // Darken the active cluster's fill circles so components are clearly visible above it
+    clusterGroup.selectAll('.node-cluster')
+      .filter(d => d.id === clusterId)
+      .select('circle:first-child')
+      .transition().duration(300)
+      .attr('fill', 'url(#node-grad-chaos)')
+      .style('opacity', 0.55);
 
-    // Snap active cluster to viewport center so components orbit in clear space
-    const centerX = width / 2;
-    const centerY = height / 2;
-    gsap.to(parent, {
-      x: centerX,
-      y: centerY,
-      duration: 0.5,
-      ease: 'power2.inOut',
-      onUpdate: () => {
-        parent.fx = parent.x;
-        parent.fy = parent.y;
-        simulation.alpha(0.05).restart();
-      },
-      onComplete: () => {
-        parent.fx = centerX;
-        parent.fy = centerY;
-      }
-    });
-
-    // Show back button
-    const backBtn = document.getElementById('back-to-all-btn');
-    if (backBtn) backBtn.classList.add('visible');
+    clusterGroup.selectAll('.node-cluster')
+      .filter(d => d.id === clusterId)
+      .selectAll('circle')
+      .filter((d, i) => i === 1)
+      .transition().duration(300)
+      .attr('fill-opacity', 0.04);
 
     // Draw component nodes
     componentGroup.selectAll('.node-component').remove();
@@ -4712,26 +4657,6 @@ const Graph = (function () {
     if (!activeCluster) return;
     const parent = clusterNodes.find(n => n.id === activeCluster);
 
-    // ISOLATION MODE: restore all other clusters and links
-    clusterGroup.selectAll('.node-cluster')
-      .transition().duration(400)
-      .style('opacity', 1)
-      .style('pointer-events', 'auto');
-
-    linksGroup.selectAll('.cluster-link')
-      .transition().duration(400)
-      .style('opacity', isStructuredMode ? 0.5 : 0.15);
-
-    // Release active cluster from center so it drifts freely again
-    if (parent && !isStructuredMode) {
-      parent.fx = null;
-      parent.fy = null;
-    }
-
-    // Hide back button
-    const backBtn = document.getElementById('back-to-all-btn');
-    if (backBtn) backBtn.classList.remove('visible');
-
     // Animate component nodes back to cluster center then remove
     const compEls = componentGroup.selectAll('.node-component');
     const count = compEls.size();
@@ -4772,6 +4697,21 @@ const Graph = (function () {
     componentNodes = [];
     activeCluster = null;
 
+    // Restore all cluster nodes to full opacity and original fill
+    clusterGroup.selectAll('.node-cluster')
+      .transition().duration(300)
+      .style('opacity', 1);
+
+    clusterGroup.selectAll('.node-cluster')
+      .select('circle:first-child')
+      .transition().duration(300)
+      .style('opacity', 1);
+
+    clusterGroup.selectAll('.node-cluster')
+      .selectAll('circle')
+      .filter((d, i) => i === 1)
+      .transition().duration(300)
+      .attr('fill-opacity', 0.12);
 
     const promptEl = document.getElementById('graph-prompt-text');
     if (promptEl) {
