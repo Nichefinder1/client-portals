@@ -63,7 +63,7 @@
     ============================================= */
     #hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 72vh;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -190,7 +190,7 @@
 
     .scroll-hint {
       position: absolute;
-      bottom: 17rem;
+      bottom: 2rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -230,6 +230,7 @@
       min-height: 100vh;
       background: linear-gradient(180deg, #002855 0%, #003D7A 50%, #002855 100%);
       overflow: visible;
+      z-index: 3;
     }
 
     #graph-container {
@@ -4540,6 +4541,26 @@ const Graph = (function () {
     // Raise component group above cluster nodes so expanded components aren't blocked
     componentGroup.raise();
 
+    // Dim all other cluster nodes and darken the active one so components glow on top
+    clusterGroup.selectAll('.node-cluster')
+      .transition().duration(300)
+      .style('opacity', d => d.id === clusterId ? 1 : 0.3);
+
+    // Darken the active cluster's fill circles so components are clearly visible above it
+    clusterGroup.selectAll('.node-cluster')
+      .filter(d => d.id === clusterId)
+      .select('circle:first-child')
+      .transition().duration(300)
+      .attr('fill', 'url(#node-grad-chaos)')
+      .style('opacity', 0.55);
+
+    clusterGroup.selectAll('.node-cluster')
+      .filter(d => d.id === clusterId)
+      .selectAll('circle')
+      .filter((d, i) => i === 1)
+      .transition().duration(300)
+      .attr('fill-opacity', 0.04);
+
     // Draw component nodes
     componentGroup.selectAll('.node-component').remove();
     const compG = componentGroup.selectAll('.node-component')
@@ -4675,6 +4696,22 @@ const Graph = (function () {
     clusterGroup.raise();
     componentNodes = [];
     activeCluster = null;
+
+    // Restore all cluster nodes to full opacity and original fill
+    clusterGroup.selectAll('.node-cluster')
+      .transition().duration(300)
+      .style('opacity', 1);
+
+    clusterGroup.selectAll('.node-cluster')
+      .select('circle:first-child')
+      .transition().duration(300)
+      .style('opacity', 1);
+
+    clusterGroup.selectAll('.node-cluster')
+      .selectAll('circle')
+      .filter((d, i) => i === 1)
+      .transition().duration(300)
+      .attr('fill-opacity', 0.12);
 
     const promptEl = document.getElementById('graph-prompt-text');
     if (promptEl) {
