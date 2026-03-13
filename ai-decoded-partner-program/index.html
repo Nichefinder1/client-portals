@@ -314,7 +314,7 @@
       transform: translateX(-50%);
       text-align: center;
       pointer-events: none;
-      z-index: 2;
+      z-index: 15;
     }
 
     .graph-prompt p {
@@ -383,6 +383,7 @@
       opacity: 0;
       transition: opacity 0.4s;
       pointer-events: none;
+      -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
     }
 
@@ -425,6 +426,7 @@
       opacity: 0;
       transition: opacity 0.5s;
       pointer-events: none;
+      -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
       max-width: 500px;
       width: calc(100% - 3rem);
@@ -786,6 +788,7 @@
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.15s;
+      -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
     }
 
@@ -1170,6 +1173,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s, background 0.2s;
+      -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
@@ -1277,6 +1281,7 @@
     /* Transform overlay bg */
     #transform-overlay {
       background: linear-gradient(180deg, rgba(0,40,85,0.92) 0%, rgba(0,61,122,0.85) 100%);
+      -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
     }
 
@@ -1298,6 +1303,10 @@
     }
 
     @media (max-width: 768px) {
+      .nav-logo { max-height: 80px !important; height: auto !important; }
+      .nav-apply-btn { margin-right: 0 !important; }
+      .graph-prompt p { font-size: 0.72rem; padding: 0.4rem 1rem; }
+      .graph-prompt { white-space: nowrap; }
       #data-panel {
         width: 100%;
         right: 0;
@@ -1331,9 +1340,10 @@
     <!-- Top nav bar -->
     <div style="position:absolute; top:0; left:0; right:0; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; z-index:10; margin-top:-1.5rem;">
       <img src="https://nichefinders.ai/logo.png" alt="NicheFinders AI"
+           class="nav-logo"
            style="height:260px; width:auto;"
            onerror="this.outerHTML='<span style=\'font-family:var(--font-display);font-size:1.2rem;color:var(--white);letter-spacing:0.1em;\'>NICHE<span style=&quot;color:var(--orange)&quot;>FINDERS</span> AI</span>'">
-      <a href="#cta-section" class="btn-primary" style="font-size:1rem; padding:0.75rem 1.75rem; box-shadow:none; margin-right:1.5rem;">
+      <a href="#cta-section" class="btn-primary nav-apply-btn" style="font-size:1rem; padding:0.75rem 1.75rem; box-shadow:none; margin-right:1.5rem;">
         Apply Now
       </a>
     </div>
@@ -4272,8 +4282,8 @@ const Graph = (function () {
   // ─────────────────────────────────────────────
   //  Orbit positions for component expansion
   // ─────────────────────────────────────────────
-  function getOrbitPositions(clusterNode, count) {
-    const radius = 220;
+  function getOrbitPositions(clusterNode, count, radius) {
+    radius = radius || 220;
     return Array.from({ length: count }, (_, i) => {
       const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
       return {
@@ -4404,7 +4414,7 @@ const Graph = (function () {
     clusterNodes.forEach(d => {
       if (d.fx == null) {
         d.x = Math.max(pad, Math.min(width - pad, d.x));
-        d.y = Math.max(pad, Math.min(height - pad, d.y));
+        d.y = Math.max(pad, Math.min(height - 160, d.y));
       }
     });
 
@@ -4501,16 +4511,13 @@ const Graph = (function () {
   //  Tooltip
   // ─────────────────────────────────────────────
   function showTooltip(event, d) {
-    const tip = document.getElementById('graph-tooltip');
-    const title = document.getElementById('tooltip-title');
-    const desc = document.getElementById('tooltip-desc');
-    if (!tip) return;
-    title.textContent = d.name;
-    desc.textContent = isStructuredMode
+    if (!tipEl) return;
+    tipTitleEl.textContent = d.name;
+    tipDescEl.textContent = isStructuredMode
       ? (d.clusterRef.structuredTooltip || '')
       : (d.clusterRef.chaosTooltip || '');
-    tip.classList.add('visible');
-    positionTooltip(event, tip);
+    tipEl.classList.add('visible');
+    positionTooltip(event, tipEl);
   }
 
   function positionTooltip(event, tip) {
@@ -4546,7 +4553,7 @@ const Graph = (function () {
       : nodeScreenY + margin;          // bottom half → push down
 
     // Clamp strictly to the graph container — never bleeds into hero or sections below
-    const gr = document.getElementById('graph-container').getBoundingClientRect();
+    const gr = cachedGraphRect;
     x = Math.max(gr.left   + margin, Math.min(gr.right  - tipW - margin, x));
     y = Math.max(gr.top    + margin, Math.min(gr.bottom - tipH - margin, y));
 
@@ -4555,8 +4562,7 @@ const Graph = (function () {
   }
 
   function hideTooltip() {
-    const tip = document.getElementById('graph-tooltip');
-    if (tip) tip.classList.remove('visible');
+    if (tipEl) tipEl.classList.remove('visible');
   }
 
   // ─────────────────────────────────────────────
@@ -4594,8 +4600,7 @@ const Graph = (function () {
   }
 
   function onClusterHoverMove(event, d) {
-    const tip = document.getElementById('graph-tooltip');
-    if (tip && tip.classList.contains('visible')) positionTooltip(event, tip);
+    if (tipEl && tipEl.classList.contains('visible')) positionTooltip(event, tipEl);
   }
 
   function onClusterOut(event, d) {
@@ -4636,10 +4641,17 @@ const Graph = (function () {
     if (!parent) return;
     activeClusterNode = parent; // cache direct ref — avoids find() on every tick
 
+    // Compute orbit radius that fits the viewport — scales down on mobile
+    const snapMargin = 60;
+    const orbitR = Math.min(
+      220,
+      Math.floor((width  - 2 * snapMargin) / 2) - 5,
+      Math.floor((height - snapMargin - 150) / 2) - 5
+    );
+
     // Snap cluster to a safe position so the full orbit circle fits within the viewport
-    const orbitR = 220, snapMargin = 60;
     parent.x = Math.max(orbitR + snapMargin, Math.min(width  - orbitR - snapMargin, parent.x));
-    parent.y = Math.max(orbitR + snapMargin, Math.min(height - orbitR - snapMargin, parent.y));
+    parent.y = Math.max(orbitR + snapMargin, Math.min(height - orbitR - 150,        parent.y));
 
     // Build component node objects and cache lookup map + orbit positions
     componentNodes = clusterData.components.map(comp => ({
@@ -4653,7 +4665,7 @@ const Graph = (function () {
     }));
     componentNodesMap = {};
     componentNodes.forEach(n => { componentNodesMap[n.id] = n; });
-    cachedOrbitPositions = getOrbitPositions(parent, componentNodes.length);
+    cachedOrbitPositions = getOrbitPositions(parent, componentNodes.length, orbitR);
     const positions = cachedOrbitPositions;
 
     // Draw component-to-cluster links first (under nodes)
@@ -4739,16 +4751,12 @@ const Graph = (function () {
       .on('mouseover', function (event, d) {
         d3.select(this).select('circle')
           .transition().duration(120).attr('r', 33);
-        const tip = document.getElementById('graph-tooltip');
-        const title = document.getElementById('tooltip-title');
-        const desc = document.getElementById('tooltip-desc');
-        if (tip) {
-          title.textContent = d.name;
-          desc.textContent = d.compRef.shortDesc || '';
-          tip.classList.add('visible');
+        if (tipEl) {
+          tipTitleEl.textContent = d.name;
+          tipDescEl.textContent = d.compRef.shortDesc || '';
+          tipEl.classList.add('visible');
           // Convert SVG node position to screen coordinates, then push outward from center
-          const svgRect = document.getElementById('graph-svg').getBoundingClientRect();
-          positionTooltipOutward(svgRect.left + d.x, svgRect.top + d.y, tip);
+          positionTooltipOutward(cachedSvgRect.left + d.x, cachedSvgRect.top + d.y, tipEl);
         }
       })
       .on('mouseout', function () {
@@ -4796,11 +4804,6 @@ const Graph = (function () {
       );
     });
 
-    // Update prompt text
-    const promptEl = document.getElementById('graph-prompt-text');
-    if (promptEl) {
-      promptEl.textContent = `${clusterData.name} — Click a component to explore · Click ${clusterData.name} again to close`;
-    }
 
     simulation.alpha(0.15).restart();
   }
@@ -4882,10 +4885,6 @@ const Graph = (function () {
       .transition().duration(500)
       .attr('stroke-opacity', 0.2);
 
-    if (!activeCluster) {
-      const promptEl = document.getElementById('graph-prompt-text');
-      if (promptEl) promptEl.textContent = 'Click any area of your business to see what\'s missing';
-    }
   }
 
   // ─────────────────────────────────────────────
