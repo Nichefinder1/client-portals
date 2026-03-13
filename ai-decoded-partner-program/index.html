@@ -4227,6 +4227,8 @@ const Graph = (function () {
   let componentNodes = [];
   let componentLinks = [];
   let interCompLinks = [];
+  let componentNodesMap = {};    // id → node object, built on expand for O(1) ticked() lookups
+  let cachedOrbitPositions = []; // orbit positions for active cluster, cached on expand
   let activeCluster = null;
   let isStructuredMode = false;
   let driftHandle = null;
@@ -4291,6 +4293,7 @@ const Graph = (function () {
     });
 
     // Build cluster-to-cluster links (unique pairs only)
+    const nodeMap = new Map(clusterNodes.map(n => [n.id, n]));
     const linkSet = new Set();
     data.clusters.forEach(cluster => {
       if (!cluster.clusterConnections) return;
@@ -4298,11 +4301,9 @@ const Graph = (function () {
         const key = [cluster.id, targetId].sort().join('--');
         if (!linkSet.has(key)) {
           linkSet.add(key);
-          const source = clusterNodes.find(n => n.id === cluster.id);
-          const target = clusterNodes.find(n => n.id === targetId);
-          if (source && target) {
-            links.push({ source, target, color: cluster.color });
-          }
+          const source = nodeMap.get(cluster.id);
+          const target = nodeMap.get(targetId);
+          if (source && target) links.push({ source, target, color: cluster.color });
         }
       });
     });
@@ -4395,44 +4396,25 @@ const Graph = (function () {
     if (activeCluster) {
       const parent = clusterNodes.find(n => n.id === activeCluster);
       if (parent) {
-        const positions = getOrbitPositions(parent, componentNodes.length);
         componentGroup.selectAll('.node-component')
           .each(function (d, i) {
-            d.x = positions[i] ? positions[i].x : parent.x;
-            d.y = positions[i] ? positions[i].y : parent.y;
+            const pos = cachedOrbitPositions[i];
+            d.x = pos ? pos.x : parent.x;
+            d.y = pos ? pos.y : parent.y;
           })
           .attr('transform', d => `translate(${d.x},${d.y})`);
 
         componentGroup.selectAll('.comp-link')
           .attr('x1', parent.x)
           .attr('y1', parent.y)
-          .attr('x2', d => {
-            const n = componentNodes.find(n => n.id === d.target);
-            return n ? n.x : parent.x;
-          })
-          .attr('y2', d => {
-            const n = componentNodes.find(n => n.id === d.target);
-            return n ? n.y : parent.y;
-          });
+          .attr('x2', d => { const n = componentNodesMap[d.target]; return n ? n.x : parent.x; })
+          .attr('y2', d => { const n = componentNodesMap[d.target]; return n ? n.y : parent.y; });
 
-        // Update inter-component connector lines
         componentGroup.selectAll('.inter-comp-link')
-          .attr('x1', d => {
-            const n = componentNodes.find(n => n.id === d.source);
-            return n ? n.x : parent.x;
-          })
-          .attr('y1', d => {
-            const n = componentNodes.find(n => n.id === d.source);
-            return n ? n.y : parent.y;
-          })
-          .attr('x2', d => {
-            const n = componentNodes.find(n => n.id === d.target);
-            return n ? n.x : parent.x;
-          })
-          .attr('y2', d => {
-            const n = componentNodes.find(n => n.id === d.target);
-            return n ? n.y : parent.y;
-          });
+          .attr('x1', d => { const n = componentNodesMap[d.source]; return n ? n.x : parent.x; })
+          .attr('y1', d => { const n = componentNodesMap[d.source]; return n ? n.y : parent.y; })
+          .attr('x2', d => { const n = componentNodesMap[d.target]; return n ? n.x : parent.x; })
+          .attr('y2', d => { const n = componentNodesMap[d.target]; return n ? n.y : parent.y; });
       }
     }
   }
@@ -4475,7 +4457,7 @@ const Graph = (function () {
             node.vy *= 0.95;
           }
         });
-        simulation.alpha(Math.max(simulation.alpha(), 0.08)).restart();
+        if (simulation.alpha() < 0.08) simulation.alpha(0.08).restart();
       }
     };
     gsap.ticker.add(driftHandle);
@@ -4518,16 +4500,23 @@ const Graph = (function () {
   // ─────────────────────────────────────────────
   //  Cluster hover
   // ─────────────────────────────────────────────
+  function linkConnected(l, nodeId) {
+    return (l.source.id || l.source) === nodeId || (l.target.id || l.target) === nodeId;
+  }
+
   function onClusterHover(event, d) {
     showTooltip(event, d);
     // Obsidian-style: only highlight in resting state (no cluster expanded)
     if (activeCluster) return;
 
     // Find IDs directly connected to hovered node
+    // Use (id || obj) pattern consistently — D3 resolves link source/target to node objects
     const connectedIds = new Set([d.id]);
     links.forEach(l => {
-      if (l.source.id === d.id) connectedIds.add(l.target.id);
-      if (l.target.id === d.id) connectedIds.add(l.source.id);
+      const sid = l.source.id || l.source;
+      const tid = l.target.id || l.target;
+      if (sid === d.id) connectedIds.add(tid);
+      if (tid === d.id) connectedIds.add(sid);
     });
 
     // Dim non-connected cluster nodes
@@ -4538,16 +4527,8 @@ const Graph = (function () {
     // Dim non-connected links, brighten connected ones
     linksGroup.selectAll('.cluster-link')
       .transition().duration(200)
-      .attr('stroke-opacity', l => {
-        const sid = l.source.id || l.source;
-        const tid = l.target.id || l.target;
-        return (sid === d.id || tid === d.id) ? 0.75 : 0.03;
-      })
-      .attr('stroke-width', l => {
-        const sid = l.source.id || l.source;
-        const tid = l.target.id || l.target;
-        return (sid === d.id || tid === d.id) ? 2 : 1;
-      });
+      .attr('stroke-opacity', l => linkConnected(l, d.id) ? 0.75 : 0.03)
+      .attr('stroke-width',   l => linkConnected(l, d.id) ? 2 : 1);
   }
 
   function onClusterHoverMove(event, d) {
@@ -4592,10 +4573,8 @@ const Graph = (function () {
     const parent = clusterNodes.find(n => n.id === clusterId);
     if (!parent) return;
 
-    const positions = getOrbitPositions(parent, clusterData.components.length);
-
-    // Build component node objects
-    componentNodes = clusterData.components.map((comp, i) => ({
+    // Build component node objects and cache lookup map + orbit positions
+    componentNodes = clusterData.components.map(comp => ({
       id: comp.id,
       name: comp.name,
       color: clusterData.color,
@@ -4604,6 +4583,10 @@ const Graph = (function () {
       compRef: comp,
       clusterId: clusterId
     }));
+    componentNodesMap = {};
+    componentNodes.forEach(n => { componentNodesMap[n.id] = n; });
+    cachedOrbitPositions = getOrbitPositions(parent, componentNodes.length);
+    const positions = cachedOrbitPositions;
 
     // Draw component-to-cluster links first (under nodes)
     componentGroup.selectAll('.comp-link').remove();
@@ -4778,7 +4761,7 @@ const Graph = (function () {
     const count = compEls.size();
 
     if (count === 0) {
-      _finishCollapse(collapsingId);
+      _finishCollapse();
       return;
     }
 
@@ -4795,17 +4778,19 @@ const Graph = (function () {
         delay: i * 0.03,
         ease: 'power2.in',
         onUpdate: () => el.attr('transform', `translate(${d.x},${d.y})`),
-        onComplete: () => { done++; if (done >= count) _finishCollapse(collapsingId); }
+        onComplete: () => { done++; if (done >= count) _finishCollapse(); }
       });
     });
   }
 
-  function _finishCollapse(collapsingId) {
+  function _finishCollapse() {
     componentGroup.selectAll('.node-component').remove();
     componentGroup.selectAll('.comp-link').remove();
     componentGroup.selectAll('.inter-comp-link').remove();
     interCompLinks = [];
     componentNodes = [];
+    componentNodesMap = {};
+    cachedOrbitPositions = [];
 
     // Move the collapsed cluster node back to the main cluster group
     const nodeEl = activeClusterGroup.selectAll('.node-cluster').node();
