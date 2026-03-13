@@ -1575,10 +1575,9 @@
       </div>
 
       <div class="cta-secondary-actions">
-        <a href="#" class="btn-outline" onclick="return false;" style="opacity:0.5;cursor:not-allowed;">
-          Download the Program Overview
+        <a href="program-overview.html" target="_blank" class="btn-outline">
+          Download Program Overview
         </a>
-        <p>One-pager PDF &mdash; coming soon</p>
       </div>
 
       <div class="cta-footer">
@@ -5211,8 +5210,36 @@ if (document.readyState === 'loading') {
     }
 
     // ── Form submit ───────────────────────────
-    function handleFormSubmit(e) {
+    // ── Form Backend ──────────────────────────
+    // API keys are stored in the Cloudflare Worker — never in this file.
+    const FORM_ENDPOINT = 'https://ai-decoded-form.nichefinders.workers.dev';
+
+    async function handleFormSubmit(e) {
       e.preventDefault();
+
+      const btn = document.getElementById('form-submit');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      const data = {
+        name:    document.getElementById('f-name').value.trim(),
+        email:   document.getElementById('f-email').value.trim(),
+        company: document.getElementById('f-company').value.trim(),
+        phone:   document.getElementById('f-phone').value.trim(),
+        revenue: document.getElementById('f-revenue').value,
+        message: document.getElementById('f-message').value.trim(),
+      };
+
+      try {
+        await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch (err) {
+        console.error('Form submission error:', err);
+      }
+
       document.getElementById('apply-form').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
     }
