@@ -1398,7 +1398,7 @@
 
       <!-- Graph prompt text -->
       <div class="graph-prompt" id="graph-prompt">
-        <p id="graph-prompt-text">Click any area of your business to see what's missing</p>
+        <p id="graph-prompt-text">Click any node in the ring to explore that area of your business</p>
       </div>
 
       <!-- Structured state overlay text -->
@@ -4268,15 +4268,23 @@ const Graph = (function () {
     clusterNodes = [];
     links = [];
 
-    data.clusters.forEach(cluster => {
+    const ringRadius = Math.min(width, height) * 0.38;
+    const cx = width / 2, cy = height / 2;
+
+    data.clusters.forEach((cluster, i) => {
+      const angle = (i / data.clusters.length) * Math.PI * 2 - Math.PI / 2;
+      const rx = cx + Math.cos(angle) * ringRadius;
+      const ry = cy + Math.sin(angle) * ringRadius;
       const node = {
         id: cluster.id,
         name: cluster.name,
         color: cluster.color,
-        x: Math.random() * width * 0.8 + width * 0.1,
-        y: Math.random() * height * 0.8 + height * 0.1,
-        fx: null,
-        fy: null,
+        x: rx,
+        y: ry,
+        fx: rx,
+        fy: ry,
+        ringX: rx,
+        ringY: ry,
         structuredX: cluster.structuredPos.x * width,
         structuredY: cluster.structuredPos.y * height,
         type: 'cluster',
@@ -4312,11 +4320,11 @@ const Graph = (function () {
       .data(links)
       .enter()
       .append('line')
-      .attr('class', d => isStructuredMode ? 'link cluster-link structured' : 'link cluster-link chaos chaos-link')
+      .attr('class', 'link cluster-link')
       .attr('stroke', d => d.color)
-      .attr('stroke-width', 1.5)
-      .attr('stroke-opacity', isStructuredMode ? 0.5 : 0.15)
-      .attr('stroke-dasharray', isStructuredMode ? null : '4 4');
+      .attr('stroke-width', 1)
+      .attr('stroke-opacity', 0.2)
+      .attr('stroke-dasharray', '4 4');
   }
 
   // ─────────────────────────────────────────────
@@ -4329,64 +4337,46 @@ const Graph = (function () {
       .data(clusterNodes)
       .enter()
       .append('g')
-      .attr('class', d => isStructuredMode ? 'node-cluster structured' : 'node-cluster')
+      .attr('class', 'node-cluster')
       .attr('data-id', d => d.id)
       .style('cursor', 'pointer')
-      .call(
-        d3.drag()
-          .on('start', dragStarted)
-          .on('drag', dragged)
-          .on('end', dragEnded)
-      )
       .on('mouseover', onClusterHover)
       .on('mousemove', onClusterHoverMove)
       .on('mouseout', onClusterOut)
       .on('click', onClusterClick);
 
-    // Background circle (color-tinted fill)
+    // Background circle — small ring node (r=22)
     nodeG.append('circle')
-      .attr('r', 46)
-      .attr('fill', d => {
-        if (isStructuredMode) return 'url(#node-grad-structured)';
-        return 'url(#node-grad-chaos)';
-      })
+      .attr('r', 22)
+      .attr('fill', 'url(#node-grad-chaos)')
       .attr('stroke', d => d.color)
-      .attr('stroke-width', 2.5)
-      .attr('filter', isStructuredMode ? 'url(#glow-green)' : 'url(#glow-red)');
+      .attr('stroke-width', 2)
+      .attr('filter', 'url(#glow-red)');
 
-    // Colored translucent overlay circle
+    // Colored translucent overlay
     nodeG.append('circle')
-      .attr('r', 46)
+      .attr('r', 22)
       .attr('fill', d => d.color)
-      .attr('fill-opacity', 0.12)
+      .attr('fill-opacity', 0.18)
       .attr('stroke', 'none')
       .attr('pointer-events', 'none');
 
-    // Label text
+    // Label below circle
     nodeG.append('text')
       .attr('text-anchor', 'middle')
-      .attr('dominant-baseline', 'central')
+      .attr('dy', '32px')
       .style('font-family', 'var(--font-body)')
-      .style('font-size', '10px')
+      .style('font-size', '9px')
       .style('font-weight', '600')
-      .style('fill', '#ffffff')
+      .style('fill', '#aaaaaa')
       .style('pointer-events', 'none')
-      .each(function (d) {
-        wrapText(d3.select(this), d.name, 64);
-      });
+      .text(d => d.name.length > 13 ? d.name.substring(0, 12) + '…' : d.name);
   }
 
   // ─────────────────────────────────────────────
   //  Tick — update positions
   // ─────────────────────────────────────────────
   function ticked() {
-    // Constrain cluster nodes to viewport with padding
-    const pad = 50;
-    clusterNodes.forEach(d => {
-      d.x = Math.max(pad, Math.min(width - pad, d.x));
-      d.y = Math.max(pad, Math.min(height - pad, d.y));
-    });
-
     // Update cluster node positions
     clusterGroup.selectAll('.node-cluster')
       .attr('transform', d => `translate(${d.x},${d.y})`);
@@ -4527,10 +4517,12 @@ const Graph = (function () {
   // ─────────────────────────────────────────────
   function onClusterHover(event, d) {
     showTooltip(event, d);
-    // Pulse the circle
-    d3.select(this).select('circle')
-      .transition().duration(150)
-      .attr('r', 52);
+    // Only pulse ring nodes (not the active expanded cluster)
+    if (d.id !== activeCluster) {
+      d3.select(this).selectAll('circle')
+        .transition().duration(150)
+        .attr('r', 28);
+    }
   }
 
   function onClusterHoverMove(event, d) {
@@ -4540,9 +4532,11 @@ const Graph = (function () {
 
   function onClusterOut(event, d) {
     hideTooltip();
-    d3.select(this).select('circle')
-      .transition().duration(150)
-      .attr('r', 46);
+    if (d.id !== activeCluster) {
+      d3.select(this).selectAll('circle')
+        .transition().duration(150)
+        .attr('r', 22);
+    }
   }
 
   // ─────────────────────────────────────────────
@@ -4628,18 +4622,24 @@ const Graph = (function () {
     // Raise component group above cluster nodes
     componentGroup.raise();
 
-    // ISOLATION MODE: hide all other clusters and all links
+    // Scale active cluster circle up to expanded size
     clusterGroup.selectAll('.node-cluster')
-      .filter(d => d.id !== clusterId)
-      .transition().duration(350)
-      .style('opacity', 0)
-      .style('pointer-events', 'none');
+      .filter(d => d.id === clusterId)
+      .selectAll('circle')
+      .transition().duration(400)
+      .attr('r', 46);
 
-    linksGroup.selectAll('.cluster-link')
-      .transition().duration(350)
-      .style('opacity', 0);
+    // Move active cluster label inside circle
+    clusterGroup.selectAll('.node-cluster')
+      .filter(d => d.id === clusterId)
+      .select('text')
+      .transition().duration(400)
+      .attr('dy', '0')
+      .attr('dominant-baseline', 'central')
+      .style('font-size', '10px')
+      .style('fill', '#ffffff');
 
-    // Snap active cluster to viewport center so components orbit in clear space
+    // Fly cluster from ring position to viewport center
     const centerX = width / 2;
     const centerY = height / 2;
     gsap.to(parent, {
@@ -4650,7 +4650,7 @@ const Graph = (function () {
       onUpdate: () => {
         parent.fx = parent.x;
         parent.fy = parent.y;
-        simulation.alpha(0.05).restart();
+        simulation.alpha(0.1).restart();
       },
       onComplete: () => {
         parent.fx = centerX;
@@ -4658,8 +4658,7 @@ const Graph = (function () {
       }
     });
 
-
-    // Draw component nodes
+    // Draw component nodes (start hidden, fade in as cluster flies to center)
     componentGroup.selectAll('.node-component').remove();
     const compG = componentGroup.selectAll('.node-component')
       .data(componentNodes)
@@ -4668,6 +4667,7 @@ const Graph = (function () {
       .attr('class', 'node-component')
       .attr('transform', `translate(${parent.x},${parent.y})`)
       .style('cursor', 'pointer')
+      .style('opacity', 0)
       .on('click', function (event, d) {
         event.stopPropagation();
         openComponentPanel(d);
@@ -4715,34 +4715,15 @@ const Graph = (function () {
         wrapText(d3.select(this), d.name, 36);
       });
 
-    // Animate nodes flying to orbit positions
-    componentNodes.forEach((compNode, i) => {
-      const targetPos = positions[i];
-      if (!targetPos) return;
-      const el = componentGroup.selectAll('.node-component')
-        .filter((d, idx) => idx === i);
+    // Fade component nodes in after cluster arrives at center
+    componentGroup.selectAll('.node-component')
+      .transition().duration(300).delay((d, i) => 300 + i * 40)
+      .style('opacity', 1);
 
-      // Scale-in + move to orbit
-      gsap.fromTo(
-        compNode,
-        { x: parent.x, y: parent.y },
-        {
-          x: targetPos.x,
-          y: targetPos.y,
-          duration: 0.5,
-          delay: i * 0.06,
-          ease: 'back.out(1.4)',
-          onUpdate: function () {
-            el.attr('transform', `translate(${compNode.x},${compNode.y})`);
-          }
-        }
-      );
-    });
-
-    // Update prompt text with collapse hint built in
+    // Update prompt text
     const promptEl = document.getElementById('graph-prompt-text');
     if (promptEl) {
-      promptEl.textContent = `${clusterData.name} — Click a component to explore  ·  Click ${clusterData.name} again or press ESC to go back`;
+      promptEl.textContent = `${clusterData.name} — Click a component to explore · Click any ring node to switch`;
     }
 
     simulation.alpha(0.15).restart();
@@ -4753,26 +4734,49 @@ const Graph = (function () {
   // ─────────────────────────────────────────────
   function collapseCluster() {
     if (!activeCluster) return;
-    const parent = clusterNodes.find(n => n.id === activeCluster);
+    const collapsingId = activeCluster;
+    const parent = clusterNodes.find(n => n.id === collapsingId);
 
-    // ISOLATION MODE: restore all other clusters and links
+    // Clear active cluster immediately so expandCluster can set new value
+    activeCluster = null;
+
+    // Scale cluster circle back to ring size
     clusterGroup.selectAll('.node-cluster')
-      .transition().duration(400)
-      .style('opacity', 1)
-      .style('pointer-events', 'auto');
+      .filter(d => d.id === collapsingId)
+      .selectAll('circle')
+      .transition().duration(350)
+      .attr('r', 22);
 
-    linksGroup.selectAll('.cluster-link')
-      .transition().duration(400)
-      .style('opacity', isStructuredMode ? 0.5 : 0.15);
+    // Restore label to below-circle position
+    clusterGroup.selectAll('.node-cluster')
+      .filter(d => d.id === collapsingId)
+      .select('text')
+      .transition().duration(350)
+      .attr('dy', '32px')
+      .attr('dominant-baseline', 'auto')
+      .style('font-size', '9px')
+      .style('fill', '#aaaaaa');
 
-    // Release active cluster from center so it drifts freely again
-    if (parent && !isStructuredMode) {
-      parent.fx = null;
-      parent.fy = null;
+    // Fly cluster back to its ring position
+    if (parent && parent.ringX !== undefined) {
+      gsap.to(parent, {
+        x: parent.ringX,
+        y: parent.ringY,
+        duration: 0.4,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+          parent.fx = parent.x;
+          parent.fy = parent.y;
+          simulation.alpha(0.05).restart();
+        },
+        onComplete: () => {
+          parent.fx = parent.ringX;
+          parent.fy = parent.ringY;
+        }
+      });
     }
 
-
-    // Animate component nodes back to cluster center then remove
+    // Animate component nodes back to cluster then remove
     const compEls = componentGroup.selectAll('.node-component');
     const count = compEls.size();
 
@@ -4790,8 +4794,8 @@ const Graph = (function () {
       gsap.to(d, {
         x: targetX,
         y: targetY,
-        duration: 0.3,
-        delay: i * 0.03,
+        duration: 0.25,
+        delay: i * 0.02,
         ease: 'power2.in',
         onUpdate: function () {
           el.attr('transform', `translate(${d.x},${d.y})`);
@@ -4812,12 +4816,13 @@ const Graph = (function () {
     // Restore original SVG draw order: links → components → clusters
     clusterGroup.raise();
     componentNodes = [];
-    activeCluster = null;
+    // Note: activeCluster is cleared at the start of collapseCluster()
 
-
-    const promptEl = document.getElementById('graph-prompt-text');
-    if (promptEl) {
-      promptEl.textContent = 'Click any area of your business to see what\'s missing';
+    if (!activeCluster) {
+      const promptEl = document.getElementById('graph-prompt-text');
+      if (promptEl) {
+        promptEl.textContent = 'Click any node in the ring to explore that area of your business';
+      }
     }
   }
 
@@ -4915,12 +4920,6 @@ const Graph = (function () {
     if (isStructuredMode) return;
     isStructuredMode = true;
 
-    // Stop drift
-    if (driftHandle) {
-      gsap.ticker.remove(driftHandle);
-      driftHandle = null;
-    }
-
     // Collapse any open cluster first
     collapseCluster();
 
@@ -4991,24 +4990,37 @@ const Graph = (function () {
     width = window.innerWidth;
     height = window.innerHeight;
 
-    // Recompute structured positions
-    clusterNodes.forEach(node => {
+    const ringRadius = Math.min(width, height) * 0.38;
+    const cx = width / 2, cy = height / 2;
+    const n = clusterNodes.length;
+
+    clusterNodes.forEach((node, i) => {
       const cluster = window.AI_DECODED_DATA.clusters.find(c => c.id === node.id);
       if (cluster) {
         node.structuredX = cluster.structuredPos.x * width;
         node.structuredY = cluster.structuredPos.y * height;
       }
-      // If already structured, move to new structured positions
+
+      // Recompute ring position
+      const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+      node.ringX = cx + Math.cos(angle) * ringRadius;
+      node.ringY = cy + Math.sin(angle) * ringRadius;
+
+      // Only update non-active nodes
+      if (node.id !== activeCluster) {
+        node.x = node.ringX;
+        node.y = node.ringY;
+        node.fx = node.ringX;
+        node.fy = node.ringY;
+      }
+
       if (isStructuredMode) {
         node.fx = node.structuredX;
         node.fy = node.structuredY;
       }
     });
 
-    if (simulation) {
-      simulation.force('center', d3.forceCenter(width / 2, height / 2));
-      simulation.alpha(0.3).restart();
-    }
+    if (simulation) simulation.alpha(0.3).restart();
   }
 
   // ─────────────────────────────────────────────
@@ -5034,15 +5046,11 @@ const Graph = (function () {
     renderLinks();
     renderClusterNodes();
 
-    // D3 force simulation
+    // D3 force simulation — minimal, all nodes are fixed in ring positions
     simulation = d3.forceSimulation(clusterNodes)
-      .force('link', d3.forceLink(links).id(d => d.id).distance(220).strength(0.3))
-      .force('charge', d3.forceManyBody().strength(-600))
-      .force('center', d3.forceCenter(width / 2, height / 2 - 150))
-      .force('collide', d3.forceCollide(85).strength(0.8))
+      .alphaDecay(0.05)
+      .velocityDecay(0.8)
       .on('tick', ticked);
-
-    addChaosDrift();
 
     // Resize
     window.addEventListener('resize', onResize);
