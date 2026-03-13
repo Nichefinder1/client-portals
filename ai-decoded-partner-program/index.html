@@ -1393,9 +1393,11 @@
         <!-- dark tint overlay — fades in when a cluster is expanded -->
         <rect id="graph-tint" x="-9999" y="-9999" width="19998" height="19998"
           fill="rgb(4,6,18)" opacity="0" style="pointer-events:none"/>
-        <!-- active cluster group — expanded cluster sits above tint -->
+        <!-- inter-component lines — behind active cluster so they never pass through it -->
+        <g id="inter-comp-links-group"></g>
+        <!-- active cluster group — expanded cluster sits above inter-comp lines -->
         <g id="active-cluster-group"></g>
-        <!-- component nodes group — top layer -->
+        <!-- component nodes group — top layer (hub spokes + component nodes) -->
         <g id="component-nodes-group"></g>
       </svg>
 
@@ -4217,7 +4219,7 @@ const Graph = (function () {
   // ─────────────────────────────────────────────
   //  State
   // ─────────────────────────────────────────────
-  let svg, linksGroup, componentGroup, clusterGroup, activeClusterGroup;
+  let svg, linksGroup, componentGroup, clusterGroup, activeClusterGroup, interCompLinksGroup;
   let width = 0, height = 0;
   let simulation = null;
   let clusterNodes = [];
@@ -4435,8 +4437,8 @@ const Graph = (function () {
             .attr('y2', n.y - uy * compR);
         });
 
-        // Inter-component lines: offset by compR from both ends
-        componentGroup.selectAll('.inter-comp-link').each(function(d) {
+        // Inter-component lines: offset by compR from both ends (rendered behind active cluster)
+        interCompLinksGroup.selectAll('.inter-comp-link').each(function(d) {
           const src = componentNodesMap[d.source];
           const tgt = componentNodesMap[d.target];
           if (!src || !tgt) return;
@@ -4657,11 +4659,11 @@ const Graph = (function () {
       });
     });
 
-    componentGroup.selectAll('.inter-comp-link').remove();
-    componentGroup.selectAll('.inter-comp-link')
+    interCompLinksGroup.selectAll('.inter-comp-link').remove();
+    interCompLinksGroup.selectAll('.inter-comp-link')
       .data(interCompLinks)
       .enter()
-      .insert('line', ':first-child')
+      .append('line')
       .attr('class', 'inter-comp-link')
       .attr('stroke', clusterData.color)
       .attr('stroke-opacity', 0.55)
@@ -4825,7 +4827,7 @@ const Graph = (function () {
   function _finishCollapse() {
     componentGroup.selectAll('.node-component').remove();
     componentGroup.selectAll('.comp-link').remove();
-    componentGroup.selectAll('.inter-comp-link').remove();
+    interCompLinksGroup.selectAll('.inter-comp-link').remove();
     interCompLinks = [];
     componentNodes = [];
     componentNodesMap = {};
@@ -4835,13 +4837,14 @@ const Graph = (function () {
     const nodeEl = activeClusterGroup.selectAll('.node-cluster').node();
     if (nodeEl) clusterGroup.node().appendChild(nodeEl);
 
-    // Restore SVG layer order: links → cluster-nodes → tint → active-cluster → components
+    // Restore SVG layer order: links → cluster-nodes → tint → inter-comp-lines → active-cluster → components
     const svgEl = svg.node();
     const tintEl = document.getElementById('graph-tint');
-    svgEl.insertBefore(linksGroup.node(),        svgEl.firstChild);
-    svgEl.insertBefore(clusterGroup.node(),      tintEl);
-    svgEl.insertBefore(tintEl,                   activeClusterGroup.node());
-    svgEl.insertBefore(activeClusterGroup.node(), componentGroup.node());
+    svgEl.insertBefore(linksGroup.node(),           svgEl.firstChild);
+    svgEl.insertBefore(clusterGroup.node(),         tintEl);
+    svgEl.insertBefore(tintEl,                      interCompLinksGroup.node());
+    svgEl.insertBefore(interCompLinksGroup.node(),  activeClusterGroup.node());
+    svgEl.insertBefore(activeClusterGroup.node(),   componentGroup.node());
 
     // Fade tint out — background constellation comes back
     d3.select('#graph-tint')
@@ -5055,7 +5058,8 @@ const Graph = (function () {
     linksGroup = d3.select('#links-group');
     componentGroup = d3.select('#component-nodes-group');
     clusterGroup = d3.select('#cluster-nodes-group');
-    activeClusterGroup = d3.select('#active-cluster-group');
+    activeClusterGroup  = d3.select('#active-cluster-group');
+    interCompLinksGroup = d3.select('#inter-comp-links-group');
 
     const svgEl = document.getElementById('graph-svg');
     width = window.innerWidth;
