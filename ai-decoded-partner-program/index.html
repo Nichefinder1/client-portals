@@ -69,7 +69,7 @@
       justify-content: center;
       background: linear-gradient(180deg, #002855 0%, #003D7A 50%, #002855 100%);
       overflow: hidden;
-      z-index: 1;
+      z-index: 10;
     }
 
     #hero::before {
@@ -229,7 +229,6 @@
       position: relative;
       min-height: 100vh;
       background: linear-gradient(180deg, #002855 0%, #003D7A 50%, #002855 100%);
-      overflow: hidden;
       z-index: 1;
     }
 
@@ -238,7 +237,6 @@
       top: 0;
       width: 100%;
       height: 100vh;
-      overflow: hidden;
     }
 
     #graph-svg {
@@ -1393,7 +1391,7 @@
         <!-- cluster nodes group — resting constellation -->
         <g id="cluster-nodes-group"></g>
         <!-- dark tint overlay — fades in when a cluster is expanded -->
-        <rect id="graph-tint" x="0" y="0" width="100%" height="100%"
+        <rect id="graph-tint" x="-9999" y="-9999" width="19998" height="19998"
           fill="rgb(4,6,18)" opacity="0" style="pointer-events:none"/>
         <!-- active cluster group — expanded cluster sits above tint -->
         <g id="active-cluster-group"></g>
@@ -4257,7 +4255,7 @@ const Graph = (function () {
   //  Orbit positions for component expansion
   // ─────────────────────────────────────────────
   function getOrbitPositions(clusterNode, count) {
-    const radius = 260;
+    const radius = 220;
     return Array.from({ length: count }, (_, i) => {
       const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
       return {
@@ -4275,7 +4273,7 @@ const Graph = (function () {
     clusterNodes = [];
     links = [];
 
-    data.clusters.forEach(cluster => {
+    data.clusters.forEach((cluster, i) => {
       const node = {
         id: cluster.id,
         name: cluster.name,
@@ -4396,12 +4394,19 @@ const Graph = (function () {
     svg.selectAll('.node-cluster')
       .attr('transform', d => `translate(${d.x},${d.y})`);
 
-    // Update cluster link positions
-    linksGroup.selectAll('.cluster-link')
-      .attr('x1', d => d.source.x)
-      .attr('y1', d => d.source.y)
-      .attr('x2', d => d.target.x)
-      .attr('y2', d => d.target.y);
+    // Update cluster link positions — offset endpoints by node radius so lines stop at circle edge
+    const clusterR = 46;
+    linksGroup.selectAll('.cluster-link').each(function(d) {
+      const dx = d.target.x - d.source.x;
+      const dy = d.target.y - d.source.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const ux = dx / dist, uy = dy / dist;
+      d3.select(this)
+        .attr('x1', d.source.x + ux * clusterR)
+        .attr('y1', d.source.y + uy * clusterR)
+        .attr('x2', d.target.x - ux * clusterR)
+        .attr('y2', d.target.y - uy * clusterR);
+    });
 
     // Update component node positions (orbit stays relative to cluster)
     if (activeCluster) {
@@ -4415,17 +4420,35 @@ const Graph = (function () {
           })
           .attr('transform', d => `translate(${d.x},${d.y})`);
 
-        componentGroup.selectAll('.comp-link')
-          .attr('x1', parent.x)
-          .attr('y1', parent.y)
-          .attr('x2', d => { const n = componentNodesMap[d.target]; return n ? n.x : parent.x; })
-          .attr('y2', d => { const n = componentNodesMap[d.target]; return n ? n.y : parent.y; });
+        // Hub-to-component lines: offset by clusterR from parent, compR from component
+        const compR = 28;
+        componentGroup.selectAll('.comp-link').each(function(d) {
+          const n = componentNodesMap[d.target];
+          if (!n) return;
+          const dx = n.x - parent.x, dy = n.y - parent.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const ux = dx / dist, uy = dy / dist;
+          d3.select(this)
+            .attr('x1', parent.x + ux * clusterR)
+            .attr('y1', parent.y + uy * clusterR)
+            .attr('x2', n.x - ux * compR)
+            .attr('y2', n.y - uy * compR);
+        });
 
-        componentGroup.selectAll('.inter-comp-link')
-          .attr('x1', d => { const n = componentNodesMap[d.source]; return n ? n.x : parent.x; })
-          .attr('y1', d => { const n = componentNodesMap[d.source]; return n ? n.y : parent.y; })
-          .attr('x2', d => { const n = componentNodesMap[d.target]; return n ? n.x : parent.x; })
-          .attr('y2', d => { const n = componentNodesMap[d.target]; return n ? n.y : parent.y; });
+        // Inter-component lines: offset by compR from both ends
+        componentGroup.selectAll('.inter-comp-link').each(function(d) {
+          const src = componentNodesMap[d.source];
+          const tgt = componentNodesMap[d.target];
+          if (!src || !tgt) return;
+          const dx = tgt.x - src.x, dy = tgt.y - src.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const ux = dx / dist, uy = dy / dist;
+          d3.select(this)
+            .attr('x1', src.x + ux * compR)
+            .attr('y1', src.y + uy * compR)
+            .attr('x2', tgt.x - ux * compR)
+            .attr('y2', tgt.y - uy * compR);
+        });
       }
     }
   }
@@ -4516,9 +4539,9 @@ const Graph = (function () {
   }
 
   function onClusterHover(event, d) {
-    showTooltip(event, d);
-    // Obsidian-style: only highlight in resting state (no cluster expanded)
+    // No tooltip or dimming when a cluster is already expanded
     if (activeCluster) return;
+    showTooltip(event, d);
 
     // Find IDs directly connected to hovered node
     // Use (id || obj) pattern consistently — D3 resolves link source/target to node objects
@@ -4583,6 +4606,11 @@ const Graph = (function () {
 
     const parent = clusterNodes.find(n => n.id === clusterId);
     if (!parent) return;
+
+    // Snap cluster to a safe position so the full orbit circle fits within the viewport
+    const orbitR = 220, snapMargin = 60;
+    parent.x = Math.max(orbitR + snapMargin, Math.min(width  - orbitR - snapMargin, parent.x));
+    parent.y = Math.max(orbitR + snapMargin, Math.min(height - orbitR - snapMargin, parent.y));
 
     // Build component node objects and cache lookup map + orbit positions
     componentNodes = clusterData.components.map(comp => ({
@@ -4807,8 +4835,13 @@ const Graph = (function () {
     const nodeEl = activeClusterGroup.selectAll('.node-cluster').node();
     if (nodeEl) clusterGroup.node().appendChild(nodeEl);
 
-    // Restore SVG draw order
-    clusterGroup.raise();
+    // Restore SVG layer order: links → cluster-nodes → tint → active-cluster → components
+    const svgEl = svg.node();
+    const tintEl = document.getElementById('graph-tint');
+    svgEl.insertBefore(linksGroup.node(),        svgEl.firstChild);
+    svgEl.insertBefore(clusterGroup.node(),      tintEl);
+    svgEl.insertBefore(tintEl,                   activeClusterGroup.node());
+    svgEl.insertBefore(activeClusterGroup.node(), componentGroup.node());
 
     // Fade tint out — background constellation comes back
     d3.select('#graph-tint')
