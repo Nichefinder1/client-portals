@@ -12,7 +12,9 @@
 .btn-print { background-color: #1a5276; color: white; }
 .btn-print:hover { background-color: #154360; }
 @media print { .download-bar, .portal-nav { display: none !important; } }
+
 body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 1in; color: #333; }
+
 /* Portal Navigation */
 .portal-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background-color: #1a5276; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
 .portal-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; }
@@ -20,28 +22,54 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .portal-nav-links { display: flex; flex-wrap: wrap; }
 .portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 11px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
 .portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
+
 h1 { font-size: 24pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
-h2 { font-size: 18pt; color: #2874a6; margin-top: 24pt; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
-h3 { font-size: 14pt; color: #1a5276; margin-top: 18pt; }
-h4 { font-size: 12pt; color: #2874a6; margin-top: 14pt; }
+h2 { font-size: 16pt; color: #1a5276; margin-top: 0; }
+h3 { font-size: 13pt; color: #1a5276; margin-top: 14pt; margin-bottom: 6px; }
+h4 { font-size: 11pt; color: #2874a6; margin-top: 10pt; margin-bottom: 4px; }
 table { border-collapse: collapse; width: 100%; margin: 12pt 0; font-size: 10pt; }
 th { background-color: #1a5276; color: white; padding: 10px; text-align: left; font-weight: bold; }
 td { padding: 8px 10px; border: 1px solid #d5d8dc; }
 tr:nth-child(even) { background-color: #f8f9f9; }
-.phase-box { background-color: #e8f6f3; border: 2px solid #1abc9c; padding: 15px; margin: 15px 0; border-radius: 8px; }
-.critical-phase { background-color: #fadbd8; border: 2px solid #c0392b; padding: 15px; margin: 15px 0; border-radius: 8px; }
-.checklist { list-style: none; padding-left: 0; }
-.checklist li { padding: 8px 0; padding-left: 30px; position: relative; border-bottom: 1px dotted #d5d8dc; }
-.checklist li:before { content: "☐"; position: absolute; left: 0; font-size: 14pt; }
-hr { border: none; border-top: 1px solid #d5d8dc; margin: 20px 0; }
+hr { border: none; border-top: 1px solid #d5d8dc; margin: 25px 0; }
 .header-info { font-size: 10pt; color: #7f8c8d; margin-bottom: 20px; }
 .footer { font-size: 9pt; color: #95a5a6; margin-top: 30px; border-top: 1px solid #d5d8dc; padding-top: 10px; }
-code { background-color: #f4f6f6; padding: 15px; display: block; font-family: Consolas, monospace; font-size: 10pt; white-space: pre-wrap; border-radius: 5px; margin: 10px 0; }
-.priority-tag { display: inline-block; padding: 3px 10px; border-radius: 3px; font-size: 9pt; font-weight: bold; margin-left: 10px; }
-.p1 { background-color: #c0392b; color: white; }
-.p2 { background-color: #e74c3c; color: white; }
-.p3 { background-color: #f39c12; color: white; }
-.template-box { background-color: #fef9e7; border: 1px solid #f39c12; padding: 15px; margin: 10px 0; border-radius: 5px; }
+
+/* Phase boxes */
+.phase-complete { background-color: #d5f5e3; border: 2px solid #27ae60; padding: 20px 25px; margin: 20px 0; border-radius: 8px; }
+.phase-active   { background-color: #e8f4fd; border: 2px solid #2874a6; padding: 20px 25px; margin: 20px 0; border-radius: 8px; }
+.phase-upcoming { background-color: #f4f6f7; border: 2px solid #95a5a6; padding: 20px 25px; margin: 20px 0; border-radius: 8px; }
+
+/* Phase header labels */
+.phase-label-complete { display: inline-block; background-color: #27ae60; color: white; padding: 4px 14px; border-radius: 20px; font-size: 9pt; font-weight: bold; margin-bottom: 8px; }
+.phase-label-active   { display: inline-block; background-color: #2874a6; color: white; padding: 4px 14px; border-radius: 20px; font-size: 9pt; font-weight: bold; margin-bottom: 8px; }
+.phase-label-upcoming { display: inline-block; background-color: #7f8c8d; color: white; padding: 4px 14px; border-radius: 20px; font-size: 9pt; font-weight: bold; margin-bottom: 8px; }
+
+/* Checklists */
+.checklist { list-style: none; padding-left: 0; margin: 8px 0; }
+.checklist li { padding: 6px 0 6px 30px; position: relative; border-bottom: 1px dotted #d5d8dc; font-size: 10pt; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li.done:before   { content: "✓"; position: absolute; left: 0; font-size: 14pt; color: #27ae60; font-weight: bold; line-height: 1.2; }
+.checklist li.active:before { content: "●"; position: absolute; left: 4px; font-size: 10pt; color: #2874a6; line-height: 1.8; }
+.checklist li.next:before   { content: "○"; position: absolute; left: 4px; font-size: 10pt; color: #7f8c8d; line-height: 1.8; }
+
+/* Progress overview */
+.progress-overview { display: flex; gap: 12px; margin: 25px 0; flex-wrap: wrap; }
+.progress-card { flex: 1; min-width: 160px; border-radius: 8px; padding: 16px; text-align: center; }
+.progress-card.done  { background-color: #d5f5e3; border: 2px solid #27ae60; }
+.progress-card.going { background-color: #e8f4fd; border: 2px solid #2874a6; }
+.progress-card.next  { background-color: #f4f6f7; border: 2px solid #95a5a6; }
+.progress-card .icon { font-size: 22pt; }
+.progress-card .label { font-size: 9pt; font-weight: bold; margin-top: 6px; }
+.progress-card .sub { font-size: 8pt; color: #7f8c8d; margin-top: 2px; }
+
+/* Service grid */
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 10px 0; }
+.service-item { background: white; border: 1px solid #a9dfbf; border-radius: 4px; padding: 6px 10px; font-size: 10pt; }
+.service-item:before { content: "✓ "; color: #27ae60; font-weight: bold; }
+
+/* Info box */
+.info-box { background-color: #fef9e7; border: 1px solid #f39c12; padding: 14px 18px; margin: 12px 0; border-radius: 6px; font-size: 10pt; }
 </style>
 </head>
 <body>
@@ -84,452 +112,222 @@ function downloadPDF() {
 }
 </script>
 
-<h1>GBP Optimization Implementation Checklist</h1>
+<h1>GBP Optimization Progress Tracker</h1>
 
 <div class="header-info">
-<strong>Client:</strong> Fox Valley Plumbing & Backflow Services<br>
-<strong>GBP CID:</strong> 9721316978758731492<br>
-<strong>Created:</strong> January 28, 2026<br>
-<strong>Updated:</strong> February 4, 2026<br>
+<strong>Client:</strong> Fox Valley Plumbing &amp; Backflow Services &nbsp;|&nbsp;
+<strong>GBP:</strong> foxvalleyplumbing.com &nbsp;|&nbsp;
+<strong>Created:</strong> January 28, 2026 &nbsp;|&nbsp;
+<strong>Updated:</strong> March 13, 2026 &nbsp;|&nbsp;
 <strong>Prepared By:</strong> Nichefinder AI Agency
 </div>
 
-<div style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center;">
-<h2 style="color: white; border: none; margin: 0;">PHASE 1 COMPLETE</h2>
-<p style="margin: 10px 0 0 0; font-size: 14pt;">All critical GBP optimizations have been implemented.</p>
+<!-- Progress Overview -->
+<div class="progress-overview">
+<div class="progress-card done">
+<div class="icon">✅</div>
+<div class="label">Phase 1 — Foundation</div>
+<div class="sub">Complete · Feb 4, 2026</div>
+</div>
+<div class="progress-card done">
+<div class="icon">✅</div>
+<div class="label">Phase 2 — Profile Optimization</div>
+<div class="sub">Complete · Mar 2026</div>
+</div>
+<div class="progress-card going">
+<div class="icon">🔄</div>
+<div class="label">Phase 3 — Ongoing</div>
+<div class="sub">Active · Weekly execution</div>
+</div>
+<div class="progress-card next">
+<div class="icon">📅</div>
+<div class="label">Phase 4 — Monthly Audit</div>
+<div class="sub">Recurring · Every month</div>
+</div>
 </div>
 
 <hr>
 
-<h2>Access Requirements</h2>
+<!-- PHASE 1 -->
+<div class="phase-complete">
+<span class="phase-label-complete">✅ PHASE 1 COMPLETE — February 4, 2026</span>
+<h2>Phase 1: GBP Foundation</h2>
+<p style="color:#1e8449; font-size:10pt; margin: 0 0 16px 0;">All critical fixes were implemented. GBP score improved from <strong>37/70 (D+) → 62/70 (A-)</strong> — a 67% improvement.</p>
 
+<h3>1.1 Business Hours</h3>
 <ul class="checklist">
-<li>Obtain GBP manager access from client</li>
-<li>Verify admin permissions (not just manager)</li>
-<li>Document login credentials in secure vault</li>
+<li class="done">Set to Open 24 Hours, 7 days a week — live on GBP listing</li>
+<li class="done">Now appears in "Open now" searches and 24/7 emergency queries</li>
 </ul>
 
-<hr>
-
-<div class="critical-phase">
-<h2>Phase 1: Critical Fixes (Complete Within 24 Hours)</h2>
-
-<h3>1.1 Set Business Hours <span class="priority-tag p1">P1 - CRITICAL</span></h3>
-<p><strong>Time Estimate:</strong> 5 minutes</p>
-
+<h3>1.2 Business Description</h3>
 <ul class="checklist">
-<li>Log into Google Business Profile Manager</li>
-<li>Navigate to: Edit Profile → Business Information → Hours</li>
-<li>Set hours as follows:</li>
+<li class="done">746-character keyword-optimized description published</li>
+<li class="done">Includes: 15+ years experience, license numbers, backflow specialty, 24/7 availability, service area, phone CTA</li>
 </ul>
 
-<table>
-<tr><th>Day</th><th>Hours</th></tr>
-<tr><td>Monday</td><td>Open 24 hours</td></tr>
-<tr><td>Tuesday</td><td>Open 24 hours</td></tr>
-<tr><td>Wednesday</td><td>Open 24 hours</td></tr>
-<tr><td>Thursday</td><td>Open 24 hours</td></tr>
-<tr><td>Friday</td><td>Open 24 hours</td></tr>
-<tr><td>Saturday</td><td>Open 24 hours</td></tr>
-<tr><td>Sunday</td><td>Open 24 hours</td></tr>
-</table>
+<h3>1.3 All 24 Services Added to GBP</h3>
+<div class="service-grid">
+<div class="service-item">Backflow Testing</div>
+<div class="service-item">Backflow Repair</div>
+<div class="service-item">Backflow Certification</div>
+<div class="service-item">Backflow Installation</div>
+<div class="service-item">Emergency Plumbing</div>
+<div class="service-item">24-Hour Plumbing</div>
+<div class="service-item">Drain Cleaning</div>
+<div class="service-item">Hydro Jetting</div>
+<div class="service-item">Sewer Line Repair</div>
+<div class="service-item">Video Sewer Inspection</div>
+<div class="service-item">Water Heater Repair</div>
+<div class="service-item">Water Heater Installation</div>
+<div class="service-item">Tankless Water Heater Repair</div>
+<div class="service-item">Tankless Water Heater Installation</div>
+<div class="service-item">Sump Pump Repair</div>
+<div class="service-item">Sump Pump Installation</div>
+<div class="service-item">Ejector Pump Repair</div>
+<div class="service-item">Leak Detection</div>
+<div class="service-item">Pipe Repair</div>
+<div class="service-item">Water Line Repair</div>
+<div class="service-item">Gas Line Repair</div>
+<div class="service-item">Toilet Repair</div>
+<div class="service-item">Garbage Disposal Repair</div>
+<div class="service-item">Water Softener Installation</div>
+</div>
 
+<h3>1.4 Service Area — 12 Cities Defined</h3>
 <ul class="checklist">
-<li>Save changes</li>
-<li>Verify hours appear on live GBP listing</li>
-<li>Screenshot for documentation</li>
+<li class="done">Elgin, South Elgin, Bartlett, West Dundee, East Dundee, Sleepy Hollow, Streamwood, Carpentersville, Hanover Park, Hoffman Estates, St. Charles, Wayne</li>
 </ul>
 
-<p><em>Note: If client doesn't operate true 24/7, set actual hours and add "24-hour emergency service available" to description.</em></p>
-
-<hr>
-
-<h3>1.2 Add Business Description <span class="priority-tag p2">P2 - CRITICAL</span></h3>
-<p><strong>Time Estimate:</strong> 10 minutes</p>
-
+<h3>Bonus: BBB Accreditation</h3>
 <ul class="checklist">
-<li>Navigate to: Edit Profile → Business Information → Description</li>
-<li>Add the following description (746 characters):</li>
+<li class="done">BBB Accredited — A+ rating earned February 13, 2026. Zero complaints on file.</li>
+<li class="done">Matches trust level of top competitors. BBB badge available for website use.</li>
 </ul>
-
-<code>Fox Valley Plumbing & Backflow Services has served Elgin and surrounding communities for over 15 years. Licensed Master Plumber (IL #058-161084, Contractor #055-042593) specializing in backflow testing, certification, and repair. We offer 24/7 emergency plumbing services including drain cleaning, water heater repair, sump pump services, gas line repair, and more. Family-owned, locally operated, with a 100% satisfaction guarantee on every job. Serving a 10-mile radius including Elgin, South Elgin, Bartlett, Streamwood, Carpentersville, and 40+ communities. Call (847) 624-3872 for same-day service.</code>
-
-<ul class="checklist">
-<li>Save changes</li>
-<li>Verify description appears on live listing</li>
-<li>Screenshot for documentation</li>
-</ul>
-
-<hr>
-
-<h3>1.3 Add All Services <span class="priority-tag p1">P1 - CRITICAL</span></h3>
-<p><strong>Time Estimate:</strong> 30 minutes</p>
-
-<ul class="checklist">
-<li>Navigate to: Edit Profile → Services</li>
-<li>Remove existing generic "Repair services" entry</li>
-<li>Add each service below with description:</li>
-</ul>
-
-<h4>Backflow Services (Specialty - Add First)</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Backflow Testing</td><td>Annual backflow preventer testing for residential and commercial properties. Illinois-certified backflow tester.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Backflow Repair</td><td>Expert repair of all backflow preventer types including RPZ, PVB, and double check valves.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Backflow Certification</td><td>Official backflow certification and compliance documentation for city and county requirements.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Backflow Installation</td><td>Professional installation of new backflow prevention devices for irrigation and fire systems.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<h4>Emergency Services</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Emergency Plumbing</td><td>24/7 emergency plumbing services. Fast response for burst pipes, sewer backups, and water heater failures.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>24-Hour Plumbing</td><td>Round-the-clock plumbing service available 7 days a week including holidays.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<h4>Drain & Sewer Services</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Drain Cleaning</td><td>Professional drain cleaning for clogged sinks, tubs, showers, and floor drains.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Hydro Jetting</td><td>High-pressure water jetting to clear stubborn clogs and clean drain lines.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Sewer Line Repair</td><td>Sewer line diagnosis and repair including trenchless options. Video inspection available.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Video Sewer Inspection</td><td>Camera inspection to diagnose sewer line problems without digging.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<h4>Water Heater Services</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Water Heater Repair</td><td>Repair for all water heater brands. Same-day service available.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Water Heater Installation</td><td>Professional installation of traditional tank water heaters.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Tankless Water Heater Repair</td><td>Expert repair of tankless/on-demand water heaters.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Tankless Water Heater Installation</td><td>Installation of energy-efficient tankless water heaters.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<h4>Pump Services</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Sump Pump Repair</td><td>Sump pump diagnosis and repair. Battery backup systems available.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Sump Pump Installation</td><td>New sump pump installation with optional battery backup.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Ejector Pump Repair</td><td>Repair and maintenance of sewage ejector pumps.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<h4>Pipe & Leak Services</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Leak Detection</td><td>Electronic leak detection to locate hidden water leaks.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Pipe Repair</td><td>Repair of leaking, corroded, or damaged pipes.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Water Line Repair</td><td>Main water line repair and replacement services.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Gas Line Repair</td><td>Licensed gas line repair and installation. Safety inspections available.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<h4>Fixture & Room Services</h4>
-<table>
-<tr><th>Service Name</th><th>Description</th><th>Added?</th></tr>
-<tr><td>Toilet Repair</td><td>Toilet repair including running toilets, clogs, and replacements.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Faucet Repair</td><td>Faucet repair and installation for kitchen and bathroom.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Garbage Disposal Repair</td><td>Garbage disposal repair, replacement, and installation.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Kitchen Plumbing</td><td>Complete kitchen plumbing services including sinks, disposals, and dishwasher connections.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Bathroom Plumbing</td><td>Full bathroom plumbing including toilets, sinks, showers, and tubs.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-<tr><td>Water Softener Installation</td><td>Water softener installation and maintenance for hard water treatment.</td><td style="color: #27ae60; font-weight: bold;">✅</td></tr>
-</table>
-
-<p><strong>Total Services to Add: 24</strong></p>
-
-<ul class="checklist">
-<li>Verify all 24 services are saved</li>
-<li>Check live listing to confirm services appear</li>
-<li>Screenshot for documentation</li>
-</ul>
-
-<hr>
-
-<h3>1.4 Add Service Area <span class="priority-tag p2">P2 - HIGH</span></h3>
-<p><strong>Time Estimate:</strong> 10 minutes</p>
-
-<ul class="checklist">
-<li>Navigate to: Edit Profile → Location and areas → Service area</li>
-<li>Select "Yes" for service area business</li>
-<li>Add the following cities:</li>
-</ul>
-
-<h4>Tier 1 Cities (Priority)</h4>
-<ul class="checklist">
-<li>Elgin, IL</li>
-<li>South Elgin, IL</li>
-<li>Bartlett, IL</li>
-<li>West Dundee, IL</li>
-<li>East Dundee, IL</li>
-</ul>
-
-<h4>Tier 2 Cities</h4>
-<ul class="checklist">
-<li>Sleepy Hollow, IL</li>
-<li>Streamwood, IL</li>
-<li>Carpentersville, IL</li>
-<li>Hanover Park, IL</li>
-<li>Hoffman Estates, IL</li>
-<li>St. Charles, IL</li>
-<li>Wayne, IL</li>
-</ul>
-
-<p><strong>Total Cities: 12</strong></p>
-
-<ul class="checklist">
-<li>Save changes</li>
-<li>Verify service area shows on listing</li>
-<li>Screenshot for documentation</li>
-</ul>
-
 </div>
 
 <hr>
 
-<div class="phase-box">
-<h2>Phase 2: Profile Optimization (Complete Within 7 Days)</h2>
+<!-- PHASE 2 -->
+<div class="phase-complete">
+<span class="phase-label-complete">✅ PHASE 2 COMPLETE — March 2026</span>
+<h2>Phase 2: Profile Optimization</h2>
+<p style="color:#1e8449; font-size:10pt; margin: 0 0 16px 0;">All profile optimization tasks completed. GBP profile is now fully built out and competitive.</p>
 
-<h3>2.1 Respond to All Reviews <span class="priority-tag p3">P3 - HIGH</span></h3>
-<p><strong>Time Estimate:</strong> 45 minutes</p>
-
+<h3>2.1 Review Responses</h3>
 <ul class="checklist">
-<li>Navigate to: Reviews</li>
-<li>Sort by "Haven't replied"</li>
-<li>Respond to each review using templates below:</li>
+<li class="done">All 125 reviews responded to — positive and negative</li>
+<li class="done">Personalized responses for negative reviews with direct contact information provided</li>
 </ul>
 
-<div class="template-box">
-<h4>Positive Review Response Template:</h4>
-<code>Thank you for the kind words, [NAME]! We're glad we could help with your [SERVICE TYPE]. Our team takes pride in providing reliable plumbing service to Elgin and the surrounding communities. We appreciate you choosing Fox Valley Plumbing & Backflow Services!</code>
-</div>
-
-<div class="template-box">
-<h4>Negative Review Response Template:</h4>
-<code>[NAME], we're sorry to hear about your experience. This doesn't reflect the level of service we strive to provide. We'd like to make this right. Please call us at (847) 624-3872 or email [EMAIL] so we can discuss this further. Thank you for bringing this to our attention.</code>
-</div>
-
+<h3>2.2 Photos</h3>
 <ul class="checklist">
-<li>Respond to all positive reviews</li>
-<li>Respond to all negative reviews (with personalized response)</li>
-<li>Document any issues mentioned for client follow-up</li>
-<li>Screenshot response examples</li>
+<li class="done">Team photos, vehicle photos, and job photos uploaded to GBP</li>
+<li class="active">Ongoing — new photos added monthly to keep profile fresh</li>
 </ul>
 
-<hr>
-
-<h3>2.2 Add Additional Photos</h3>
-<p><strong>Time Estimate:</strong> 30 minutes (upload) + client coordination</p>
-
-<p><strong>Request from client:</strong></p>
+<h3>2.3 Business Information Verified</h3>
 <ul class="checklist">
-<li>Team photo (owner/technicians)</li>
-<li>Interior of service vehicle</li>
-<li>License/certification images</li>
-<li>Before/after job photos (5-10)</li>
-<li>Equipment photos</li>
+<li class="done">Business name, address, and phone number verified — matches website exactly</li>
+<li class="done">Website URL confirmed: foxvalleyplumbing.com</li>
+<li class="done">Primary category: Plumber | Secondary: Contractor, Drain Cleaning Service</li>
+<li class="done">No duplicate GBP listings found</li>
 </ul>
 
-<p><strong>Upload to GBP:</strong></p>
+<h3>2.4 Profile Attributes</h3>
 <ul class="checklist">
-<li>Navigate to: Photos → Add photos</li>
-<li>Upload team photos to "Team" category</li>
-<li>Upload job photos to "At work" category</li>
-<li>Upload logo to "Logo" category (if not present)</li>
-<li>Upload cover photo to "Cover" category</li>
+<li class="done">Family-owned business: Yes</li>
+<li class="done">Online estimates: Yes | Onsite services: Yes</li>
+<li class="done">Repair, installation, and maintenance services: Yes</li>
+<li class="done">Credit &amp; debit cards accepted: Yes</li>
 </ul>
-
-<p><strong>Target: 20+ total photos</strong></p>
-
-<hr>
-
-<h3>2.3 Verify Business Information</h3>
-<p><strong>Time Estimate:</strong> 15 minutes</p>
-
-<ul class="checklist">
-<li>Verify business name matches website exactly</li>
-<li>Verify address matches website exactly</li>
-<li>Verify phone number matches website exactly</li>
-<li>Verify website URL is correct (https://www.foxvalleyplumbing.com/)</li>
-<li>Check for duplicate GBP listings and flag for removal</li>
-<li>Verify primary category is "Plumber"</li>
-<li>Add secondary categories:
-    <ul class="checklist">
-    <li>Contractor</li>
-    <li>Drain cleaning service</li>
-    </ul>
-</li>
-</ul>
-
-<hr>
-
-<h3>2.4 Set Up Attributes</h3>
-<p><strong>Time Estimate:</strong> 10 minutes</p>
-
-<ul class="checklist">
-<li>Navigate to: Edit Profile → More</li>
-</ul>
-
-<p><strong>Service Options:</strong></p>
-<ul class="checklist">
-<li>Online estimates: Yes</li>
-<li>Onsite services: Yes</li>
-</ul>
-
-<p><strong>Offerings:</strong></p>
-<ul class="checklist">
-<li>Repair services: Yes</li>
-<li>Installation services: Yes</li>
-<li>Maintenance services: Yes</li>
-</ul>
-
-<p><strong>Payments:</strong></p>
-<ul class="checklist">
-<li>Credit cards: Yes</li>
-<li>Debit cards: Yes</li>
-</ul>
-
-<p><strong>From the Business:</strong></p>
-<ul class="checklist">
-<li>Identifies as family-owned: Yes</li>
-</ul>
-
 </div>
 
 <hr>
 
-<div class="phase-box">
-<h2>Phase 3: Ongoing Optimization (Weekly)</h2>
+<!-- PHASE 3 -->
+<div class="phase-active">
+<span class="phase-label-active">🔄 PHASE 3 ACTIVE — Ongoing Weekly Execution</span>
+<h2>Phase 3: Ongoing Optimization</h2>
+<p style="color:#1a5276; font-size:10pt; margin: 0 0 16px 0;">These items run continuously as part of the monthly retainer. Status updated each reporting cycle.</p>
 
 <h3>3.1 Weekly GBP Posts</h3>
-<p><strong>Time Estimate:</strong> 15 minutes/week</p>
-
 <ul class="checklist">
-<li>Create weekly posting schedule</li>
-<li>Post types to rotate:
-    <ul class="checklist">
-    <li>Service highlight (e.g., "Backflow testing season is here!")</li>
-    <li>Tips and education (e.g., "5 signs you need drain cleaning")</li>
-    <li>Seasonal content (e.g., "Winterize your pipes")</li>
-    <li>Promotions/offers (if applicable)</li>
-    </ul>
-</li>
+<li class="done">Posting schedule established — Tuesdays and Wednesdays</li>
+<li class="done">36 Q1 posts planned — rotating service highlights, tips, seasonal content, and city-specific posts</li>
+<li class="active">Active — posts publishing weekly across all 11 service cities</li>
 </ul>
-
-<div class="template-box">
-<h4>Post Template:</h4>
-<code>[ENGAGING HEADLINE]
-
-[2-3 sentences about the topic]
-
-[CALL TO ACTION]
-📞 Call (847) 624-3872
-🌐 www.foxvalleyplumbing.com
-
-#ElginPlumber #FoxValleyPlumbing #[ServiceKeyword]</code>
-</div>
-
-<ul class="checklist">
-<li>Schedule posts for Tuesday or Wednesday (optimal engagement)</li>
-<li>Include relevant photo with each post</li>
-<li>Track engagement (views, clicks)</li>
-</ul>
-
-<hr>
 
 <h3>3.2 Review Generation Campaign</h3>
-<p><strong>Time Estimate:</strong> Setup 1 hour, then automated</p>
-
 <ul class="checklist">
-<li>Create review request email template</li>
-<li>Create review request SMS template</li>
-<li>Set up QR code linking to Google review page</li>
-<li>Provide QR code cards to technicians</li>
-<li>Implement post-service review request process</li>
+<li class="done">Review request process set up — post-service outreach active</li>
+<li class="done">Current reviews: 125 (up from 124 baseline)</li>
+<li class="active">Active — targeting +10 reviews/month toward goal of 200 by December 2026</li>
 </ul>
 
-<p><strong>Review Link:</strong></p>
-<code>https://search.google.com/local/writereview?placeid=ChIJZal7sjEFD4gR5EbjU0kO6YY</code>
+<div class="info-box">
+<strong>Review Link for Customers:</strong><br>
+<a href="https://search.google.com/local/writereview?placeid=ChIJZal7sjEFD4gR5EbjU0kO6YY" target="_blank">https://search.google.com/local/writereview?placeid=ChIJZal7sjEFD4gR5EbjU0kO6YY</a>
+</div>
 
-<p><strong>Target: +10 reviews per month</strong></p>
-
-<hr>
-
-<h3>3.3 Q&A Monitoring</h3>
-<p><strong>Time Estimate:</strong> 5 minutes/week</p>
-
+<h3>3.3 Q&amp;A Monitoring</h3>
 <ul class="checklist">
-<li>Check Questions & Answers section weekly</li>
-<li>Answer any customer questions within 24 hours</li>
-<li>Seed common questions if section is empty:
-    <ul>
-    <li>"Do you offer 24-hour emergency plumbing?"</li>
-    <li>"What areas do you serve?"</li>
-    <li>"Are you licensed and insured?"</li>
-    <li>"Do you do backflow testing?"</li>
-    </ul>
-</li>
+<li class="done">Common questions seeded in GBP Q&amp;A section</li>
+<li class="active">Weekly monitoring — new questions answered within 24 hours</li>
 </ul>
-
 </div>
 
 <hr>
 
-<h2>Phase 4: Monthly Audit (Recurring)</h2>
+<!-- PHASE 4 -->
+<div class="phase-upcoming">
+<span class="phase-label-upcoming">📅 PHASE 4 — Monthly Recurring</span>
+<h2>Phase 4: Monthly GBP Health Check</h2>
+<p style="color:#555; font-size:10pt; margin: 0 0 16px 0;">Performed every month as part of the reporting cycle to ensure the profile stays accurate and competitive.</p>
 
-<h3>Monthly GBP Health Check</h3>
 <ul class="checklist">
-<li>Verify all information is still accurate</li>
-<li>Check for any Google-suggested edits (approve or reject)</li>
-<li>Review insights/analytics</li>
-<li>Document new reviews and responses</li>
-<li>Update photos if new ones available</li>
-<li>Check competitor GBP profiles for new features</li>
+<li class="next">Verify all business information is still accurate</li>
+<li class="next">Review and approve/reject any Google-suggested edits</li>
+<li class="next">Check GBP Insights — profile views, direction requests, website clicks</li>
+<li class="next">Document new reviews received and confirm all are responded to</li>
+<li class="next">Upload new photos if available</li>
+<li class="next">Check competitor GBP profiles for new features or ranking changes</li>
 </ul>
 
-<h3>Monthly Metrics to Track</h3>
-
+<h3>Monthly Metrics Being Tracked</h3>
 <table>
-<tr><th>Metric</th><th>Baseline (Jan 2026)</th><th>Target</th></tr>
-<tr><td>Total Reviews</td><td>125 (Mar 2026)</td><td>+10/month → 200 by Dec 2026</td></tr>
-<tr><td>Average Rating</td><td>4.8</td><td>Maintain 4.7+</td></tr>
-<tr><td>Profile Views</td><td>TBD</td><td>+20%/month</td></tr>
-<tr><td>Direction Requests</td><td>TBD</td><td>+20%/month</td></tr>
-<tr><td>Website Clicks</td><td>TBD</td><td>+20%/month</td></tr>
+<tr><th>Metric</th><th>Baseline (Jan 2026)</th><th>Current (Mar 2026)</th><th>Target (Dec 2026)</th></tr>
+<tr><td>Google Reviews</td><td>124</td><td style="color:#27ae60; font-weight:bold;">125</td><td>200+</td></tr>
+<tr><td>Average Rating</td><td>4.8</td><td style="color:#27ae60; font-weight:bold;">4.8</td><td>Maintain 4.7+</td></tr>
+<tr><td>GBP Score</td><td>37/70 (D+)</td><td style="color:#27ae60; font-weight:bold;">62/70 (A-)</td><td>70/70</td></tr>
+<tr><td>Keywords at #1</td><td>11 of 58</td><td style="color:#27ae60; font-weight:bold;">11+ (26 improved)</td><td>58 of 58</td></tr>
+<tr><td>Profile Views</td><td>TBD</td><td>Tracking</td><td>+20%/month</td></tr>
 </table>
+</div>
 
 <hr>
 
-<h2>Completion Tracking</h2>
-
+<!-- COMPLETION SUMMARY -->
+<h2>Completion Summary</h2>
 <table>
 <tr><th>Phase</th><th>Task</th><th>Completed</th><th>Status</th></tr>
-<tr style="background-color: #d5f5e3;"><td>1.1</td><td>Set Hours (24/7)</td><td>Feb 4, 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE</td></tr>
-<tr style="background-color: #d5f5e3;"><td>1.2</td><td>Add Description (746 chars)</td><td>Feb 4, 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE</td></tr>
-<tr style="background-color: #d5f5e3;"><td>1.3</td><td>Add Services (24) — incl. garbage disposal, water softener, toilet repair</td><td>Feb 4, 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE</td></tr>
-<tr style="background-color: #d5f5e3;"><td>1.4</td><td>Add Service Area (12 cities)</td><td>Feb 4, 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE</td></tr>
-<tr style="background-color: #d5f5e3;"><td>Bonus</td><td>BBB Accreditation — A+</td><td>Feb 13, 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE</td></tr>
-<tr style="background-color: #d5f5e3;"><td>2.1</td><td>Respond to All Reviews</td><td>Mar 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE — All reviews responded to</td></tr>
-<tr style="background-color: #d5f5e3;"><td>2.2</td><td>Add Photos (target: 20+)</td><td>Ongoing</td><td style="color: #27ae60; font-weight: bold;">✅ Active — photos added monthly</td></tr>
-<tr style="background-color: #d5f5e3;"><td>2.3</td><td>Verify Business Info (NAP match)</td><td>Mar 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE — NAP verified across all platforms</td></tr>
-<tr style="background-color: #d5f5e3;"><td>2.4</td><td>Set Attributes (family-owned, payment, etc.)</td><td>Mar 2026</td><td style="color: #27ae60; font-weight: bold;">✅ COMPLETE — All attributes set</td></tr>
-<tr style="background-color: #d5f5e3;"><td>3.1</td><td>Weekly GBP Posts</td><td>Ongoing</td><td style="color: #27ae60; font-weight: bold;">✅ Active — 36 Q1 posts in execution</td></tr>
-<tr style="background-color: #d5f5e3;"><td>3.2</td><td>Review Generation Campaign</td><td>Ongoing</td><td style="color: #27ae60; font-weight: bold;">✅ Active — targeting 200 reviews by Dec 2026</td></tr>
-<tr style="background-color: #d5f5e3;"><td>3.3</td><td>Q&A Monitoring</td><td>Ongoing</td><td style="color: #27ae60; font-weight: bold;">✅ Active — weekly check in place</td></tr>
-</table>
-
-<hr>
-
-<h2>Sign-Off</h2>
-
-<table>
-<tr><th>Role</th><th>Name</th><th>Date</th><th>Signature</th></tr>
-<tr><td>Completed By</td><td></td><td></td><td></td></tr>
-<tr><td>Reviewed By</td><td></td><td></td><td></td></tr>
-<tr><td>Client Approved</td><td></td><td></td><td></td></tr>
+<tr style="background-color:#d5f5e3;"><td>1.1</td><td>Set Business Hours (24/7)</td><td>Feb 4, 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>1.2</td><td>Add Business Description (746 chars)</td><td>Feb 4, 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>1.3</td><td>Add All 24 Services to GBP</td><td>Feb 4, 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>1.4</td><td>Define 12-City Service Area</td><td>Feb 4, 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>Bonus</td><td>BBB Accreditation — A+ Rating</td><td>Feb 13, 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>2.1</td><td>Respond to All Reviews (125)</td><td>Mar 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>2.2</td><td>Add Photos to GBP</td><td>Ongoing</td><td style="color:#27ae60; font-weight:bold;">✅ Active — updated monthly</td></tr>
+<tr style="background-color:#d5f5e3;"><td>2.3</td><td>Verify Business Info (NAP match)</td><td>Mar 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#d5f5e3;"><td>2.4</td><td>Set Profile Attributes</td><td>Mar 2026</td><td style="color:#27ae60; font-weight:bold;">✅ Complete</td></tr>
+<tr style="background-color:#e8f4fd;"><td>3.1</td><td>Weekly GBP Posts</td><td>Ongoing</td><td style="color:#2874a6; font-weight:bold;">🔄 Active — 36 Q1 posts in execution</td></tr>
+<tr style="background-color:#e8f4fd;"><td>3.2</td><td>Review Generation Campaign</td><td>Ongoing</td><td style="color:#2874a6; font-weight:bold;">🔄 Active — targeting 200 reviews</td></tr>
+<tr style="background-color:#e8f4fd;"><td>3.3</td><td>Q&amp;A Monitoring</td><td>Ongoing</td><td style="color:#2874a6; font-weight:bold;">🔄 Active — weekly check</td></tr>
+<tr><td>4.0</td><td>Monthly GBP Health Check</td><td>Recurring</td><td style="color:#7f8c8d; font-weight:bold;">📅 Every month</td></tr>
 </table>
 
 <div class="footer">
-<p><em>Checklist Version: 1.0</em></p>
-<p><em>Created: January 28, 2026</em></p>
-<p><em>Prepared by Nichefinder AI Agency</em></p>
+<p><em>Created: January 28, 2026 &nbsp;|&nbsp; Updated: March 13, 2026 &nbsp;|&nbsp; Prepared by Nichefinder AI Agency</em></p>
 </div>
 
 </body>
