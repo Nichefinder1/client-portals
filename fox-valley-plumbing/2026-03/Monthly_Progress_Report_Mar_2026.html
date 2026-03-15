@@ -1,0 +1,348 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>March 2026 Progress Report — Fox Valley Plumbing | Nichefinder AI</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+/* Download buttons */
+.download-bar { position: fixed; top: 58px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar, .portal-nav { display: none !important; } }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 1in; color: #333; }
+/* Portal Navigation */
+.portal-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background-color: #1a5276; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+h1 { font-size: 24pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
+h2 { font-size: 18pt; color: #2874a6; margin-top: 24pt; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
+h3 { font-size: 14pt; color: #1a5276; margin-top: 18pt; }
+table { border-collapse: collapse; width: 100%; margin: 12pt 0; font-size: 10pt; }
+th { background-color: #1a5276; color: white; padding: 10px; text-align: left; font-weight: bold; }
+td { padding: 8px 10px; border: 1px solid #d5d8dc; }
+tr:nth-child(even) { background-color: #f8f9f9; }
+.header-info { font-size: 10pt; color: #7f8c8d; margin-bottom: 20px; }
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 30px; border-top: 1px solid #d5d8dc; padding-top: 10px; }
+hr { border: none; border-top: 1px solid #d5d8dc; margin: 20px 0; }
+
+/* Metric Cards */
+.metrics-row { display: flex; justify-content: space-between; margin: 20px 0; flex-wrap: wrap; }
+.metric-card { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 20px; border-radius: 10px; text-align: center; flex: 1; margin: 5px; min-width: 140px; }
+.metric-number { font-size: 32pt; font-weight: bold; display: block; }
+.metric-label { font-size: 10pt; opacity: 0.9; }
+.metric-change { font-size: 11pt; margin-top: 5px; }
+.positive { color: #82e0aa; }
+.negative { color: #f1948a; }
+.neutral { color: #f7dc6f; }
+
+/* Status Indicators */
+.status-complete { background-color: #d5f5e3; color: #1e8449; padding: 3px 10px; border-radius: 3px; font-weight: bold; }
+.status-progress { background-color: #fef9e7; color: #9c640c; padding: 3px 10px; border-radius: 3px; font-weight: bold; }
+.status-pending { background-color: #f8f9f9; color: #7f8c8d; padding: 3px 10px; border-radius: 3px; }
+
+/* Progress Bar */
+.progress-container { background-color: #ecf0f1; border-radius: 10px; height: 25px; margin: 10px 0; overflow: hidden; }
+.progress-bar { background: linear-gradient(90deg, #1abc9c, #16a085); height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 10pt; }
+
+/* Section Boxes */
+.summary-box { background-color: #e8f6f3; border-left: 4px solid #1abc9c; padding: 15px; margin: 20px 0; }
+.highlight-box { background-color: #fef9e7; border: 1px solid #f39c12; padding: 15px; margin: 15px 0; border-radius: 5px; }
+.alert-box { background-color: #fadbd8; border-left: 4px solid #c0392b; padding: 15px; margin: 15px 0; }
+.success-box { background-color: #d5f5e3; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+
+/* Checklist */
+.checklist { list-style: none; padding-left: 0; }
+.checklist li { padding: 8px 0; padding-left: 30px; position: relative; border-bottom: 1px dotted #d5d8dc; }
+.checklist li.done:before { content: "\2713"; color: #27ae60; position: absolute; left: 0; font-size: 14pt; font-weight: bold; }
+.checklist li.pending:before { content: "\25CB"; color: #7f8c8d; position: absolute; left: 0; font-size: 14pt; }
+
+.green-text { color: #27ae60; font-weight: bold; }
+.red-text { color: #c0392b; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand">FVP Portal</span>
+<div class="portal-nav-links">
+<a href="../index.html">&#127968; Home</a>
+<a href="../GBP_Audit.html">GBP Audit</a>
+<a href="../GBP_Optimization_Checklist.html">GBP Checklist</a>
+<a href="../LLM_Visibility_Analysis.html">LLM Analysis</a>
+<a href="../LOCAL_DOMINATOR_BASELINE_JAN_2026.html">Rankings</a>
+<a href="../Website_Optimization_Roadmap.html">Website Roadmap</a>
+<a href="../Service_FAQs.html">Service FAQs</a>
+<a href="../2026-02/Monthly_Progress_Report_Feb_2026.html">Feb 2026 Report</a>
+<a href="Monthly_Progress_Report_Mar_2026.html" class="active">Mar 2026 Report</a>
+</div>
+</div>
+</nav>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+
+<script>
+function downloadPDF() {
+    const element = document.body;
+    const opt = {
+        margin: 0.5,
+        filename: 'Monthly_Progress_Report_Mar_2026_Fox_Valley_Plumbing.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    document.querySelector('.download-bar').style.display = 'none';
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.querySelector('.download-bar').style.display = 'flex';
+    });
+}
+</script>
+
+<h1>Monthly Progress Report</h1>
+
+<div class="header-info">
+<strong>Client:</strong> Fox Valley Plumbing & Backflow Services<br>
+<strong>Report Period:</strong> March 2026<br>
+<strong>Meeting Date:</strong> March 11, 2026<br>
+<strong>Prepared By:</strong> Nichefinder AI Agency
+</div>
+
+<hr>
+
+<h2>Executive Summary</h2>
+
+<div class="summary-box">
+<p><strong>This Month's Focus:</strong> Ranking Confirmation & GBP Completion</p>
+<p><strong>Key Achievements:</strong> First ranking scan since baseline confirms momentum — 26 of 58 keywords improved vs. January. GBP optimization fully complete across all 4 phases. BBB A+ accreditation active (earned Feb 13). 220 AdWords landing pages live. All critical GBP issues resolved and holding.</p>
+<p><strong>April Priority:</strong> Review generation campaign, Expertise.com & Three Best Rated submissions, content fixes for ranking drops (drain cleaning, gas line repair), citation building Tier 2+</p>
+</div>
+
+<hr>
+
+<h2>Key Performance Metrics</h2>
+
+<div class="metrics-row">
+<div class="metric-card">
+<span class="metric-number">26</span>
+<span class="metric-label">Keywords Improved</span>
+<span class="metric-change positive">vs. January baseline ↑</span>
+</div>
+<div class="metric-card">
+<span class="metric-number">11</span>
+<span class="metric-label">Keywords at #1</span>
+<span class="metric-change neutral">Holding baseline</span>
+</div>
+<div class="metric-card">
+<span class="metric-number">45%</span>
+<span class="metric-label">Keywords Tier 1–2</span>
+<span class="metric-change positive">26 of 58 keywords</span>
+</div>
+</div>
+
+<div class="metrics-row">
+<div class="metric-card">
+<span class="metric-number">124</span>
+<span class="metric-label">Google Reviews</span>
+<span class="metric-change neutral">4.8 ★ avg rating</span>
+</div>
+<div class="metric-card">
+<span class="metric-number">A+</span>
+<span class="metric-label">BBB Rating</span>
+<span class="metric-change positive">Accredited Feb 13 ✅</span>
+</div>
+<div class="metric-card">
+<span class="metric-number">62/70</span>
+<span class="metric-label">GBP Score</span>
+<span class="metric-change positive">Up from 37/70 (D+) ↑</span>
+</div>
+<div class="metric-card">
+<span class="metric-number">220</span>
+<span class="metric-label">AdWords Pages Live</span>
+<span class="metric-change positive">Since Feb 11 ✅</span>
+</div>
+</div>
+
+<hr>
+
+<h2>Annual Goal Progress</h2>
+
+<h3>Keywords Ranking #1: 11 of 58 (19%)</h3>
+<div class="progress-container">
+<div class="progress-bar" style="width: 19%;">19%</div>
+</div>
+
+<table>
+<tr><th>Metric</th><th>Baseline (Jan 2026)</th><th>March 2026</th><th>Target (Dec 2026)</th><th>Progress</th></tr>
+<tr>
+<td>Keywords at #1</td>
+<td>11</td>
+<td>11</td>
+<td>58</td>
+<td>19%</td>
+</tr>
+<tr>
+<td>Organic Clicks/Month</td>
+<td>239</td>
+<td>In Progress</td>
+<td>3,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Google Reviews</td>
+<td>124</td>
+<td>124</td>
+<td>200</td>
+<td>62%</td>
+</tr>
+<tr>
+<td>Citations Built</td>
+<td>~10</td>
+<td>Tier 1 Complete</td>
+<td>50</td>
+<td>In Progress</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>Ranking Snapshot — March 9, 2026 Scan</h2>
+
+<div class="success-box">
+<p>Local Dominator scan completed March 9, 2026 — <strong>26 of 58 keywords improved</strong> vs. January baseline. This is the first confirmed ranking movement since GBP optimization and AdWords pages went live.</p>
+</div>
+
+<h3>Tier Distribution (58 Keywords)</h3>
+
+<table>
+<tr><th>Tier</th><th>Rank Range</th><th>Keywords</th><th>Status</th></tr>
+<tr style="background-color: #d5f5e3;">
+<td><strong>Tier 1: Dominators</strong></td>
+<td>1–3</td>
+<td>11 (19%)</td>
+<td><span class="status-complete">Holding</span></td>
+</tr>
+<tr>
+<td><strong>Tier 2: Strong</strong></td>
+<td>3–7</td>
+<td>15 (26%)</td>
+<td><span class="status-progress">Close</span></td>
+</tr>
+<tr>
+<td><strong>Tier 3: Moderate</strong></td>
+<td>7–12</td>
+<td>12 (21%)</td>
+<td><span class="status-progress">Needs Work</span></td>
+</tr>
+<tr style="background-color: #fef9e7;">
+<td><strong>Tier 4: Weak</strong></td>
+<td>12–17</td>
+<td>8 (14%)</td>
+<td><span class="status-pending">Priority</span></td>
+</tr>
+<tr style="background-color: #fadbd8;">
+<td><strong>Tier 5: Critical</strong></td>
+<td>17+</td>
+<td>12 (21%)</td>
+<td><span class="status-pending">Major Gaps</span></td>
+</tr>
+</table>
+
+<h3>Biggest Ranking Wins This Month</h3>
+<table>
+<tr><th>Keyword</th><th>Movement</th><th>Driver</th></tr>
+<tr style="background-color: #d5f5e3;"><td>Toilet repair Elgin</td><td class="green-text">+10 positions</td><td>Service added to GBP</td></tr>
+<tr style="background-color: #d5f5e3;"><td>Emergency plumber Elgin</td><td class="green-text">+7 positions</td><td>24/7 hours + description</td></tr>
+<tr style="background-color: #d5f5e3;"><td>Plumbing company Elgin</td><td class="green-text">+6 positions</td><td>GBP optimization + BBB</td></tr>
+<tr style="background-color: #d5f5e3;"><td>Hydro jetting Elgin</td><td class="green-text">+5 positions</td><td>Service added to GBP</td></tr>
+<tr style="background-color: #d5f5e3;"><td>Plumber in Elgin</td><td class="green-text">+4 positions</td><td>GBP optimization</td></tr>
+<tr><td>Backflow (all 5 variants)</td><td class="green-text">Holding #1</td><td>Dominant — no action needed</td></tr>
+</table>
+
+<h3>Keywords to Watch (Ranking Drops)</h3>
+<table>
+<tr><th>Keyword</th><th>Change</th><th>Action</th></tr>
+<tr style="background-color: #fadbd8;"><td>Drain cleaning Elgin</td><td class="red-text">12 → 18</td><td>Content refresh planned April</td></tr>
+<tr style="background-color: #fadbd8;"><td>Gas line repair Elgin</td><td class="red-text">4 → 14</td><td>Competitor activity — monitoring April</td></tr>
+</table>
+
+<hr>
+
+<h2>Work Completed This Month</h2>
+
+<h3>GBP Optimization — All 4 Phases Complete</h3>
+<ul class="checklist">
+<li class="done">Phase 1: Foundation — hours (24/7), 24 services, business description (746 chars), 12-city service area</li>
+<li class="done">Phase 2: Profile optimization — attributes, Q&A populated, all reviews responded to</li>
+<li class="done">Phase 3: Ongoing campaigns — GBP posts 3x/week, seasonal content live</li>
+<li class="done">Phase 4: Monthly health checks — March 9 scan complete, issues documented</li>
+<li class="done">GBP score: 37/70 (D+) → 62/70 (A-) — full improvement documented in GBP Audit</li>
+</ul>
+
+<h3>Rankings & SEO</h3>
+<ul class="checklist">
+<li class="done">March 9 Local Dominator scan — 26 of 58 keywords improved vs. January baseline</li>
+<li class="done">9 keywords tracked as drops — gas line repair and drain cleaning flagged for April action</li>
+<li class="done">220 AdWords landing pages confirmed live — 11 cities × 20 services with schema markup</li>
+<li class="done">All backflow keywords holding #1 across 5 variants</li>
+</ul>
+
+<h3>Trust & Authority</h3>
+<ul class="checklist">
+<li class="done">BBB A+ accreditation active — 0 complaints on file (earned Feb 13, 2026)</li>
+<li class="done">Tier 1 citations claimed — Yelp, Apple Maps, Bing Places, BBB</li>
+<li class="done">LLM Visibility Analysis updated — partial AI presence confirmed for backflow queries</li>
+</ul>
+
+<hr>
+
+<h2>April 2026 Priorities</h2>
+
+<div class="highlight-box">
+<h3>High Priority</h3>
+<ul>
+<li><strong>Review generation campaign</strong> — target 200 reviews by Dec 2026 (currently 124)</li>
+<li><strong>Expertise.com & Three Best Rated submissions</strong> — highest-impact action for AI/LLM visibility</li>
+<li><strong>Drain cleaning content refresh</strong> — ranking dropped from 12 → 18, needs targeted content</li>
+<li><strong>Gas line repair investigation</strong> — dropped from 4 → 14, competitor activity suspected</li>
+<li><strong>Custom domain for AdWords landing pages</strong> — connect domain to improve authority signals</li>
+</ul>
+
+<h3>Ongoing</h3>
+<ul>
+<li>Weekly GBP posts (3/week) — maintain posting cadence</li>
+<li>Citation building — Tier 2 and industry directories (Expertise.com, Angi, HomeAdvisor)</li>
+<li>Q1 blog content execution — 12 blog posts scheduled</li>
+<li>Keyword ranking monitoring — next full scan April</li>
+</ul>
+</div>
+
+<hr>
+
+<h2>Questions or Concerns?</h2>
+
+<p>If you have any questions about this report or would like to discuss strategy adjustments, please contact us:</p>
+
+<ul>
+<li><strong>Email:</strong> nichefindersai@gmail.com</li>
+<li><strong>Phone:</strong> (863) 999-9152</li>
+<li><strong>Schedule a Call:</strong> <a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM">Book a Call</a></li>
+</ul>
+
+<div class="footer">
+<p><em>Report Period: March 2026 | Meeting Date: March 11, 2026 | Generated: March 15, 2026</em></p>
+<p><em>Next Report: April 2026</em></p>
+<p><em>Prepared by Nichefinder AI Agency</em></p>
+</div>
+
+</body>
+</html>
