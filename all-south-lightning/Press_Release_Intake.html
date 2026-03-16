@@ -87,6 +87,8 @@ select { cursor: pointer; }
 .btn-copy { background: rgba(255,255,255,0.2); color: white; border: 1.5px solid rgba(255,255,255,0.5); padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; font-weight: bold; transition: background 0.2s; }
 .btn-copy:hover { background: rgba(255,255,255,0.3); }
 .btn-print { background: white; color: #1a5276; border: none; padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; font-weight: bold; }
+.btn-email { background: #27ae60; color: white; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; font-weight: bold; transition: background 0.2s; }
+.btn-email:hover { background: #219a52; }
 .btn-edit { background: transparent; color: rgba(255,255,255,0.85); border: 1.5px solid rgba(255,255,255,0.35); padding: 8px 18px; border-radius: 5px; cursor: pointer; font-size: 9.5pt; }
 .brief-body { background: white; border: 1px solid #d5d8dc; border-top: none; border-radius: 0 0 10px 10px; padding: 30px 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
 .brief-label { font-size: 8pt; font-weight: bold; color: #2874a6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; margin-top: 18px; }
@@ -132,7 +134,7 @@ select { cursor: pointer; }
 
   <div class="info-banner">
     <h3>How this works</h3>
-    <p>Complete all sections marked with <strong style="color:#c0392b;">*</strong> — the rest is optional but helps us write a stronger release. When you're done, click <strong>Generate My Press Release Brief</strong> at the bottom. We'll use your answers to write your first draft within 24–48 hours.</p>
+    <p>Complete all sections marked with <strong style="color:#c0392b;">*</strong> — the rest is optional but helps us write a stronger release. When you're done, click <strong>Generate My Press Release Brief</strong> at the bottom. Then click <strong>Email This Brief</strong> to send it directly to our team — we'll write your first draft within 24–48 hours.</p>
   </div>
 
   <!-- FORM -->
@@ -376,7 +378,7 @@ select { cursor: pointer; }
     <!-- Submit -->
     <div class="submit-section">
       <button type="button" class="btn-submit" onclick="generateBrief()">Generate My Press Release Brief →</button>
-      <p class="submit-note">Your answers will be compiled into a brief our writer uses to craft your release. You'll review and approve before anything is published.</p>
+      <p class="submit-note">Your answers will be compiled into a brief our writer uses to craft your release. After generating, click <strong>Email This Brief</strong> to send it to our team. You'll review and approve before anything is published.</p>
     </div>
 
   </form>
@@ -389,6 +391,7 @@ select { cursor: pointer; }
         <div style="font-size:9pt; opacity:0.8; margin-top:4px;" id="brief-timestamp"></div>
       </div>
       <div class="brief-actions">
+        <button class="btn-email" onclick="emailBrief()">Email This Brief</button>
         <button class="btn-edit" onclick="editForm()">← Edit Answers</button>
         <button class="btn-copy" onclick="copyBrief()">Copy All</button>
         <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
@@ -574,6 +577,39 @@ function editForm() {
   document.getElementById('intake-form').style.display = 'block';
   document.getElementById('brief-section').style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function emailBrief() {
+  const body = document.getElementById('brief-body');
+  let text = 'PRESS RELEASE BRIEF — All South Lightning Protection\n';
+  text += document.getElementById('brief-timestamp').textContent + '\n';
+  text += '='.repeat(60) + '\n\n';
+  const children = body.children;
+  for (let el of children) {
+    if (el.classList.contains('brief-section-title')) {
+      text += '\n' + el.textContent.toUpperCase() + '\n' + '-'.repeat(40) + '\n';
+    } else if (el.classList.contains('brief-label')) {
+      text += '\n' + el.textContent + '\n';
+    } else if (el.classList.contains('brief-value')) {
+      text += el.textContent + '\n';
+    }
+  }
+
+  navigator.clipboard.writeText(text).then(() => {
+    const subject = encodeURIComponent('Press Release Brief — All South Lightning Protection');
+    window.location.href = 'mailto:nichefindersai@gmail.com?subject=' + subject;
+    const toast = document.getElementById('copied-toast');
+    toast.textContent = 'Brief copied! Paste it into the email that just opened.';
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+      toast.textContent = 'Copied to clipboard!';
+    }, 4000);
+  }).catch(() => {
+    const subject = encodeURIComponent('Press Release Brief — All South Lightning Protection');
+    window.location.href = 'mailto:nichefindersai@gmail.com?subject=' + subject;
+    alert('Email opened! Please copy your brief (Copy All button) and paste it into the email body.');
+  });
 }
 
 function copyBrief() {
