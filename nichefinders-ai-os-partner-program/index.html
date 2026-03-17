@@ -227,6 +227,7 @@
       text-transform: uppercase;
       opacity: 0;
       animation: scrollBounce 2s ease-in-out infinite;
+      z-index: 3;
     }
 
     .scroll-hint-arrow {
@@ -1327,8 +1328,13 @@
     }
 
     @media (max-width: 768px) {
+      /* Nav: remove negative margin that clips logo + Apply Now above viewport */
+      #site-nav { margin-top: 0.75rem !important; padding: 0 1.25rem !important; }
       .nav-logo { max-height: 80px !important; height: auto !important; }
       .nav-apply-btn { margin-right: 0 !important; }
+      /* Hero: use svh so browser chrome doesn't eat viewport height */
+      #hero { min-height: 100vh; min-height: 100svh; }
+      .hero-content { padding-top: 100px; padding-left: 1.25rem; padding-right: 1.25rem; }
       .graph-prompt p { font-size: 0.72rem; padding: 0.4rem 1rem; }
       .graph-prompt { white-space: nowrap; }
       #data-panel {
@@ -1347,6 +1353,8 @@
     }
 
     @media (max-width: 480px) {
+      #site-nav { margin-top: 0.5rem !important; padding: 0 1rem !important; }
+      .hero-content { padding-top: 90px; padding-left: 1rem; padding-right: 1rem; }
       .hero-headline { font-size: 2.2rem; }
       #gap-counter-bar { top: 1rem; right: 1rem; }
     }
@@ -1362,7 +1370,7 @@
       <!-- Populated by JS: static decorative graph preview -->
     </div>
     <!-- Top nav bar -->
-    <div style="position:absolute; top:0; left:0; right:0; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; z-index:10; margin-top:-1.5rem;">
+    <div id="site-nav" style="position:absolute; top:0; left:0; right:0; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; z-index:10; margin-top:-1.5rem;">
       <img src="https://nichefinders.ai/logo.png" alt="NicheFinders AI"
            class="nav-logo"
            style="height:260px; width:auto;"

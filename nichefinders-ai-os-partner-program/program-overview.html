@@ -46,7 +46,7 @@
       top: 0;
       z-index: 100;
       background: #002855;
-      padding: 0 2rem;
+      padding: 0.75rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,6 +73,7 @@
       transition: background 0.2s;
     }
     .btn-print:hover { background: var(--orange-light); }
+    .btn-print { white-space: nowrap; }
 
     /* ─── Document wrapper ───────────────────────────────── */
     .doc {
@@ -614,6 +615,11 @@
       .investment-block { flex-direction: column; }
       .doc-footer { flex-direction: column; align-items: flex-start; }
       .footer-meta { text-align: left; }
+      /* Print bar: scale logo down, tighten padding, keep buttons on one line */
+      .print-bar { padding: 0.6rem 1rem; gap: 0.6rem; }
+      .print-bar-logo { height: 52px; }
+      .btn-print { font-size: 0.78rem; padding: 0.5rem 0.9rem; gap: 0.35rem; }
+      .btn-print svg { width: 12px; height: 12px; }
     }
   </style>
 </head>
