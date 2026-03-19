@@ -7,7 +7,8 @@
 @media print { .portal-nav, .copy-btn { display: none !important; } }
 .portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 .portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
-.portal-nav-brand { color: rgba(255,255,255,0.55); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.2); white-space: nowrap; margin-right: 5px; }
+.portal-nav-brand { display:flex; align-items:center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink:0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
 .portal-nav-links { display: flex; flex-wrap: wrap; }
 .portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
 .portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
@@ -47,7 +48,7 @@ h1 { font-size: 22pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-
 
 <nav class="portal-nav">
 <div class="portal-nav-inner">
-  <span class="portal-nav-brand">All South Lightning</span>
+  <span class="portal-nav-brand"><img src="../assets/nichefinders-logo.png" alt="Nichefinder AI Agency"></span>
   <div class="portal-nav-links">
     <a href="index.html">&#127968; Dashboard</a>
     <a href="GBP_Audit.html">&#128269; GBP Audit</a>
