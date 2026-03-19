@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Press Release Intake — Fox Valley Plumbing & Backflow Services</title>
+<title>Press Release Intake — Fox Valley Plumbing & Backflow</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
@@ -170,7 +170,7 @@ select { cursor: pointer; }
       </div>
       <div class="field-group">
         <label for="company-name">Company Name <span class="req">*</span></label>
-        <input type="text" id="company-name" value="Fox Valley Plumbing & Backflow Services" placeholder="Your company name">
+        <input type="text" id="company-name" value="Fox Valley Plumbing & Backflow" placeholder="Your company name">
         <div class="prefill-note">✓ Pre-filled — update if needed</div>
       </div>
       <div class="field-group">
@@ -314,7 +314,7 @@ select { cursor: pointer; }
       <p class="section-desc">This appears at the end of every press release as the standard "About" paragraph. Edit or confirm the text below.</p>
       <div class="field-group">
         <label for="boilerplate">Company "About" Paragraph</label>
-        <textarea id="boilerplate" rows="5">Fox Valley Plumbing & Backflow Services is a licensed and insured plumbing company serving the Fox Valley region from its base in Elgin, IL. Founded in 2010, the company specializes in backflow testing, certification, and prevention — one of the few Elgin-area plumbers with dedicated backflow expertise. Services include emergency plumbing (24/7), drain cleaning, water heater installation and repair, sump pump service, gas line work, and more across 12 communities in Kane, Cook, and DuPage counties. Fox Valley Plumbing holds an A+ rating with the Better Business Bureau. Learn more at foxvalleyplumbing.com or call (847) 624-3872.</textarea>
+        <textarea id="boilerplate" rows="5">Fox Valley Plumbing & Backflow is a licensed and insured plumbing company serving the Fox Valley region from its base in Elgin, IL. Founded in 2010, the company specializes in backflow testing, certification, and prevention — one of the few Elgin-area plumbers with dedicated backflow expertise. Services include emergency plumbing (24/7), drain cleaning, water heater installation and repair, sump pump service, gas line work, and more across 12 communities in Kane, Cook, and DuPage counties. Fox Valley Plumbing holds an A+ rating with the Better Business Bureau. Learn more at foxvalleyplumbing.com or call (847) 624-3872.</textarea>
         <div class="prefill-note">✓ Pre-filled — edit to customize for this announcement</div>
       </div>
       <div class="help-toggle" onclick="document.getElementById('draft-boilerplate-cb').click()">
@@ -402,7 +402,7 @@ select { cursor: pointer; }
   <div id="brief-section" style="margin-top: 36px;">
     <div class="brief-header">
       <div>
-        <h2>Press Release Brief — Fox Valley Plumbing & Backflow Services</h2>
+        <h2>Press Release Brief — Fox Valley Plumbing & Backflow</h2>
         <div style="font-size:9pt; opacity:0.8; margin-top:4px;" id="brief-timestamp"></div>
       </div>
       <div class="brief-actions">
@@ -593,7 +593,7 @@ function editForm() {
 
 function emailBrief() {
   const body = document.getElementById('brief-body');
-  let text = 'PRESS RELEASE BRIEF — Fox Valley Plumbing & Backflow Services\n';
+  let text = 'PRESS RELEASE BRIEF — Fox Valley Plumbing & Backflow\n';
   text += document.getElementById('brief-timestamp').textContent + '\n';
   text += '='.repeat(60) + '\n\n';
   const children = body.children;
@@ -608,7 +608,7 @@ function emailBrief() {
   }
 
   navigator.clipboard.writeText(text).then(() => {
-    const subject = encodeURIComponent('Press Release Brief — Fox Valley Plumbing & Backflow Services');
+    const subject = encodeURIComponent('Press Release Brief — Fox Valley Plumbing & Backflow');
     window.location.href = 'mailto:nichefindersai@gmail.com?subject=' + subject;
     const toast = document.getElementById('copied-toast');
     toast.textContent = 'Brief copied! Paste it into the email that just opened.';
@@ -618,7 +618,7 @@ function emailBrief() {
       toast.textContent = 'Copied to clipboard!';
     }, 4000);
   }).catch(() => {
-    const subject = encodeURIComponent('Press Release Brief — Fox Valley Plumbing & Backflow Services');
+    const subject = encodeURIComponent('Press Release Brief — Fox Valley Plumbing & Backflow');
     window.location.href = 'mailto:nichefindersai@gmail.com?subject=' + subject;
     alert('Email opened! Please copy your brief (Copy All button) and paste it into the email body.');
   });
@@ -626,7 +626,7 @@ function emailBrief() {
 
 function copyBrief() {
   const body = document.getElementById('brief-body');
-  let text = 'PRESS RELEASE BRIEF — Fox Valley Plumbing & Backflow Services\n';
+  let text = 'PRESS RELEASE BRIEF — Fox Valley Plumbing & Backflow\n';
   text += document.getElementById('brief-timestamp').textContent + '\n';
   text += '='.repeat(60) + '\n\n';
 
