@@ -16,7 +16,8 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 /* Portal Navigation */
 .portal-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background-color: #1a5276; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
 .portal-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; }
-.portal-nav-brand { color: rgba(255,255,255,0.6); font-size: 9pt; padding: 10px 12px 10px 0; border-right: 1px solid rgba(255,255,255,0.25); white-space: nowrap; margin-right: 5px; }
+.portal-nav-brand { display:flex; align-items:center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink:0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
 .portal-nav-links { display: flex; flex-wrap: wrap; }
 .portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 11px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
 .portal-nav-links a:hover { background-color: rgba(255,255,255,0.15); color: white; }
@@ -48,7 +49,7 @@ pre { background-color: #f4f6f6; padding: 15px; font-family: Consolas, monospace
 
 <nav class="portal-nav">
 <div class="portal-nav-inner">
-<span class="portal-nav-brand">FVP Portal</span>
+<span class="portal-nav-brand"><img src="../assets/nichefinders-logo.png" alt="Nichefinder AI Agency"></span>
 <div class="portal-nav-links">
 <a href="index.html">&#127968; Home</a>
 <a href="GBP_Audit.html">GBP Audit</a>
