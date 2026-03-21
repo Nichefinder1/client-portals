@@ -1,0 +1,104 @@
+{
+  "client": {
+    "name": "All South Lightning Protection",
+    "slug": "all-south-lightning-blueprint",
+    "industry": "Lightning Protection (Commercial B2B)",
+    "program_type": "founding",
+    "program_months": 6,
+    "total_weeks": 24,
+    "current_week": 0,
+    "start_date": null,
+    "last_updated": "2026-03-21",
+    "account_manager": "Corey Reeder"
+  },
+  "overview": {
+    "current_phase": "Pre-Kickoff",
+    "phase_description": "Your Blueprint engagement begins soon. This portal will update weekly after each session.",
+    "overall_progress_pct": 0,
+    "status": "pre-kickoff",
+    "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
+  },
+  "pillars": {
+    "brain": {
+      "label": "Business Brain",
+      "subtitle": "Knowledge & Intelligence Layer",
+      "status": "not_started",
+      "progress_pct": 0,
+      "items": [
+        { "label": "SOP structure & documentation", "status": "not_started" },
+        { "label": "Company playbooks", "status": "not_started" },
+        { "label": "Internal knowledge base", "status": "not_started" },
+        { "label": "Training documentation", "status": "not_started" },
+        { "label": "Decision support tools", "status": "not_started" },
+        { "label": "Brain installation (Claude Code workspace)", "status": "not_started" }
+      ]
+    },
+    "engine": {
+      "label": "Business Engine",
+      "subtitle": "6-Phase Revenue Infrastructure",
+      "status": "not_started",
+      "progress_pct": 0,
+      "items": [
+        { "label": "Lead generation mapping", "status": "not_started" },
+        { "label": "Lead intake mapping", "status": "not_started" },
+        { "label": "Quoting process mapping", "status": "not_started" },
+        { "label": "Scheduling mapping", "status": "not_started" },
+        { "label": "Follow-up mapping", "status": "not_started" },
+        { "label": "Retention mapping", "status": "not_started" }
+      ]
+    },
+    "automation": {
+      "label": "Business Automation",
+      "subtitle": "Execution & Intelligence Layer",
+      "status": "not_started",
+      "progress_pct": 0,
+      "items": [
+        { "label": "Automation opportunities identified", "status": "not_started" },
+        { "label": "Automation architecture designed", "status": "not_started" },
+        { "label": "Voice agent", "status": "not_started" },
+        { "label": "CRM workflows", "status": "not_started" },
+        { "label": "Automated scheduling", "status": "not_started" },
+        { "label": "Performance reporting", "status": "not_started" }
+      ]
+    }
+  },
+  "quick_wins": [
+    {
+      "title": "Quick Win #1",
+      "description": "Identified by end of Month 1 — chosen for maximum impact and minimum complexity.",
+      "status": "pending",
+      "impact": "--",
+      "deployed_date": null
+    },
+    {
+      "title": "Quick Win #2",
+      "description": "Identified during Month 2 — proof of concept for the full Installation.",
+      "status": "pending",
+      "impact": "--",
+      "deployed_date": null
+    }
+  ],
+  "sessions": [],
+  "upcoming_session": {
+    "label": "Week 1: Kickoff",
+    "date": "Scheduling in progress",
+    "time": "--",
+    "duration": "90 minutes",
+    "format": "Zoom or In-Person",
+    "agenda": [
+      "Deep business walkthrough — how you operate today",
+      "Meet key team members",
+      "Identify top 3 pain points and priorities",
+      "Portal orientation and Brain installation preview",
+      "Set expectations for Month 1"
+    ]
+  },
+  "contact": {
+    "name": "Corey Reeder",
+    "title": "AI Business Architect",
+    "company": "NicheFinders AI",
+    "email": "nichefindersai@gmail.com",
+    "phone": "(863) 999-9152",
+    "calendar": "https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM"
+  }
+}

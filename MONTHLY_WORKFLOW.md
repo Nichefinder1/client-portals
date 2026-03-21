@@ -7,7 +7,7 @@
 mkdir fox-valley-plumbing/2026-03
 
 # 2. Copy report template and fill in data
-cp templates/Monthly_Progress_Report.html fox-valley-plumbing/2026-03/Monthly_Progress_Report_Mar_2026.html
+cp reference/monthly-reports/Monthly_Progress_Report.html fox-valley-plumbing/2026-03/Monthly_Progress_Report_Mar_2026.html
 
 # 3. Edit reports.json (add new month, update metrics)
 # 4. Regenerate portal
