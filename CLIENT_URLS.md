@@ -10,6 +10,7 @@ Quick reference for all client portal links.
 |--------|------------|--------|
 | Fox Valley Plumbing & Backflow | [View Portal](https://nichefinder1.github.io/client-portals/fox-valley-plumbing/) | Active |
 | All South Lightning Protection | [View Portal](https://nichefinder1.github.io/client-portals/all-south-lightning/) | Active |
+| All South Lightning — AI OS Blueprint | [View Portal](https://nichefinder1.github.io/client-portals/all-south-lightning-blueprint/) | Active |
 
 ---
 
@@ -65,4 +66,4 @@ When adding a new client, add their entry to this file:
 
 ---
 
-*Last Updated: February 4, 2026*
+*Last Updated: March 21, 2026*
