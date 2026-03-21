@@ -32,6 +32,10 @@
   --grey-dim:       rgba(30,58,95,0.2);
   --grey-border:    rgba(30,58,95,0.35);
 
+  --orange:         #CC5500;
+  --orange-light:   #E06616;
+  --orange-dark:    #A84400;
+
   --text-1:         #F1F5F9;
   --text-2:         #C8D9E6;
   --text-3:         #6B9AB8;
@@ -142,8 +146,8 @@ body > * { position: relative; z-index: 1; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--green);
-  color: #0B131E;
+  background: var(--orange);
+  color: #fff;
   font-family: var(--font-d);
   font-weight: 700;
   font-size: 0.75rem;
@@ -156,7 +160,7 @@ body > * { position: relative; z-index: 1; }
   transition: background 0.15s, transform 0.12s;
 }
 .nav-cta svg { width: 12px; height: 12px; }
-.nav-cta:hover { background: #02C576; transform: translateY(-1px); }
+.nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
 
 /* ─── Header ─────────────────────────────────────────────────────────────── */
 .header {
@@ -267,7 +271,7 @@ body > * { position: relative; z-index: 1; }
 }
 .phase-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--green), #36EBAB);
+  background: linear-gradient(90deg, var(--orange-dark), var(--orange-light));
   border-radius: 10px;
   transition: width 1s ease;
   min-width: 2px;
@@ -744,12 +748,12 @@ body > * { position: relative; z-index: 1; }
 .contact-link svg { width: 12px; height: 12px; flex-shrink: 0; }
 .contact-link:hover { border-color: var(--border-hi); background: rgba(255,255,255,0.05); color: var(--text-1); }
 .contact-link.cta {
-  background: var(--green);
-  color: #0B131E;
-  border-color: var(--green);
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
   font-weight: 600;
 }
-.contact-link.cta:hover { background: #02C576; border-color: #02C576; }
+.contact-link.cta:hover { background: var(--orange-light); border-color: var(--orange-light); }
 
 /* ─── Page footer ────────────────────────────────────────────────────────── */
 .page-footer {
@@ -1095,7 +1099,7 @@ async function boot() {
         <div>
           <p style="font-size:1rem;margin-bottom:0.4rem;color:#F1F5F9;">${msg}</p>
           <p style="font-size:0.82rem;opacity:0.6;margin-bottom:1.25rem;">Ensure <code style="font-family:monospace;background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px;">program.json</code> is in the same folder as this file.</p>
-          <button onclick="location.reload()" style="background:#03E78B;color:#0B131E;font-weight:600;font-size:0.82rem;padding:0.5rem 1.25rem;border:none;border-radius:6px;cursor:pointer;">Retry</button>
+          <button onclick="location.reload()" style="background:#CC5500;color:#fff;font-weight:600;font-size:0.82rem;padding:0.5rem 1.25rem;border:none;border-radius:6px;cursor:pointer;">Retry</button>
         </div>
       </div>`;
   }
