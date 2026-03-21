@@ -1,7 +1,7 @@
 {
   "client": {
     "name": "All South Lightning Protection",
-    "slug": "all-south-lightning-blueprint",
+    "slug": "all-south-lightning-aios",
     "industry": "Lightning Protection (Commercial B2B)",
     "program_type": "founding",
     "program_months": 6,
@@ -13,7 +13,7 @@
   },
   "overview": {
     "current_phase": "Pre-Kickoff",
-    "phase_description": "Your Blueprint engagement begins soon. This portal will update weekly after each session.",
+    "phase_description": "Your AI OS Partner Program engagement begins soon. This portal will update weekly after each session.",
     "overall_progress_pct": 0,
     "status": "pre-kickoff",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."

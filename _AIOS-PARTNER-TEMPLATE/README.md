@@ -67,6 +67,6 @@ Edit `program.json` only:
 
 ## All South Lightning (Client #1)
 
-- Slug: `all-south-lightning-blueprint`
+- Slug: `all-south-lightning-aios`
 - Program type: `founding` (6 months, $2,500/mo)
 - Start date: TBD — portal ready, kickoff scheduling in progress
