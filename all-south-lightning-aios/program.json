@@ -65,7 +65,7 @@
   "quick_wins": [
     {
       "title": "Email Automation",
-      "description": "Automate Charley's manual email process — highest time cost identified in Week 1. Remove this from her plate first.",
+      "description": "Automate Chuck's manual email process — highest time cost identified in Week 1. Remove this from his plate first.",
       "status": "identified",
       "impact": "Saves 30-50 min/day of manual admin",
       "deployed_date": null
@@ -108,12 +108,8 @@
       ],
       "next_steps": [
         "Corey: Send Thursday meeting invite",
-        "Corey: Send updated contract",
-        "Corey: Send invoice",
         "Corey: Send final press release version",
-        "Corey: Confirm Easter show time at church for Charley",
-        "Charley: Review policies with Paychex attorney",
-        "Charley: Process logo painting as donation via LLC"
+        "Chuck: Review policies with Paychex attorney"
       ]
     }
   ],
