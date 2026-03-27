@@ -6,29 +6,29 @@
     "program_type": "founding",
     "program_months": 6,
     "total_weeks": 24,
-    "current_week": 0,
-    "start_date": null,
-    "last_updated": "2026-03-21",
+    "current_week": 1,
+    "start_date": "2026-03-26",
+    "last_updated": "2026-03-26",
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Pre-Kickoff",
-    "phase_description": "Your AI OS Partner Program engagement begins soon. This portal will update weekly after each session.",
-    "overall_progress_pct": 0,
-    "status": "pre-kickoff",
+    "current_phase": "Week 1: Discovery Complete",
+    "phase_description": "Kickoff session complete. Full business discovery conducted — operations, team structure, technology stack, pain points, and revenue model all mapped. Brain installation begins next session.",
+    "overall_progress_pct": 4,
+    "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
   "pillars": {
     "brain": {
       "label": "Business Brain",
       "subtitle": "Knowledge & Intelligence Layer",
-      "status": "not_started",
-      "progress_pct": 0,
+      "status": "in_progress",
+      "progress_pct": 8,
       "items": [
-        { "label": "SOP structure & documentation", "status": "not_started" },
-        { "label": "Company playbooks", "status": "not_started" },
+        { "label": "SOP structure & documentation", "status": "in_progress" },
+        { "label": "Company playbooks", "status": "in_progress" },
         { "label": "Internal knowledge base", "status": "not_started" },
-        { "label": "Training documentation", "status": "not_started" },
+        { "label": "Training documentation", "status": "in_progress" },
         { "label": "Decision support tools", "status": "not_started" },
         { "label": "Brain installation (Claude Code workspace)", "status": "not_started" }
       ]
@@ -36,24 +36,24 @@
     "engine": {
       "label": "Business Engine",
       "subtitle": "6-Phase Revenue Infrastructure",
-      "status": "not_started",
-      "progress_pct": 0,
+      "status": "in_progress",
+      "progress_pct": 10,
       "items": [
-        { "label": "Lead generation mapping", "status": "not_started" },
-        { "label": "Lead intake mapping", "status": "not_started" },
-        { "label": "Quoting process mapping", "status": "not_started" },
-        { "label": "Scheduling mapping", "status": "not_started" },
+        { "label": "Lead generation mapping", "status": "complete" },
+        { "label": "Lead intake mapping", "status": "in_progress" },
+        { "label": "Quoting process mapping", "status": "complete" },
+        { "label": "Scheduling mapping", "status": "in_progress" },
         { "label": "Follow-up mapping", "status": "not_started" },
-        { "label": "Retention mapping", "status": "not_started" }
+        { "label": "Retention mapping", "status": "in_progress" }
       ]
     },
     "automation": {
       "label": "Business Automation",
       "subtitle": "Execution & Intelligence Layer",
-      "status": "not_started",
-      "progress_pct": 0,
+      "status": "in_progress",
+      "progress_pct": 5,
       "items": [
-        { "label": "Automation opportunities identified", "status": "not_started" },
+        { "label": "Automation opportunities identified", "status": "in_progress" },
         { "label": "Automation architecture designed", "status": "not_started" },
         { "label": "Voice agent", "status": "not_started" },
         { "label": "CRM workflows", "status": "not_started" },
@@ -64,33 +64,71 @@
   },
   "quick_wins": [
     {
-      "title": "Quick Win #1",
-      "description": "Identified by end of Month 1 — chosen for maximum impact and minimum complexity.",
-      "status": "pending",
-      "impact": "--",
+      "title": "Email Automation",
+      "description": "Automate Charley's manual email process — highest time cost identified in Week 1. Remove this from her plate first.",
+      "status": "identified",
+      "impact": "Saves 30-50 min/day of manual admin",
       "deployed_date": null
     },
     {
-      "title": "Quick Win #2",
-      "description": "Identified during Month 2 — proof of concept for the full Installation.",
-      "status": "pending",
-      "impact": "--",
+      "title": "Voice-to-Text Field Documentation",
+      "description": "Mobile speak-to-log system for field crews — eliminate the photo/update chasing problem. Feeds into Trimble automatically.",
+      "status": "identified",
+      "impact": "Eliminates #1 daily pain point for ops",
       "deployed_date": null
     }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "week": 1,
+      "date": "2026-03-26",
+      "title": "Week 1: Full Business Discovery",
+      "duration": "~75 minutes",
+      "format": "Zoom",
+      "topics": [
+        "Business overview — what All South does and day-to-day operations",
+        "Revenue model — new customers, repeat business, job lifecycle",
+        "Employee structure — 300+ total across 3 locations (Tampa, Sunrise, Jacksonville)",
+        "Training program — AI video series, OSHA 10, recertifications",
+        "SOP & documentation inventory — full form library, new hire manual",
+        "Technology stack — Trimble suite, monday.com transition, ChatGPT, inspectmind.ai",
+        "Key pain points — information siloing, field crew documentation, policy rewrites",
+        "Retention system — annual inspection automation (being decommissioned)",
+        "Redundancy & succession planning — double-trained system throughout",
+        "Revenue targets — $13M projected 2026; $15-20M in 3 years; $50M long-term",
+        "AI OS program scope alignment — website, press releases, Google Ads prioritized first",
+        "Next steps — Thursday recurring meeting, contract + invoice to be sent"
+      ],
+      "decisions": [
+        "Weekly meetings confirmed — Thursdays, same time as today",
+        "Corey to send updated contract and invoice",
+        "Next session: website design, commercial video for trade show (April 28), next steps",
+        "Ron to be included in website discussion",
+        "Business trip to Sunrise + Jacksonville planned to handle Apple account IP setup"
+      ],
+      "next_steps": [
+        "Corey: Send Thursday meeting invite",
+        "Corey: Send updated contract",
+        "Corey: Send invoice",
+        "Corey: Send final press release version",
+        "Corey: Confirm Easter show time at church for Charley",
+        "Charley: Review policies with Paychex attorney",
+        "Charley: Process logo painting as donation via LLC"
+      ]
+    }
+  ],
   "upcoming_session": {
-    "label": "Week 1: Kickoff",
-    "date": "Scheduling in progress",
-    "time": "--",
+    "label": "Week 2: Website Design + Commercial Video",
+    "date": "2026-04-02",
+    "time": "Same time as Week 1",
     "duration": "90 minutes",
-    "format": "Zoom or In-Person",
+    "format": "Zoom",
     "agenda": [
-      "Deep business walkthrough — how you operate today",
-      "Meet key team members",
-      "Identify top 3 pain points and priorities",
-      "Portal orientation and Brain installation preview",
-      "Set expectations for Month 1"
+      "Website redesign — vision, goals, structure (Ron included)",
+      "Commercial video for trade show (April 28 deadline)",
+      "AI OS Brain installation — preview and setup",
+      "Review press release final version",
+      "Next steps for partner program implementation"
     ]
   },
   "contact": {
