@@ -13,7 +13,7 @@
   },
   "overview": {
     "current_phase": "Week 2: Website + Video + Brain Installation",
-    "phase_description": "Week 1 discovery complete. Week 2 session today — website redesign vision, commercial video (April 28 deadline), and AI OS Brain installation begins.",
+    "phase_description": "Week 1 discovery complete. Full business discovery conducted — operations, team, tech stack, pain points, and revenue model mapped from transcript. Week 2 session today: website redesign vision (Ron included), commercial video (April 28 deadline), AI OS Brain installation begins.",
     "overall_progress_pct": 8,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
@@ -23,13 +23,13 @@
       "label": "Business Brain",
       "subtitle": "Knowledge & Intelligence Layer",
       "status": "in_progress",
-      "progress_pct": 8,
+      "progress_pct": 15,
       "items": [
-        { "label": "SOP structure & documentation", "status": "in_progress" },
-        { "label": "Company playbooks", "status": "in_progress" },
-        { "label": "Internal knowledge base", "status": "not_started" },
-        { "label": "Training documentation", "status": "in_progress" },
-        { "label": "Decision support tools", "status": "not_started" },
+        { "label": "SOP structure & documentation", "status": "in_progress", "note": "Chuck wrote all SOPs himself — needs attorney review via Paychex. Policy gaps identified." },
+        { "label": "Company playbooks", "status": "in_progress", "note": "Training videos (AI-based) being created by Chuck to eliminate telephone effect. Retraining older crew now." },
+        { "label": "Internal knowledge base", "status": "not_started", "note": "Information siloing is #1 pain — estimators, PMs, accounting all on separate platforms. Trimble Connect will centralize." },
+        { "label": "Training documentation", "status": "in_progress", "note": "AI video series active. OSHA 10 → safety gear → technical training. Retraining older crew in progress." },
+        { "label": "Decision support tools", "status": "not_started", "note": "Chuck tried Trimble AI layer live on call to find avg contract size — it failed. This is the core brain gap." },
         { "label": "Brain installation (Claude Code workspace)", "status": "not_started" }
       ]
     },
@@ -37,47 +37,99 @@
       "label": "Business Engine",
       "subtitle": "6-Phase Revenue Infrastructure",
       "status": "in_progress",
-      "progress_pct": 10,
+      "progress_pct": 15,
       "items": [
-        { "label": "Lead generation mapping", "status": "complete" },
-        { "label": "Lead intake mapping", "status": "in_progress" },
-        { "label": "Quoting process mapping", "status": "complete" },
-        { "label": "Scheduling mapping", "status": "in_progress" },
-        { "label": "Follow-up mapping", "status": "not_started" },
-        { "label": "Retention mapping", "status": "in_progress" }
+        { "label": "Lead generation mapping", "status": "complete", "note": "Electricians (#1 referral source), trade shows, on-site pre-bids, Google SEO + Ads. ~300 active jobs across 3 locations." },
+        { "label": "Lead intake mapping", "status": "in_progress", "note": "Response time inconsistent. Leads from calls, forms, referrals. No clear documented intake SOP." },
+        { "label": "Quoting process mapping", "status": "complete", "note": "Jeff (estimator) leads. Morgan is backup. Trimble Acubid used. Quote → email blast to all office → Rey Graves manually enters into Trimble." },
+        { "label": "Scheduling mapping", "status": "in_progress", "note": "Transitioning from monday.com to Trimble Connect. Double-entry friction during transition. JJ (very new PM) managing Tampa." },
+        { "label": "Follow-up mapping", "status": "not_started", "note": "Post-job follow-up not systematized. Review requests happen but not consistently." },
+        { "label": "Retention mapping", "status": "in_progress", "note": "Annual inspection reminder system being DECOMMISSIONED. No replacement in place. Chuck explicitly flagged: 'Is there a way we can send them a little something?' — green-lit quick win." }
       ]
     },
     "automation": {
       "label": "Business Automation",
       "subtitle": "Execution & Intelligence Layer",
       "status": "in_progress",
-      "progress_pct": 5,
+      "progress_pct": 8,
       "items": [
-        { "label": "Automation opportunities identified", "status": "in_progress" },
+        { "label": "Automation opportunities identified", "status": "in_progress", "note": "Top 3 identified: email (30-50/day manual), field crew documentation, retention outreach." },
         { "label": "Automation architecture designed", "status": "not_started" },
-        { "label": "Voice agent", "status": "not_started" },
-        { "label": "CRM workflows", "status": "not_started" },
+        { "label": "Voice/transcription agent", "status": "not_started", "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution." },
+        { "label": "CRM workflows", "status": "not_started", "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live." },
         { "label": "Automated scheduling", "status": "not_started" },
-        { "label": "Performance reporting", "status": "not_started" }
+        { "label": "Performance reporting", "status": "not_started", "note": "Chuck drones job sites manually ~1x/week to spot-check crew accountability. No reporting loop." }
       ]
     }
   },
   "quick_wins": [
     {
       "title": "Email Automation",
-      "description": "Automate Chuck's manual email process — highest time cost identified in Week 1. Remove this from his plate first.",
+      "description": "30–50 emails waiting for Chuck every morning by 8–9 AM. Manual processing is his single biggest daily time drain. First automation target: triage, route, and draft responses automatically.",
       "status": "identified",
-      "impact": "Saves 30-50 min/day of manual admin",
+      "impact": "Saves 30-50 min/day of manual admin for Chuck personally",
+      "deployed_date": null
+    },
+    {
+      "title": "Customer Retention Outreach",
+      "description": "Annual inspection reminder system being decommissioned with NO replacement. Chuck said verbatim: 'Is there a way we can send them a little something just to let them know we're thinking about them still? That is not in place.' Design a simple proactive retention touchpoint — email or physical.",
+      "status": "identified",
+      "impact": "Closes acknowledged retention gap — 90% of revenue is repeat customers",
       "deployed_date": null
     },
     {
       "title": "Voice-to-Text Field Documentation",
-      "description": "Mobile speak-to-log system for field crews — eliminate the photo/update chasing problem. Feeds into Trimble automatically.",
+      "description": "Field crews consistently fail to upload photos and job updates despite simple process. Chuck spends time manually chasing. Also: office staff avg 30 WPM vs. 60-80 WPM standard. Voice-to-text for field + office reduces documentation friction and feeds Trimble automatically.",
       "status": "identified",
-      "impact": "Eliminates #1 daily pain point for ops",
+      "impact": "Eliminates #1 daily ops pain point — photo/update chasing",
+      "deployed_date": null
+    },
+    {
+      "title": "Phone Call Transcription",
+      "description": "Chuck explicitly said he wants hardline phone call transcriptions: 'I almost would want a transcription of it — so we have notes on what you talked about.' Otter was tried and removed (too aggressive, inserted itself into customer systems). Need a non-invasive replacement.",
+      "status": "identified",
+      "impact": "Captures all customer conversation context — solves information siloing at the intake level",
       "deployed_date": null
     }
   ],
+  "key_discoveries": {
+    "revenue": {
+      "active_jobs_tampa": "~138 (100-200 range)",
+      "active_jobs_per_branch": "~50 each (Sunrise, Jacksonville)",
+      "active_jobs_total": "~300 across all 3 locations",
+      "average_contract": "$20,000–$30,000",
+      "repeat_business_pct": "90%",
+      "projected_2026": "$12–13M",
+      "target_3yr": "$15–20M",
+      "target_longterm": "$50M (5–7 years)",
+      "surge_division_target": "$2M (3yr), $5M stretch"
+    },
+    "pain_points": [
+      "Information siloing — estimators, PMs, accounting all on separate platforms. Data retrieval is 'like pulling teeth.'",
+      "Field crew documentation — constant chasing for photos and job updates despite simple process",
+      "30–50 emails per morning — manual triage consuming Chuck's first 1–2 hours daily",
+      "JJ (PM) is very new and under pressure — Chuck checks in daily",
+      "Retention system decommissioned with no replacement",
+      "Office typing speed avg 30 WPM (vs 60-80 standard) — voice-to-text opportunity",
+      "Chuck drones job sites manually ~1x/week to spot-check crew — no reporting system",
+      "Otter tried and failed — too invasive, inserted itself into customer systems",
+      "Trimble AI layer tested live on call — couldn't return avg contract size in real-time"
+    ],
+    "tech_stack": [
+      "Trimble Spectrum (accounting) — active, rolling out",
+      "Trimble Acubid (estimating) — active",
+      "Trimble Connect (project management) — rolling out, replacing monday.com",
+      "monday.com — being phased out",
+      "Track Spera (timesheets) — planned, still on paper",
+      "Microsoft Suite — Outlook, Teams, Excel, Word — daily",
+      "ChatGPT — daily AI queries and document drafting",
+      "inspectmind.ai — inspection report templates, active",
+      "Otter — tried and removed (too aggressive)",
+      "On-site server — managed by 3rd party IT"
+    ],
+    "internal_sell_challenge": "30-year 'handshake and dollar sign' culture. Ron and leadership built the business on relationships alone. AI must be introduced through results — never called 'AI' upfront. Chuck is the internal champion navigating this carefully.",
+    "relationship_note": "Chuck said verbatim: 'I trust you with my family.' This is a high-trust personal relationship, not just a business transaction. Reciprocate accordingly."
+  },
   "sessions": [
     {
       "week": 1,
@@ -87,30 +139,35 @@
       "format": "Zoom",
       "topics": [
         "Business overview — what All South does and day-to-day operations",
-        "Revenue model — new customers, repeat business, job lifecycle",
-        "Employee structure — 300+ total across 3 locations (Tampa, Sunrise, Jacksonville)",
-        "Training program — AI video series, OSHA 10, recertifications",
-        "SOP & documentation inventory — full form library, new hire manual",
-        "Technology stack — Trimble suite, monday.com transition, ChatGPT, inspectmind.ai",
-        "Key pain points — information siloing, field crew documentation, policy rewrites",
-        "Retention system — annual inspection automation (being decommissioned)",
-        "Redundancy & succession planning — double-trained system throughout",
-        "Revenue targets — $13M projected 2026; $15-20M in 3 years; $50M long-term",
-        "AI OS program scope alignment — website, press releases, Google Ads prioritized first",
-        "Next steps — Thursday recurring meeting, contract + invoice to be sent"
+        "Revenue model — $13M projected 2026, 90% repeat business, avg $20-30K contract",
+        "Employee structure — ~300 total across 3 locations (Tampa HQ, Sunrise/Miami, Jacksonville)",
+        "Training program — AI video series built by Chuck to eliminate telephone effect; OSHA 10; retraining older crew now",
+        "SOP & documentation inventory — full form library, new hire manual; all policies need attorney review",
+        "Technology stack — Trimble suite (mid-transition), monday.com being retired, ChatGPT daily, Otter tried/removed",
+        "Key pain points — information siloing, field crew documentation, 30-50 emails/day, retention gap",
+        "Retention system — annual inspection automation being decommissioned, no replacement identified",
+        "Redundancy & succession — double-trained system; JJ is very new PM, under pressure",
+        "Revenue targets — $13M 2026; $15-20M 3yr; $50M long-term vision",
+        "Chuck's priority order (verbatim): 1) Press releases 2) Google Ads 3) Website 4) AI OS program",
+        "Trade show — April 28 hard deadline; LED booth being built; commercial video needed",
+        "Next steps — Thursday recurring meeting, contract + invoice to be sent, ZooTampa press release"
       ],
       "decisions": [
         "Weekly meetings confirmed — Thursdays, same time as today",
-        "Corey to send updated contract and invoice",
-        "Next session: website design, commercial video for trade show (April 28), next steps",
-        "Ron to be included in website discussion",
-        "Business trip to Sunrise + Jacksonville planned to handle Apple account IP setup"
+        "Corey to send updated contract and invoice ✅",
+        "AI OS contract ($2,500/mo) confirmed sent ✅",
+        "ZooTampa press release published via EINPresswire April 1, 2026 ✅",
+        "Thursday calendar invite sent April 1, 2026 ✅",
+        "Next session: website design (Ron included), commercial video, AI OS brain preview",
+        "Business trip to Sunrise (Miami) + Jacksonville planned for Apple account IP setup"
       ],
       "next_steps": [
         "Corey: Send Thursday meeting invite ✅ — April 1, 2026",
         "Corey: Send final press release version ✅ — ZooTampa published via EINPresswire April 1, 2026",
-        "Chuck: Review policies with Paychex attorney"
-      ]
+        "Corey: Send updated contract + invoice ✅ — confirmed sent",
+        "Chuck: Review all company policies with Paychex attorney — pending"
+      ],
+      "chuck_verbatim_priority": "I am interested in that. However, I am more interested in getting the press releases right, getting the Google Ads figured out perfectly, and getting this new website. I just want to say that out loud."
     }
   ],
   "upcoming_session": {
@@ -120,11 +177,11 @@
     "duration": "90 minutes",
     "format": "Zoom",
     "agenda": [
+      "Open with ZooTampa press release — live via EINPresswire as of April 1 ✅",
+      "Google Ads update — plain English: what changed (local services budget cut), what's coming (search campaign build-out)",
       "Website redesign — vision, goals, structure (Ron included)",
-      "Commercial video for trade show (April 28 deadline)",
-      "AI OS Brain installation — preview and setup",
-      "Review press release final version",
-      "Next steps for partner program implementation"
+      "Commercial video for trade show (April 28 hard deadline) — get footage/assets from Chuck",
+      "AI OS Brain installation preview — frame as 'command center', never say 'AI' to Ron"
     ]
   },
   "contact": {
