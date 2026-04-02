@@ -7,7 +7,7 @@
     "campaign_status": "Active",
     "start_date": "December 2025",
     "goal": "All 3 locations active, optimized & in Map Pack Top 3 by December 2026",
-    "last_updated": "March 11, 2026"
+    "last_updated": "April 2, 2026"
   },
   "metrics": {
     "gbp_listings": 3,
@@ -23,7 +23,21 @@
     "review_rating": 4.7,
     "reviews_note": "Tampa GBP only (Sunrise & Jacksonville photos pending — no reviews yet)",
     "citations": "5",
-    "citations_note": "BBB, BuildZoom, Birdeye, Procore, Yelp"
+    "citations_note": "BBB, BuildZoom, Birdeye, Procore, Yelp — building to 40+",
+    "content_execution": {
+      "blog_posts_published": 0,
+      "blog_posts_target": 12,
+      "blog_posts_note": "Q1 2026 — 4/month target",
+      "social_posts_published": 0,
+      "social_posts_target": 108,
+      "social_posts_note": "Q1 2026 — 9/week across 5 platforms",
+      "press_releases_published": 1,
+      "press_releases_target": 4,
+      "press_releases_note": "1/quarter — Q1 complete: ZooTampa published April 1, 2026 via EINPresswire",
+      "backlinks_built": 0,
+      "backlinks_target": 30,
+      "backlinks_note": "Q1 2026 — 15-30/quarter target"
+    }
   },
   "dashboard": {
     "campaign_phase": "Phase 2: Citations & Reviews",
@@ -129,10 +143,10 @@
     {
       "title": "Citation Building Checklist",
       "file": null,
-      "date": "Planned Q2 2026",
-      "description": "Build 40+ directory citations across all 3 Florida locations. Tier 1 high-authority sites first.",
-      "badge": "Not Started",
-      "badge_color": "gray"
+      "date": "Started — 5 of 40+ complete",
+      "description": "Build 40+ directory citations across all 3 Florida locations. 5 complete (BBB, BuildZoom, Birdeye, Procore, Yelp). Tier 1 high-authority directories next.",
+      "badge": "In Progress",
+      "badge_color": "yellow"
     }
   ],
   "monthly_reports": [
@@ -144,9 +158,9 @@
         {
           "title": "Monthly Progress Report",
           "file": null,
-          "description": "Complete overview of GBP Phase 1 completion, keyword scan results, and metrics for March.",
-          "badge": "Coming Mar 31",
-          "badge_color": "gray",
+          "description": "GBP Phase 1 completion, 22-keyword scan results (17/22 #1-2), content pipeline activation, Q2 priorities.",
+          "badge": "Due Mar 31",
+          "badge_color": "yellow",
           "available_date": "March 31"
         }
       ]
@@ -178,7 +192,8 @@
       "Tampa Keywords page published — 22 keywords with one-click copy for Local Dominator",
       "Tampa GBP content posts published — January & February 2026",
       "Full-year content calendar built (52 weeks)",
-      "GSC + Google Analytics connected — March 2026"
+      "GSC + Google Analytics connected — March 2026",
+      "Q1 Press Release published — ZooTampa lightning protection installation via EINPresswire (Apr 1, 2026)"
     ],
     "strengths": [
       "Tampa GBP: 4.7 stars, 78 reviews — strong foundation",
