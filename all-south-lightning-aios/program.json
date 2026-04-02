@@ -6,15 +6,15 @@
     "program_type": "founding",
     "program_months": 6,
     "total_weeks": 24,
-    "current_week": 1,
+    "current_week": 2,
     "start_date": "2026-03-26",
-    "last_updated": "2026-03-26",
+    "last_updated": "2026-04-02",
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 1: Discovery Complete",
-    "phase_description": "Kickoff session complete. Full business discovery conducted — operations, team structure, technology stack, pain points, and revenue model all mapped. Brain installation begins next session.",
-    "overall_progress_pct": 4,
+    "current_phase": "Week 2: Website + Video + Brain Installation",
+    "phase_description": "Week 1 discovery complete. Week 2 session today — website redesign vision, commercial video (April 28 deadline), and AI OS Brain installation begins.",
+    "overall_progress_pct": 8,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -107,8 +107,8 @@
         "Business trip to Sunrise + Jacksonville planned to handle Apple account IP setup"
       ],
       "next_steps": [
-        "Corey: Send Thursday meeting invite",
-        "Corey: Send final press release version",
+        "Corey: Send Thursday meeting invite ✅ — April 1, 2026",
+        "Corey: Send final press release version ✅ — ZooTampa published via EINPresswire April 1, 2026",
         "Chuck: Review policies with Paychex attorney"
       ]
     }
