@@ -8,7 +8,7 @@
     "total_weeks": 24,
     "current_week": 2,
     "start_date": "2026-03-26",
-    "last_updated": "2026-04-02",
+    "last_updated": "2026-04-04",
     "account_manager": "Corey Reeder"
   },
   "overview": {
@@ -171,17 +171,17 @@
     }
   ],
   "upcoming_session": {
-    "label": "Week 2: Website Design + Commercial Video",
-    "date": "2026-04-02",
-    "time": "Same time as Week 1",
+    "label": "Week 2: Business Process Mapping + Brain Context Build",
+    "date": "2026-04-10",
+    "time": "--",
     "duration": "90 minutes",
     "format": "Zoom",
     "agenda": [
-      "Open with ZooTampa press release — live via EINPresswire as of April 1 ✅",
-      "Google Ads update — plain English: what changed (local services budget cut), what's coming (search campaign build-out)",
-      "Website redesign — vision, goals, structure (Ron included)",
-      "Commercial video for trade show (April 28 hard deadline) — get footage/assets from Chuck",
-      "AI OS Brain installation preview — frame as 'command center', never say 'AI' to Ron"
+      "Google Ads plain English update — local services budget cut, search campaign build-out coming",
+      "SOP inventory — what's documented, what's in Chuck's head, what's missing",
+      "Business engine mapping — lead intake, quoting process, retention gap",
+      "First quick-win automation — Chuck picks from shortlist",
+      "Brain preview — what's coming Week 3, what Chuck's first question would be"
     ]
   },
   "contact": {
