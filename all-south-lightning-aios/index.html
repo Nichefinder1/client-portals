@@ -872,8 +872,6 @@ body > * { position: relative; z-index: 1; }
           <th>Session</th>
           <th>Date</th>
           <th>Topics</th>
-          <th>Key Decisions</th>
-          <th>Next Steps</th>
         </tr>
       </thead>
       <tbody id="session-body"></tbody>
@@ -988,7 +986,7 @@ function renderWins(wins) {
 function renderSessions(sessions) {
   const tbody = document.getElementById('session-body');
   if (!sessions || sessions.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5">
+    tbody.innerHTML = `<tr><td colspan="3">
       <div class="empty-state">
         <div class="empty-icon">${I.list}</div>
         <p class="empty-text">Sessions will appear here after each weekly meeting.</p>
@@ -1004,8 +1002,6 @@ function renderSessions(sessions) {
       </td>
       <td style="color:var(--text-3);white-space:nowrap">${s.date || '--'}</td>
       <td><div class="tag-row">${(s.topics || []).map(t => `<span class="tag">${t}</span>`).join('')}</div></td>
-      <td>${s.decisions || '--'}</td>
-      <td>${s.next_steps || '--'}</td>
     </tr>`).join('');
 }
 
