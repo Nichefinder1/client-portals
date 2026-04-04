@@ -12,8 +12,8 @@
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 2: Website + Video + Brain Installation",
-    "phase_description": "Week 1 discovery complete. Full business discovery conducted — operations, team, tech stack, pain points, and revenue model mapped from transcript. Week 2 session today: website redesign vision (Ron included), commercial video (April 28 deadline), AI OS Brain installation begins.",
+    "current_phase": "Week 2: Business Process Mapping + Brain Context Build",
+    "phase_description": "Week 1 discovery complete. Full business discovery conducted — operations, team, tech stack, pain points, and revenue model mapped from transcript. Week 2 session today: SOP inventory, business engine mapping, first quick-win automation selection, and Brain preview.",
     "overall_progress_pct": 8,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
@@ -148,26 +148,23 @@
         "Retention system — annual inspection automation being decommissioned, no replacement identified",
         "Redundancy & succession — double-trained system; JJ is very new PM, under pressure",
         "Revenue targets — $13M 2026; $15-20M 3yr; $50M long-term vision",
-        "Chuck's priority order (verbatim): 1) Press releases 2) Google Ads 3) Website 4) AI OS program",
-        "Trade show — April 28 hard deadline; LED booth being built; commercial video needed",
         "Next steps — Thursday recurring meeting, contract + invoice to be sent, ZooTampa press release"
       ],
       "decisions": [
         "Weekly meetings confirmed — Thursdays, same time as today",
         "Corey to send updated contract and invoice ✅",
         "AI OS contract ($2,500/mo) confirmed sent ✅",
-        "ZooTampa press release published via EINPresswire April 1, 2026 ✅",
+        "ZooTampa press release published April 1, 2026 ✅",
         "Thursday calendar invite sent April 1, 2026 ✅",
-        "Next session: website design (Ron included), commercial video, AI OS brain preview",
         "Business trip to Sunrise (Miami) + Jacksonville planned for Apple account IP setup"
       ],
       "next_steps": [
         "Corey: Send Thursday meeting invite ✅ — April 1, 2026",
-        "Corey: Send final press release version ✅ — ZooTampa published via EINPresswire April 1, 2026",
+        "Corey: Send final press release version ✅ — ZooTampa published April 1, 2026",
         "Corey: Send updated contract + invoice ✅ — confirmed sent",
         "Chuck: Review all company policies with Paychex attorney — pending"
       ],
-      "chuck_verbatim_priority": "I am interested in that. However, I am more interested in getting the press releases right, getting the Google Ads figured out perfectly, and getting this new website. I just want to say that out loud."
+      "chuck_verbatim_priority": ""
     }
   ],
   "upcoming_session": {
