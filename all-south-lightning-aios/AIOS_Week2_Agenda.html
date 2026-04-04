@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All South — AI OS Week 2 | NicheFinders AI</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #333; background-color: #f5f6fa; }
+
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { display:flex; align-items:center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink:0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+
+.header { background: linear-gradient(135deg, #1b2631, #2c3e50); color: white; padding: 40px; text-align: center; }
+.header .eyebrow { font-size: 10pt; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; }
+.header h1 { font-size: 26pt; margin-bottom: 8px; }
+.header .sub { opacity: 0.85; font-size: 12pt; }
+.header .date-badge { display: inline-block; margin-top: 16px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 6px 20px; font-size: 10pt; }
+
+.container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+
+/* Session at a glance */
+.glance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.glance-box { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); text-align: center; }
+.glance-box .icon { font-size: 22pt; margin-bottom: 6px; }
+.glance-box .value { font-size: 14pt; font-weight: bold; color: #1a5276; }
+.glance-box .label { font-size: 9pt; color: #7f8c8d; margin-top: 2px; }
+
+/* Section headers */
+.section-header { margin: 30px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #1a5276; }
+.section-header h2 { color: #1a5276; font-size: 16pt; margin: 0; }
+.section-header p { color: #7f8c8d; font-size: 10pt; margin-top: 4px; }
+
+/* Agenda blocks */
+.agenda-block { background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 16px; overflow: hidden; }
+.agenda-header { display: flex; align-items: center; padding: 14px 20px; gap: 14px; border-left: 5px solid #1a5276; }
+.agenda-header.green { border-left-color: #27ae60; }
+.agenda-header.orange { border-left-color: #e67e22; }
+.agenda-header.purple { border-left-color: #8e44ad; }
+.agenda-header.blue { border-left-color: #2980b9; }
+.agenda-header.dark { border-left-color: #2c3e50; }
+.agenda-time { font-size: 9pt; font-weight: bold; color: #7f8c8d; min-width: 70px; }
+.agenda-title { font-size: 13pt; font-weight: bold; color: #1b2631; flex: 1; }
+.agenda-tag { font-size: 8pt; font-weight: bold; padding: 3px 10px; border-radius: 10px; white-space: nowrap; }
+.tag-recap { background: #d6eaf8; color: #1a5276; }
+.tag-discovery { background: #d5f5e3; color: #1e8449; }
+.tag-mapping { background: #fdebd0; color: #9a6e00; }
+.tag-strategy { background: #e8daef; color: #6c3483; }
+.tag-preview { background: #d6dbdf; color: #2c3e50; }
+.tag-close { background: #fdfefe; color: #566573; border: 1px solid #d5d8dc; }
+.agenda-body { padding: 16px 20px 20px 20px; border-top: 1px solid #f0f0f0; }
+.agenda-body p { color: #555; font-size: 10.5pt; margin-bottom: 10px; }
+.agenda-body p:last-child { margin-bottom: 0; }
+
+/* Deliverable list */
+.deliverable-list { list-style: none; padding: 0; margin: 0; }
+.deliverable-list li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f5f5f5; font-size: 10.5pt; }
+.deliverable-list li:last-child { border-bottom: none; }
+.deliverable-list .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.dot-green { background: #27ae60; }
+.dot-orange { background: #e67e22; }
+.dot-blue { background: #2980b9; }
+.dot-purple { background: #8e44ad; }
+
+/* Action items table */
+.action-table { width: 100%; border-collapse: collapse; font-size: 10pt; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.action-table th { background-color: #1b2631; color: white; padding: 10px 16px; text-align: left; }
+.action-table td { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.action-table tr:last-child td { border-bottom: none; }
+.action-table tr:nth-child(even) { background-color: #f9f9f9; }
+.owner-you { display: inline-block; background: #1a5276; color: white; font-size: 8pt; font-weight: bold; padding: 2px 8px; border-radius: 8px; }
+.owner-aslp { display: inline-block; background: #e67e22; color: white; font-size: 8pt; font-weight: bold; padding: 2px 8px; border-radius: 8px; }
+
+/* What's coming */
+.coming-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.coming-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border-top: 4px solid #8e44ad; }
+.coming-card h4 { color: #1b2631; font-size: 12pt; margin-bottom: 8px; }
+.coming-card p { color: #7f8c8d; font-size: 10pt; }
+.coming-card .week-label { font-size: 8pt; font-weight: bold; color: #8e44ad; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+/* Contact */
+.contact-section { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-top: 30px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+.contact-item .icon { font-size: 22pt; margin-bottom: 6px; }
+.contact-item .value { font-weight: bold; color: #1a5276; }
+.contact-item .value a { color: #1a5276; text-decoration: none; }
+.contact-item .label { font-size: 10pt; color: #7f8c8d; }
+
+.footer { text-align: center; padding: 20px; color: #95a5a6; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<nav class="portal-nav">
+  <div class="portal-nav-inner">
+    <span class="portal-nav-brand"><img src="../assets/nichefinders-logo.png" alt="NicheFinders AI"></span>
+    <div class="portal-nav-links">
+      <a href="index.html">&#127968; Home</a>
+      <a href="GBP_Audit.html">&#128269; GBP Audit</a>
+      <a href="Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+      <a href="LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+      <a href="Tampa_Keywords.html">&#128269; Tampa Keywords</a>
+      <a href="GBP_UPDATE_CONTENT_AGENCY.html" style="background-color: rgba(39,174,96,0.25); color: #90ee90;">&#128203; GBP Copy Kit</a>
+      <a href="AIOS_Week2_Agenda.html" class="active" style="background-color: rgba(142,68,173,0.3); color: #d7bde2;">&#129504; AI OS — Week 2</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header">
+  <div class="eyebrow">AI Operating System — Partner Program</div>
+  <h1>Week 2 Session</h1>
+  <div class="sub">All South Lightning Protection × NicheFinders AI</div>
+  <div class="date-badge">&#128197; Thursday, April 10, 2026 &nbsp;·&nbsp; 90 Minutes</div>
+</div>
+
+<div class="container">
+
+  <!-- At a Glance -->
+  <div class="section-header" style="margin-top: 0;">
+    <h2>Session at a Glance</h2>
+  </div>
+  <div class="glance-grid">
+    <div class="glance-box">
+      <div class="icon">&#128198;</div>
+      <div class="value">Week 2 of 24</div>
+      <div class="label">Founding Partner Program</div>
+    </div>
+    <div class="glance-box">
+      <div class="icon">&#9201;</div>
+      <div class="value">90 Minutes</div>
+      <div class="label">Working session</div>
+    </div>
+    <div class="glance-box">
+      <div class="icon">&#127775;</div>
+      <div class="value">Brain Prep</div>
+      <div class="label">Goes live Week 3</div>
+    </div>
+    <div class="glance-box">
+      <div class="icon">&#9989;</div>
+      <div class="value">Week 1 Done</div>
+      <div class="label">March 26, 2026</div>
+    </div>
+  </div>
+
+  <!-- Session Goal -->
+  <div class="agenda-block">
+    <div class="agenda-header dark">
+      <div class="agenda-title">&#127919; &nbsp;What We're Doing Today</div>
+    </div>
+    <div class="agenda-body">
+      <p>Week 1 gave us the map. Today we walk the streets.</p>
+      <p>We're going deeper into how All South actually runs — process by process, step by step — so we can build your <strong>Business Brain</strong> this week and have it live for you before our next session.</p>
+      <p>By the end of today, we'll know exactly what goes into the Brain first, and you'll have a clear picture of what Week 3 looks like when you see it for the first time.</p>
+    </div>
+  </div>
+
+  <!-- Agenda -->
+  <div class="section-header">
+    <h2>Today's Agenda</h2>
+    <p>Six blocks · 90 minutes total</p>
+  </div>
+
+  <div class="agenda-block">
+    <div class="agenda-header green">
+      <div class="agenda-time">0:00–0:10</div>
+      <div class="agenda-title">Open + Quick Updates</div>
+      <span class="agenda-tag tag-recap">Recap</span>
+    </div>
+    <div class="agenda-body">
+      <ul class="deliverable-list">
+        <li><span class="dot dot-green"></span>ZooTampa press release — confirmed and published. Distribution link coming.</li>
+        <li><span class="dot dot-blue"></span>Google Ads update — plain English: what changed, what's being built, what to expect.</li>
+        <li><span class="dot dot-orange"></span>Framing for today: "I'm going to ask about specific processes. Every detail I get today goes into your Brain."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="agenda-block">
+    <div class="agenda-header green">
+      <div class="agenda-time">0:10–0:35</div>
+      <div class="agenda-title">Business Brain Discovery</div>
+      <span class="agenda-tag tag-discovery">Brain</span>
+    </div>
+    <div class="agenda-body">
+      <p>We map the knowledge layer — what's documented, what lives in people's heads, and what the Brain needs to know first.</p>
+      <ul class="deliverable-list">
+        <li><span class="dot dot-green"></span><strong>SOP Inventory</strong> — What's written down and where? What's missing?</li>
+        <li><span class="dot dot-green"></span><strong>Knowledge gaps</strong> — What's in your head that isn't documented yet?</li>
+        <li><span class="dot dot-green"></span><strong>Document storage</strong> — What lives on the server, what needs to move there?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="agenda-block">
+    <div class="agenda-header orange">
+      <div class="agenda-time">0:35–0:55</div>
+      <div class="agenda-title">Business Engine Mapping</div>
+      <span class="agenda-tag tag-mapping">Revenue Flow</span>
+    </div>
+    <div class="agenda-body">
+      <p>We go deeper on how revenue actually moves through the business — the first 24 hours of a new lead, the quoting process, and the gap left by the decommissioned retention system.</p>
+      <ul class="deliverable-list">
+        <li><span class="dot dot-orange"></span><strong>Lead intake</strong> — Step by step, person by person, from first contact to quote request.</li>
+        <li><span class="dot dot-orange"></span><strong>Quoting process</strong> — How long, who's involved, what the package looks like.</li>
+        <li><span class="dot dot-orange"></span><strong>Retention gap</strong> — Map how the old system worked, design what replaces it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="agenda-block">
+    <div class="agenda-header purple">
+      <div class="agenda-time">0:55–1:10</div>
+      <div class="agenda-title">First Quick-Win Automation</div>
+      <span class="agenda-tag tag-strategy">Automation</span>
+    </div>
+    <div class="agenda-body">
+      <p>We identify your top automation priority — the one thing, if taken off your plate this month, would give you the most relief. This becomes the Week 4 build target.</p>
+      <ul class="deliverable-list">
+        <li><span class="dot dot-purple"></span>Email triage — 30–50 emails before 9 AM, auto-categorized and summarized</li>
+        <li><span class="dot dot-purple"></span>Phone call transcription — lightweight, without Otter's aggressiveness</li>
+        <li><span class="dot dot-purple"></span>Retention touchpoint — automated outreach when the inspection reminder goes away</li>
+        <li><span class="dot dot-purple"></span>Field crew photo reminder — automatic follow-up when uploads are missing</li>
+        <li><span class="dot dot-purple"></span>Daily brief — morning snapshot of the board, overdue items, priorities</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="agenda-block">
+    <div class="agenda-header blue">
+      <div class="agenda-time">1:10–1:20</div>
+      <div class="agenda-title">Brain Preview — What Week 3 Looks Like</div>
+      <span class="agenda-tag tag-preview">Preview</span>
+    </div>
+    <div class="agenda-body">
+      <p>A preview of what you'll see next week — before I explain anything. Your first reaction should be your own.</p>
+      <ul class="deliverable-list">
+        <li><span class="dot dot-blue"></span>Cloud workspace — live on a server I manage. You never touch the technical side.</li>
+        <li><span class="dot dot-blue"></span>Your team gets a simple interface — just a chat window with All South's name on it.</li>
+        <li><span class="dot dot-blue"></span>Ask it anything about how the business runs. It answers from your actual documentation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="agenda-block">
+    <div class="agenda-header">
+      <div class="agenda-time">1:20–1:30</div>
+      <div class="agenda-title">Close + Action Items</div>
+      <span class="agenda-tag tag-close">Close</span>
+    </div>
+    <div class="agenda-body">
+      <p>Confirm what we're each doing before Week 3.</p>
+    </div>
+  </div>
+
+  <!-- Action Items -->
+  <div class="section-header">
+    <h2>Action Items — Before Week 3</h2>
+    <p>What each party commits to before the next session</p>
+  </div>
+
+  <table class="action-table">
+    <tr>
+      <th>Owner</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td><span class="owner-you">NicheFinders</span></td>
+      <td>Build and load Brain context layer — everything about All South, ready for Week 3</td>
+    </tr>
+    <tr>
+      <td><span class="owner-you">NicheFinders</span></td>
+      <td>Draft first SOPs into the Brain based on today's inventory</td>
+    </tr>
+    <tr>
+      <td><span class="owner-you">NicheFinders</span></td>
+      <td>Provision Brain server and deploy web interface — Chuck/Charley/Morgan get a URL</td>
+    </tr>
+    <tr>
+      <td><span class="owner-you">NicheFinders</span></td>
+      <td>Send Week 3 agenda 48 hours before session</td>
+    </tr>
+    <tr>
+      <td><span class="owner-aslp">All South</span></td>
+      <td>Send any existing SOP documents from the server — even rough drafts are useful</td>
+    </tr>
+    <tr>
+      <td><span class="owner-aslp">All South</span></td>
+      <td>Send a sample quote package (redacted is fine) so Brain understands the format</td>
+    </tr>
+    <tr>
+      <td><span class="owner-aslp">All South</span></td>
+      <td>Send the annual inspection reminder template before it's decommissioned</td>
+    </tr>
+    <tr>
+      <td><span class="owner-aslp">All South</span></td>
+      <td>Intro Corey to Charley and Morgan via email — they'll get Brain access in Week 3</td>
+    </tr>
+  </table>
+
+  <!-- What's Coming -->
+  <div class="section-header" style="margin-top: 30px;">
+    <h2>What's Coming</h2>
+    <p>The next three weeks of the program</p>
+  </div>
+
+  <div class="coming-grid">
+    <div class="coming-card" style="border-top-color: #e67e22;">
+      <div class="week-label" style="color: #e67e22;">&#9989; &nbsp;Week 1 — March 26</div>
+      <h4>Discovery Complete</h4>
+      <p>Business overview, team map, tech stack, pain points, priorities — all captured.</p>
+    </div>
+    <div class="coming-card" style="border-top-color: #1a5276;">
+      <div class="week-label" style="color: #1a5276;">&#128197; &nbsp;Week 2 — April 10</div>
+      <h4>Process Mapping</h4>
+      <p>Today. SOP inventory, revenue flow, automation priority — Brain context being built this week.</p>
+    </div>
+    <div class="coming-card" style="border-top-color: #8e44ad;">
+      <div class="week-label" style="color: #8e44ad;">&#127775; &nbsp;Week 3</div>
+      <h4>Brain Goes Live</h4>
+      <p>Your Business Brain is provisioned, loaded, and online. Chuck, Charley, and Morgan get access.</p>
+    </div>
+    <div class="coming-card" style="border-top-color: #27ae60;">
+      <div class="week-label" style="color: #27ae60;">&#9889; &nbsp;Week 4</div>
+      <h4>First Automation</h4>
+      <p>Business Brain audit complete. First quick-win automation identified, scoped, and built.</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <div class="contact-item">
+      <div class="icon">&#128222;</div>
+      <div class="value"><a href="tel:8639999152">(863) 999-9152</a></div>
+      <div class="label">Direct Line</div>
+    </div>
+    <div class="contact-item">
+      <div class="icon">&#128140;</div>
+      <div class="value"><a href="mailto:nichefindersai@gmail.com">nichefindersai@gmail.com</a></div>
+      <div class="label">Email</div>
+    </div>
+    <div class="contact-item">
+      <div class="icon">&#128197;</div>
+      <div class="value"><a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM" target="_blank">Schedule a Call</a></div>
+      <div class="label">Book Time</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  All South Lightning Protection × NicheFinders AI &nbsp;·&nbsp; AI OS Partner Program &nbsp;·&nbsp; Week 2 &nbsp;·&nbsp; April 10, 2026
+</div>
+
+</body>
+</html>

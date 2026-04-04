@@ -214,6 +214,22 @@
       "<strong>Strategic: Add NFPA 780 / UL 96A compliance page</strong> — FL lightning protection code Maps #3.26 gap"
     ]
   },
+  "aios_program": {
+    "status": "Active",
+    "week": 2,
+    "total_weeks": 24,
+    "last_session": "March 26, 2026",
+    "next_session": "April 10, 2026",
+    "program_type": "Founding Partner — $2,500/mo x 24 weeks",
+    "current_focus": "Week 2 — Business Process Mapping + Brain Context Build",
+    "week2_agenda": "AIOS_Week2_Agenda.html",
+    "sessions": [
+      {"week": 1, "date": "March 26, 2026", "title": "Discovery Kickoff", "status": "complete"},
+      {"week": 2, "date": "April 10, 2026", "title": "Business Process Mapping", "status": "scheduled"},
+      {"week": 3, "date": "TBD (week of April 13)", "title": "Brain Goes Live", "status": "upcoming"},
+      {"week": 4, "date": "TBD", "title": "Brain Audit + First Automation", "status": "upcoming"}
+    ]
+  },
   "contact": {
     "email": "nichefindersai@gmail.com",
     "phone": "(863) 999-9152",
