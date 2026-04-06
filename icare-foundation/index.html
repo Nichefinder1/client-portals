@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iCARE Foundation — Board Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── Variables ─────────────────────────────────────────────── */
+:root {
+  --bg:           #0D1B2A;
+  --bg-mid:       #111F2E;
+  --card:         #162030;
+  --card-alt:     #1A2638;
+  --border:       rgba(255,255,255,0.08);
+  --border-hi:    rgba(0,119,182,0.4);
+
+  --blue:         #0077B6;
+  --blue-light:   #0096D6;
+  --blue-dim:     rgba(0,119,182,0.12);
+  --blue-border:  rgba(0,119,182,0.3);
+
+  --green:        #4CAF50;
+  --green-dim:    rgba(76,175,80,0.12);
+  --green-border: rgba(76,175,80,0.3);
+
+  --gold:         #F5A623;
+  --gold-dim:     rgba(245,166,35,0.12);
+  --gold-border:  rgba(245,166,35,0.3);
+
+  --red:          #E53E3E;
+  --red-dim:      rgba(229,62,62,0.12);
+  --red-border:   rgba(229,62,62,0.3);
+
+  --text-1:       #F1F5F9;
+  --text-2:       #A8C4D8;
+  --text-3:       #5A7A94;
+
+  --font:         'Inter', -apple-system, sans-serif;
+  --r:            10px;
+  --r-lg:         14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Subtle grid ───────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,119,182,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,119,182,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+body > * { position: relative; z-index: 1; }
+
+/* ─── Nav ───────────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,27,42,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; }
+.nav-title { font-weight: 700; font-size: 15px; color: var(--text-1); }
+.nav-sub { font-size: 11px; color: var(--text-3); }
+.nav-tabs { display: flex; gap: 4px; }
+.nav-tab {
+  padding: 6px 12px; border-radius: 6px;
+  font-size: 12px; font-weight: 500; color: var(--text-3);
+  cursor: pointer; transition: all .15s; border: none; background: none;
+  text-decoration: none;
+}
+.nav-tab:hover { background: var(--card); color: var(--text-2); }
+.nav-tab.active { background: var(--blue-dim); color: var(--blue-light); }
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.main { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+
+/* ─── Section ───────────────────────────────────────────────── */
+.section { margin-bottom: 48px; scroll-margin-top: 80px; }
+.section-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.section-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.section-icon.blue  { background: var(--blue-dim); }
+.section-icon.green { background: var(--green-dim); }
+.section-icon.gold  { background: var(--gold-dim); }
+.section-icon.red   { background: var(--red-dim); }
+.section-title { font-size: 18px; font-weight: 700; color: var(--text-1); }
+.section-sub { font-size: 12px; color: var(--text-3); margin-left: auto; }
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 20px;
+}
+.card-alt { background: var(--card-alt); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+/* ─── Stat Cards ────────────────────────────────────────────── */
+.stat-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 18px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); }
+.stat-value { font-size: 22px; font-weight: 800; color: var(--text-1); letter-spacing: -0.5px; }
+.stat-note { font-size: 11px; color: var(--text-3); }
+
+/* ─── Badges ────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+}
+.badge-green  { background: var(--green-dim);  color: var(--green);  border: 1px solid var(--green-border); }
+.badge-blue   { background: var(--blue-dim);   color: var(--blue-light); border: 1px solid var(--blue-border); }
+.badge-gold   { background: var(--gold-dim);   color: var(--gold);   border: 1px solid var(--gold-border); }
+.badge-red    { background: var(--red-dim);    color: var(--red);    border: 1px solid var(--red-border); }
+.badge-grey   { background: rgba(255,255,255,0.05); color: var(--text-3); border: 1px solid var(--border); }
+
+/* ─── Board Cards ───────────────────────────────────────────── */
+.board-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 18px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.board-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 16px; color: #fff;
+  flex-shrink: 0;
+}
+.board-avatar.president  { background: linear-gradient(135deg, #0077B6, #0096D6); }
+.board-avatar.vp         { background: linear-gradient(135deg, #005F92, #0077B6); }
+.board-avatar.treasurer  { background: linear-gradient(135deg, #4CAF50, #66BB6A); }
+.board-avatar.secretary  { background: linear-gradient(135deg, #F5A623, #FFB84D); }
+.board-avatar.member     { background: linear-gradient(135deg, #3D5168, #5A7A94); }
+.board-name { font-size: 15px; font-weight: 700; color: var(--text-1); }
+.board-title { font-size: 12px; color: var(--blue-light); font-weight: 500; }
+.board-email { font-size: 11px; color: var(--text-3); }
+.board-authorities { margin-top: 4px; }
+.board-auth-item {
+  font-size: 11px; color: var(--text-2);
+  padding: 2px 0; display: flex; align-items: flex-start; gap: 6px;
+}
+.board-auth-item::before { content: '→'; color: var(--blue); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+
+/* ─── Org Chart ─────────────────────────────────────────────── */
+.org-chart { text-align: center; }
+.org-level { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.org-connector {
+  display: flex; justify-content: center;
+  margin: 4px 0; color: var(--text-3); font-size: 18px;
+}
+.org-box {
+  background: var(--card-alt); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 10px 16px; min-width: 160px;
+  text-align: center;
+}
+.org-box.highlight { border-color: var(--blue-border); background: var(--blue-dim); }
+.org-box.green-hl  { border-color: var(--green-border); background: var(--green-dim); }
+.org-box-role { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+.org-box-name { font-size: 13px; font-weight: 700; color: var(--text-1); }
+
+/* ─── Program Cards ─────────────────────────────────────────── */
+.program-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 18px;
+}
+.program-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.program-area { font-size: 14px; font-weight: 700; color: var(--text-1); }
+.program-subs { display: flex; flex-direction: column; gap: 6px; }
+.program-sub {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: var(--text-2);
+  padding: 5px 0; border-top: 1px solid var(--border);
+}
+.program-sub:first-child { border-top: none; }
+.program-note { font-size: 11px; color: var(--text-3); margin-top: 8px; font-style: italic; }
+
+/* ─── Timeline / Deadline Cards ─────────────────────────────── */
+.deadline-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 16px 18px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.deadline-item.urgent { border-left: 3px solid var(--red); }
+.deadline-item.critical { border-left: 3px solid var(--gold); }
+.deadline-item.important { border-left: 3px solid var(--blue); }
+.deadline-date-col { min-width: 90px; flex-shrink: 0; }
+.deadline-date { font-size: 13px; font-weight: 700; color: var(--text-1); }
+.deadline-day { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; }
+.deadline-body { flex: 1; }
+.deadline-title { font-size: 14px; font-weight: 600; color: var(--text-1); margin-bottom: 4px; }
+.deadline-meta { font-size: 11px; color: var(--text-3); margin-bottom: 6px; }
+.deadline-actions { display: flex; flex-direction: column; gap: 3px; }
+.deadline-action { font-size: 11px; color: var(--text-2); display: flex; gap: 6px; }
+.deadline-action::before { content: '▸'; color: var(--gold); flex-shrink: 0; }
+.deadline-blocker {
+  font-size: 11px; color: var(--red);
+  background: var(--red-dim); border: 1px solid var(--red-border);
+  border-radius: 4px; padding: 4px 8px; margin-top: 6px;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+
+/* ─── Grant Table ───────────────────────────────────────────── */
+.grant-row {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px 16px;
+  display: grid; grid-template-columns: 1fr 120px 120px 100px; gap: 12px;
+  align-items: center; margin-bottom: 8px;
+  transition: border-color .15s;
+}
+.grant-row:hover { border-color: var(--blue-border); }
+.grant-name { font-size: 13px; font-weight: 600; color: var(--text-1); }
+.grant-area { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+.grant-award { font-size: 12px; color: var(--green); font-weight: 500; }
+.grant-deadline { font-size: 12px; color: var(--text-2); }
+.grant-notes { font-size: 11px; color: var(--text-3); margin-top: 2px; grid-column: 1 / -1; }
+
+/* ─── Readiness Bar ─────────────────────────────────────────── */
+.readiness-bar-wrap { margin-bottom: 20px; }
+.readiness-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.readiness-label span:first-child { font-size: 13px; color: var(--text-2); }
+.readiness-label span:last-child { font-size: 18px; font-weight: 800; color: var(--gold); }
+.readiness-track {
+  height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;
+}
+.readiness-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  transition: width .8s ease;
+}
+
+/* ─── Checklist ─────────────────────────────────────────────── */
+.checklist { display: flex; flex-direction: column; gap: 6px; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12px; color: var(--text-2); padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.check-item:last-child { border-bottom: none; }
+.check-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.check-note { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+/* ─── Financial Cards ───────────────────────────────────────── */
+.fin-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+.fin-row:last-child { border-bottom: none; }
+.fin-label { color: var(--text-2); }
+.fin-amount { font-weight: 600; color: var(--text-1); }
+.fin-amount.confirmed { color: var(--green); }
+.fin-amount.pending { color: var(--gold); }
+.fin-amount.blocked { color: var(--red); }
+.fin-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0 0; margin-top: 4px;
+  font-size: 14px; font-weight: 700; border-top: 2px solid var(--border);
+}
+
+/* ─── Event List ─────────────────────────────────────────────── */
+.event-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+.event-item:last-child { border-bottom: none; }
+.event-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0; margin-top: 6px;
+}
+.event-name { font-size: 13px; font-weight: 600; color: var(--text-1); }
+.event-dates { font-size: 11px; color: var(--text-3); }
+.event-desc { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+
+/* ─── Motion List ───────────────────────────────────────────── */
+.motion-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; background: var(--bg-mid); border-radius: 6px;
+  margin-bottom: 6px;
+}
+.motion-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--blue-dim); border: 1px solid var(--blue-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--blue-light);
+  flex-shrink: 0;
+}
+.motion-text { font-size: 13px; color: var(--text-1); }
+
+/* ─── Florida Compliance Note ───────────────────────────────── */
+.compliance-note {
+  background: var(--green-dim); border: 1px solid var(--green-border);
+  border-radius: var(--r); padding: 10px 14px;
+  font-size: 12px; color: var(--text-2); margin-bottom: 16px;
+}
+.compliance-note strong { color: var(--green); }
+
+/* ─── Divider ───────────────────────────────────────────────── */
+.divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+/* ─── Footer ────────────────────────────────────────────────── */
+.footer {
+  background: var(--bg-mid); border-top: 1px solid var(--border);
+  padding: 20px 24px; text-align: center;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-brand { font-size: 12px; color: var(--text-3); }
+.footer-brand strong { color: var(--text-2); }
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .nav-tabs { display: none; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grant-row { grid-template-columns: 1fr 1fr; }
+  .main { padding: 20px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <img src="logo.png" alt="iCare Foundation" style="height:40px;width:auto;display:block;">
+      <div style="margin-left:4px;">
+        <div class="nav-sub" style="font-size:12px;color:var(--text-3);">Board Portal — Community Advancement Resource Enrichment, Inc.</div>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <a class="nav-tab active" href="#dashboard">Dashboard</a>
+      <a class="nav-tab" href="#strategy">Strategy</a>
+      <a class="nav-tab" href="#agenda">Agenda</a>
+      <a class="nav-tab" href="#structure">Structure</a>
+      <a class="nav-tab" href="#programs">Programs</a>
+      <a class="nav-tab" href="#financials">Financials</a>
+      <a class="nav-tab" href="#grants">Grants</a>
+      <a class="nav-tab" href="#compliance">Compliance</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main" id="main-content">
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 1 — DASHBOARD
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="dashboard">
+  <div class="section-header">
+    <div class="section-icon blue">⚡</div>
+    <div>
+      <div class="section-title">Organization Dashboard</div>
+    </div>
+    <div class="section-sub">Last updated: April 5, 2026</div>
+  </div>
+
+  <!-- Org Identity Bar -->
+  <div class="card" style="margin-bottom:16px; padding:16px 20px;">
+    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:center;">
+      <div style="flex-shrink:0;">
+        <img src="logo.png" alt="iCare Foundation" style="height:72px;width:auto;display:block;">
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">Legal Name</div>
+        <div style="font-size:14px;font-weight:700;color:var(--text-1);">Community Advancement Resource Enrichment, Inc.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">EIN</div>
+        <div style="font-size:14px;font-weight:700;color:var(--text-1);">92-3071148</div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">IRS Status</div>
+        <div><span class="badge badge-green">✓ 501(c)(3) Public Charity</span></div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">Effective Date</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-2);">March 19, 2025</div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">Website</div>
+        <div style="font-size:13px;font-weight:600;color:var(--blue-light);">icaregives.org</div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">Location</div>
+        <div style="font-size:13px;color:var(--text-2);">Brandon, FL — Tampa Bay Region</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat Cards Row -->
+  <div class="grid-4" style="margin-bottom:20px;">
+    <div class="stat-card" style="border-color:var(--green-border);">
+      <div class="stat-label">2025 Revenue</div>
+      <div class="stat-value" style="color:var(--green);">$1,830</div>
+      <div class="stat-note">Cash • Mar–Aug 2025 (partial)</div>
+    </div>
+    <div class="stat-card" style="border-color:var(--blue-border);">
+      <div class="stat-label">In-Kind Contributions</div>
+      <div class="stat-value" style="color:var(--blue-light);">$5,600+</div>
+      <div class="stat-note">Confirmed value — fans TBD</div>
+    </div>
+    <div class="stat-card" style="border-color:var(--gold-border);">
+      <div class="stat-label">Grant Readiness</div>
+      <div class="stat-value" style="color:var(--gold);">65%</div>
+      <div class="stat-note">30+ funders in pipeline</div>
+    </div>
+    <div class="stat-card" style="border-color:var(--border);">
+      <div class="stat-label">Active Programs</div>
+      <div class="stat-value">16</div>
+      <div class="stat-note">Across 5 focus areas</div>
+    </div>
+  </div>
+
+  <!-- Critical Deadlines Strip -->
+  <div class="card" style="border-color:var(--red-border); margin-bottom:16px;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:12px;">🔴 4 Critical Deadlines — Next 45 Days</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 11, 2026</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);">First Board Meeting</div>
+        <div style="font-size:11px;color:var(--text-3);">6 formal motions • Board seating • Bylaws adoption</div>
+        <div style="margin-top:6px;"><span class="badge badge-red">6 days away</span></div>
+      </div>
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 30, 2026</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);">Publix Charities Grant</div>
+        <div style="font-size:11px;color:var(--text-3);">Hunger Relief window closes • Direct food pantry match</div>
+        <div style="margin-top:6px;"><span class="badge badge-red">Apply Now</span></div>
+      </div>
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 1, 2026</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);">Florida Annual Report</div>
+        <div style="font-size:11px;color:var(--text-3);">sunbiz.org • $61.25 fee • Board seated first</div>
+        <div style="margin-top:6px;"><span class="badge badge-gold">26 days</span></div>
+      </div>
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 15, 2026</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);">IRS Form 990-EZ</div>
+        <div style="font-size:11px;color:var(--red);">⚠ Blocked — need Sep–Dec 2025 bank records</div>
+        <div style="margin-top:6px;"><span class="badge badge-red">Blocker Active</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission -->
+  <div class="card" style="border-left: 3px solid var(--blue);">
+    <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Mission Statement</div>
+    <div style="font-size:14px;color:var(--text-2);font-style:italic;line-height:1.7;">
+      "To inspire hope and contribute to the well-being of the community by providing grassroots programs that serve the physical, educational, and health needs of individuals and families."
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 2 — STRATEGY
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="strategy">
+  <div class="section-header">
+    <div class="section-icon blue">🧭</div>
+    <div class="section-title">Our Strategy</div>
+    <div class="section-sub">Where we're headed and why — for every board member</div>
+  </div>
+
+  <!-- Vision + Model -->
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="card" style="border-left:3px solid var(--blue);">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--blue-light);margin-bottom:8px;">The Vision</div>
+      <div style="font-size:14px;font-weight:600;color:var(--text-1);line-height:1.6;margin-bottom:12px;">Become the premier family-strengthening nonprofit in Tampa Bay — and a model for what a lean, community-rooted 501(c)(3) can accomplish.</div>
+      <div style="font-size:11px;color:var(--text-3);">Geographic focus: <strong style="color:var(--text-2);">Tampa Bay / Hillsborough County</strong> — with international aspirations as we grow.</div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green);">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:8px;">Our Model — Two-Generation (Two-Gen)</div>
+      <div style="font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:12px;">We serve <strong style="color:var(--text-1);">children and parents at the same time</strong> — across 5 program areas simultaneously. Most nonprofits serve one or the other. We serve the whole family.</div>
+      <div style="background:var(--bg-mid);border-radius:6px;padding:10px;font-size:12px;color:var(--text-2);font-style:italic;line-height:1.6;">
+        "iCARE delivers food security, education, career development, health, and family strengthening to children and adults in the same household — creating lasting change at the family level."
+      </div>
+      <div style="font-size:11px;color:var(--text-3);margin-top:8px;">This framing is our #1 competitive advantage with funders. Always lead with it.</div>
+    </div>
+  </div>
+
+  <!-- 3-Year Roadmap -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">3-Year Roadmap</div>
+  <div class="grid-3" style="margin-bottom:16px;">
+    <div class="card" style="border-top:3px solid var(--blue);">
+      <div style="font-size:11px;font-weight:700;color:var(--blue-light);margin-bottom:4px;">YEAR 1 — 2026</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text-1);margin-bottom:10px;">Foundation</div>
+      <div style="font-size:11px;color:var(--text-3);margin-bottom:8px;">Get the compliance house in order so funders trust us.</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--blue);">▸</span>Adopt bylaws + seat board (Apr 11)</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--blue);">▸</span>File 990-EZ — builds public record</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--blue);">▸</span>GuideStar + SAM.gov registered</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--blue);">▸</span>Publix + BofA grants applied</div>
+      </div>
+      <div style="margin-top:12px;padding:8px;background:var(--blue-dim);border-radius:6px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-3);">Funding Target</div>
+        <div style="font-size:16px;font-weight:800;color:var(--blue-light);">$75K–$125K</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--gold);">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:4px;">YEAR 2 — 2027</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text-1);margin-bottom:10px;">Growth</div>
+      <div style="font-size:11px;color:var(--text-3);margin-bottom:8px;">Expand programming, add paid staff, pursue first federal grant.</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--gold);">▸</span>First federal grant application</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--gold);">▸</span>Documented monthly food pantry</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--gold);">▸</span>Career dev + health programs live</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--gold);">▸</span>Community Foundation Tampa Bay</div>
+      </div>
+      <div style="margin-top:12px;padding:8px;background:var(--gold-dim);border-radius:6px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-3);">Funding Target</div>
+        <div style="font-size:16px;font-weight:800;color:var(--gold);">$200K–$300K</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green);">
+      <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:4px;">YEAR 3 — 2028</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text-1);margin-bottom:10px;">Scale</div>
+      <div style="font-size:11px;color:var(--text-3);margin-bottom:8px;">Recognized as the lead Two-Gen provider in Hillsborough County.</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--green);">▸</span>3 years of 990 history — unlocks larger grants</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--green);">▸</span>HHS/ACF HMRF pursuit ($6.25M federal)</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--green);">▸</span>Paid staff across core programs</div>
+        <div style="font-size:11px;color:var(--text-2);display:flex;gap:6px;"><span style="color:var(--green);">▸</span>International reach begins</div>
+      </div>
+      <div style="margin-top:12px;padding:8px;background:var(--green-dim);border-radius:6px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-3);">Funding Target</div>
+        <div style="font-size:16px;font-weight:800;color:var(--green);">$500K+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What Board Members Control -->
+  <div class="card" style="border-left:3px solid var(--gold);">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin-bottom:10px;">What Board Members Control — Why Your Role Matters</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--gold);">▸</span>Vote on all major decisions — bylaws, compensation, dissolution require 4 of 5</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--gold);">▸</span>Authorize the President as Authorized Organizational Representative (AOR) on every grant</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--gold);">▸</span>Treasurer reviews + President signs the 990-EZ — your signatures create the public record</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--gold);">▸</span>Attendance at meetings confirms quorum (3 of 5) — without quorum, no valid votes</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--gold);">▸</span>Annual Conflict of Interest disclosures — required by most grantors before they award funds</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 3 — AGENDA & ACTIONS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="agenda">
+  <div class="section-header">
+    <div class="section-icon gold">📋</div>
+    <div class="section-title">Agenda & Action Items</div>
+    <div class="section-sub">Next meeting • Open actions by owner • Meeting history</div>
+  </div>
+
+  <!-- Next Meeting -->
+  <div class="card" style="border-left:3px solid var(--red);margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:4px;">Next Meeting</div>
+        <div style="font-size:18px;font-weight:800;color:var(--text-1);">First Board Meeting of 2026</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:2px;">April 11, 2026 &nbsp;•&nbsp; Location TBD &nbsp;•&nbsp; Quorum: 3 of 5 required</div>
+      </div>
+      <span class="badge badge-red">6 Days Away</span>
+    </div>
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:8px;">Agenda</div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">1.</span>Call to order + quorum confirmation (3 of 5 required)</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">2.</span><strong style="color:var(--text-1);">Motion:</strong> Adopt Revised Bylaws v5</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">3.</span><strong style="color:var(--text-1);">Motion:</strong> Formally seat 2026 board members</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">4.</span><strong style="color:var(--text-1);">Motion:</strong> Authorize voluntary 990-EZ filing</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">5.</span><strong style="color:var(--text-1);">Motion:</strong> Set annual board dues amount</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">6.</span><strong style="color:var(--text-1);">Motion:</strong> Authorize President as AOR for all grants</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">7.</span><strong style="color:var(--text-1);">Motion:</strong> Authorize FDACS charitable solicitation registration</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">8.</span>2025 Year-in-Review — President's Report</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">9.</span>2026 Strategic Direction — goals and priorities</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">10.</span>Grant strategy briefing — Publix deadline April 30</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;"><span style="color:var(--text-3);min-width:20px;">11.</span>Open discussion + next meeting date</div>
+    </div>
+  </div>
+
+  <!-- Open Action Items -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Open Action Items — By Owner</div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+
+    <div class="card" style="border-left:3px solid var(--red);">
+      <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;">🔴 CRITICAL</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Submit Publix Charities Hunger Relief grant application</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--red);font-weight:700;">April 30, 2026</div><span class="badge badge-red" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Provide Sep–Dec 2025 bank statements</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+            <div style="font-size:11px;color:var(--red);margin-top:2px;">Blocks 990-EZ filing</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--red);font-weight:700;">ASAP</div><span class="badge badge-red" style="margin-top:4px;">Blocker</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Confirm Dec 31, 2025 bank balance</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+            <div style="font-size:11px;color:var(--red);margin-top:2px;">Required for 990-EZ Part II Balance Sheet</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--red);font-weight:700;">ASAP</div><span class="badge badge-red" style="margin-top:4px;">Blocker</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--gold);">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:6px;">🟡 HIGH PRIORITY</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">File Florida Annual Report at sunbiz.org ($61.25)</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Corey Reeder — VP / Executive Director</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--gold);font-weight:700;">May 1, 2026</div><span class="badge badge-gold" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">File IRS Form 990-EZ at tax990.com</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Cedrick West — Treasurer (review) + Rhonda Reeder — President (sign)</div>
+            <div style="font-size:11px;color:var(--red);margin-top:2px;">Blocked — waiting on Sep–Dec bank records from Rhonda</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--gold);font-weight:700;">May 15, 2026</div><span class="badge badge-red" style="margin-top:4px;">Blocked</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Record and certify April 11 board meeting minutes</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Regina Lock-DePass — Secretary</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--gold);font-weight:700;">Within 30 days</div><span class="badge badge-gold" style="margin-top:4px;">Upcoming</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--blue);">
+      <div style="font-size:11px;font-weight:700;color:var(--blue-light);margin-bottom:6px;">🔵 MEDIUM — After Compliance Complete</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Create GuideStar / Candid profile</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Corey Reeder — VP / Executive Director</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">One-time setup — immediate grant credibility boost</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--blue-light);">After 990-EZ</div><span class="badge badge-grey" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Register SAM.gov</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Corey Reeder — VP / Executive Director</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Required before ANY federal grant application</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--blue-light);">Before federal grants</div><span class="badge badge-grey" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Confirm attendance estimates for all 6 2025 events</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Required for 990-EZ Part III + grant applications</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--blue-light);">Before 990-EZ</div><span class="badge badge-grey" style="margin-top:4px;">Not Started</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Meetings -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Meeting History</div>
+  <div class="card" style="text-align:center;padding:32px;">
+    <div style="font-size:32px;margin-bottom:8px;">📝</div>
+    <div style="font-size:14px;font-weight:600;color:var(--text-2);margin-bottom:6px;">No meetings recorded yet</div>
+    <div style="font-size:12px;color:var(--text-3);">Meeting minutes and decisions will appear here after each board meeting. First entry expected after April 11, 2026.</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 4 — ORGANIZATIONAL STRUCTURE
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="structure">
+  <div class="section-header">
+    <div class="section-icon blue">🏛</div>
+    <div class="section-title">Organizational Structure</div>
+  </div>
+
+  <!-- Org Chart -->
+  <div class="card" style="margin-bottom:20px;">
+    <div style="font-size:12px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:20px;">Governance Hierarchy</div>
+
+    <!-- Level 1: IRS / Florida -->
+    <div class="org-chart">
+      <div class="org-level">
+        <div class="org-box" style="border-color:var(--border-hi);background:rgba(0,119,182,0.06);min-width:300px;">
+          <div class="org-box-role">Regulatory</div>
+          <div class="org-box-name">IRS 501(c)(3) + Florida Chapter 617</div>
+        </div>
+      </div>
+      <div class="org-connector">↓</div>
+
+      <!-- Level 2: Board of Directors -->
+      <div class="org-level">
+        <div class="org-box highlight" style="min-width:340px;">
+          <div class="org-box-role">Governing Body</div>
+          <div class="org-box-name">Board of Directors (5 Members)</div>
+        </div>
+      </div>
+      <div class="org-connector">↓</div>
+
+      <!-- Level 3: Officers -->
+      <div class="org-level">
+        <div class="org-box highlight">
+          <div class="org-box-role">President / AOR</div>
+          <div class="org-box-name">Rhonda Reeder</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Secretary</div>
+          <div class="org-box-name">Regina Lock-DePass</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Treasurer</div>
+          <div class="org-box-name">Cedrick West</div>
+        </div>
+      </div>
+      <div class="org-connector">↓</div>
+
+      <!-- Level 4: Executive Director -->
+      <div class="org-level">
+        <div class="org-box green-hl" style="min-width:300px;">
+          <div class="org-box-role">VP / Executive Director — Day-to-Day Operations</div>
+          <div class="org-box-name">Corey Reeder</div>
+        </div>
+      </div>
+      <div class="org-connector">↓</div>
+
+      <!-- Level 5: Programs / Partners -->
+      <div class="org-level">
+        <div class="org-box">
+          <div class="org-box-role">Program Area</div>
+          <div class="org-box-name">Food Security</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Program Area</div>
+          <div class="org-box-name">Education & Youth</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Program Area</div>
+          <div class="org-box-name">Career Development</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Program Area</div>
+          <div class="org-box-name">Health & Wellness</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Program Area</div>
+          <div class="org-box-name">Family Strengthening</div>
+        </div>
+      </div>
+      <div class="org-connector">↓</div>
+
+      <!-- Level 6: Partners -->
+      <div class="org-level">
+        <div class="org-box">
+          <div class="org-box-role">Community Partner</div>
+          <div class="org-box-name">NLT / New Life Temple</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">In-Kind Partner</div>
+          <div class="org-box-name">MedShare International</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Grant Consultant</div>
+          <div class="org-box-name">Collins Grant Consulting</div>
+        </div>
+        <div class="org-box">
+          <div class="org-box-role">Web & AI Partner</div>
+          <div class="org-box-name">NicheFinders AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Board Member Cards -->
+  <div style="font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:12px;">Board of Directors — 2026</div>
+  <div class="compliance-note">
+    <strong>Florida §617.0803 Compliance:</strong> Minimum 3 unrelated directors required. Rhonda and Corey Reeder are married (related). Cedrick West, Regina Lock-DePass, and Joseph Simorne each count toward the unrelated requirement. ✓ 3 of 3 — fully compliant.
+  </div>
+  <div class="grid-auto" style="margin-bottom:20px;">
+
+    <div class="board-card">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="board-avatar president">RR</div>
+        <div>
+          <div class="board-name">Rhonda Reeder</div>
+          <div class="board-title">President</div>
+          <div class="board-email">icaregives@gmail.com</div>
+        </div>
+      </div>
+      <div class="board-authorities">
+        <div class="board-auth-item">Authorized Organizational Representative (AOR) — signs all grant applications</div>
+        <div class="board-auth-item">Contract signing authority</div>
+        <div class="board-auth-item">Casts deciding vote on ties</div>
+        <div class="board-auth-item">Primary contact for grants, website, online presence</div>
+      </div>
+    </div>
+
+    <div class="board-card">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="board-avatar vp">CR</div>
+        <div>
+          <div class="board-name">Corey Reeder</div>
+          <div class="board-title">Vice President / Executive Director</div>
+          <div class="board-email">reedercr@gmail.com</div>
+        </div>
+      </div>
+      <div class="board-authorities">
+        <div class="board-auth-item">Day-to-day program operations</div>
+        <div class="board-auth-item">Community partnerships (NLT, Metropolitan Ministries, MedShare)</div>
+        <div class="board-auth-item">Volunteer coordination and event planning</div>
+        <div class="board-auth-item">Reports to President and Board</div>
+      </div>
+    </div>
+
+    <div class="board-card">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="board-avatar treasurer">CW</div>
+        <div>
+          <div class="board-name">Cedrick West</div>
+          <div class="board-title">Treasurer</div>
+          <div class="board-email">cedrickwest86@gmail.com</div>
+        </div>
+      </div>
+      <div class="board-authorities">
+        <div class="board-auth-item">Financial oversight and reporting</div>
+        <div class="board-auth-item">990-EZ co-reviewer before filing</div>
+        <div class="board-auth-item">Reviews and reports financial statements to board</div>
+        <div class="board-auth-item">May sign 990-EZ if designated by President</div>
+      </div>
+    </div>
+
+    <div class="board-card">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="board-avatar secretary">RL</div>
+        <div>
+          <div class="board-name">Regina Lock-DePass</div>
+          <div class="board-title">Secretary</div>
+          <div class="board-email">reginabmw@aol.com</div>
+        </div>
+      </div>
+      <div class="board-authorities">
+        <div class="board-auth-item">Meeting minutes and corporate records</div>
+        <div class="board-auth-item">Conflict of interest form administration</div>
+        <div class="board-auth-item">Notice of meetings</div>
+        <div class="board-auth-item">Donor: tent ($249), table ($90), fans (TBD)</div>
+      </div>
+    </div>
+
+    <div class="board-card">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="board-avatar member">JS</div>
+        <div>
+          <div class="board-name">Joseph Simorne</div>
+          <div class="board-title">Board Member</div>
+          <div class="board-email">josephsimorne@msn.com</div>
+        </div>
+      </div>
+      <div class="board-authorities">
+        <div class="board-auth-item">Voting member — all board decisions</div>
+        <div class="board-auth-item">Committee assignments as needed</div>
+        <div class="board-auth-item">Unrelated director — counts toward FL §617.0803 minimum</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voting Rules -->
+  <div class="grid-2">
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Voting Thresholds</div>
+      <div class="fin-row"><span class="fin-label">Routine motions (reports, approvals)</span><span class="fin-amount">3 of 5</span></div>
+      <div class="fin-row"><span class="fin-label">Major decisions (bylaws, compensation, dissolution)</span><span class="fin-amount">4 of 5</span></div>
+      <div class="fin-row"><span class="fin-label">Quorum — minimum to hold valid meeting</span><span class="fin-amount">3 of 5 present</span></div>
+      <div class="fin-row"><span class="fin-label">Tie vote resolution</span><span class="fin-amount">President decides</span></div>
+    </div>
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">April 11, 2026 — Required Motions</div>
+      <div class="motion-item"><div class="motion-num">1</div><div class="motion-text">Adopt Revised Bylaws v5</div></div>
+      <div class="motion-item"><div class="motion-num">2</div><div class="motion-text">Formally seat 2026 board members</div></div>
+      <div class="motion-item"><div class="motion-num">3</div><div class="motion-text">Authorize voluntary 990-EZ filing</div></div>
+      <div class="motion-item"><div class="motion-num">4</div><div class="motion-text">Set annual board dues amount</div></div>
+      <div class="motion-item"><div class="motion-num">5</div><div class="motion-text">Authorize President as AOR for all grants</div></div>
+      <div class="motion-item"><div class="motion-num">6</div><div class="motion-text">Authorize FDACS charitable solicitation registration</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 3 — PROGRAMS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="programs">
+  <div class="section-header">
+    <div class="section-icon green">📋</div>
+    <div class="section-title">Programs</div>
+    <div class="section-sub">5 focus areas • 16 sub-programs • 6 events delivered in 2025</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <!-- Food Security -->
+    <div class="program-card" style="border-left:3px solid var(--blue);">
+      <div class="program-header">
+        <div class="program-area">🍎 Food Security</div>
+        <span class="badge badge-green">Priority 1</span>
+      </div>
+      <div class="program-subs">
+        <div class="program-sub">
+          <span>Community Food Pantry</span>
+          <span class="badge badge-green">Active</span>
+        </div>
+        <div class="program-sub">
+          <span>Holiday Meals Program</span>
+          <span class="badge badge-green">Active</span>
+        </div>
+      </div>
+      <div class="program-note">Strongest area. Monthly food bank + Thanksliving (100 turkeys, Nov 2025). Publix Charities deadline April 30.</div>
+    </div>
+
+    <!-- Education & Youth -->
+    <div class="program-card" style="border-left:3px solid var(--green);">
+      <div class="program-header">
+        <div class="program-area">🎓 Education & Youth Development</div>
+        <span class="badge badge-blue">Priority 3</span>
+      </div>
+      <div class="program-subs">
+        <div class="program-sub">
+          <span>Annual Back-to-School Give-Away</span>
+          <span class="badge badge-green">Active</span>
+        </div>
+        <div class="program-sub">
+          <span>Youth Mentoring Program</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>Financial Literacy Program</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>College Access Support</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+      </div>
+      <div class="program-note">High funder interest — DOJ/OJJDP ($104M nationally), Honda, Raymond James.</div>
+    </div>
+
+    <!-- Career Development -->
+    <div class="program-card" style="border-left:3px solid var(--gold);">
+      <div class="program-header">
+        <div class="program-area">💼 Career Development</div>
+        <span class="badge badge-grey">Priority 5</span>
+      </div>
+      <div class="program-subs">
+        <div class="program-sub">
+          <span>Job Training & Resume Coaching</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>Women's Empowerment Program</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>Men's Development Program</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>Business Coaching & Entrepreneurship</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+      </div>
+      <div class="program-note">Women's Empowerment unlocks entirely new funder categories. BofA RFP opens May 18.</div>
+    </div>
+
+    <!-- Health & Wellness -->
+    <div class="program-card" style="border-left:3px solid var(--green);">
+      <div class="program-header">
+        <div class="program-area">🏀 Health & Wellness</div>
+        <span class="badge badge-blue">Priority 4</span>
+      </div>
+      <div class="program-subs">
+        <div class="program-sub">
+          <span>Basketball for Health Promotion</span>
+          <span class="badge badge-green">Active</span>
+        </div>
+        <div class="program-sub">
+          <span>Sobriety & Recovery Support</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>Wellness Seminars & Health Screenings</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+      </div>
+      <div class="program-note">MedShare distribution ($1,060.99 medical supplies, Nov 2025) supports this area.</div>
+    </div>
+
+    <!-- Family Strengthening -->
+    <div class="program-card" style="border-left:3px solid var(--gold);">
+      <div class="program-header">
+        <div class="program-area">👨‍👩‍👧 Family Strengthening</div>
+        <span class="badge badge-blue">Priority 2</span>
+      </div>
+      <div class="program-subs">
+        <div class="program-sub">
+          <span>Couples Relationship Programs</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+        <div class="program-sub">
+          <span>Family Support Services</span>
+          <span class="badge badge-gold">In Dev</span>
+        </div>
+      </div>
+      <div class="program-note">HHS/ACF HMRF — priority federal grant up to $6.25M over 5 years. Begin prep now.</div>
+    </div>
+  </div>
+
+  <!-- 2025 Events Delivered -->
+  <div class="card">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:16px;">2025 Programs & Events Delivered</div>
+    <div class="event-item">
+      <div class="event-dot"></div>
+      <div>
+        <div class="event-name">Monthly Food Bank Orders</div>
+        <div class="event-dates">June – December 2025 (7 months)</div>
+        <div class="event-desc">Walmart, Sam's Club, Publix food orders; pantry distribution. Attendance: TBD — confirm with Rhonda.</div>
+      </div>
+    </div>
+    <div class="event-item">
+      <div class="event-dot" style="background:var(--green);"></div>
+      <div>
+        <div class="event-name">Memorial Day Launch Picnic</div>
+        <div class="event-dates">May 26, 2025</div>
+        <div class="event-desc">Organization launch event — 100 t-shirts + 1,000 magnets distributed; refreshments. Attendance: TBD.</div>
+      </div>
+    </div>
+    <div class="event-item">
+      <div class="event-dot" style="background:var(--gold);"></div>
+      <div>
+        <div class="event-name">Back-to-School Supply Giveaway & Summer Slam</div>
+        <div class="event-dates">August 2, 2025</div>
+        <div class="event-desc">School supplies distributed to youth; NLT collaboration. Attendance: TBD.</div>
+      </div>
+    </div>
+    <div class="event-item">
+      <div class="event-dot" style="background:var(--blue-light);"></div>
+      <div>
+        <div class="event-name">iCARE 3-Point Basketball Contest</div>
+        <div class="event-dates">August 2, 2025</div>
+        <div class="event-desc">Prizes: $50 (ages 0-13), $100 (ages 14-25). Health promotion community event. Attendance: TBD.</div>
+      </div>
+    </div>
+    <div class="event-item">
+      <div class="event-dot" style="background:var(--green);"></div>
+      <div>
+        <div class="event-name">Thanksliving Crusade</div>
+        <div class="event-dates">November 23, 2025</div>
+        <div class="event-desc">100 turkeys donated; food distribution to community. Attendance: TBD.</div>
+      </div>
+    </div>
+    <div class="event-item" style="border-bottom:none;">
+      <div class="event-dot" style="background:var(--gold);"></div>
+      <div>
+        <div class="event-name">Medical Supply Distribution (MedShare International)</div>
+        <div class="event-dates">November 2025</div>
+        <div class="event-desc">$1,060.99 in donated medical supplies — ice packs, gloves, nebulizers, BP monitors, compression stockings, masks. Invoice JM-25-3416.</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:8px 12px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:6px;font-size:11px;color:var(--gold);">
+      ⚠ Action needed: Attendance estimates from Rhonda required for all events — needed for 990-EZ Part III and grant applications.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 4 — FINANCIALS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="financials">
+  <div class="section-header">
+    <div class="section-icon gold">💰</div>
+    <div class="section-title">Financials — 2025</div>
+    <div class="section-sub"><span class="badge badge-red">Incomplete — Missing Sep–Dec records</span></div>
+  </div>
+
+  <div style="padding:10px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;margin-bottom:16px;font-size:12px;color:var(--red);">
+    ⚠ <strong>INCOMPLETE DATA:</strong> Sep–Dec 2025 bank records have not been provided. All figures below reflect Mar 19 – Aug 6, 2025 only. Do not file 990-EZ until complete records are received.
+  </div>
+
+  <div class="grid-3" style="margin-bottom:16px;">
+    <!-- Revenue -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Cash Revenue — Confirmed</div>
+      <div class="fin-row"><span class="fin-label">Board dues — Regina Lock-DePass (Zeffy)</span><span class="fin-amount confirmed">$240</span></div>
+      <div class="fin-row"><span class="fin-label">Account seed funding</span><span class="fin-amount confirmed">$400</span></div>
+      <div class="fin-row"><span class="fin-label">ATM cash deposit</span><span class="fin-amount confirmed">$500</span></div>
+      <div class="fin-row"><span class="fin-label">Board dues — Rhonda Reeder (Zeffy)</span><span class="fin-amount confirmed">$240</span></div>
+      <div class="fin-row"><span class="fin-label">Board dues — Corey Reeder (Zeffy)</span><span class="fin-amount confirmed">$150</span></div>
+      <div class="fin-row"><span class="fin-label">AYM cash deposit</span><span class="fin-amount confirmed">$300</span></div>
+      <div class="fin-total"><span>Total Confirmed Cash</span><span style="color:var(--green);">$1,830</span></div>
+      <div style="font-size:11px;color:var(--red);margin-top:8px;">Sep–Dec 2025 transactions: MISSING</div>
+    </div>
+
+    <!-- In-Kind -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">In-Kind Contributions</div>
+      <div class="fin-row"><span class="fin-label">NicheFinders AI (website design, SEO, dev)</span><span class="fin-amount confirmed">$4,200</span></div>
+      <div class="fin-row"><span class="fin-label">MedShare International (medical supplies)</span><span class="fin-amount confirmed">$1,061</span></div>
+      <div class="fin-row"><span class="fin-label">Regina — iCARE Tent</span><span class="fin-amount confirmed">$249</span></div>
+      <div class="fin-row"><span class="fin-label">Regina — 8 ft Table</span><span class="fin-amount confirmed">$90</span></div>
+      <div class="fin-row"><span class="fin-label">Regina — Battery fans</span><span class="fin-amount pending">TBD</span></div>
+      <div class="fin-total"><span>Total Confirmed In-Kind</span><span style="color:var(--blue-light);">$5,600+</span></div>
+      <div style="font-size:11px;color:var(--text-3);margin-top:8px;">Collins Grant Consulting status: paid vs. in-kind — confirm with Rhonda</div>
+    </div>
+
+    <!-- Expenses -->
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Cash Expenses — Confirmed</div>
+      <div class="fin-row"><span class="fin-label">501(c)(3) filing fee (IRS Form 1023)</span><span class="fin-amount">$650</span></div>
+      <div class="fin-row"><span class="fin-label">T-shirts (100), visors, magnets</span><span class="fin-amount">$1,474</span></div>
+      <div class="fin-row"><span class="fin-label">Business cards, tablecloth, tent, table</span><span class="fin-amount">$719</span></div>
+      <div class="fin-row"><span class="fin-label">Virtual mailbox, domain, hosting, email</span><span class="fin-amount">$334</span></div>
+      <div class="fin-row"><span class="fin-label">Harland checks</span><span class="fin-amount">$32</span></div>
+      <div class="fin-row"><span class="fin-label">Food bank purchases (Walmart, Sam's, Publix)</span><span class="fin-amount">$909</span></div>
+      <div class="fin-row"><span class="fin-label">MedShare handling + shipping</span><span class="fin-amount">$54</span></div>
+      <div class="fin-total"><span>Total Confirmed Expenses</span><span style="color:var(--red);">$4,172</span></div>
+    </div>
+  </div>
+
+  <!-- Balance Sheet -->
+  <div class="grid-2">
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Balance Sheet (Partial)</div>
+      <div class="fin-row"><span class="fin-label">Bank balance — August 6, 2025</span><span class="fin-amount confirmed">$712.15</span></div>
+      <div class="fin-row"><span class="fin-label">Bank balance — December 31, 2025</span><span class="fin-amount blocked">UNKNOWN — needed for 990-EZ</span></div>
+    </div>
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Blockers — Action Required from Rhonda</div>
+      <div class="checklist">
+        <div class="check-item"><div class="check-icon">🔴</div><div><div>Sep–Dec 2025 bank statements</div><div class="check-note">Blocks 990-EZ filing and complete financial picture</div></div></div>
+        <div class="check-item"><div class="check-icon">🔴</div><div><div>Dec 31, 2025 ending bank balance</div><div class="check-note">Required for 990-EZ Part II Balance Sheet</div></div></div>
+        <div class="check-item"><div class="check-icon">🟡</div><div><div>Collins Grant Consulting — paid or in-kind?</div><div class="check-note">Affects expense reporting on 990-EZ</div></div></div>
+        <div class="check-item"><div class="check-icon">🟡</div><div><div>Fair market value of Regina's fans</div><div class="check-note">Completes in-kind contribution total</div></div></div>
+        <div class="check-item"><div class="check-icon">🟡</div><div><div>Attendance estimates for all 2025 events</div><div class="check-note">Required for 990-EZ Part III Program Accomplishments</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 5 — GRANTS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="grants">
+  <div class="section-header">
+    <div class="section-icon green">🏆</div>
+    <div class="section-title">Grant Pipeline & Strategy</div>
+    <div class="section-sub">30+ funders identified • Year 1 target: $75K–$125K</div>
+  </div>
+
+  <!-- Readiness Bar -->
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;">
+      <div style="flex:1;min-width:200px;">
+        <div class="readiness-label">
+          <span>Grant Readiness Score</span>
+          <span>65%</span>
+        </div>
+        <div class="readiness-track"><div class="readiness-fill" style="width:65%;"></div></div>
+        <div style="font-size:11px;color:var(--text-3);margin-top:6px;">Consultant: Collins Grant Consulting • AOR: Rhonda Reeder — President</div>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div><div style="font-size:11px;color:var(--text-3);">Year 1 Target</div><div style="font-size:16px;font-weight:700;color:var(--gold);">$75K–$125K</div></div>
+        <div><div style="font-size:11px;color:var(--text-3);">Funders Identified</div><div style="font-size:16px;font-weight:700;color:var(--blue-light);">30+</div></div>
+        <div><div style="font-size:11px;color:var(--text-3);">Next Deadline</div><div style="font-size:16px;font-weight:700;color:var(--red);">Apr 30</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Readiness Checklist -->
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Readiness Checklist</div>
+      <div class="checklist">
+        <div class="check-item"><div class="check-icon">✅</div><div>EIN registered — 92-3071148</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>501(c)(3) determination received (May 15, 2025)</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>Bank account open (Suncoast Business Checking)</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>Website with donation button live (icaregives.org)</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>Zeffy donation platform (100% profit)</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>Program documentation for all 16 programs</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>Evaluation framework and logic models</div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div>Grant language reference (Two-Gen framework)</div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>Board bylaws formally adopted</div><div class="check-note">Vote at April 11 board meeting</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>GuideStar / Candid profile</div><div class="check-note">One-time setup — immediate credibility boost</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>First 990-EZ filed</div><div class="check-note">Due May 15, 2026 — builds public record</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>SAM.gov registration</div><div class="check-note">Required for ALL federal grants</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>FDACS charitable solicitation registration</div><div class="check-note">Status unknown — verify at fdacs.gov</div></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Two-Generation Framework</div>
+      <div style="font-size:12px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">
+        iCARE's programs serve both <strong style="color:var(--blue-light);">children and their parents simultaneously</strong> — the most competitive framing for modern funders. Always lead with this in applications.
+      </div>
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px;">SAMPLE LANGUAGE</div>
+        <div style="font-size:12px;color:var(--text-2);font-style:italic;line-height:1.7;">
+          "iCARE takes a Two-Generation approach — delivering food security, education, career development, health, and family strengthening services to children and adults in the same household — creating lasting change at the family level, not just the individual."
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:var(--text-3);">See GRANT_LANGUAGE.md for full application language by program area.</div>
+    </div>
+  </div>
+
+  <!-- Priority Grants -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:10px;">🔴 Apply Immediately</div>
+  <div class="grant-row" style="border-color:var(--red-border);">
+    <div><div class="grant-name">Publix Super Markets Charities</div><div class="grant-area">Food Security</div><div class="grant-notes">Hunger Relief window March 1–April 30. Direct food pantry mission match. Apply NOW — 25 days left.</div></div>
+    <div class="grant-award">Varies</div>
+    <div class="grant-deadline" style="color:var(--red);font-weight:700;">April 30, 2026</div>
+    <div><span class="badge badge-red">Not Started</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">Wawa Foundation</div><div class="grant-area">All program areas</div><div class="grant-notes">Quarterly funding window — next may be open now. Research immediately.</div></div>
+    <div class="grant-award">$2,500+</div>
+    <div class="grant-deadline">Quarterly</div>
+    <div><span class="badge badge-gold">Research</span></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin:16px 0 10px;">🟡 Upcoming</div>
+  <div class="grant-row">
+    <div><div class="grant-name">Bank of America Charitable Foundation</div><div class="grant-area">Career Development / Family Strengthening</div><div class="grant-notes">Empowering Communities RFP. Opens May 18. Deadline: June 29, 2026. Begin prep now.</div></div>
+    <div class="grant-award">Varies</div>
+    <div class="grant-deadline">Jun 29, 2026</div>
+    <div><span class="badge badge-blue">Prepare</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">American Honda Foundation</div><div class="grant-area">Education & Youth Development</div><div class="grant-notes">Youth-focused. Science and education emphasis. Quarterly submissions.</div></div>
+    <div class="grant-award">$20K–$75K</div>
+    <div class="grant-deadline">Quarterly</div>
+    <div><span class="badge badge-grey">Research</span></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin:16px 0 10px;">🟢 Annual Cycle — Prepare Now</div>
+  <div class="grant-row">
+    <div><div class="grant-name">Community Foundation Tampa Bay</div><div class="grant-area">All 5 program areas</div><div class="grant-notes">Best local fit — their 5 focus areas map exactly to iCARE's 5 areas. Avg award $28,700. Start relationship NOW. LOI: Jan 7 cycle.</div></div>
+    <div class="grant-award">$5K–$55K</div>
+    <div class="grant-deadline">Dec 1 cycle</div>
+    <div><span class="badge badge-blue">Prep</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">United Way Suncoast</div><div class="grant-area">All areas</div><div class="grant-notes">ALICE families language required. Financial stability + youth success focus.</div></div>
+    <div class="grant-award">Up to $20K</div>
+    <div class="grant-deadline">TBD</div>
+    <div><span class="badge badge-grey">Research</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">Children's Board of Hillsborough County</div><div class="grant-area">Youth & Family</div><div class="grant-notes">Small Nonprofit grant — specifically designed for orgs like iCARE. Local funder.</div></div>
+    <div class="grant-award">Varies</div>
+    <div class="grant-deadline">TBD</div>
+    <div><span class="badge badge-grey">Research</span></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--blue-light);margin:16px 0 10px;">🔵 Federal — Begin Preparation Now</div>
+  <div class="grant-row">
+    <div><div class="grant-name">HHS/ACF — HMRF (Healthy Marriage & Responsible Fatherhood)</div><div class="grant-area">Family Strengthening</div><div class="grant-notes">Priority federal grant. Requires SAM.gov + 990 filed + strong evaluation data. Summer 2026 est. opening.</div></div>
+    <div class="grant-award">Up to $6.25M / 5yr</div>
+    <div class="grant-deadline">Summer 2026</div>
+    <div><span class="badge badge-blue">Priority</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">DOJ/OJJDP Youth Mentoring</div><div class="grant-area">Education & Youth</div><div class="grant-notes">Requires SAM.gov + Grants.gov registration. National program — $104M total.</div></div>
+    <div class="grant-award">$104M nationally</div>
+    <div class="grant-deadline">Annual</div>
+    <div><span class="badge badge-grey">Research</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">USDA Community Food Projects (NIFA)</div><div class="grant-area">Food Security</div><div class="grant-notes">Requires $1:$1 match. Strong case with active food pantry operations.</div></div>
+    <div class="grant-award">$125K–$400K</div>
+    <div class="grant-deadline">October annually</div>
+    <div><span class="badge badge-grey">Prep</span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 6 — COMPLIANCE
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="compliance">
+  <div class="section-header">
+    <div class="section-icon red">⚖️</div>
+    <div class="section-title">Compliance & Legal</div>
+  </div>
+
+  <!-- Upcoming Deadlines -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Upcoming Deadlines</div>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+
+    <div class="deadline-item urgent">
+      <div class="deadline-date-col">
+        <div class="deadline-date">April 11</div>
+        <div class="deadline-day">6 days</div>
+      </div>
+      <div class="deadline-body">
+        <div class="deadline-title">First Board Meeting of 2026</div>
+        <div class="deadline-meta">Internal • No fee • 3 of 5 quorum required</div>
+        <div class="deadline-actions">
+          <div class="deadline-action">Pass 6 board motions (bylaws, seating, 990-EZ, dues, AOR, FDACS)</div>
+          <div class="deadline-action">Collect Board Member Acknowledgment Forms (all 5)</div>
+          <div class="deadline-action">Collect Conflict of Interest Disclosure Forms (all 5)</div>
+          <div class="deadline-action">Collect street addresses for Florida Annual Report</div>
+        </div>
+      </div>
+      <div><span class="badge badge-red">Critical</span></div>
+    </div>
+
+    <div class="deadline-item urgent">
+      <div class="deadline-date-col">
+        <div class="deadline-date">April 30</div>
+        <div class="deadline-day">25 days</div>
+      </div>
+      <div class="deadline-body">
+        <div class="deadline-title">Publix Super Markets Charities — Grant Deadline</div>
+        <div class="deadline-meta">publix.com/charities • Free to apply</div>
+        <div class="deadline-actions">
+          <div class="deadline-action">Apply immediately — Hunger Relief window closes April 30</div>
+          <div class="deadline-action">Direct mission match: food pantry + youth programs</div>
+        </div>
+      </div>
+      <div><span class="badge badge-red">Apply Now</span></div>
+    </div>
+
+    <div class="deadline-item critical">
+      <div class="deadline-date-col">
+        <div class="deadline-date">May 1</div>
+        <div class="deadline-day">26 days</div>
+      </div>
+      <div class="deadline-body">
+        <div class="deadline-title">Florida Annual Report</div>
+        <div class="deadline-meta">sunbiz.org • $61.25 fee • CANNOT be changed after submission</div>
+        <div class="deadline-actions">
+          <div class="deadline-action">Formally seat 2026 board at April 11 meeting first</div>
+          <div class="deadline-action">Collect street addresses from all 5 board members</div>
+          <div class="deadline-action">File online at sunbiz.org in Step 9: edit board member info</div>
+        </div>
+        <div class="deadline-blocker">⚠ Warning: Listing someone without permission = 3rd degree felony under Florida law. Confirm all names and consent first.</div>
+      </div>
+      <div><span class="badge badge-gold">Not Started</span></div>
+    </div>
+
+    <div class="deadline-item critical">
+      <div class="deadline-date-col">
+        <div class="deadline-date">May 15</div>
+        <div class="deadline-day">40 days</div>
+      </div>
+      <div class="deadline-body">
+        <div class="deadline-title">IRS Form 990-EZ (Tax Year 2025) — First Filing</div>
+        <div class="deadline-meta">tax990.com • Free for nonprofits • Check "Initial Return" box</div>
+        <div class="deadline-actions">
+          <div class="deadline-action">Obtain Sep–Dec 2025 bank statements from Rhonda</div>
+          <div class="deadline-action">Confirm Dec 31, 2025 bank balance</div>
+          <div class="deadline-action">Confirm Collins Grant Consulting — paid or in-kind?</div>
+          <div class="deadline-action">File Form 8868 for 6-month extension if needed (→ Nov 15, 2026)</div>
+        </div>
+        <div class="deadline-blocker">🔴 BLOCKED — Missing Sep–Dec 2025 bank records. Cannot file until received.</div>
+      </div>
+      <div><span class="badge badge-red">Blocked</span></div>
+    </div>
+
+    <div class="deadline-item important">
+      <div class="deadline-date-col">
+        <div class="deadline-date">May 18</div>
+        <div class="deadline-day">43 days</div>
+      </div>
+      <div class="deadline-body">
+        <div class="deadline-title">Bank of America Empowering Communities RFP Opens</div>
+        <div class="deadline-meta">bankofamerica.com/philanthropic • Free • Deadline: June 29</div>
+        <div class="deadline-actions">
+          <div class="deadline-action">Begin application prep now (Career Dev / Family Strengthening)</div>
+        </div>
+      </div>
+      <div><span class="badge badge-blue">Prepare</span></div>
+    </div>
+  </div>
+
+  <!-- Ongoing Compliance -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Ongoing Compliance Items</div>
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="checklist">
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>FDACS Charitable Solicitation Registration</div><div class="check-note">Required to solicit donations in Florida — call 1-800-HELP-FLA to verify current status</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>SAM.gov Registration</div><div class="check-note">Required for ALL federal grants — free, annual renewal</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>GuideStar / Candid Profile</div><div class="check-note">One-time setup — immediate grant credibility boost</div></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="checklist">
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>Conflict of Interest Disclosures — All 5 Board Members</div><div class="check-note">First set due at April 11 meeting. Annual renewal: January 30 each year.</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>Grants.gov Registration</div><div class="check-note">Required for federal grants — complete after SAM.gov</div></div></div>
+        <div class="check-item"><div class="check-icon">❓</div><div><div>Florida Sales Tax Exemption (DR-14)</div><div class="check-note">Renews every 5 years — confirm current date and expiration</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completed Compliance -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">✅ Completed Compliance Milestones</div>
+  <div class="card">
+    <div class="checklist">
+      <div class="check-item"><div class="check-icon">✅</div><div><div>Florida nonprofit corporation formed (Chapter 617)</div><div class="check-note">2025</div></div></div>
+      <div class="check-item"><div class="check-icon">✅</div><div><div>IRS Form 1023 filed (full form, not 1023-EZ)</div><div class="check-note">2025 — confirmed by Letter 947</div></div></div>
+      <div class="check-item"><div class="check-icon">✅</div><div><div>IRS 501(c)(3) Determination Received — Letter 947 (Rev. 2-2020), Catalog No. 35152P</div><div class="check-note">May 15, 2025 — effective retroactively to March 19, 2025</div></div></div>
+      <div class="check-item"><div class="check-icon">✅</div><div><div>EIN obtained — 92-3071148</div><div class="check-note">2025</div></div></div>
+      <div class="check-item"><div class="check-icon">✅</div><div><div>Suncoast business checking account opened</div><div class="check-note">2025</div></div></div>
+      <div class="check-item"><div class="check-icon">✅</div><div><div>Website live with donation capability — icaregives.org</div><div class="check-note">January 2026 — Zeffy integration, 37 pages, 16 programs</div></div></div>
+      <div class="check-item"><div class="check-icon">✅</div><div><div>Security hardening — Next.js upgrade patching 14 CVEs</div><div class="check-note">March 2026</div></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      Board Portal for <strong>Community Advancement Resource Enrichment, Inc. (iCARE)</strong> •
+      EIN 92-3071148 • 501(c)(3) Public Charity •
+      Maintained by <strong>NicheFinders AI</strong> •
+      Last updated April 5, 2026
+    </div>
+  </div>
+</footer>
+
+<script>
+// Active nav tab on scroll
+const sections = document.querySelectorAll('.section');
+const tabs = document.querySelectorAll('.nav-tab');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tabs.forEach(t => t.classList.remove('active'));
+      const activeTab = document.querySelector(`.nav-tab[href="#${entry.target.id}"]`);
+      if (activeTab) activeTab.classList.add('active');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-60px 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Tab click smooth scroll
+tabs.forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(tab.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
