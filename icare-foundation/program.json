@@ -69,7 +69,7 @@
     "april11_motions": [
       "Adopt Revised Bylaws v5",
       "Formally seat 2026 board members",
-      "Authorize voluntary 990-EZ filing",
+      "Authorize voluntary IRS annual filing (Form 990-N)",
       "Set annual board dues amount",
       "Authorize President as AOR for all grants",
       "Authorize FDACS charitable solicitation registration"
@@ -438,7 +438,7 @@
     "program_priority_rationale": "Food Security (#1) has the most documented 2025 activity and strongest immediate grant match. Family Strengthening (#2) unlocks the largest long-term federal funding. Education & Youth (#3), Health & Wellness (#4), and Career Development (#5) build the Two-Gen case across all applications.",
     "what_board_members_control": [
       "Vote on all major decisions (4 of 5 required for bylaws, compensation, dissolution)",
-      "Sign off on 990-EZ filings (Treasurer reviews, President signs)",
+      "Support annual IRS filing (Form 990-N) — Treasurer reviews financials, President certifies",
       "Authorize the President as AOR on every grant application",
       "Attend and document attendance — quorum (3 of 5) required for valid votes",
       "Sign annual Conflict of Interest disclosures — required by most grantors"
@@ -454,7 +454,7 @@
         "Call to order + quorum confirmation (3 of 5 required)",
         "Motion 1: Adopt Revised Bylaws v5",
         "Motion 2: Formally seat 2026 board members",
-        "Motion 3: Authorize voluntary 990-EZ filing",
+        "Motion 3: Authorize voluntary IRS annual filing (Form 990-N)",
         "Motion 4: Set annual board dues amount",
         "Motion 5: Authorize President as AOR for all grants",
         "Motion 6: Authorize FDACS charitable solicitation registration",
@@ -496,7 +496,7 @@
       {
         "item": "Create GuideStar / Candid profile",
         "owner": "Corey Reeder — VP / Executive Director",
-        "due": "After 990-EZ filed",
+        "due": "After 990-N filed",
         "status": "not_started",
         "priority": "medium"
       },
