@@ -32,7 +32,7 @@
       "name": "Cedrick West",
       "title": "Treasurer",
       "email": "cedrickwest86@gmail.com",
-      "authorities": ["Financial oversight", "990-EZ co-reviewer", "Reports on financials"],
+      "authorities": ["Financial oversight", "990-N filing support", "Reports on financials"],
       "seated": "April 11, 2026"
     },
     {
@@ -168,12 +168,12 @@
     { "name": "Memorial Day Launch Picnic", "dates": "May 26, 2025", "description": "Organization launch event — 100 t-shirts + 1,000 magnets distributed; refreshments", "attendance": "TBD" },
     { "name": "Back-to-School Supply Giveaway & Summer Slam", "dates": "Aug 2, 2025", "description": "School supplies to youth; collaboration with NLT outreach team", "attendance": "TBD" },
     { "name": "iCARE 3-Point Basketball Contest", "dates": "Aug 2, 2025", "description": "Prizes: $50 (ages 0-13), $100 (ages 14-25)", "attendance": "TBD" },
-    { "name": "Thanksliving Crusade", "dates": "Nov 23, 2025", "description": "100 turkeys donated; food distribution to community", "attendance": "TBD" },
+    { "name": "Thanksliving Crusade", "dates": "Nov 23, 2025", "description": "100 turkeys donated ($2,529.74); food distribution to community", "attendance": "TBD" },
     { "name": "Medical Supply Distribution (MedShare)", "dates": "Nov 2025", "description": "MedShare donated medical supplies valued $1,060.99 — ice packs, gloves, nebulizers, BP monitors, etc.", "attendance": "TBD" }
   ],
   "financials": {
     "fiscal_year": "2025",
-    "status": "INCOMPLETE — Missing Sep–Dec 2025 bank records",
+    "status": "Partial — Mar–Aug 2025 confirmed. iCare files Form 990-N (gross receipts ≤ $50K).",
     "cash_revenue": 1830.00,
     "cash_revenue_period": "Mar 19 – Aug 6, 2025 only",
     "cash_expenses_confirmed": 4171.85,
@@ -197,11 +197,10 @@
       { "donor": "Regina Lock-DePass", "description": "Battery operated fans", "value": null, "status": "pending_fmv" }
     ],
     "blockers": [
-      "Sep–Dec 2025 bank statements (blocks 990-EZ filing)",
-      "Dec 31, 2025 ending bank balance (required for 990-EZ Part II Balance Sheet)",
+      "Dec 31, 2025 ending bank balance (good for internal records + grant apps)",
       "Collins Grant Consulting — paid or in-kind? (affects expense reporting)",
       "Fair market value of Regina's donated fans",
-      "Attendance estimates for all 2025 events (required for 990-EZ Part III)"
+      "Attendance estimates for all 2025 events (required for grant applications)"
     ]
   },
   "grants": {
@@ -313,7 +312,7 @@
       { "item": "Grant language reference (2Gen framework)", "status": "done" },
       { "item": "Board bylaws formally adopted", "status": "pending", "note": "Vote at April 11, 2026 board meeting" },
       { "item": "GuideStar / Candid profile", "status": "not_started", "note": "Needed for grant credibility" },
-      { "item": "First 990-EZ filed", "status": "pending", "note": "Due May 15, 2026" },
+      { "item": "First 990-N (e-Postcard) filed", "status": "pending", "note": "Due May 15, 2026 — free, ~10 min online at irs.gov" },
       { "item": "SAM.gov registration", "status": "not_started", "note": "Required for ALL federal grants" },
       { "item": "Grants.gov registration", "status": "not_started", "note": "Required for federal grants" },
       { "item": "FDACS solicitation registration", "status": "confirm", "note": "Status unknown — verify at fdacs.gov" }
@@ -350,13 +349,12 @@
       },
       {
         "date": "May 15, 2026",
-        "item": "IRS Form 990-EZ (Tax Year 2025)",
-        "where": "tax990.com",
+        "item": "IRS Form 990-N e-Postcard (Tax Year 2025) — First Filing",
+        "where": "irs.gov/charities",
         "fee": "Free",
-        "status": "blocked",
+        "status": "not_started",
         "urgency": "critical",
-        "blocker": "Missing Sep–Dec 2025 bank statements",
-        "actions": ["Obtain Sep–Dec 2025 bank statements from Rhonda (BLOCKER)", "Confirm Dec 31, 2025 bank balance", "File at tax990.com — first 990, check 'Initial Return' box"]
+        "actions": ["File online at irs.gov — takes ~10 minutes", "Need: EIN, tax year dates, principal officer name, confirm gross receipts ≤ $50K", "Check 'Initial Return' — first 990-N filing", "Rhonda Reeder signs as principal officer"]
       },
       {
         "date": "May 18, 2026",
@@ -393,11 +391,22 @@
     "why_it_matters_for_board": "Every program we run, every grant we apply for, every dollar we document — all of it builds a 3-year track record. Funders evaluate the board as credibility. Board members are not just governance — you are the foundation that unlocks funding.",
     "phases": [
       {
-        "phase": "Year 1 — 2026 — Foundation",
+        "phase": "Phase 1 — 2025 — Launch (Complete)",
+        "goal": "Build the legal and digital foundation.",
+        "priorities": [
+          "Incorporated as Florida nonprofit + 501(c)(3) approved",
+          "EIN obtained + Suncoast business checking account opened",
+          "Website launched — icaregives.org (37 pages, 16 programs, Zeffy donations)",
+          "6 community events delivered — food bank, back-to-school, Thanksliving, MedShare",
+          "Phase 1 complete"
+        ]
+      },
+      {
+        "phase": "Phase 2 — 2026 — Foundation",
         "goal": "Establish credibility. Get the compliance house in order so funders trust us.",
         "priorities": [
           "Adopt bylaws + formally seat 2026 board (April 11)",
-          "File 990-EZ — builds public record grantors rely on",
+          "File 990-N (e-Postcard) — builds public record grantors rely on",
           "Create GuideStar/Candid profile — required by most foundations",
           "Register SAM.gov — required for ANY federal grant",
           "Land first external grants: Publix (April 30), Bank of America (June 29)",
@@ -464,16 +473,9 @@
         "priority": "critical"
       },
       {
-        "item": "Provide Sep–Dec 2025 bank statements",
+        "item": "Confirm attendance estimates for all 6 2025 events",
         "owner": "Rhonda Reeder — President",
-        "due": "ASAP — blocks 990-EZ",
-        "status": "not_started",
-        "priority": "critical"
-      },
-      {
-        "item": "Confirm Dec 31, 2025 bank balance",
-        "owner": "Rhonda Reeder — President",
-        "due": "ASAP — blocks 990-EZ",
+        "due": "ASAP",
         "status": "not_started",
         "priority": "critical"
       },
@@ -485,12 +487,11 @@
         "priority": "high"
       },
       {
-        "item": "File IRS Form 990-EZ at tax990.com",
-        "owner": "Cedrick West — Treasurer (review) + Rhonda Reeder — President (sign)",
+        "item": "File IRS Form 990-N (e-Postcard) at irs.gov",
+        "owner": "Rhonda Reeder — President",
         "due": "May 15, 2026",
-        "status": "blocked",
-        "priority": "high",
-        "blocker": "Missing Sep–Dec 2025 bank records"
+        "status": "not_started",
+        "priority": "high"
       },
       {
         "item": "Create GuideStar / Candid profile",
@@ -507,9 +508,9 @@
         "priority": "medium"
       },
       {
-        "item": "Confirm attendance estimates for all 6 2025 events",
+        "item": "Confirm Dec 31, 2025 bank balance",
         "owner": "Rhonda Reeder — President",
-        "due": "Before 990-EZ filing",
+        "due": "ASAP",
         "status": "not_started",
         "priority": "medium"
       },
