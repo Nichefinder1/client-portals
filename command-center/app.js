@@ -107,8 +107,11 @@ function showNodeDetail(node) {
 // ── Graph ───────────────────────────────────────────────────────────────────
 function buildGraph() {
   const container = document.getElementById('graph-container');
-  const w = container.offsetWidth || Math.floor(window.innerWidth * 0.6);
-  const h = container.offsetHeight || window.innerHeight - 36;
+  // Ensure explicit pixel dimensions — flex % dimensions can read as 0 at init time
+  const w = container.offsetWidth  || Math.floor(window.innerWidth  * 0.6);
+  const h = container.offsetHeight || (window.innerHeight - 36);
+  container.style.width  = w + 'px';
+  container.style.height = h + 'px';
 
   Graph = ForceGraph3D()(container)
     .width(w)
@@ -234,5 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('node-detail').classList.remove('visible');
     renderAgencyGraph();
   });
-  init();
+
+  // Force layout to paint before graph init so offsetWidth/Height are non-zero
+  requestAnimationFrame(() => requestAnimationFrame(() => init()));
 });
