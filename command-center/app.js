@@ -107,11 +107,8 @@ function showNodeDetail(node) {
 // ── Graph ───────────────────────────────────────────────────────────────────
 function buildGraph() {
   const container = document.getElementById('graph-container');
-  // Ensure explicit pixel dimensions — flex % dimensions can read as 0 at init time
-  const w = container.offsetWidth  || Math.floor(window.innerWidth  * 0.6);
+  const w = container.offsetWidth  || Math.floor(window.innerWidth * 0.6);
   const h = container.offsetHeight || (window.innerHeight - 36);
-  container.style.width  = w + 'px';
-  container.style.height = h + 'px';
 
   Graph = ForceGraph3D()(container)
     .width(w)
@@ -130,13 +127,25 @@ function buildGraph() {
     .onNodeHover(handleNodeHover);
 
   window.addEventListener('resize', () => {
-    const nw = container.offsetWidth || Math.floor(window.innerWidth * 0.6);
-    const nh = container.offsetHeight || window.innerHeight - 36;
+    const nw = container.offsetWidth;
+    const nh = container.offsetHeight;
     Graph.width(nw).height(nh);
   });
 
+  // Star field goes behind the graph — z-index:0 so the WebGL canvas (z-index:1) is on top
   addStarField(container);
-  renderAgencyGraph();
+
+  // The ForceGraph3D canvas was appended first — select it and raise it above the star canvas
+  const graphCanvas = container.querySelector('canvas');
+  if (graphCanvas) {
+    graphCanvas.style.position = 'absolute';
+    graphCanvas.style.top = '0';
+    graphCanvas.style.left = '0';
+    graphCanvas.style.zIndex = '1';
+  }
+
+  // Give the library one frame to finish internal scene setup before feeding data
+  setTimeout(() => renderAgencyGraph(), 0);
 }
 
 function nodeSizeByType(type) {
@@ -153,6 +162,9 @@ function renderAgencyGraph() {
   );
 
   Graph.graphData({ nodes: structuredClone(nodes), links: structuredClone(edges) });
+  // Kick the renderer in case the animation loop stalled on first load
+  if (typeof Graph.refresh === 'function') Graph.refresh();
+  setTimeout(() => Graph.zoomToFit(400, 40), 1000);
 }
 
 function flyIntoClient(clientId) {

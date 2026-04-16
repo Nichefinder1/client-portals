@@ -21,13 +21,14 @@
   <div id="layout">
 
     <!-- 3D Graph -->
-    <div id="graph-container">
-      <div id="breadcrumb"></div>
-      <div id="hud">
-        <span id="hud-clients">— CLIENTS</span>
-        <span id="hud-mrr">—</span>
-        <span id="hud-urgent">— URGENT</span>
-      </div>
+    <div id="graph-container"></div>
+
+    <!-- Graph overlays — outside graph-container so library can't wipe them -->
+    <div id="breadcrumb"></div>
+    <div id="hud">
+      <span id="hud-clients">— CLIENTS</span>
+      <span id="hud-mrr">—</span>
+      <span id="hud-urgent">— URGENT</span>
     </div>
 
     <!-- Command Panel -->
@@ -63,8 +64,11 @@
     </div>
   </div>
 
-  <!-- 3d-force-graph via CDN (no build step needed) -->
-  <script src="https://unpkg.com/3d-force-graph@1.73.4/dist/3d-force-graph.min.js"></script>
+  <!-- error overlay for debugging -->
+  <div id="err" style="display:none;position:fixed;top:40px;left:10px;z-index:999;background:rgba(255,0,0,0.85);color:#fff;padding:8px 12px;font-family:monospace;font-size:11px;max-width:400px;border-radius:4px"></div>
+  <script>window.onerror=function(m,s,l,c,e){var d=document.getElementById('err');d.style.display='block';d.textContent='JS ERROR: '+m+' ('+l+':'+c+')';};</script>
+
+  <script src="3d-force-graph.min.js"></script>
   <script src="app.js"></script>
 
 </body>
