@@ -1,0 +1,156 @@
+/* style.css — NicheFinders Command Center — Deep Space Theme */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #020b18;
+  --bg-panel:   #030f22;
+  --border:     rgba(0, 180, 255, 0.12);
+  --orange:     #CC5500;
+  --blue:       #00b4ff;
+  --text:       rgba(255, 255, 255, 0.75);
+  --text-dim:   rgba(255, 255, 255, 0.35);
+  --text-label: rgba(255, 255, 255, 0.25);
+  --urgent:     rgba(255, 80, 80, 0.85);
+  --warn:       rgba(255, 200, 50, 0.75);
+  --font:       'Courier New', Courier, monospace;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  overflow: hidden;
+}
+
+/* ── Top Bar ── */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px;
+  background: rgba(2, 11, 24, 0.85);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+#topbar .brand {
+  font-size: 10px; letter-spacing: 4px; color: var(--orange);
+  text-transform: uppercase;
+}
+#topbar .live-indicator {
+  font-size: 9px; color: var(--blue); letter-spacing: 2px;
+  display: flex; align-items: center; gap: 6px;
+}
+#topbar .live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 6px var(--blue);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+}
+
+/* ── Layout ── */
+#layout {
+  position: fixed; top: 36px; left: 0; right: 0; bottom: 0;
+  display: flex;
+}
+#graph-container {
+  flex: 0 0 60%;
+  position: relative;
+  overflow: hidden;
+}
+#graph-container canvas { display: block; }
+
+/* ── Command Panel ── */
+#panel {
+  flex: 0 0 40%;
+  border-left: 1px solid var(--border);
+  background: var(--bg-panel);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.panel-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-label {
+  font-size: 8px; letter-spacing: 2px; color: var(--text-label);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.mrr-value {
+  font-size: 22px; color: var(--orange); font-weight: bold; letter-spacing: 1px;
+}
+.mrr-sub {
+  font-size: 8px; color: var(--text-dim); margin-top: 2px;
+}
+
+/* ── Client List ── */
+#client-list { list-style: none; }
+#client-list li {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 0; font-size: 11px; cursor: pointer;
+  transition: opacity 0.2s;
+}
+#client-list li:hover { opacity: 0.75; }
+.client-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  box-shadow: 0 0 5px currentColor;
+}
+.client-name { flex: 1; color: var(--text); }
+.client-value { font-size: 9px; color: var(--text-dim); }
+
+/* ── Urgent List ── */
+#urgent-list { list-style: none; }
+#urgent-list li {
+  font-size: 10px; padding: 3px 0;
+  color: var(--urgent); display: flex; align-items: center; gap: 6px;
+}
+#urgent-list li.warn { color: var(--warn); }
+#urgent-list li::before { content: '⚡'; font-size: 9px; }
+
+/* ── Selected Node Panel ── */
+#node-detail {
+  flex: 1; padding: 14px 16px; overflow-y: auto;
+  display: none;
+}
+#node-detail.visible { display: block; }
+#node-detail .node-name {
+  font-size: 13px; font-weight: bold; margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.detail-row {
+  display: flex; justify-content: space-between;
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+  font-size: 10px;
+}
+.detail-row .key { color: var(--text-dim); }
+.detail-row .val { color: var(--text); text-align: right; max-width: 55%; }
+#portal-link {
+  display: inline-block; margin-top: 12px;
+  font-size: 9px; color: var(--blue); text-decoration: none; letter-spacing: 1px;
+}
+#portal-link:hover { text-decoration: underline; }
+
+/* ── Breadcrumb ── */
+#breadcrumb {
+  position: absolute; top: 8px; left: 12px; z-index: 10;
+  font-size: 9px; color: var(--text-dim); letter-spacing: 1px;
+  cursor: pointer; display: none;
+}
+#breadcrumb:hover { color: var(--text); }
+#breadcrumb.visible { display: block; }
+
+/* ── HUD Stats (bottom of graph) ── */
+#hud {
+  position: absolute; bottom: 10px; left: 12px;
+  display: flex; gap: 20px; font-size: 8px;
+  color: var(--text-label); letter-spacing: 1px;
+  pointer-events: none;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
