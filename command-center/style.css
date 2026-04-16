@@ -58,6 +58,7 @@ html, body {
 }
 #graph-container {
   flex: 0 0 60%;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }

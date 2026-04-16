@@ -107,8 +107,12 @@ function showNodeDetail(node) {
 // ── Graph ───────────────────────────────────────────────────────────────────
 function buildGraph() {
   const container = document.getElementById('graph-container');
+  const w = container.offsetWidth || Math.floor(window.innerWidth * 0.6);
+  const h = container.offsetHeight || window.innerHeight - 36;
 
   Graph = ForceGraph3D()(container)
+    .width(w)
+    .height(h)
     .backgroundColor('#020b18')
     .showNavInfo(false)
     .nodeLabel('')
@@ -121,6 +125,12 @@ function buildGraph() {
     .linkOpacity(1)
     .onNodeClick(handleNodeClick)
     .onNodeHover(handleNodeHover);
+
+  window.addEventListener('resize', () => {
+    const nw = container.offsetWidth || Math.floor(window.innerWidth * 0.6);
+    const nh = container.offsetHeight || window.innerHeight - 36;
+    Graph.width(nw).height(nh);
+  });
 
   addStarField(container);
   renderAgencyGraph();
