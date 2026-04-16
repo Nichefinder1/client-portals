@@ -1,0 +1,373 @@
+{
+  "meta": {
+    "generated": "2026-04-16T21:31:25.758Z",
+    "mrr": 19500,
+    "active_clients": 4,
+    "urgent_count": 1
+  },
+  "nodes": [
+    {
+      "id": "nichefinders",
+      "label": "NicheFinders AI",
+      "type": "agency",
+      "color": "#CC5500",
+      "level": 0,
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "Agency ops",
+      "urgent": false
+    },
+    {
+      "id": "all-south-lightning-protection",
+      "label": "All South Lightning Protection",
+      "type": "client",
+      "color": "#f97316",
+      "level": 1,
+      "monthly_value": 11000,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "Email triage live (Chuck's Outlook) + publish GBP posts for Sunrise + JAX",
+      "urgent": false
+    },
+    {
+      "id": "all-south-lightning-protection-local-seo",
+      "label": "LOCAL-SEO",
+      "type": "service",
+      "color": "#f97316",
+      "level": 2,
+      "parentId": "all-south-lightning-protection",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "all-south-lightning-protection-lightning-protection",
+      "label": "LIGHTNING-PROTECTION",
+      "type": "service",
+      "color": "#f97316",
+      "level": 2,
+      "parentId": "all-south-lightning-protection",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "all-south-lightning-protection-aios",
+      "label": "AIOS",
+      "type": "service",
+      "color": "#f97316",
+      "level": 2,
+      "parentId": "all-south-lightning-protection",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "fox-valley-plumbing",
+      "label": "Fox Valley Plumbing",
+      "type": "client",
+      "color": "#00b4ff",
+      "level": 1,
+      "monthly_value": 8500,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "Start Q2 blog content pipeline + execute April social posts",
+      "urgent": false
+    },
+    {
+      "id": "fox-valley-plumbing-local-seo",
+      "label": "LOCAL-SEO",
+      "type": "service",
+      "color": "#00b4ff",
+      "level": 2,
+      "parentId": "fox-valley-plumbing",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "fox-valley-plumbing-plumbing",
+      "label": "PLUMBING",
+      "type": "service",
+      "color": "#00b4ff",
+      "level": 2,
+      "parentId": "fox-valley-plumbing",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "out-the-pen-llc",
+      "label": "Out the Pen LLC",
+      "type": "client",
+      "color": "#a855f7",
+      "level": 1,
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "Stripe test-mode end-to-end checkout (need test keys from Jason)",
+      "urgent": false
+    },
+    {
+      "id": "out-the-pen-llc-web",
+      "label": "WEB",
+      "type": "service",
+      "color": "#a855f7",
+      "level": 2,
+      "parentId": "out-the-pen-llc",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "out-the-pen-llc-ecommerce",
+      "label": "ECOMMERCE",
+      "type": "service",
+      "color": "#a855f7",
+      "level": 2,
+      "parentId": "out-the-pen-llc",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "icare-foundation",
+      "label": "iCare Foundation",
+      "type": "client",
+      "color": "#22c55e",
+      "level": 1,
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "START Publix Charities grant application — deadline April 30 — URGENT. Resume page audit at \"Holiday Meals\" (17/32 done).",
+      "urgent": true
+    },
+    {
+      "id": "icare-foundation-web",
+      "label": "WEB",
+      "type": "service",
+      "color": "#22c55e",
+      "level": 2,
+      "parentId": "icare-foundation",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "icare-foundation-nonprofit",
+      "label": "NONPROFIT",
+      "type": "service",
+      "color": "#22c55e",
+      "level": 2,
+      "parentId": "icare-foundation",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "icare-foundation-501c3",
+      "label": "501C3",
+      "type": "service",
+      "color": "#22c55e",
+      "level": 2,
+      "parentId": "icare-foundation",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "icare-foundation-board-portal",
+      "label": "BOARD-PORTAL",
+      "type": "service",
+      "color": "#22c55e",
+      "level": 2,
+      "parentId": "icare-foundation",
+      "monthly_value": 0,
+      "status": "active",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "face-down-womens-prayer",
+      "label": "Face Down Womens Prayer",
+      "type": "prospect",
+      "color": "#06b6d4",
+      "level": 1,
+      "monthly_value": 0,
+      "status": "lead",
+      "health": "prospect",
+      "next_action": "Initial outreach",
+      "urgent": false
+    },
+    {
+      "id": "foundation-317",
+      "label": "Foundation 317",
+      "type": "prospect",
+      "color": "#06b6d4",
+      "level": 1,
+      "monthly_value": 0,
+      "status": "dev-in-progress",
+      "health": "prospect",
+      "next_action": "Fix TaxRoll Pro CSV column detection, deploy to Railway/Render for shareable demo",
+      "urgent": false
+    },
+    {
+      "id": "jb-factory-flooring",
+      "label": "JB Factory Flooring",
+      "type": "prospect",
+      "color": "#06b6d4",
+      "level": 1,
+      "monthly_value": 8500,
+      "status": "proposal-sent",
+      "health": "prospect",
+      "next_action": "Follow up on proposal",
+      "urgent": false
+    },
+    {
+      "id": "temple-of-praise",
+      "label": "Temple of Praise",
+      "type": "prospect",
+      "color": "#06b6d4",
+      "level": 1,
+      "monthly_value": 0,
+      "status": "lead",
+      "health": "prospect",
+      "next_action": "Initial outreach",
+      "urgent": false
+    },
+    {
+      "id": "proj-google-ads-capability-build",
+      "label": "Google Ads Capability Build",
+      "type": "project",
+      "color": "rgba(255,255,255,0.35)",
+      "level": 2,
+      "parentId": "nichefinders",
+      "monthly_value": 0,
+      "status": "in-progress",
+      "health": "on-track",
+      "next_action": "",
+      "urgent": false
+    },
+    {
+      "id": "proj-obsidian-vault-build",
+      "label": "Obsidian Vault Build",
+      "type": "project",
+      "color": "rgba(255,255,255,0.35)",
+      "level": 2,
+      "parentId": "internal",
+      "monthly_value": 0,
+      "status": "in-progress",
+      "health": "on-track",
+      "next_action": "Resolve portal design direction (futuristic Obsidian-style vs Quartz), then deploy 4 client portals",
+      "urgent": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "nichefinders",
+      "target": "all-south-lightning-protection"
+    },
+    {
+      "source": "all-south-lightning-protection",
+      "target": "all-south-lightning-protection-local-seo"
+    },
+    {
+      "source": "all-south-lightning-protection",
+      "target": "all-south-lightning-protection-lightning-protection"
+    },
+    {
+      "source": "all-south-lightning-protection",
+      "target": "all-south-lightning-protection-aios"
+    },
+    {
+      "source": "nichefinders",
+      "target": "fox-valley-plumbing"
+    },
+    {
+      "source": "fox-valley-plumbing",
+      "target": "fox-valley-plumbing-local-seo"
+    },
+    {
+      "source": "fox-valley-plumbing",
+      "target": "fox-valley-plumbing-plumbing"
+    },
+    {
+      "source": "nichefinders",
+      "target": "out-the-pen-llc"
+    },
+    {
+      "source": "out-the-pen-llc",
+      "target": "out-the-pen-llc-web"
+    },
+    {
+      "source": "out-the-pen-llc",
+      "target": "out-the-pen-llc-ecommerce"
+    },
+    {
+      "source": "nichefinders",
+      "target": "icare-foundation"
+    },
+    {
+      "source": "icare-foundation",
+      "target": "icare-foundation-web"
+    },
+    {
+      "source": "icare-foundation",
+      "target": "icare-foundation-nonprofit"
+    },
+    {
+      "source": "icare-foundation",
+      "target": "icare-foundation-501c3"
+    },
+    {
+      "source": "icare-foundation",
+      "target": "icare-foundation-board-portal"
+    },
+    {
+      "source": "nichefinders",
+      "target": "face-down-womens-prayer"
+    },
+    {
+      "source": "nichefinders",
+      "target": "foundation-317"
+    },
+    {
+      "source": "nichefinders",
+      "target": "jb-factory-flooring"
+    },
+    {
+      "source": "nichefinders",
+      "target": "temple-of-praise"
+    },
+    {
+      "source": "nichefinders",
+      "target": "proj-google-ads-capability-build"
+    },
+    {
+      "source": "internal",
+      "target": "proj-obsidian-vault-build"
+    }
+  ]
+}
