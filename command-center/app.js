@@ -115,7 +115,19 @@ function buildGraph() {
     .height(h)
     .backgroundColor('#020b18')
     .showNavInfo(false)
-    .nodeLabel('')
+    .nodeLabel(n => n.label)
+    .nodeThreeObjectExtend(true)
+    .nodeThreeObject(n => {
+      const size = nodeSizeByType(n.type);
+      const sprite = new SpriteText(n.label);
+      sprite.color = n.color || '#ffffff';
+      sprite.textHeight = size >= 6 ? 3 : size >= 3 ? 2 : 1.5;
+      sprite.fontFace = 'Courier New';
+      sprite.backgroundColor = 'rgba(2,11,24,0.75)';
+      sprite.padding = 1;
+      sprite.position.y = Math.cbrt(size) * 4 + 4;
+      return sprite;
+    })
     .nodeColor(n => n.color || '#ffffff')
     .nodeOpacity(0.95)
     .nodeResolution(16)
