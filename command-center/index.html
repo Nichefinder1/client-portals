@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NicheFinders AI — Command Center</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div id="topbar">
+    <span class="brand">NicheFinders AI</span>
+    <span class="live-indicator">
+      <span class="live-dot"></span>
+      COMMAND CENTER
+    </span>
+  </div>
+
+  <!-- Main Layout -->
+  <div id="layout">
+
+    <!-- 3D Graph -->
+    <div id="graph-container">
+      <div id="breadcrumb"></div>
+      <div id="hud">
+        <span id="hud-clients">— CLIENTS</span>
+        <span id="hud-mrr">—</span>
+        <span id="hud-urgent">— URGENT</span>
+      </div>
+    </div>
+
+    <!-- Command Panel -->
+    <div id="panel">
+
+      <!-- MRR -->
+      <div class="panel-section">
+        <div class="panel-label">Monthly Revenue</div>
+        <div class="mrr-value" id="mrr-value">—</div>
+        <div class="mrr-sub">MRR · Active Retainers</div>
+      </div>
+
+      <!-- Active Clients -->
+      <div class="panel-section">
+        <div class="panel-label">Active Clients</div>
+        <ul id="client-list"></ul>
+      </div>
+
+      <!-- Urgent -->
+      <div class="panel-section">
+        <div class="panel-label">Needs Attention</div>
+        <ul id="urgent-list"></ul>
+      </div>
+
+      <!-- Selected Node Detail -->
+      <div id="node-detail">
+        <div class="panel-label">Selected</div>
+        <div class="node-name" id="node-name"></div>
+        <div id="detail-rows"></div>
+        <a id="portal-link" href="#" target="_blank" rel="noopener"></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3d-force-graph via CDN (no build step needed) -->
+  <script src="https://unpkg.com/3d-force-graph@1.73.4/dist/3d-force-graph.min.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
