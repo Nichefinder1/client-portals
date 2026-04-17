@@ -13,7 +13,7 @@ const PORTAL_URLS = {
 
 // ── Bootstrap ──────────────────────────────────────────────────────────────
 async function init() {
-  const res = await fetch('data.json');
+  const res = await fetch('data.json?v=' + Date.now());
   const data = await res.json();
   allNodes = data.nodes;
   allEdges = data.edges;
@@ -116,27 +116,40 @@ function buildGraph() {
     .backgroundColor('#020b18')
     .showNavInfo(false)
     .nodeLabel(n => n.label)
+    .d3AlphaDecay(0.02)
+    .d3VelocityDecay(0.3)
     .nodeThreeObjectExtend(true)
     .nodeThreeObject(n => {
+      if (n.type === 'service' || n.type === 'project') return null;
       const size = nodeSizeByType(n.type);
       const sprite = new SpriteText(n.label);
-      sprite.color = n.color || '#ffffff';
-      sprite.textHeight = size >= 6 ? 3 : size >= 3 ? 2 : 1.5;
-      sprite.fontFace = 'Courier New';
-      sprite.backgroundColor = 'rgba(2,11,24,0.75)';
-      sprite.padding = 1;
-      sprite.position.y = Math.cbrt(size) * 4 + 4;
+      sprite.color = n.type === 'agency' ? '#7c3aed' : (n.color || '#ffffff');
+      sprite.textHeight = n.type === 'agency' ? 5 : n.type === 'client' ? 4 : 2.5;
+      sprite.fontFace = 'Arial';
+      sprite.fontWeight = 'bold';
+      sprite.position.y = size + 4;
+      n.__labelSprite = sprite;
       return sprite;
     })
-    .nodeColor(n => n.color || '#ffffff')
+    .nodeColor(n => n.type === 'agency' ? '#7c3aed' : (n.color || '#ffffff'))
     .nodeOpacity(0.95)
-    .nodeResolution(16)
+    .nodeResolution(32)
     .nodeVal(n => nodeSizeByType(n.type))
-    .linkColor(() => 'rgba(0,180,255,0.2)')
-    .linkWidth(0.4)
+    .linkColor(() => 'rgba(0,180,255,0.25)')
+    .linkWidth(0.5)
     .linkOpacity(1)
     .onNodeClick(handleNodeClick)
     .onNodeHover(handleNodeHover);
+
+  // Strong repulsion + collision so nodes never overlap
+  const chargeForce = Graph.d3Force('charge');
+  if (chargeForce && typeof chargeForce.strength === 'function') {
+    chargeForce.strength(-800).distanceMax(600);
+  }
+  const linkForce = Graph.d3Force('link');
+  if (linkForce && typeof linkForce.distance === 'function') {
+    linkForce.distance(n => n.source?.type === 'agency' ? 100 : 60);
+  }
 
   window.addEventListener('resize', () => {
     const nw = container.offsetWidth;
@@ -161,19 +174,24 @@ function buildGraph() {
 }
 
 function nodeSizeByType(type) {
-  return { agency: 12, client: 6, prospect: 3, project: 2, service: 2 }[type] || 2;
+  return { agency: 20, client: 8, prospect: 3, project: 2, service: 2 }[type] || 2;
 }
 
 function renderAgencyGraph() {
   currentLevel = 'agency';
   document.getElementById('breadcrumb').classList.remove('visible');
 
-  const nodes = allNodes.filter(n => n.level <= 1);
+  // Prospects removed from graph — shown in Pipeline panel instead
+  const nodes = allNodes.filter(n => n.level <= 1 && n.type !== 'prospect');
   const edges = allEdges.filter(e =>
     nodes.find(n => n.id === e.source) && nodes.find(n => n.id === e.target)
   );
 
-  Graph.graphData({ nodes: structuredClone(nodes), links: structuredClone(edges) });
+  const clonedNodes = structuredClone(nodes);
+  // Pin agency hub to center so prospects never overlap it
+  const hub = clonedNodes.find(n => n.type === 'agency');
+  if (hub) { hub.fx = 0; hub.fy = 0; hub.fz = 0; }
+  Graph.graphData({ nodes: clonedNodes, links: structuredClone(edges) });
   // Kick the renderer in case the animation loop stalled on first load
   if (typeof Graph.refresh === 'function') Graph.refresh();
   setTimeout(() => Graph.zoomToFit(400, 40), 1000);
@@ -226,8 +244,16 @@ function handleNodeClick(node) {
   }
 }
 
+let _lastHovered = null;
 function handleNodeHover(node) {
   document.getElementById('graph-container').style.cursor = node ? 'pointer' : 'default';
+  if (_lastHovered && _lastHovered.__labelSprite) {
+    _lastHovered.__labelSprite.textHeight = _lastHovered.type === 'agency' ? 5 : _lastHovered.type === 'client' ? 4 : 2.5;
+  }
+  _lastHovered = node;
+  if (node && node.__labelSprite) {
+    node.__labelSprite.textHeight = node.type === 'agency' ? 7 : node.type === 'client' ? 6 : 4;
+  }
 }
 
 // ── Star Field ──────────────────────────────────────────────────────────────

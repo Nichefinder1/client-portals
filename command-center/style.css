@@ -5,14 +5,15 @@
   --bg:         #020b18;
   --bg-panel:   #030f22;
   --border:     rgba(0, 180, 255, 0.12);
-  --orange:     #CC5500;
+  --orange:     #4169e1;
   --blue:       #00b4ff;
   --text:       rgba(255, 255, 255, 0.75);
   --text-dim:   rgba(255, 255, 255, 0.35);
   --text-label: rgba(255, 255, 255, 0.25);
   --urgent:     rgba(255, 80, 80, 0.85);
   --warn:       rgba(255, 200, 50, 0.75);
-  --font:       'Courier New', Courier, monospace;
+  --font:       'Exo 2', sans-serif;
+  --font-hud:   'Rajdhani', 'Exo 2', sans-serif;
 }
 
 html, body {
@@ -34,10 +35,12 @@ html, body {
   backdrop-filter: blur(8px);
 }
 #topbar .brand {
+  font-family: var(--font-hud);
   font-size: 10px; letter-spacing: 4px; color: var(--orange);
   text-transform: uppercase;
 }
 #topbar .live-indicator {
+  font-family: var(--font-hud);
   font-size: 9px; color: var(--blue); letter-spacing: 2px;
   display: flex; align-items: center; gap: 6px;
 }
@@ -82,7 +85,8 @@ html, body {
   text-transform: uppercase; margin-bottom: 10px;
 }
 .mrr-value {
-  font-size: 22px; color: var(--orange); font-weight: bold; letter-spacing: 1px;
+  font-family: var(--font-hud);
+  font-size: 22px; color: var(--orange); font-weight: 700; letter-spacing: 1px;
 }
 .mrr-sub {
   font-size: 8px; color: var(--text-dim); margin-top: 2px;

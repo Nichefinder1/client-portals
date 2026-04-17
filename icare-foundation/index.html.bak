@@ -406,102 +406,6 @@ body > * { position: relative; z-index: 1; }
   z-index: 9999; display: none; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
-/* ─── Governance Docs ───────────────────────────────────────── */
-.doc-folder {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--r-lg); overflow: hidden; margin-bottom: 16px;
-}
-.doc-folder-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 18px; cursor: pointer;
-  border-bottom: 1px solid var(--border);
-  user-select: none; transition: background .15s;
-}
-.doc-folder-header:hover { background: var(--card-alt); }
-.doc-folder-icon { font-size: 16px; flex-shrink: 0; }
-.doc-folder-title { font-size: 14px; font-weight: 700; color: var(--text-1); flex: 1; }
-.doc-folder-count { font-size: 11px; color: var(--text-3); }
-.doc-folder-chevron { font-size: 12px; color: var(--text-3); transition: transform .2s; }
-.doc-folder-chevron.open { transform: rotate(90deg); }
-.doc-folder-body { display: none; padding: 12px 18px; }
-.doc-folder-body.open { display: block; }
-.doc-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 0; border-bottom: 1px solid var(--border);
-}
-.doc-row:last-child { border-bottom: none; }
-.doc-type-icon { font-size: 20px; flex-shrink: 0; }
-.doc-info { flex: 1; min-width: 0; }
-.doc-name { font-size: 13px; font-weight: 600; color: var(--text-1); }
-.doc-meta { font-size: 11px; color: var(--text-3); margin-top: 2px; }
-.doc-actions { display: flex; gap: 8px; flex-shrink: 0; }
-.doc-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 5px 12px; border-radius: 6px; font-size: 12px;
-  font-weight: 600; cursor: pointer; border: none;
-  font-family: var(--font); transition: all .15s; text-decoration: none;
-}
-.doc-btn-dl { background: var(--blue-dim); color: var(--blue-light); border: 1px solid var(--blue-border); }
-.doc-btn-dl:hover { background: var(--blue); color: #fff; }
-.doc-btn-signed { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-border); }
-.doc-btn-signed:hover { background: var(--green); color: #fff; }
-.doc-btn-pending { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); cursor: default; }
-
-/* Upload zone */
-.upload-zone {
-  border: 2px dashed var(--border); border-radius: var(--r);
-  padding: 24px; text-align: center; transition: all .2s; cursor: pointer;
-  background: var(--bg-mid); margin-top: 16px;
-}
-.upload-zone:hover, .upload-zone.drag-over {
-  border-color: var(--blue-border); background: var(--blue-dim);
-}
-.upload-zone-icon { font-size: 28px; margin-bottom: 8px; }
-.upload-zone-text { font-size: 13px; color: var(--text-2); margin-bottom: 4px; }
-.upload-zone-sub { font-size: 11px; color: var(--text-3); }
-.upload-select-btn {
-  display: inline-block; margin-top: 12px;
-  background: var(--blue); color: #fff; border: none;
-  border-radius: 6px; padding: 8px 18px; font-size: 13px;
-  font-weight: 600; font-family: var(--font); cursor: pointer;
-  transition: background .15s;
-}
-.upload-select-btn:hover { background: var(--blue-light); }
-.upload-progress {
-  margin-top: 12px; display: none;
-}
-.upload-progress-bar {
-  height: 4px; background: rgba(255,255,255,0.08);
-  border-radius: 2px; overflow: hidden; margin-bottom: 6px;
-}
-.upload-progress-fill {
-  height: 100%; background: linear-gradient(90deg, var(--blue), var(--green));
-  border-radius: 2px; transition: width .3s;
-}
-.upload-status { font-size: 12px; color: var(--text-2); }
-.upload-form-fields {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-  margin-top: 16px;
-}
-.upload-form-fields label {
-  font-size: 12px; font-weight: 600; color: var(--text-2);
-  display: block; margin-bottom: 4px;
-}
-.upload-form-fields input,
-.upload-form-fields select {
-  width: 100%; background: var(--bg); border: 1px solid var(--border);
-  border-radius: 6px; padding: 8px 12px; color: var(--text-1);
-  font-size: 13px; font-family: var(--font);
-  transition: border-color .15s; outline: none;
-}
-.upload-form-fields input:focus,
-.upload-form-fields select:focus { border-color: var(--blue-border); }
-.upload-form-fields select option { background: var(--bg); }
-@media (max-width: 680px) {
-  .upload-form-fields { grid-template-columns: 1fr; }
-  .doc-actions { flex-direction: column; }
-}
-
 /* ─── Login Gate ─────────────────────────────────────────────── */
 #login-gate {
   position: fixed; inset: 0; z-index: 9000;
@@ -573,17 +477,6 @@ body > * { position: relative; z-index: 1; }
 </head>
 <body>
 
-<!-- Netlify Forms detection — hidden, not shown to users -->
-<form name="governance-doc-upload" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" style="display:none;">
-  <input type="hidden" name="form-name" value="governance-doc-upload">
-  <input name="bot-field">
-  <input name="uploaded-by">
-  <input name="doc-type">
-  <input name="doc-name">
-  <input name="upload-date">
-  <input type="file" name="file">
-</form>
-
 <!-- ─── NAV ─── -->
 <nav class="nav">
   <div class="nav-inner">
@@ -602,7 +495,6 @@ body > * { position: relative; z-index: 1; }
       <a class="nav-tab" href="#financials">Financials</a>
       <a class="nav-tab" href="#grants">Grants</a>
       <a class="nav-tab" href="#compliance">Compliance</a>
-      <a class="nav-tab" href="#documents">Documents</a>
       <a class="nav-tab" href="#ideas">Ideas</a>
     </div>
     <div class="user-info" id="user-display" style="display:none;">
@@ -638,7 +530,7 @@ body > * { position: relative; z-index: 1; }
     <div>
       <div class="section-title">Organization Dashboard</div>
     </div>
-    <div class="section-sub">Last updated: April 10, 2026</div>
+    <div class="section-sub">Last updated: April 5, 2026</div>
   </div>
 
   <!-- Org Identity Bar -->
@@ -678,8 +570,8 @@ body > * { position: relative; z-index: 1; }
   <div class="grid-4" style="margin-bottom:20px;">
     <div class="stat-card" style="border-color:var(--green-border);">
       <div class="stat-label">2025 Revenue</div>
-      <div class="stat-value" style="color:var(--green);">$2,730</div>
-      <div class="stat-note">Cash • Full Year Confirmed</div>
+      <div class="stat-value" style="color:var(--green);">$1,830</div>
+      <div class="stat-note">Cash • Mar–Aug 2025 (partial)</div>
     </div>
     <div class="stat-card" style="border-color:var(--blue-border);">
       <div class="stat-label">In-Kind Contributions</div>
@@ -700,31 +592,31 @@ body > * { position: relative; z-index: 1; }
 
   <!-- Critical Deadlines Strip -->
   <div class="card" style="border-color:var(--red-border); margin-bottom:16px;">
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:12px;">🔴 3 Critical Deadlines — Next 35 Days</div>
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:12px;">🔴 4 Critical Deadlines — Next 45 Days</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 11, 2026</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);">First Board Meeting</div>
+        <div style="font-size:11px;color:var(--text-3);">6 formal motions • Board seating</div>
+        <div style="margin-top:6px;"><span class="badge badge-red">6 days away</span></div>
+      </div>
       <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
         <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 30, 2026</div>
         <div style="font-size:13px;font-weight:700;color:var(--text-1);">Publix Charities Grant</div>
         <div style="font-size:11px;color:var(--text-3);">Hunger Relief window closes • Direct food pantry match</div>
-        <div style="margin-top:6px;"><span class="badge badge-red">Not Started — Urgent</span></div>
+        <div style="margin-top:6px;"><span class="badge badge-red">Apply Now</span></div>
       </div>
       <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
         <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 1, 2026</div>
         <div style="font-size:13px;font-weight:700;color:var(--text-1);">Florida Annual Report</div>
-        <div style="font-size:11px;color:var(--text-3);">sunbiz.org • $61.25 fee</div>
-        <div style="margin-top:6px;"><span class="badge badge-gold">21 days</span></div>
+        <div style="font-size:11px;color:var(--text-3);">sunbiz.org • $61.25 fee • Board seated first</div>
+        <div style="margin-top:6px;"><span class="badge badge-gold">26 days</span></div>
       </div>
       <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
         <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 15, 2026</div>
         <div style="font-size:13px;font-weight:700;color:var(--text-1);">IRS Form 990-N</div>
-        <div style="font-size:11px;color:var(--text-3);">e-Postcard • Free • irs.gov</div>
+        <div style="font-size:11px;color:var(--text-3);">e-Postcard • Free • Due May 15</div>
         <div style="margin-top:6px;"><span class="badge badge-gold">Not Started</span></div>
-      </div>
-      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;border:1px solid var(--green-border);">
-        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 9, 2026</div>
-        <div style="font-size:13px;font-weight:700;color:var(--green);">✅ First Board Meeting</div>
-        <div style="font-size:11px;color:var(--text-3);">5 motions passed • Board officially seated</div>
-        <div style="margin-top:6px;"><span class="badge badge-green">Complete</span></div>
       </div>
     </div>
   </div>
@@ -854,15 +746,127 @@ body > * { position: relative; z-index: 1; }
     <div class="section-sub">Next meeting • Open actions by owner • Meeting history</div>
   </div>
 
-  <!-- Next Meeting — rendered from program.json -->
-  <div id="next-meeting-block" style="margin-bottom:16px;"></div>
+  <!-- Next Meeting -->
+  <div class="card" style="border-left:3px solid var(--red);margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:4px;">Next Meeting</div>
+        <div style="font-size:18px;font-weight:800;color:var(--text-1);">First Board Meeting of 2026</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:2px;">April 11, 2026 &nbsp;•&nbsp; Location TBD &nbsp;•&nbsp; Quorum: 3 of 5 required</div>
+      </div>
+      <span class="badge badge-red">6 Days Away</span>
+    </div>
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:8px;">Agenda</div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">1.</span>Call to order + quorum confirmation (3 of 5 required)</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">2.</span><strong style="color:var(--text-1);">Motion:</strong> Formally seat 2026 board members</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">3.</span><strong style="color:var(--text-1);">Motion:</strong> Authorize voluntary IRS annual filing</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">4.</span><strong style="color:var(--text-1);">Motion:</strong> Set annual board dues amount</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">5.</span><strong style="color:var(--text-1);">Motion:</strong> Authorize President as AOR for all grants</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">6.</span><strong style="color:var(--text-1);">Motion:</strong> Authorize FDACS charitable solicitation registration</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">7.</span>2025 Year-in-Review — President's Report</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">8.</span>2026 Strategic Direction — goals and priorities</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);"><span style="color:var(--text-3);min-width:20px;">9.</span>Grant strategy briefing — Publix deadline April 30</div>
+      <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;"><span style="color:var(--text-3);min-width:20px;">10.</span>Open discussion + next meeting date</div>
+    </div>
+  </div>
 
-  <!-- Open Action Items — rendered from program.json -->
-  <div id="action-items-block" style="margin-bottom:24px;"></div>
+  <!-- Open Action Items -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Open Action Items — By Owner</div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
 
-  <!-- Past Meetings — rendered from program.json -->
+    <div class="card" style="border-left:3px solid var(--red);">
+      <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;">🔴 CRITICAL</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Submit Publix Charities Hunger Relief grant application</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--red);font-weight:700;">April 30, 2026</div><span class="badge badge-red" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Confirm attendance estimates for all 6 2025 events</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Required for grant applications and 990-N filing</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--red);font-weight:700;">ASAP</div><span class="badge badge-gold" style="margin-top:4px;">Pending</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--gold);">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:6px;">🟡 HIGH PRIORITY</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">File Florida Annual Report at sunbiz.org ($61.25)</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Corey Reeder — Executive Director</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--gold);font-weight:700;">May 1, 2026</div><span class="badge badge-gold" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">File IRS Form 990-N (e-Postcard) at irs.gov</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Free e-Postcard — gross receipts ≤ $50K. No bank records required.</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--gold);font-weight:700;">May 15, 2026</div><span class="badge badge-gold" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Record and certify April 11 board meeting minutes</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Regina Lock-DePass — Secretary</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--gold);font-weight:700;">Within 30 days</div><span class="badge badge-gold" style="margin-top:4px;">Upcoming</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--blue);">
+      <div style="font-size:11px;font-weight:700;color:var(--blue-light);margin-bottom:6px;">🔵 MEDIUM — After Compliance Complete</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Create GuideStar / Candid profile</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Corey Reeder — Executive Director</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">One-time setup — immediate grant credibility boost</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--blue-light);">After 990-N filed</div><span class="badge badge-grey" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Register SAM.gov</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Corey Reeder — Executive Director</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Required before ANY federal grant application</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--blue-light);">Before federal grants</div><span class="badge badge-grey" style="margin-top:4px;">Not Started</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text-1);">Confirm Collins Grant Consulting — paid or in-kind?</div>
+            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">Rhonda Reeder — President</div>
+            <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Affects expense reporting and in-kind total</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;"><div style="font-size:12px;color:var(--blue-light);">Before filings</div><span class="badge badge-grey" style="margin-top:4px;">Not Started</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Meetings -->
   <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Meeting History</div>
-  <div id="past-meetings-block"></div>
+  <div class="card" style="text-align:center;padding:32px;">
+    <div style="font-size:32px;margin-bottom:8px;">📝</div>
+    <div style="font-size:14px;font-weight:600;color:var(--text-2);margin-bottom:6px;">No meetings recorded yet</div>
+    <div style="font-size:12px;color:var(--text-3);">Meeting minutes and decisions will appear here after each board meeting. First entry expected after April 11, 2026.</div>
+  </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
@@ -1394,7 +1398,7 @@ body > * { position: relative; z-index: 1; }
   </div>
 
   <div style="padding:10px 14px;background:var(--blue-dim);border:1px solid var(--blue-border);border-radius:8px;margin-bottom:16px;font-size:12px;color:var(--blue-light);">
-    ℹ <strong>NOTE:</strong> Full year 2025 confirmed. iCARE files Form 990-N (e-Postcard) — gross receipts ≤ $50K. No balance sheet or detailed financials required for the IRS filing.
+    ℹ <strong>NOTE:</strong> Full year 2025 confirmed. iCare files Form 990-N (e-Postcard) — gross receipts ≤ $50K. No balance sheet or detailed financials required for the IRS filing.
   </div>
 
   <div class="grid-3" style="margin-bottom:16px;">
@@ -1668,7 +1672,7 @@ body > * { position: relative; z-index: 1; }
         <div class="deadline-actions">
           <div class="deadline-action">File online at IRS.gov — takes ~10 minutes</div>
           <div class="deadline-action">Need: EIN, tax year dates, principal officer name, confirmation gross receipts ≤ $50K</div>
-          <div class="deadline-action">Check "Initial Return" — this is iCARE's first 990-N filing</div>
+          <div class="deadline-action">Check "Initial Return" — this is iCare's first 990-N filing</div>
           <div class="deadline-action">Rhonda Reeder signs as principal officer</div>
         </div>
       </div>
@@ -1721,163 +1725,6 @@ body > * { position: relative; z-index: 1; }
       <div class="check-item"><div class="check-icon">✅</div><div><div>Suncoast business checking account opened</div><div class="check-note">2025</div></div></div>
       <div class="check-item"><div class="check-icon">✅</div><div><div>Website live with donation capability — icaregives.org</div><div class="check-note">January 2026 — Zeffy integration, 37 pages, 16 programs</div></div></div>
       <div class="check-item"><div class="check-icon">✅</div><div><div>Security hardening — Next.js upgrade patching 14 CVEs</div><div class="check-note">March 2026</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     SECTION — GOVERNANCE DOCUMENTS
-     ══════════════════════════════════════════════════════════ -->
-<section class="section" id="documents">
-  <div class="section-header">
-    <div class="section-icon blue">📁</div>
-    <div>
-      <div class="section-title">Governance Documents</div>
-    </div>
-    <div class="section-sub">Minutes • Bylaws • Board Agreements • Signed Documents</div>
-  </div>
-
-  <!-- Folders -->
-  <div id="doc-folders">
-
-    <!-- Meeting Minutes -->
-    <div class="doc-folder">
-      <div class="doc-folder-header" onclick="toggleFolder('folder-minutes', this)">
-        <span class="doc-folder-icon">📝</span>
-        <span class="doc-folder-title">Meeting Minutes</span>
-        <span class="doc-folder-count" id="folder-minutes-count">1 document</span>
-        <span class="doc-folder-chevron" id="folder-minutes-chevron">▶</span>
-      </div>
-      <div class="doc-folder-body open" id="folder-minutes">
-        <div class="doc-row">
-          <span class="doc-type-icon">📄</span>
-          <div class="doc-info">
-            <div class="doc-name">April 9, 2026 — First Board Meeting Minutes</div>
-            <div class="doc-meta">Draft • Prepared by NicheFinders AI • Pending Secretary signature</div>
-          </div>
-          <div class="doc-actions">
-            <button class="doc-btn doc-btn-dl" onclick="downloadMinutes()">⬇ Download</button>
-            <span class="doc-btn doc-btn-pending">⏳ Awaiting Signature</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bylaws -->
-    <div class="doc-folder">
-      <div class="doc-folder-header" onclick="toggleFolder('folder-bylaws', this)">
-        <span class="doc-folder-icon">📋</span>
-        <span class="doc-folder-title">Bylaws</span>
-        <span class="doc-folder-count" id="folder-bylaws-count">Pending legal review</span>
-        <span class="doc-folder-chevron" id="folder-bylaws-chevron">▶</span>
-      </div>
-      <div class="doc-folder-body" id="folder-bylaws">
-        <div style="text-align:center;padding:24px;color:var(--text-3);font-size:13px;">
-          <div style="font-size:24px;margin-bottom:8px;">⚖️</div>
-          Revised bylaws are with legal counsel. Expected mid-week April 14, 2026.<br>
-          <span style="font-size:11px;">Rhonda Reeder will notify the board when ready for the workshop.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Board Agreements & COI -->
-    <div class="doc-folder">
-      <div class="doc-folder-header" onclick="toggleFolder('folder-agreements', this)">
-        <span class="doc-folder-icon">✍️</span>
-        <span class="doc-folder-title">Board Agreements &amp; Conflict of Interest Forms</span>
-        <span class="doc-folder-count" id="folder-agreements-count">Pending preparation</span>
-        <span class="doc-folder-chevron" id="folder-agreements-chevron">▶</span>
-      </div>
-      <div class="doc-folder-body" id="folder-agreements">
-        <div style="text-align:center;padding:24px;color:var(--text-3);font-size:13px;">
-          <div style="font-size:24px;margin-bottom:8px;">📑</div>
-          Board agreement and conflict of interest disclosure forms are being prepared.<br>
-          <span style="font-size:11px;">Required for grant applications. Due at bylaws workshop.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Signed Documents Archive -->
-    <div class="doc-folder">
-      <div class="doc-folder-header" onclick="toggleFolder('folder-signed', this)">
-        <span class="doc-folder-icon">✅</span>
-        <span class="doc-folder-title">Signed Documents Archive</span>
-        <span class="doc-folder-count" id="folder-signed-count">0 documents</span>
-        <span class="doc-folder-chevron" id="folder-signed-chevron">▶</span>
-      </div>
-      <div class="doc-folder-body" id="folder-signed">
-        <div style="text-align:center;padding:24px;color:var(--text-3);font-size:13px;" id="signed-empty">
-          <div style="font-size:24px;margin-bottom:8px;">📂</div>
-          No signed documents yet. Upload signed documents below.
-        </div>
-        <div id="signed-docs-list"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Upload Section -->
-  <div style="margin-top:24px;">
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Upload a Signed Document</div>
-    <div class="card card-alt">
-      <div style="font-size:13px;color:var(--text-2);margin-bottom:16px;">
-        Download a document, sign it, scan or photograph it, then upload the signed copy here. It will be stored securely and visible to all board members.
-      </div>
-
-      <!-- Upload form fields -->
-      <div class="upload-form-fields" style="margin-bottom:16px;">
-        <div>
-          <label for="upload-doc-type">Document Type *</label>
-          <select id="upload-doc-type" onchange="checkUploadReady()">
-            <option value="">— Select document type —</option>
-            <option value="minutes">Meeting Minutes</option>
-            <option value="bylaws">Bylaws (Signed)</option>
-            <option value="coi">Conflict of Interest Form</option>
-            <option value="board-agreement">Board Member Agreement</option>
-            <option value="other">Other Governance Document</option>
-          </select>
-        </div>
-        <div>
-          <label for="upload-doc-name">Document Name *</label>
-          <input type="text" id="upload-doc-name" placeholder="e.g. April 9 Minutes — Signed by Regina" oninput="checkUploadReady()">
-        </div>
-      </div>
-
-      <!-- Drop zone -->
-      <div class="upload-zone" id="upload-zone"
-           ondragover="handleDragOver(event)"
-           ondragleave="handleDragLeave(event)"
-           ondrop="handleDrop(event)">
-        <div class="upload-zone-icon">📎</div>
-        <div class="upload-zone-text">Drag &amp; drop your signed document here</div>
-        <div class="upload-zone-sub">PDF, JPG, or PNG • Max 10MB</div>
-        <input type="file" id="upload-file-input" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="handleFileSelect(event)">
-        <button class="upload-select-btn" onclick="document.getElementById('upload-file-input').click()">Browse Files</button>
-      </div>
-
-      <!-- Selected file preview -->
-      <div id="upload-file-preview" style="display:none;margin-top:12px;">
-        <div class="card" style="padding:12px;display:flex;align-items:center;gap:12px;">
-          <span style="font-size:20px;">📄</span>
-          <div style="flex:1;">
-            <div style="font-size:13px;font-weight:600;color:var(--text-1);" id="preview-filename"></div>
-            <div style="font-size:11px;color:var(--text-3);" id="preview-filesize"></div>
-          </div>
-          <button onclick="clearFileSelection()" style="background:none;border:none;color:var(--text-3);cursor:pointer;font-size:16px;padding:4px;">✕</button>
-        </div>
-      </div>
-
-      <!-- Progress -->
-      <div class="upload-progress" id="upload-progress">
-        <div class="upload-progress-bar"><div class="upload-progress-fill" id="upload-progress-fill" style="width:0%"></div></div>
-        <div class="upload-status" id="upload-status-text">Uploading…</div>
-      </div>
-
-      <!-- Submit -->
-      <button class="btn-submit" id="upload-submit-btn" onclick="submitUpload()" style="margin-top:16px;" disabled>
-        Upload Signed Document
-      </button>
-      <div id="upload-result" style="margin-top:10px;font-size:12px;display:none;"></div>
     </div>
   </div>
 </section>
@@ -1939,7 +1786,7 @@ body > * { position: relative; z-index: 1; }
       Board Portal for <strong>Community Advancement Resource Enrichment, Inc. (iCARE)</strong> •
       EIN 92-3071148 • 501(c)(3) Public Charity •
       Maintained by <strong>NicheFinders AI</strong> •
-      Last updated April 10, 2026
+      Last updated April 5, 2026
     </div>
   </div>
 </footer>
@@ -2076,7 +1923,6 @@ function showPortal(user) {
   document.getElementById('main-content').style.display = 'block';
   document.getElementById('user-display').style.display = 'flex';
   document.getElementById('user-email').textContent = user.email;
-  loadProgramData();
   loadIdeas();
 }
 
@@ -2323,409 +2169,6 @@ async function upvoteIdea(recordId, currentVotes, hasVoted) {
   }
 }
 
-// ─── PROGRAM DATA ─────────────────────────────────────────────────
-let programData = null;
-
-const DOC_TYPE_LABELS = {
-  'minutes':         'Meeting Minutes',
-  'bylaws':          'Bylaws',
-  'coi':             'Conflict of Interest Form',
-  'board-agreement': 'Board Member Agreement',
-  'other':           'Governance Document'
-};
-
-async function loadProgramData() {
-  try {
-    const res = await fetch('program.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    programData = await res.json();
-    renderNextMeeting();
-    renderActionItems();
-    renderPastMeetings();
-  } catch(e) {
-    showToast('Could not load portal data. Please refresh.', true);
-  }
-}
-
-// ─── NEXT MEETING RENDERER ────────────────────────────────────────
-function renderNextMeeting() {
-  const el = document.getElementById('next-meeting-block');
-  if (!el || !programData) return;
-  const nm = programData.agenda && programData.agenda.next_meeting;
-  if (!nm) { el.innerHTML = ''; return; }
-
-  const isWorkshop = nm.format === 'Workshop';
-  const borderColor = isWorkshop ? 'var(--blue)' : 'var(--red)';
-  const labelColor = isWorkshop ? 'var(--blue-light)' : 'var(--red)';
-  const labelText = isWorkshop ? 'Upcoming Workshop' : 'Next Meeting';
-  const badgeClass = isWorkshop ? 'badge-blue' : 'badge-red';
-  const badgeText = nm.status === 'today' ? 'Today' : nm.status === 'upcoming' ? 'Upcoming' : nm.status;
-
-  const agendaItems = (nm.agenda_items || []).map((item, i) => `
-    <div style="font-size:12px;color:var(--text-2);display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);">
-      <span style="color:var(--text-3);min-width:22px;flex-shrink:0;">${i+1}.</span>${escapeHtml(item)}
-    </div>`).join('');
-
-  const notesHtml = nm.notes ? `<div style="font-size:11px;color:var(--text-3);margin-top:10px;font-style:italic;">${escapeHtml(nm.notes)}</div>` : '';
-
-  el.innerHTML = `
-    <div class="card" style="border-left:3px solid ${borderColor};margin-bottom:16px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
-        <div>
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:${labelColor};margin-bottom:4px;">${labelText}</div>
-          <div style="font-size:18px;font-weight:800;color:var(--text-1);">${escapeHtml(nm.date)}</div>
-          ${nm.time && nm.time !== 'TBD' ? `<div style="font-size:13px;color:var(--text-3);margin-top:2px;">${escapeHtml(nm.time)}${nm.location && nm.location !== 'TBD' ? ' &nbsp;•&nbsp; ' + escapeHtml(nm.location) : ''}</div>` : ''}
-        </div>
-        <span class="badge ${badgeClass}">${badgeText}</span>
-      </div>
-      ${agendaItems ? `<div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:8px;">Agenda</div><div style="display:flex;flex-direction:column;gap:0;">${agendaItems}</div>` : ''}
-      ${notesHtml}
-    </div>`;
-}
-
-// ─── ACTION ITEMS RENDERER ────────────────────────────────────────
-function renderActionItems() {
-  const el = document.getElementById('action-items-block');
-  if (!el || !programData) return;
-  const items = (programData.agenda && programData.agenda.open_action_items) || [];
-  const open = items.filter(i => i.status !== 'completed');
-
-  if (!open.length) {
-    el.innerHTML = '<div class="card" style="text-align:center;padding:24px;color:var(--text-3);">No open action items.</div>';
-    return;
-  }
-
-  const critical = open.filter(i => i.priority === 'critical');
-  const high = open.filter(i => i.priority === 'high');
-  const medium = open.filter(i => i.priority === 'medium' || i.priority === 'low');
-
-  function renderGroup(items, color, label) {
-    if (!items.length) return '';
-    const rows = items.map(item => {
-      const statusBadge = item.status === 'not_started' ? '<span class="badge badge-red" style="margin-top:4px;">Not Started</span>'
-        : item.status === 'upcoming' ? '<span class="badge badge-gold" style="margin-top:4px;">Upcoming</span>'
-        : item.status === 'in_progress' ? '<span class="badge badge-blue" style="margin-top:4px;">In Progress</span>'
-        : `<span class="badge badge-grey" style="margin-top:4px;">${escapeHtml(item.status)}</span>`;
-      const dueColor = item.priority === 'critical' ? 'var(--red)' : item.priority === 'high' ? 'var(--gold)' : 'var(--blue-light)';
-      return `
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid var(--border);">
-          <div style="flex:1;min-width:0;">
-            <div style="font-size:13px;font-weight:600;color:var(--text-1);">${escapeHtml(item.item)}</div>
-            <div style="font-size:11px;color:var(--blue-light);margin-top:2px;">${escapeHtml(item.owner)}</div>
-          </div>
-          <div style="text-align:right;flex-shrink:0;">
-            <div style="font-size:12px;color:${dueColor};font-weight:700;">${escapeHtml(item.due)}</div>
-            ${statusBadge}
-          </div>
-        </div>`;
-    }).join('');
-    return `
-      <div class="card" style="border-left:3px solid ${color};margin-bottom:8px;">
-        <div style="font-size:11px;font-weight:700;color:${color};margin-bottom:4px;">${label}</div>
-        <div style="display:flex;flex-direction:column;">${rows}</div>
-      </div>`;
-  }
-
-  el.innerHTML = `
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Open Action Items — By Owner</div>
-    ${renderGroup(critical, 'var(--red)', '🔴 CRITICAL')}
-    ${renderGroup(high, 'var(--gold)', '🟡 HIGH PRIORITY')}
-    ${renderGroup(medium, 'var(--blue)', '🔵 MEDIUM PRIORITY')}`;
-}
-
-// ─── PAST MEETINGS RENDERER ───────────────────────────────────────
-function renderPastMeetings() {
-  const el = document.getElementById('past-meetings-block');
-  if (!el || !programData) return;
-  const meetings = (programData.agenda && programData.agenda.past_meetings) || [];
-
-  if (!meetings.length) {
-    el.innerHTML = `
-      <div class="card" style="text-align:center;padding:32px;">
-        <div style="font-size:32px;margin-bottom:8px;">📝</div>
-        <div style="font-size:14px;font-weight:600;color:var(--text-2);margin-bottom:6px;">No meetings recorded yet</div>
-        <div style="font-size:12px;color:var(--text-3);">Meeting minutes and decisions will appear here after each board meeting.</div>
-      </div>`;
-    return;
-  }
-
-  el.innerHTML = [...meetings].reverse().map(m => {
-    const motions = (m.motions_passed || []).map(mo =>
-      `<div style="display:flex;gap:8px;font-size:12px;color:var(--text-2);padding:4px 0;border-bottom:1px solid var(--border);">
-        <span style="color:var(--green);flex-shrink:0;">✅</span>${escapeHtml(mo)}
-      </div>`).join('');
-
-    const appointments = (m.appointments || []).map(a =>
-      `<div style="display:flex;gap:8px;font-size:12px;color:var(--text-2);padding:4px 0;">
-        <span style="color:var(--blue-light);flex-shrink:0;">▸</span>${escapeHtml(a)}
-      </div>`).join('');
-
-    const minutesStatus = m.minutes
-      ? (m.minutes.certification && m.minutes.certification.signed
-          ? `<span class="badge badge-green">✓ Signed</span>`
-          : `<span class="badge badge-gold">Draft — Pending Signature</span>`)
-      : `<span class="badge badge-grey">Not Yet Available</span>`;
-
-    const downloadBtn = m.minutes
-      ? `<button class="doc-btn doc-btn-dl" onclick="downloadMinutes()" style="margin-left:8px;">⬇ Download Draft</button>`
-      : '';
-
-    return `
-      <div class="card" style="margin-bottom:12px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-          <div>
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);">Board Meeting</div>
-            <div style="font-size:16px;font-weight:800;color:var(--text-1);">${escapeHtml(m.date)}</div>
-          </div>
-          <span class="badge badge-green">✅ Completed</span>
-        </div>
-        ${motions ? `<div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:6px;">Motions Passed</div>${motions}` : ''}
-        ${appointments ? `<div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin:10px 0 4px;">Appointments</div>${appointments}` : ''}
-        <div style="display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">
-          <span style="font-size:12px;color:var(--text-3);">Minutes:</span>
-          ${minutesStatus}${downloadBtn}
-        </div>
-      </div>`;
-  }).join('');
-}
-
-// ─── FOLDER TOGGLE ────────────────────────────────────────────────
-function toggleFolder(id, headerEl) {
-  const body = document.getElementById(id);
-  const chevron = headerEl.querySelector('.doc-folder-chevron');
-  if (!body) return;
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  if (chevron) chevron.classList.toggle('open', !isOpen);
-}
-
-// ─── DOWNLOAD MINUTES ─────────────────────────────────────────────
-function downloadMinutes() {
-  // Build minutes content from programData
-  const meeting = programData && programData.agenda && programData.agenda.past_meetings &&
-    programData.agenda.past_meetings.find(m => m.date === 'April 9, 2026');
-
-  if (!meeting || !meeting.minutes) {
-    showToast('Minutes document not available yet.', true);
-    return;
-  }
-
-  const m = meeting.minutes.content;
-  const motions = (m.motions_passed || []).map(mo =>
-    `Motion ${mo.number}: ${mo.title}\nResult: ${mo.result}\n${mo.notes ? 'Notes: ' + mo.notes : ''}`
-  ).join('\n\n');
-
-  const appointments = (m.appointments || []).join('\n');
-
-  const text = `MINUTES OF THE BOARD OF DIRECTORS
-Community Advancement Resource Enrichment, Inc. (iCARE Foundation)
-First Meeting of 2026 — ${m.date}
-
-EIN: 92-3071148
-Quorum: ${m.quorum}
-
-STATUS: ${meeting.status.toUpperCase()} — ${meeting.minutes.prepared_by}
-
-═══════════════════════════════════════
-MOTIONS PASSED
-═══════════════════════════════════════
-${motions}
-
-═══════════════════════════════════════
-APPOINTMENTS
-═══════════════════════════════════════
-${appointments}
-
-═══════════════════════════════════════
-CERTIFICATION
-═══════════════════════════════════════
-Secretary Signature: _________________________
-${m.certification.secretary}
-
-Date: _________________________
-
-Approved by: _________________________
-${m.certification.approved_by}, President
-
-Date: _________________________
-
-This document is confidential — for board members only.
-`;
-
-  const blob = new Blob([text], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'iCARE_Board_Minutes_April9_2026_DRAFT.txt';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('Minutes downloaded. Sign and upload below.', false);
-}
-
-// ─── FILE UPLOAD ──────────────────────────────────────────────────
-let selectedFile = null;
-
-function handleDragOver(e) {
-  e.preventDefault();
-  document.getElementById('upload-zone').classList.add('drag-over');
-}
-
-function handleDragLeave(e) {
-  document.getElementById('upload-zone').classList.remove('drag-over');
-}
-
-function handleDrop(e) {
-  e.preventDefault();
-  document.getElementById('upload-zone').classList.remove('drag-over');
-  const file = e.dataTransfer.files[0];
-  if (file) processFile(file);
-}
-
-function handleFileSelect(e) {
-  const file = e.target.files[0];
-  if (file) processFile(file);
-}
-
-function processFile(file) {
-  const maxSize = 10 * 1024 * 1024; // 10MB
-  const allowed = ['application/pdf', 'image/jpeg', 'image/png'];
-  if (!allowed.includes(file.type)) {
-    showToast('Only PDF, JPG, or PNG files are allowed.', true);
-    return;
-  }
-  if (file.size > maxSize) {
-    showToast('File must be under 10MB.', true);
-    return;
-  }
-  selectedFile = file;
-  document.getElementById('upload-file-preview').style.display = 'block';
-  document.getElementById('preview-filename').textContent = file.name;
-  document.getElementById('preview-filesize').textContent = (file.size / 1024).toFixed(1) + ' KB';
-  checkUploadReady();
-}
-
-function clearFileSelection() {
-  selectedFile = null;
-  document.getElementById('upload-file-preview').style.display = 'none';
-  document.getElementById('upload-file-input').value = '';
-  checkUploadReady();
-}
-
-function checkUploadReady() {
-  const docType = document.getElementById('upload-doc-type').value;
-  const docName = document.getElementById('upload-doc-name').value.trim();
-  const btn = document.getElementById('upload-submit-btn');
-  btn.disabled = !(selectedFile && docType && docName);
-}
-
-// Upload field listeners wired via onchange/oninput in HTML — no DOMContentLoaded needed
-
-async function submitUpload() {
-  const docType = document.getElementById('upload-doc-type').value;
-  const docName = document.getElementById('upload-doc-name').value.trim();
-  const btn = document.getElementById('upload-submit-btn');
-  const resultEl = document.getElementById('upload-result');
-  const progressEl = document.getElementById('upload-progress');
-  const fillEl = document.getElementById('upload-progress-fill');
-  const statusEl = document.getElementById('upload-status-text');
-
-  if (!selectedFile || !docType || !docName) return;
-
-  btn.disabled = true;
-  btn.textContent = 'Uploading…';
-  progressEl.style.display = 'block';
-  fillEl.style.width = '10%';
-  statusEl.textContent = 'Preparing upload…';
-  resultEl.style.display = 'none';
-
-  try {
-    // Use Netlify Forms for file storage
-    const formData = new FormData();
-    formData.append('form-name', 'governance-doc-upload');
-    formData.append('uploaded-by', currentUser ? currentUser.email : 'unknown');
-    formData.append('doc-type', docType);
-    formData.append('doc-name', docName);
-    formData.append('upload-date', new Date().toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' }));
-    formData.append('file', selectedFile);
-
-    fillEl.style.width = '40%';
-    statusEl.textContent = 'Uploading file…';
-
-    const res = await fetch('/', {
-      method: 'POST',
-      body: formData
-    });
-
-    fillEl.style.width = '100%';
-
-    if (res.ok) {
-      statusEl.textContent = 'Upload complete!';
-      resultEl.style.display = 'block';
-      resultEl.style.color = 'var(--green)';
-      resultEl.textContent = '✅ Document uploaded successfully. NicheFinders AI will be notified and will add it to the signed documents archive.';
-
-      // Add to local signed docs list immediately
-      addToSignedList(docName, docType, currentUser ? currentUser.email : 'Board Member');
-
-      // Reset form
-      clearFileSelection();
-      document.getElementById('upload-doc-type').value = '';
-      document.getElementById('upload-doc-name').value = '';
-      btn.textContent = 'Upload Signed Document';
-      showToast('Document uploaded successfully!', false);
-    } else {
-      throw new Error('Upload failed');
-    }
-  } catch(e) {
-    fillEl.style.width = '0%';
-    statusEl.textContent = '';
-    progressEl.style.display = 'none';
-    resultEl.style.display = 'block';
-    resultEl.style.color = 'var(--red)';
-    resultEl.textContent = '❌ Upload failed. Please try again or email the document to contact@icaregives.org';
-    btn.disabled = false;
-    btn.textContent = 'Upload Signed Document';
-    showToast('Upload failed. Please try again.', true);
-  }
-}
-
-function addToSignedList(name, type, uploadedBy) {
-  const listEl = document.getElementById('signed-docs-list');
-  const emptyEl = document.getElementById('signed-empty');
-  const countEl = document.getElementById('folder-signed-count');
-
-  if (emptyEl) emptyEl.style.display = 'none';
-
-  const typeLabels = DOC_TYPE_LABELS;
-
-  const date = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
-  const row = document.createElement('div');
-  row.className = 'doc-row';
-  row.innerHTML = `
-    <span class="doc-type-icon">✅</span>
-    <div class="doc-info">
-      <div class="doc-name">${escapeHtml(name)}</div>
-      <div class="doc-meta">${escapeHtml(typeLabels[type] || type)} • Uploaded ${date} by ${escapeHtml(uploadedBy)} • Pending archive</div>
-    </div>
-    <div class="doc-actions">
-      <span class="doc-btn doc-btn-signed">✓ Uploaded</span>
-    </div>`;
-
-  if (listEl) listEl.appendChild(row);
-
-  // Update folder count
-  const existing = listEl ? listEl.querySelectorAll('.doc-row').length : 1;
-  if (countEl) countEl.textContent = existing + ' document' + (existing !== 1 ? 's' : '');
-
-  // Open the folder
-  const folder = document.getElementById('folder-signed');
-  const chevron = document.querySelector('[onclick*="folder-signed"] .doc-folder-chevron');
-  if (folder) folder.classList.add('open');
-  if (chevron) chevron.classList.add('open');
-}
-
 async function submitIdea() {
   const titleEl = document.getElementById('idea-title-input');
   const catEl = document.getElementById('idea-category');
@@ -2735,7 +2178,7 @@ async function submitIdea() {
   const title = titleEl.value.trim();
   const category = catEl.value;
   const description = descEl.value.trim();
-  const submittedBy = currentUser?.user_metadata?.full_name || currentUser?.email || 'Board Member';
+  const submittedBy = currentUser ? currentUser.user_metadata?.full_name || currentUser.email : 'Board Member';
 
   if (!title) { showToast('Please enter a title.', true); titleEl.focus(); return; }
   if (!category) { showToast('Please select a category.', true); catEl.focus(); return; }
