@@ -8,13 +8,13 @@
     "total_weeks": 24,
     "current_week": 5,
     "start_date": "2026-03-26",
-    "last_updated": "2026-04-16",
+    "last_updated": "2026-04-22",
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 5: Email Triage Goes Live",
-    "phase_description": "Week 4 complete. Business Brain used live for the first time — surfaced key structural insights. Email triage system is in final build and goes live this week.",
-    "overall_progress_pct": 28,
+    "current_phase": "Week 5: Email Triage Live + Expo Video Delivered",
+    "phase_description": "Email triage system built, tested, and ready for go-live. Chuck's Outlook OAuth completes at the Week 5 call — first live digest delivers at 6 AM the following morning. Trade show commercial video nearly complete for the April 28 Tampa expo.",
+    "overall_progress_pct": 32,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -30,7 +30,7 @@
         { "label": "Internal knowledge base", "status": "not_started", "note": "Information siloing is #1 pain — estimators, PMs, accounting all on separate platforms. Trimble Connect will centralize." },
         { "label": "Training documentation", "status": "in_progress", "note": "AI video series active. OSHA 10 → safety gear → technical training. Retraining older crew in progress." },
         { "label": "Decision support tools", "status": "not_started", "note": "Chuck tried Trimble AI layer live on call to find avg contract size — it failed. This is the core brain gap." },
-        { "label": "Brain installation (Claude Code workspace)", "status": "complete", "note": "Live at brain.allsouthlightningprotection.com. HTTPS secured. Chuck and Morgan have accounts. 119 knowledge chunks loaded from 6 business context files. Used live Week 4 — surfaced personnel backup gaps and structural blind spots." },
+        { "label": "Brain installation (Claude Code workspace)", "status": "complete", "note": "Live at brain.allsouthlightningprotection.com. HTTPS secured. Chuck and Morgan have accounts. 164 knowledge chunks across 10 business context files. Used live Week 4 — surfaced personnel backup gaps and structural blind spots. Staff directory current at 49 employees." },
         { "label": "SOP digital system", "status": "in_progress", "note": "Field staff on paper SOPs only — legal and continuity risk. Digital queryable SOP system identified as near-term build. SOPs to start loading into Brain Week 5." },
         { "label": "Staff directory & SOP library", "status": "complete", "note": "45-person staff directory with roles loaded into Brain. 15 SOPs and policies loaded and queryable. Ask the Brain: 'Who handles scheduling?' or 'What is the cellphone policy?'" }
       ],
@@ -130,10 +130,18 @@
   "quick_wins": [
     {
       "title": "Email Triage System",
-      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. System reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, and delivers a single prioritized list by 6:00 AM. Crystal's inbox is next after Chuck's is live.",
-      "status": "in_build",
+      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. System reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, and delivers a single prioritized daily digest by 6:00 AM. Built and tested. Going live at the Week 5 call — Chuck authorizes his Outlook account and the schedule activates. Crystal's inbox is Phase 2.",
+      "status": "ready_to_deploy",
       "priority": 1,
-      "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning.",
+      "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out.",
+      "deployed_date": null
+    },
+    {
+      "title": "Trade Show Commercial Video",
+      "description": "AI-produced commercial video for the Tampa construction trade show (April 28, 2026). Designed for trade show booth display — looping format with captions for a loud expo floor environment. Showcases All South's commercial lightning protection work and capabilities.",
+      "status": "in_build",
+      "priority": 2,
+      "impact": "Professional brand presence at the April 28 Tampa expo. No production crew needed — delivered via the AI OS program.",
       "deployed_date": null
     },
     {
@@ -294,19 +302,35 @@
         "Obsidian visual dashboard discussed — to identify and manage workflow gaps"
       ],
       "chuck_verbatim_priority": "Email triage — read my Outlook inbox every morning, give me one list of what needs action, delivered by 6am"
+    },
+    {
+      "week": 5,
+      "date": "2026-04-23",
+      "title": "Week 5: Email Triage + Trade Show Video",
+      "duration": "~45 minutes",
+      "format": "Zoom",
+      "topics": [
+        "Email triage system — live demo of formatted digest (Action Required / FYI / Noise)",
+        "Chuck's Outlook OAuth authorization — system activated for live 6 AM delivery",
+        "Trade show commercial video review — expo video nearly complete, delivery before April 27 setup",
+        "Brain update — 164 knowledge chunks, 3 new staff added (James Crayton, Jahfari Dixon, Richard Rivera)",
+        "Crystal Balog email triage — Phase 2 scope confirmed, her email address collected",
+        "Week 6 preview — SOP full-text loading begins"
+      ],
+      "chuck_verbatim_priority": ""
     }
   ],
   "upcoming_session": {
-    "label": "Week 5: Email Triage Live + SOPs Begin",
+    "label": "Week 6: SOP Loading + First Live Triage Review",
     "date": "TBD",
     "time": "TBD",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Email triage system live demo — Chuck's Outlook connected, 6am delivery running",
-      "Brain update — new context loaded from Week 4 session",
-      "SOP loading begins — first SOPs into the Brain",
-      "Week 6 preview"
+      "Review first week of live email triage — any miscategorizations to tune?",
+      "SOP loading begins — first 3–5 SOPs loaded into Brain in full text",
+      "Crystal's triage workflow cloned and staged",
+      "Week 7 preview"
     ]
   },
   "contact": {
