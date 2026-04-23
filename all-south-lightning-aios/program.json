@@ -321,15 +321,15 @@
     }
   ],
   "upcoming_session": {
-    "label": "Week 6: SOP Loading + First Live Triage Review",
+    "label": "Week 6: Live Triage Review + Next Steps",
     "date": "TBD",
     "time": "TBD",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Review first week of live email triage — any miscategorizations to tune?",
-      "SOP loading begins — first 3–5 SOPs loaded into Brain in full text",
-      "Crystal's triage workflow cloned and staged",
+      "Review first week of live email triage",
+      "Crystal's triage workflow — next steps",
+      "Brain updates and continued loading",
       "Week 7 preview"
     ]
   },
