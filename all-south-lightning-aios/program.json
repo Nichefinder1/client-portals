@@ -12,9 +12,9 @@
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 5 Complete: Email Triage Live + Trade Show Video Delivered",
-    "phase_description": "Email triage is live — Chuck's Outlook is authorized and the daily 6 AM digest is active. Trade show commercial video delivered for the April 28 Tampa expo. Week 6 focus: first week of live triage review + Crystal's Phase 2 inbox.",
-    "overall_progress_pct": 42,
+    "current_phase": "Week 5: Trade Show Video Delivered — Email Triage Pending IT",
+    "phase_description": "Trade show commercial video delivered for the April 28 Tampa expo. Email triage is built and tested — waiting on IT admin consent in Azure before Chuck can authorize his Outlook account. Go-live pending.",
+    "overall_progress_pct": 38,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -116,10 +116,10 @@
       "label": "Business Automation",
       "subtitle": "Execution & Intelligence Layer",
       "status": "in_progress",
-      "progress_pct": 20,
+      "progress_pct": 12,
       "items": [
         { "label": "Automation opportunities identified", "status": "complete", "note": "Week 2 confirmed: email triage selected as #1 priority. Also identified: call transcription, smart scheduler, field crew photo gate, daily brief." },
-        { "label": "Email triage — Chuck's inbox", "status": "complete", "note": "Live as of April 23, 2026. Reads chuck@aslp.net daily at 5:45 AM, delivers prioritized digest by 6 AM. Categories: Action Required / FYI / Bulk Noise. Crystal's inbox is Phase 2." },
+        { "label": "Email triage — Chuck's inbox", "status": "in_progress", "note": "Built and tested. Pending IT admin consent in Azure before Chuck can complete Outlook OAuth authorization." },
         { "label": "Automation architecture designed", "status": "not_started" },
         { "label": "Voice/transcription agent", "status": "not_started", "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution." },
         { "label": "CRM workflows", "status": "not_started", "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live." },
@@ -131,11 +131,11 @@
   "quick_wins": [
     {
       "title": "Email Triage System",
-      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. System reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, and delivers a single prioritized daily digest by 6:00 AM. Live as of April 23, 2026. Crystal's inbox is Phase 2.",
-      "status": "live",
+      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. System reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, and delivers a single prioritized daily digest by 6:00 AM. Built and tested — pending IT admin consent in Azure to complete Chuck's Outlook authorization. Crystal's inbox is Phase 2.",
+      "status": "in_progress",
       "priority": 1,
       "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out.",
-      "deployed_date": "2026-04-23"
+      "deployed_date": null
     },
     {
       "title": "Trade Show Commercial Video",
@@ -311,11 +311,10 @@
       "duration": "~45 minutes",
       "format": "Google Meet",
       "topics": [
-        "Email triage system authorized — Chuck's Outlook OAuth completed and activated",
-        "Live 6 AM digest delivery confirmed — system active as of April 23",
+        "Email triage system demo — digest format reviewed with Chuck",
         "Trade show commercial video delivered — ready for April 28 Tampa expo setup",
         "Brain update — 164 knowledge chunks, 49 staff on record",
-        "Crystal Balog email triage — Phase 2 planned after Chuck's triage confirmed"
+        "Crystal Balog email triage — Phase 2 planned after Chuck's triage goes live"
       ],
       "chuck_verbatim_priority": ""
     }
