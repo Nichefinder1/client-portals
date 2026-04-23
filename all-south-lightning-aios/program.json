@@ -8,13 +8,13 @@
     "total_weeks": 24,
     "current_week": 5,
     "start_date": "2026-03-26",
-    "last_updated": "2026-04-22",
+    "last_updated": "2026-04-23",
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 5: Email Triage Live + Expo Video Delivered",
-    "phase_description": "Email triage system built, tested, and ready for go-live. Chuck's Outlook OAuth completes at the Week 5 call — first live digest delivers at 6 AM the following morning. Trade show commercial video nearly complete for the April 28 Tampa expo.",
-    "overall_progress_pct": 38,
+    "current_phase": "Week 5 Complete: Email Triage Live + Trade Show Video Delivered",
+    "phase_description": "Email triage is live — Chuck's Outlook is authorized and the daily 6 AM digest is active. Trade show commercial video delivered for the April 28 Tampa expo. Week 6 focus: first week of live triage review + Crystal's Phase 2 inbox.",
+    "overall_progress_pct": 42,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -116,9 +116,10 @@
       "label": "Business Automation",
       "subtitle": "Execution & Intelligence Layer",
       "status": "in_progress",
-      "progress_pct": 8,
+      "progress_pct": 20,
       "items": [
         { "label": "Automation opportunities identified", "status": "complete", "note": "Week 2 confirmed: email triage selected as #1 priority. Also identified: call transcription, smart scheduler, field crew photo gate, daily brief." },
+        { "label": "Email triage — Chuck's inbox", "status": "complete", "note": "Live as of April 23, 2026. Reads chuck@aslp.net daily at 5:45 AM, delivers prioritized digest by 6 AM. Categories: Action Required / FYI / Bulk Noise. Crystal's inbox is Phase 2." },
         { "label": "Automation architecture designed", "status": "not_started" },
         { "label": "Voice/transcription agent", "status": "not_started", "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution." },
         { "label": "CRM workflows", "status": "not_started", "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live." },
@@ -130,19 +131,19 @@
   "quick_wins": [
     {
       "title": "Email Triage System",
-      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. System reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, and delivers a single prioritized daily digest by 6:00 AM. Built and tested. Going live at the Week 5 call — Chuck authorizes his Outlook account and the schedule activates. Crystal's inbox is Phase 2.",
-      "status": "ready_to_deploy",
+      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. System reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, and delivers a single prioritized daily digest by 6:00 AM. Live as of April 23, 2026. Crystal's inbox is Phase 2.",
+      "status": "live",
       "priority": 1,
       "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out.",
-      "deployed_date": null
+      "deployed_date": "2026-04-23"
     },
     {
       "title": "Trade Show Commercial Video",
       "description": "AI-produced commercial video for the Tampa construction trade show (April 28, 2026). Designed for trade show booth display — looping format with captions for a loud expo floor environment. Showcases All South's commercial lightning protection work and capabilities.",
-      "status": "in_build",
+      "status": "live",
       "priority": 2,
       "impact": "Professional brand presence at the April 28 Tampa expo. No production crew needed — delivered via the AI OS program.",
-      "deployed_date": null
+      "deployed_date": "2026-04-23"
     },
     {
       "title": "Phone Call Transcription",
@@ -306,16 +307,15 @@
     {
       "week": 5,
       "date": "2026-04-23",
-      "title": "Week 5: Email Triage + Trade Show Video",
+      "title": "Week 5: Email Triage Live + Trade Show Video Delivered",
       "duration": "~45 minutes",
-      "format": "Zoom",
+      "format": "Google Meet",
       "topics": [
-        "Email triage system — live demo of formatted digest (Action Required / FYI / Noise)",
-        "Chuck's Outlook OAuth authorization — system activated for live 6 AM delivery",
-        "Trade show commercial video review — expo video nearly complete, delivery before April 27 setup",
-        "Brain update — 164 knowledge chunks, 3 new staff added (James Crayton, Jahfari Dixon, Richard Rivera)",
-        "Crystal Balog email triage — Phase 2 scope confirmed, her email address collected",
-        "Week 6 preview — SOP full-text loading begins"
+        "Email triage system authorized — Chuck's Outlook OAuth completed and activated",
+        "Live 6 AM digest delivery confirmed — system active as of April 23",
+        "Trade show commercial video delivered — ready for April 28 Tampa expo setup",
+        "Brain update — 164 knowledge chunks, 49 staff on record",
+        "Crystal Balog email triage — Phase 2 planned after Chuck's triage confirmed"
       ],
       "chuck_verbatim_priority": ""
     }
