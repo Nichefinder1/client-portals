@@ -176,7 +176,7 @@ function downloadPDF() {
 <div class="status-banner" style="background-color: #d5f5e3; border: 2px solid #27ae60;">
 <div>
 <h3 style="color: #1e8449;">Campaign Status: Active — <span id="status-phase">Phase 2: Citations & Reviews</span></h3>
-<p>Last Updated: <span id="status-updated">March 11, 2026</span></p>
+<p>Last Updated: <span id="status-updated">May 2, 2026</span></p>
 </div>
 <div class="status-metric">
 <span class="number" id="tile-1-value" style="color: #27ae60;">3/3</span>
@@ -258,6 +258,16 @@ function downloadPDF() {
 <span class="number" id="stat-keywords" style="font-size: 22pt; color: #27ae60;">17/22</span>
 <span class="label" id="stat-keywords-label">Keywords #1–2 Google Maps</span>
 <span class="change positive" id="stat-keywords-sub">Mar 11, 2026 Scan ✅</span>
+</div>
+<div class="stat-box">
+<span class="number" style="color: #e67e22;">436</span>
+<span class="label">Organic Clicks (90 days)</span>
+<span class="change neutral">0.62% CTR — optimization underway</span>
+</div>
+<div class="stat-box">
+<span class="number" style="font-size: 22pt;">70K</span>
+<span class="label">GSC Impressions (90 days)</span>
+<span class="change negative">No sitemap submitted — fix needed</span>
 </div>
 </div>
 
@@ -540,6 +550,50 @@ function downloadPDF() {
 </div>
 </div>
 
+<!-- Website SEO Alerts -->
+<div class="section-header">
+<h2>Website SEO Alerts</h2>
+<p>Technical and on-page issues flagged via Google Search Console audit — May 2, 2026</p>
+</div>
+
+<div class="card-grid" style="margin-bottom: 30px;">
+
+<div class="card" style="border-left: 5px solid #c0392b;">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>🚨 CRITICAL: No Sitemap Submitted to Google</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;"><strong>Identified:</strong> May 2, 2026 via GSC audit<br>
+<strong>Impact:</strong> Google has no sitemap on file for allsouthlightningprotection.com. With 50+ pages indexed, a sitemap guides Google to crawl and index all content correctly — especially new blog posts and location pages. Without it, crawl efficiency is reduced and new content may take longer to rank.<br>
+<strong>Fix:</strong> (1) Log in to WordPress → Yoast SEO → Features → XML Sitemaps → copy the sitemap URL (likely: https://allsouthlightningprotection.com/sitemap_index.xml). (2) In Google Search Console → Sitemaps → paste URL and submit. Done in under 5 minutes.</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #c0392b;">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>🚨 CRITICAL: Cost Page — 17,570 Impressions / 0.40% CTR at Position 6</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;"><strong>Page:</strong> /how-much-does-a-lightning-protection-system-cost<br>
+<strong>Identified:</strong> May 2, 2026 via GSC data<br>
+<strong>Impact:</strong> This page ranks position 6.2 with 17,570 impressions over 90 days — the highest-impression page on the site. Only 70 clicks (0.40% CTR). A page at position 6 should convert 2–3% of impressions — that's 350–530 additional clicks per month waiting to be unlocked with a title tag rewrite.<br>
+<strong>Fix:</strong> Rewrite title tag to: "Lightning Protection System Cost in 2026 | Free Estimates | All South Lightning Protection" + add cost ranges ($1,000–$3,500 residential) to meta description with local Florida signal.</p>
+</div>
+</div>
+
+<div class="card" style="border-left: 5px solid #c0392b;">
+<div class="card-header" style="background-color: #c0392b;">
+<h3>🚨 HIGH: Farm Page — 0.05% CTR at Position 6.1</h3>
+</div>
+<div class="card-body">
+<p style="font-size: 10pt;"><strong>Page:</strong> /lightning-protection-system-for-your-farm<br>
+<strong>Impact:</strong> Position 6.1 with 1,966 impressions, only 1 click (0.05% CTR). Title tag is almost certainly generic or off-intent for the queries driving impressions.<br>
+<strong>Fix:</strong> Rewrite title to: "Lightning Protection for Farms & Agriculture | All South Lightning Protection" + update meta description with crop/livestock protection angle and FL service area.</p>
+</div>
+</div>
+
+</div>
+
 <!-- Key Findings Summary -->
 <div class="section-header">
 <h2>Key Findings Summary</h2>
@@ -595,17 +649,46 @@ function downloadPDF() {
 </div>
 <div class="card-body">
 <ul id="next-focus-list" style="margin: 0; padding-left: 20px; font-size: 10pt;">
+<li>🔴 <strong>Submit sitemap to GSC</strong> — 5 minutes, zero downside (May priority)</li>
+<li>🔴 <strong>Rewrite cost page title tag</strong> — 17,570 impressions / pos 6.2 / 0.40% CTR (highest leverage fix)</li>
+<li>🔴 <strong>Rewrite farm page title tag</strong> — 1,966 impressions / pos 6.1 / 0.05% CTR</li>
 <li><strong>Upload 10+ photos to Sunrise GBP</strong> — Pending client photos</li>
 <li><strong>Upload 10+ photos to Jacksonville GBP</strong> — Pending client photos</li>
 <li><strong>Launch review generation campaign</strong> — Tampa target: 100+ reviews (currently 78)</li>
-<li><strong>Build citation profile</strong> — 40+ directory citations across all 3 FL locations (Tier 1 first)</li>
-<li><strong>April 8–15: Run Sunrise + Jacksonville Local Dominator scan</strong> (post-verification window)</li>
-<li><strong>Strategic: Build "commercial lightning protection contractor" content</strong> — Maps #3.35 gap</li>
-<li><strong>Strategic: Pursue "hospital lightning protection Tampa FL" authority signals</strong> — Maps #4.26 gap</li>
-<li><strong>Strategic: Add NFPA 780 / UL 96A compliance page</strong> — FL lightning protection code Maps #3.26 gap</li>
+<li><strong>Build citation profile</strong> — 40+ directory citations across all 3 FL locations</li>
+<li><strong>Jacksonville page overhaul</strong> — 2,550 impressions / pos 23.8 / 9 clicks — thin content</li>
+<li><strong>Hospital page optimization</strong> — 3,708 impressions / pos 8.2 — title rewrite + schema</li>
 </ul>
 </div>
 </div>
+</div>
+
+<!-- GSC Organic Baseline -->
+<div class="section-header">
+<h2>GSC Organic Search Baseline</h2>
+<p>Feb 1 – May 2, 2026 (90-day baseline pulled May 2, 2026 via Google Search Console)</p>
+</div>
+
+<table class="metrics-table" style="margin-bottom: 30px;">
+<tr>
+<th>Metric</th>
+<th>90-Day Total / Value</th>
+<th>Benchmark</th>
+<th>Status</th>
+</tr>
+<tr><td>Total Clicks</td><td>436</td><td>—</td><td style="color:#e67e22;">⚠ Low — CTR optimization needed</td></tr>
+<tr><td>Total Impressions</td><td>70,287</td><td>—</td><td style="color:#27ae60;">✅ Solid reach for niche industry</td></tr>
+<tr><td>Average CTR</td><td>0.62%</td><td>1–3% avg</td><td style="color:#e67e22;">⚠ Below normal — title tag fixes will move this</td></tr>
+<tr><td>Average Position</td><td>13.1</td><td>&lt;10 target</td><td style="color:#e67e22;">⚠ Bottom of page 1 overall</td></tr>
+<tr><td>Top Organic Page</td><td>Homepage (179 clicks)</td><td>—</td><td>—</td></tr>
+<tr><td>Highest Impression Page</td><td>/cost page (17,570 impressions)</td><td>—</td><td style="color:#c0392b;">🔴 0.40% CTR — immediate fix</td></tr>
+<tr><td>Best Ranking Query</td><td>"delta grounding rod installation" — pos 1.2</td><td>—</td><td style="color:#27ae60;">✅ Niche authority confirmed</td></tr>
+<tr><td>Branded Traffic</td><td>"all south lightning protection" — 82 clicks / 20.5% CTR</td><td>—</td><td style="color:#27ae60;">✅ Healthy</td></tr>
+<tr><td>Sitemap Status</td><td>NOT SUBMITTED</td><td>Required</td><td style="color:#c0392b;">🔴 Fix immediately</td></tr>
+</table>
+
+<div style="background: #fdf2f8; border: 1px solid #d5a8c4; border-radius: 8px; padding: 15px; margin-bottom: 30px; font-size: 10pt;">
+<strong>Key insight:</strong> ASLP has strong niche authority — ranking #1 for delta grounding queries and top 10 for multiple cost/protection terms. The gap is CTR: 70K impressions over 90 days with only 436 clicks. The cost page alone (pos 6.2, 17.5K impressions) could deliver 350+ additional monthly visitors with one title tag change.
 </div>
 
 <!-- Contact Section -->
