@@ -55,7 +55,7 @@
       {"value": "17/22", "label": "Keywords #1–2 Maps", "color": "#27ae60", "small": false},
       {"value": "78", "label": "Tampa Reviews", "color": "#1a5276", "small": false}
     ],
-    "current_month_col": "Mar 2026",
+    "current_month_col": "Apr 2026",
     "current_metrics": {
       "gbp_listings":        {"value": "3 ✅",                   "trend": "up"},
       "tampa_gbp_score":     {"value": "Optimized · Rescore Q2", "trend": "up"},
@@ -151,6 +151,20 @@
     }
   ],
   "monthly_reports": [
+    {
+      "month": "2026-04",
+      "month_name": "April 2026",
+      "is_current": true,
+      "reports": [
+        {
+          "title": "Monthly Progress Report",
+          "file": "2026-04/Monthly_Progress_Report_Apr_2026.html",
+          "description": "ZooTampa press release live, AI email triage activated, citation + GBP post pipeline ready, Q2 execution begins May.",
+          "badge": "View",
+          "badge_color": "blue"
+        }
+      ]
+    },
     {
       "month": "2026-03",
       "month_name": "March 2026",

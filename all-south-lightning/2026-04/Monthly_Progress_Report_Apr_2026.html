@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>April 2026 Monthly Report — All South Lightning Protection</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar, .portal-nav { display: none !important; } }
+
+/* Portal Navigation */
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { display: flex; align-items: center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink: 0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+
+/* Base */
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 0; color: #333; background-color: #f5f6fa; }
+.page-body { max-width: 960px; margin: 0 auto; padding: 40px 30px; }
+h1 { font-size: 22pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
+h2 { font-size: 16pt; color: #2874a6; margin-top: 30px; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
+h3 { font-size: 13pt; color: #1a5276; margin-top: 18px; }
+p { margin: 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; }
+th { background-color: #1a5276; color: white; padding: 10px; text-align: left; font-weight: bold; }
+td { padding: 8px 10px; border: 1px solid #d5d8dc; }
+tr:nth-child(even) { background-color: #f8f9f9; }
+hr { border: none; border-top: 1px solid #d5d8dc; margin: 24px 0; }
+ul { margin: 8px 0; padding-left: 24px; }
+li { margin-bottom: 5px; }
+.header-meta { font-size: 10pt; color: #7f8c8d; margin-bottom: 20px; }
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 30px; border-top: 1px solid #d5d8dc; padding-top: 10px; }
+
+/* Status colors */
+.good { color: #27ae60; font-weight: bold; }
+.bad { color: #c0392b; font-weight: bold; }
+.warn { color: #e67e22; font-weight: bold; }
+.neutral { color: #7f8c8d; }
+
+/* Callout boxes */
+.win-box { background-color: #d5f5e3; border-left: 5px solid #27ae60; padding: 15px; margin: 12px 0; border-radius: 5px; }
+.gap-box { background-color: #fdebd0; border-left: 5px solid #e67e22; padding: 15px; margin: 12px 0; border-radius: 5px; }
+.info-box { background-color: #d6eaf8; border-left: 5px solid #2874a6; padding: 15px; margin: 12px 0; border-radius: 5px; }
+.aios-box { background-color: #e8daef; border-left: 5px solid #8e44ad; padding: 15px; margin: 12px 0; border-radius: 5px; }
+
+/* Metric summary grid */
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin: 20px 0; }
+.metric-card { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 18px 15px; text-align: center; }
+.metric-card .mc-value { font-size: 22pt; font-weight: bold; color: #1a5276; line-height: 1.1; }
+.metric-card .mc-label { font-size: 9pt; color: #7f8c8d; margin-top: 4px; }
+.metric-card .mc-change { font-size: 9pt; margin-top: 6px; font-weight: bold; }
+.metric-card.green .mc-value { color: #1e8449; }
+.metric-card.purple .mc-value { color: #8e44ad; }
+</style>
+</head>
+<body>
+
+<!-- Download bar -->
+<div class="download-bar">
+  <button class="download-btn btn-pdf" onclick="generatePDF()">&#128196; Download PDF</button>
+  <button class="download-btn btn-print" onclick="window.print()">&#128438; Print</button>
+</div>
+
+<!-- Portal Nav -->
+<nav class="portal-nav">
+  <div class="portal-nav-inner">
+    <span class="portal-nav-brand"><img src="../assets/nichefinders-logo.png" alt="Nichefinder AI Agency"></span>
+    <div class="portal-nav-links">
+      <a href="../index.html">&#127968; Dashboard</a>
+      <a href="../GBP_Audit.html">&#128269; GBP Audit</a>
+      <a href="../February_2026_Deliverables.html">&#9989; Feb Deliverables</a>
+      <a href="../Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+      <a href="../LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+      <a href="../Tampa_Keywords.html">&#128269; Tampa Keywords</a>
+      <a href="../GBP_UPDATE_CONTENT_AGENCY.html">&#128203; GBP Copy Kit</a>
+      <a href="../2026-03/Monthly_Progress_Report_Mar_2026.html">&#128202; Mar Report</a>
+      <a href="Monthly_Progress_Report_Apr_2026.html" class="active">&#128202; Apr Report</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-body">
+
+  <div class="header-meta">
+    All South Lightning Protection &nbsp;|&nbsp; SEO Retainer — Nichefinder AI Agency &nbsp;|&nbsp; Report Period: April 2026
+  </div>
+
+  <h1>Monthly Progress Report — April 2026</h1>
+
+  <div class="info-box">
+    <strong>April in context:</strong> With Phase 1 foundation complete (all 3 GBPs ranked, roadmap delivered), April was the transition into Phase 2 — press release distribution, AI system activation, and preparing the Q2 execution pipeline. Blog content and citation submission begin in May.
+  </div>
+
+  <!-- Key Metrics -->
+  <h2>&#128200; April Key Metrics</h2>
+  <div class="metric-grid">
+    <div class="metric-card green">
+      <div class="mc-value">3/3</div>
+      <div class="mc-label">GBP Listings Live</div>
+      <div class="mc-change good">Maintained ✅</div>
+    </div>
+    <div class="metric-card green">
+      <div class="mc-value">17/22</div>
+      <div class="mc-label">Tampa Keywords #1–2</div>
+      <div class="mc-change neutral">Mar 11 scan — Q2 rescan pending</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-value">78</div>
+      <div class="mc-label">Tampa Reviews</div>
+      <div class="mc-change neutral">4.7 ★ — campaign launching May</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-value">1</div>
+      <div class="mc-label">Press Release</div>
+      <div class="mc-change good">ZooTampa — EIN Presswire ✅</div>
+    </div>
+    <div class="metric-card purple">
+      <div class="mc-value">LIVE</div>
+      <div class="mc-label">AI Email Triage</div>
+      <div class="mc-change good">Daily digest — Apr 30 ✅</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-value">5</div>
+      <div class="mc-label">Directory Citations</div>
+      <div class="mc-change warn">30+ plan ready — submit May</div>
+    </div>
+  </div>
+
+  <!-- Before/After -->
+  <h2>&#128260; Campaign Progress: Baseline vs. April 2026</h2>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>Dec 2025 (Baseline)</th>
+      <th>Mar 2026</th>
+      <th>Apr 2026</th>
+      <th>Change (Mar → Apr)</th>
+    </tr>
+    <tr>
+      <td>GBP Listings Live</td>
+      <td>1</td>
+      <td>3/3 ✅</td>
+      <td><strong>3/3 ✅</strong></td>
+      <td class="neutral">Maintained</td>
+    </tr>
+    <tr>
+      <td>Tampa Map Pack Rank</td>
+      <td>Not tracked</td>
+      <td>#1.00 (17/22 kw)</td>
+      <td><strong>#1.00 (17/22 kw)</strong></td>
+      <td class="neutral">No change — rescan Q2</td>
+    </tr>
+    <tr>
+      <td>Tampa Reviews</td>
+      <td>~78</td>
+      <td>78</td>
+      <td><strong>78</strong></td>
+      <td class="neutral">Steady — campaign pending</td>
+    </tr>
+    <tr>
+      <td>Press Releases Published</td>
+      <td>0</td>
+      <td>0</td>
+      <td><strong>1 ✅</strong></td>
+      <td class="good">+1 — ZooTampa (EIN Presswire)</td>
+    </tr>
+    <tr>
+      <td>Blog Posts Published</td>
+      <td>0</td>
+      <td>0</td>
+      <td><strong>0</strong></td>
+      <td class="bad">Gap continues — begins May</td>
+    </tr>
+    <tr>
+      <td>Directory Citations</td>
+      <td>Untracked</td>
+      <td>5</td>
+      <td><strong>5</strong></td>
+      <td class="warn">Plan built — submission May</td>
+    </tr>
+    <tr>
+      <td>AI OS — Email Triage</td>
+      <td>Not started</td>
+      <td>In development</td>
+      <td><strong>LIVE ✅</strong></td>
+      <td class="good">Chuck's daily inbox digest activated</td>
+    </tr>
+    <tr>
+      <td>Self-Hosted n8n Server</td>
+      <td>Not started</td>
+      <td>Not started</td>
+      <td><strong>LIVE ✅</strong></td>
+      <td class="good">Hetzner server — n8n.nichefinders.ai</td>
+    </tr>
+  </table>
+
+  <!-- April Deliverables -->
+  <h2>&#9989; April Deliverables</h2>
+
+  <h3>SEO &amp; Content</h3>
+  <table>
+    <tr>
+      <th>Deliverable</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td><strong>ZooTampa Press Release — Published</strong><br><span style="font-size:9pt;color:#7f8c8d;">EIN Presswire distribution. Covers ASLP's lightning protection installation at ZooTampa. Builds backlinks + brand authority in Florida market.</span></td>
+      <td>Apr 1, 2026</td>
+      <td class="good">Live ✅ <a href="https://www.einpresswire.com/report/AtuzfdacnqcF8IqW" target="_blank" style="font-size:9pt;">[View]</a></td>
+    </tr>
+    <tr>
+      <td><strong>GBP Posts — Sunrise &amp; Jacksonville (14 posts total)</strong><br><span style="font-size:9pt;color:#7f8c8d;">7 posts per location written and ready. Topics: services, completed projects, seasonal safety tips. Blocked on client photo delivery.</span></td>
+      <td>Apr 13, 2026</td>
+      <td class="warn">Ready to publish — awaiting photos</td>
+    </tr>
+    <tr>
+      <td><strong>GBP Photo Request — Sunrise &amp; Jacksonville</strong><br><span style="font-size:9pt;color:#7f8c8d;">Formal request sent to Chuck: 10+ photos per location (facility, team, projects). Photos increase GBP engagement 40%+ and improve Map Pack signals.</span></td>
+      <td>Apr 13, 2026</td>
+      <td class="warn">Awaiting client delivery</td>
+    </tr>
+    <tr>
+      <td><strong>Citation Build Plan — 30 Directories</strong><br><span style="font-size:9pt;color:#7f8c8d;">Full Tier 1 citation list across Tampa, Sunrise, and Jacksonville. Mapped to each location with NAP data. Ready to submit.</span></td>
+      <td>Apr 13, 2026</td>
+      <td class="warn">Plan complete — submission begins May</td>
+    </tr>
+    <tr>
+      <td><strong>Local Dominator Keywords — Sunrise &amp; Jacksonville</strong><br><span style="font-size:9pt;color:#7f8c8d;">Keyword sets built for both markets. Ready to run first post-verification scan.</span></td>
+      <td>Apr 13, 2026</td>
+      <td class="warn">Ready — scan scheduled Q2</td>
+    </tr>
+  </table>
+
+  <h3>AI OS Program</h3>
+  <div class="aios-box">
+    <strong>AI OS — April was the go-live month for Phase 1 automation.</strong> Chuck's inbox is now triaged by AI every morning at 5:45 AM ET — every email categorized, prioritized, and summarized before the workday starts.
+  </div>
+  <table>
+    <tr>
+      <th>Deliverable</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td><strong>Self-Hosted n8n Infrastructure — Live</strong><br><span style="font-size:9pt;color:#7f8c8d;">Dedicated Hetzner server at n8n.nichefinders.ai. SSL, Caddy reverse proxy. All future automations run here.</span></td>
+      <td>Apr 21, 2026</td>
+      <td class="good">Live ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Chuck Email Triage — Activated</strong><br><span style="font-size:9pt;color:#7f8c8d;">Daily 5:45 AM ET digest to chuck@aslp.net. Reads inbox → Claude AI triage → formatted HTML summary with priorities and action items.</span></td>
+      <td>Apr 30, 2026</td>
+      <td class="good">Live ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Trade Show Video — Delivered</strong><br><span style="font-size:9pt;color:#7f8c8d;">Commercial video produced for trade show deadline (April 28).</span></td>
+      <td>Apr 2026</td>
+      <td class="good">Delivered ✅</td>
+    </tr>
+  </table>
+
+  <!-- GSC Update -->
+  <h2>&#128269; Organic Search — GSC Tracking (Month 2)</h2>
+  <div class="info-box">
+    April is the second month of GSC data collection. Full month-over-month comparison will be available at the end of Q2. The 90-day baseline (Feb–May) established in March remains the reference point for measuring progress through June.
+  </div>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>90-Day Baseline (Feb–May)</th>
+      <th>Assessment</th>
+    </tr>
+    <tr>
+      <td>Total Clicks</td>
+      <td>436</td>
+      <td>Tracking in progress — compare at June rescan</td>
+    </tr>
+    <tr>
+      <td>Total Impressions</td>
+      <td>70,287</td>
+      <td>Solid B2B niche volume</td>
+    </tr>
+    <tr>
+      <td>Average CTR</td>
+      <td>0.62%</td>
+      <td class="bad">Title tag rewrites begin May — expect improvement</td>
+    </tr>
+    <tr>
+      <td>Average Position</td>
+      <td>13.1</td>
+      <td>Content expansion drives this down Q2–Q3</td>
+    </tr>
+    <tr>
+      <td>#1 opportunity page</td>
+      <td>/cost page — 17,570 impr. at pos 6.2</td>
+      <td class="bad">Title rewrite is May Priority #1</td>
+    </tr>
+  </table>
+
+  <!-- GBP Status -->
+  <h2>&#128205; GBP Status — April</h2>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Status</th>
+      <th>Reviews</th>
+      <th>Photos</th>
+      <th>GBP Posts</th>
+    </tr>
+    <tr>
+      <td><strong>Tampa (HQ)</strong></td>
+      <td class="good">Optimized ✅</td>
+      <td>78 / 4.7 ★</td>
+      <td>20+ ✅</td>
+      <td>Jan + Feb published ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Sunrise</strong></td>
+      <td class="good">Live ✅</td>
+      <td>—</td>
+      <td class="warn">Pending — request sent Apr 13</td>
+      <td class="warn">7 posts ready — waiting on photos</td>
+    </tr>
+    <tr>
+      <td><strong>Jacksonville</strong></td>
+      <td class="good">Live ✅</td>
+      <td>—</td>
+      <td class="warn">Pending — request sent Apr 13</td>
+      <td class="warn">7 posts ready — waiting on photos</td>
+    </tr>
+  </table>
+
+  <!-- Honest gap section -->
+  <h2>&#128221; Honest Assessment — What's Behind</h2>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Target</th>
+      <th>Actual (Q1+Apr)</th>
+      <th>Plan</th>
+    </tr>
+    <tr>
+      <td>Blog Posts</td>
+      <td>16 (4/mo × 4 months)</td>
+      <td class="bad">0</td>
+      <td>4/month begins May — drafts in production</td>
+    </tr>
+    <tr>
+      <td>Directory Citations</td>
+      <td>30+ by end of Q2</td>
+      <td class="warn">5 (plan built)</td>
+      <td>30-directory submission begins May</td>
+    </tr>
+    <tr>
+      <td>Sunrise + JAX photos</td>
+      <td>10+ each — Q1</td>
+      <td class="warn">Awaiting client</td>
+      <td>Blocked on Chuck — request resent Apr 13</td>
+    </tr>
+    <tr>
+      <td>Review campaign</td>
+      <td>78 → 100+ (Tampa)</td>
+      <td class="warn">Not launched</td>
+      <td>Launch May — strategy ready</td>
+    </tr>
+    <tr>
+      <td>Sunrise + JAX scan</td>
+      <td>Q2 first scan</td>
+      <td class="neutral">Not yet</td>
+      <td>Scheduled May–June after photo delivery</td>
+    </tr>
+  </table>
+  <div class="gap-box">
+    <strong>Blog content is the highest-leverage gap.</strong> With 70,000+ monthly impressions and an average CTR of 0.62%, new blog content targeting high-impression queries (cost page, farm page, hospital page) will directly improve organic clicks. Four posts launch in May.
+  </div>
+
+  <!-- May Priorities -->
+  <h2>&#127919; May Priorities</h2>
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Action</th>
+      <th>Impact</th>
+      <th>Owner</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><strong>Cost page title tag rewrite</strong> — 17,570 impressions, pos 6.2, 0.40% CTR → target 2%</td>
+      <td class="bad">Critical</td>
+      <td>NF Agency</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Submit sitemap in GSC</strong> — currently no sitemap submitted, Google crawling blind</td>
+      <td class="bad">Critical</td>
+      <td>Chuck / IT</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Launch 4 blog posts</strong> — targeting delta grounding, cost guide, FL compliance, commercial installations</td>
+      <td class="warn">High</td>
+      <td>NF Agency</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Send Sunrise + Jacksonville photos</strong> — unlocks 14 GBP posts + Map Pack ranking improvement</td>
+      <td class="warn">High</td>
+      <td>Chuck (client action)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Begin 30-directory citation submission</strong> — Tier 1 across all 3 locations</td>
+      <td class="warn">High</td>
+      <td>NF Agency</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>Launch Tampa review campaign</strong> — target 78 → 100+ reviews</td>
+      <td class="warn">High</td>
+      <td>NF Agency + Chuck</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Farm page title tag</strong> — pos 6.1, 1,966 impressions, 0.05% CTR</td>
+      <td class="neutral">Medium</td>
+      <td>NF Agency</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><strong>Crystal inbox triage (AI OS Phase 2)</strong> — same workflow pattern as Chuck's</td>
+      <td class="neutral">Medium</td>
+      <td>NF Agency</td>
+    </tr>
+  </table>
+
+  <!-- Year-Long Tracker -->
+  <h2>&#128197; Year-Long Metrics Tracker</h2>
+  <p style="font-size:9pt;color:#7f8c8d;">All key metrics tracked month-over-month for the full 2026 campaign year.</p>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>Dec 2025</th>
+      <th>Jan</th>
+      <th>Feb</th>
+      <th>Mar</th>
+      <th>Apr</th>
+      <th>May</th>
+      <th>Jun</th>
+    </tr>
+    <tr>
+      <td>GBP Listings Live</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3 ✅</td>
+      <td><strong>3 ✅</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Tampa Map Pack Rank</td>
+      <td>Not tracked</td>
+      <td>—</td>
+      <td>—</td>
+      <td>#1.00 (17/22)</td>
+      <td><strong>#1.00 (17/22)</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Tampa Reviews</td>
+      <td>~78</td>
+      <td>~78</td>
+      <td>~78</td>
+      <td>78</td>
+      <td><strong>78</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Tampa Rating</td>
+      <td>4.7 ★</td>
+      <td>4.7 ★</td>
+      <td>4.7 ★</td>
+      <td>4.7 ★</td>
+      <td><strong>4.7 ★</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Citations</td>
+      <td>—</td>
+      <td>—</td>
+      <td>5</td>
+      <td>5</td>
+      <td><strong>5</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Press Releases</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><strong>1 ✅</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Blog Posts (cumulative)</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><strong>0</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>AI OS — Email Triage</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>In dev</td>
+      <td><strong>LIVE ✅</strong></td>
+      <td>—</td><td>—</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2>&#128222; Questions or Next Steps</h2>
+  <p>May is an execution month — blog posts, citations, title tag fixes, and review campaign all launch simultaneously. We'll have measurable GSC movement to report by the end of Q2.</p>
+  <table>
+    <tr>
+      <td><strong>Agency:</strong> Nichefinder AI Agency</td>
+      <td><strong>Phone:</strong> (863) 999-9152</td>
+      <td><strong>Schedule:</strong> <a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM" target="_blank">Book a Call</a></td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    All South Lightning Protection — SEO Retainer Monthly Report &nbsp;|&nbsp; April 2026 &nbsp;|&nbsp; Nichefinder AI Agency &nbsp;|&nbsp; Prepared: May 2026
+  </div>
+
+</div>
+
+<script>
+function generatePDF() {
+  const element = document.querySelector('.page-body');
+  const opt = {
+    margin: [10, 10, 10, 10],
+    filename: 'AllSouth_Monthly_Report_Apr_2026.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(element).save();
+}
+</script>
+
+</body>
+</html>
