@@ -135,9 +135,7 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 <a href="LOCAL_DOMINATOR_BASELINE_JAN_2026.html">Rankings</a>
 <a href="Website_Optimization_Roadmap.html">Website Roadmap</a>
 <a href="Service_FAQs.html">Service FAQs</a>
-<a href="2026-02/Monthly_Progress_Report_Feb_2026.html">Feb 2026 Report</a>
-<a href="2026-03/Monthly_Progress_Report_Mar_2026.html">Mar 2026 Report</a>
-<a href="2026-04/Monthly_Progress_Report_Apr_2026.html" style="opacity:0.6;" title="Coming May 15, 2026">Apr 2026 Report</a>
+<a href="#monthly-reports">Reports</a>
 <a href="Press_Release_Intake.html">Press Release</a>
 <a href="GBP_Optimization_Checklist.html" style="background-color: rgba(39,174,96,0.25); color: #90ee90;">&#128203; GBP Copy Kit</a>
 </div>
@@ -259,33 +257,100 @@ function downloadPDF() {
 </div>
 
 <!-- Monthly Reports Section -->
-<div class="section-header">
+<div class="section-header" id="monthly-reports">
 <h2>Monthly Reports</h2>
-<p>Recurring reports delivered each month showing progress and work completed</p>
+<p>Progress reports delivered each month — January through December 2026</p>
 </div>
 
-<div class="card-grid">
+<style>
+.reports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 30px; }
+.report-card { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; text-align: center; }
+.report-card .rc-month { padding: 12px 10px 8px; font-size: 11pt; font-weight: bold; color: white; }
+.report-card .rc-body { padding: 10px 10px 12px; font-size: 9pt; color: #7f8c8d; }
+.report-card a.rc-link { display: block; padding: 8px; font-size: 9pt; font-weight: bold; text-decoration: none; border-top: 1px solid #ecf0f1; transition: background 0.2s; }
+.report-card a.rc-link:hover { background-color: #1a5276; color: white; }
+.rc-available .rc-month { background-color: #1a5276; }
+.rc-available a.rc-link { color: #1a5276; }
+.rc-coming .rc-month { background-color: #e67e22; }
+.rc-coming .rc-link-disabled { display: block; padding: 8px; font-size: 9pt; font-weight: bold; color: #e67e22; border-top: 1px solid #ecf0f1; }
+.rc-upcoming .rc-month { background-color: #bdc3c7; }
+.rc-upcoming .rc-link-disabled { display: block; padding: 8px; font-size: 9pt; color: #bdc3c7; border-top: 1px solid #ecf0f1; }
+.rc-launch .rc-month { background-color: #2ecc71; }
+.rc-launch .rc-link-disabled { display: block; padding: 8px; font-size: 9pt; color: #27ae60; font-weight: bold; border-top: 1px solid #ecf0f1; }
+</style>
 
-<div class="card">
-<div class="card-header">
-<h3>Monthly Progress Report <span class="badge" style="background-color: #e74c3c; color: white;">NEW</span></h3>
-<span class="date">March 2026</span>
-</div>
-<div class="card-body">
-<p>Complete overview of work completed, ranking improvements, BBB accreditation win, and next month's priorities.</p>
-</div>
-<a href="2026-03/Monthly_Progress_Report_Mar_2026.html" class="card-link">View March Report →</a>
+<div class="reports-grid">
+
+<div class="report-card rc-launch">
+<div class="rc-month">Jan 2026</div>
+<div class="rc-body">Campaign launch month</div>
+<span class="rc-link-disabled">Baseline ✅</span>
 </div>
 
-<div class="card">
-<div class="card-header">
-<h3>Monthly Progress Report</h3>
-<span class="date">February 2026</span>
+<div class="report-card rc-available">
+<div class="rc-month">Feb 2026</div>
+<div class="rc-body">GBP optimization + rankings</div>
+<a href="2026-02/Monthly_Progress_Report_Feb_2026.html" class="rc-link">View Report →</a>
 </div>
-<div class="card-body">
-<p>Complete overview of work completed, metrics, ranking changes, and next month's priorities.</p>
+
+<div class="report-card rc-available">
+<div class="rc-month">Mar 2026</div>
+<div class="rc-body">26 keywords improved + BBB win</div>
+<a href="2026-03/Monthly_Progress_Report_Mar_2026.html" class="rc-link">View Report →</a>
 </div>
-<a href="2026-02/Monthly_Progress_Report_Feb_2026.html" class="card-link">View Report &rarr;</a>
+
+<div class="report-card rc-coming">
+<div class="rc-month">Apr 2026</div>
+<div class="rc-body">Due May 15, 2026</div>
+<span class="rc-link-disabled">Coming Soon</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">May 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Jun 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Jul 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Aug 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Sep 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Oct 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Nov 2026</div>
+<div class="rc-body">Scheduled</div>
+<span class="rc-link-disabled">Upcoming</span>
+</div>
+
+<div class="report-card rc-upcoming">
+<div class="rc-month">Dec 2026</div>
+<div class="rc-body">Year-end review</div>
+<span class="rc-link-disabled">Upcoming</span>
 </div>
 
 </div>
