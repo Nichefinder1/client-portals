@@ -7,7 +7,7 @@
     "campaign_status": "Active",
     "start_date": "January 2026",
     "goal": "Rank #1 for all 58 keywords by December 2026",
-    "last_updated": "April 26, 2026"
+    "last_updated": "May 6, 2026"
   },
   "metrics": {
     "keywords_at_1": 11,
@@ -91,9 +91,23 @@
   ],
   "monthly_reports": [
     {
+      "month": "2026-04",
+      "month_name": "April 2026",
+      "is_current": true,
+      "reports": [
+        {
+          "title": "Monthly Progress Report",
+          "file": null,
+          "description": "April 2026 report in preparation. Requires GSC export for April. Targeted delivery: May 15, 2026.",
+          "badge": "Coming Soon",
+          "badge_color": "yellow"
+        }
+      ]
+    },
+    {
       "month": "2026-03",
       "month_name": "March 2026",
-      "is_current": true,
+      "is_current": false,
       "reports": [
         {
           "title": "Monthly Progress Report",
@@ -127,7 +141,9 @@
       "Business description added (746 chars, keyword-rich)",
       "12-city service area defined",
       "BBB Accreditation — A+ earned February 13, 2026",
-      "220 AdWords landing pages live (11 cities × 20 services)"
+      "246 AdWords landing pages live (11 cities × 20+ services) + Google Ads tag",
+      "Microsoft Clarity heatmap installed — all 246 landing pages live (Apr 23, 2026)",
+      "Gas line repair page content delivered — optimized for 'gas line repair Elgin IL' (May 3, 2026)"
     ],
     "strengths": [
       "#1 for ALL backflow keywords — dominant AI visibility for backflow",
@@ -138,12 +154,14 @@
       "24/7 emergency availability"
     ],
     "next_focus": [
-      "Google review campaign — target 200+ reviews",
-      "Submit to Expertise.com and Three Best Rated",
-      "Create dedicated South Elgin plumber page",
-      "Fix homepage title tag (missing 'Elgin')",
+      "April monthly report — delivery target May 15, 2026",
+      "Microsoft Clarity first heatmap report — data available May 7+",
       "Refresh drain cleaning content (ranking dip)",
-      "Gas line repair service page (ranking dip)"
+      "Emergency plumbing page — 9,000+ impressions, 2 clicks",
+      "Main sewer line page — 8,000+ impressions, 2 clicks",
+      "Google review campaign — target 200+ reviews (needs approval)",
+      "Submit to Expertise.com and Three Best Rated",
+      "Next Local Dominator ranking scan (last: March 9)"
     ]
   },
   "contact": {
