@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>March 2026 Monthly Report — All South Lightning Protection</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+/* Download buttons */
+.download-bar { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-pdf:hover { background-color: #a93226; }
+.btn-print { background-color: #1a5276; color: white; }
+.btn-print:hover { background-color: #154360; }
+@media print { .download-bar, .portal-nav { display: none !important; } }
+
+/* Portal Navigation */
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { display: flex; align-items: center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink: 0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+
+/* Base */
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 0; color: #333; background-color: #f5f6fa; }
+.page-body { max-width: 960px; margin: 0 auto; padding: 40px 30px; }
+h1 { font-size: 22pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
+h2 { font-size: 16pt; color: #2874a6; margin-top: 30px; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
+h3 { font-size: 13pt; color: #1a5276; margin-top: 18px; }
+p { margin: 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; }
+th { background-color: #1a5276; color: white; padding: 10px; text-align: left; font-weight: bold; }
+td { padding: 8px 10px; border: 1px solid #d5d8dc; }
+tr:nth-child(even) { background-color: #f8f9f9; }
+hr { border: none; border-top: 1px solid #d5d8dc; margin: 24px 0; }
+ul { margin: 8px 0; padding-left: 24px; }
+li { margin-bottom: 5px; }
+.header-meta { font-size: 10pt; color: #7f8c8d; margin-bottom: 20px; }
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 30px; border-top: 1px solid #d5d8dc; padding-top: 10px; }
+
+/* Status colors */
+.good { color: #27ae60; font-weight: bold; }
+.bad { color: #c0392b; font-weight: bold; }
+.warn { color: #e67e22; font-weight: bold; }
+.neutral { color: #7f8c8d; }
+
+/* Callout boxes */
+.win-box { background-color: #d5f5e3; border-left: 5px solid #27ae60; padding: 15px; margin: 12px 0; border-radius: 5px; }
+.gap-box { background-color: #fdebd0; border-left: 5px solid #e67e22; padding: 15px; margin: 12px 0; border-radius: 5px; }
+.info-box { background-color: #d6eaf8; border-left: 5px solid #2874a6; padding: 15px; margin: 12px 0; border-radius: 5px; }
+
+/* Phase 1 complete banner */
+.phase-banner { background: linear-gradient(135deg, #1e8449, #27ae60); color: white; padding: 25px 30px; border-radius: 10px; margin-bottom: 28px; }
+.phase-banner h3 { margin: 0 0 8px 0; font-size: 16pt; color: white; }
+.phase-banner p { margin: 0; font-size: 10pt; opacity: 0.92; }
+
+/* Metric summary grid */
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin: 20px 0; }
+.metric-card { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 18px 15px; text-align: center; }
+.metric-card .mc-value { font-size: 22pt; font-weight: bold; color: #1a5276; line-height: 1.1; }
+.metric-card .mc-label { font-size: 9pt; color: #7f8c8d; margin-top: 4px; }
+.metric-card .mc-change { font-size: 9pt; margin-top: 6px; font-weight: bold; }
+.metric-card.green .mc-value { color: #1e8449; }
+.metric-card.blue .mc-value { color: #1a5276; }
+
+/* Deliverables table */
+.deliverables-table td:last-child { font-weight: bold; color: #27ae60; }
+
+/* Section divider label */
+.section-label { display: inline-block; background-color: #1a5276; color: white; font-size: 8pt; font-weight: bold; padding: 3px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<!-- Download bar -->
+<div class="download-bar">
+  <button class="download-btn btn-pdf" onclick="generatePDF()">&#128196; Download PDF</button>
+  <button class="download-btn btn-print" onclick="window.print()">&#128438; Print</button>
+</div>
+
+<!-- Portal Nav -->
+<nav class="portal-nav">
+  <div class="portal-nav-inner">
+    <span class="portal-nav-brand"><img src="../assets/nichefinders-logo.png" alt="Nichefinder AI Agency"></span>
+    <div class="portal-nav-links">
+      <a href="../index.html">&#127968; Dashboard</a>
+      <a href="../GBP_Audit.html">&#128269; GBP Audit</a>
+      <a href="../February_2026_Deliverables.html">&#9989; Feb Deliverables</a>
+      <a href="../Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+      <a href="../LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+      <a href="../Tampa_Keywords.html">&#128269; Tampa Keywords</a>
+      <a href="../GBP_UPDATE_CONTENT_AGENCY.html">&#128203; GBP Copy Kit</a>
+      <a href="Monthly_Progress_Report_Mar_2026.html" class="active">&#128202; Mar Report</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-body">
+
+  <div class="header-meta">
+    All South Lightning Protection &nbsp;|&nbsp; SEO Retainer — Nichefinder AI Agency &nbsp;|&nbsp; Report Period: March 2026
+  </div>
+
+  <h1>Monthly Progress Report — March 2026</h1>
+
+  <!-- Phase 1 Complete Banner -->
+  <div class="phase-banner">
+    <h3>&#127881; Phase 1 Complete — Foundation Built</h3>
+    <p>March 2026 marks the completion of the campaign foundation. All 3 Google Business Profiles are live, verified, and fully optimized. Tampa is already ranking #1–2 on Google Maps for 17 of 22 target keywords. GSC connected. Full-year SEO roadmap delivered. Your business is positioned to dominate Florida lightning protection search results.</p>
+  </div>
+
+  <!-- Key Metrics -->
+  <h2>&#128200; March Key Metrics</h2>
+  <div class="metric-grid">
+    <div class="metric-card green">
+      <div class="mc-value">3/3</div>
+      <div class="mc-label">GBP Listings Live</div>
+      <div class="mc-change good">▲ +2 this month</div>
+    </div>
+    <div class="metric-card green">
+      <div class="mc-value">17/22</div>
+      <div class="mc-label">Tampa Keywords #1–2</div>
+      <div class="mc-change good">▲ Baseline scan Mar 11</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="mc-value">#1.00</div>
+      <div class="mc-label">Tampa Median Map Rank</div>
+      <div class="mc-change good">13×13 grid scan</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="mc-value">78</div>
+      <div class="mc-label">Tampa Reviews</div>
+      <div class="mc-change neutral">4.7 ★ — steady</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="mc-value">5</div>
+      <div class="mc-label">Directory Citations</div>
+      <div class="mc-change neutral">BBB, BZ, Birdeye, Procore, Yelp</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="mc-value">GSC</div>
+      <div class="mc-label">Search Console</div>
+      <div class="mc-change good">▲ Connected Mar 2026</div>
+    </div>
+  </div>
+
+  <!-- Before/After Summary -->
+  <h2>&#128260; Before &amp; After: Campaign Baseline vs. March 2026</h2>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>Dec 2025 (Baseline)</th>
+      <th>Mar 2026</th>
+      <th>Change</th>
+    </tr>
+    <tr>
+      <td>GBP Listings Live</td>
+      <td>1 (Tampa only)</td>
+      <td><strong>3/3 ✅</strong></td>
+      <td class="good">+2 locations added</td>
+    </tr>
+    <tr>
+      <td>Tampa GBP Score</td>
+      <td>42/100 (D) — Feb 4 audit</td>
+      <td><strong>Fully Optimized</strong></td>
+      <td class="good">16 services + descriptions + service area</td>
+    </tr>
+    <tr>
+      <td>Sunrise GBP</td>
+      <td>Did not exist</td>
+      <td><strong>Created, Verified, Optimized ✅</strong></td>
+      <td class="good">16 services + all fields complete</td>
+    </tr>
+    <tr>
+      <td>Jacksonville GBP</td>
+      <td>Did not exist</td>
+      <td><strong>Created, Verified, Optimized ✅</strong></td>
+      <td class="good">16 services + all fields complete</td>
+    </tr>
+    <tr>
+      <td>Tampa Map Pack Rank</td>
+      <td>Not tracked</td>
+      <td><strong>#1.00 median (17/22 kw #1–2)</strong></td>
+      <td class="good">First scan — strong baseline</td>
+    </tr>
+    <tr>
+      <td>Tampa Reviews</td>
+      <td>~78</td>
+      <td><strong>78 / 4.7 ★</strong></td>
+      <td class="neutral">Steady — campaign launching</td>
+    </tr>
+    <tr>
+      <td>Google Search Console</td>
+      <td>Not connected</td>
+      <td><strong>Connected ✅</strong></td>
+      <td class="good">Now tracking organic search</td>
+    </tr>
+    <tr>
+      <td>Blog Posts Published</td>
+      <td>0</td>
+      <td><strong>0</strong></td>
+      <td class="bad">Behind — Q2 priority</td>
+    </tr>
+    <tr>
+      <td>Directory Citations</td>
+      <td>Untracked</td>
+      <td><strong>5 confirmed</strong></td>
+      <td class="warn">Below 40+ target — build continues</td>
+    </tr>
+  </table>
+
+  <!-- Deliverables Completed -->
+  <h2>&#9989; Deliverables Completed in March</h2>
+  <p>March was the highest-output month of the campaign to date. Phase 1 — the foundational build — was completed in full.</p>
+  <table class="deliverables-table">
+    <tr>
+      <th>Deliverable</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td><strong>Sunrise GBP — Created, Verified &amp; Optimized</strong><br><span style="font-size:9pt;color:#7f8c8d;">16 services, business description, service area, categories</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Complete ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Jacksonville GBP — Created, Verified &amp; Optimized</strong><br><span style="font-size:9pt;color:#7f8c8d;">16 services, business description, service area, categories</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Complete ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Tampa GBP — Full Optimization</strong><br><span style="font-size:9pt;color:#7f8c8d;">16 services refreshed, description updated, 20+ photos uploaded</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Complete ✅</td>
+    </tr>
+    <tr>
+      <td><strong>22-Keyword Tampa Map Pack Scan</strong><br><span style="font-size:9pt;color:#7f8c8d;">13×13 grid — 17/22 keywords ranking #1–2, median rank #1.00</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Complete ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Local SEO Roadmap</strong><br><span style="font-size:9pt;color:#7f8c8d;">12-month plan, Q2 priorities, competitor landscape, all 3 markets</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Published ✅</td>
+    </tr>
+    <tr>
+      <td><strong>LLM Visibility Analysis</strong><br><span style="font-size:9pt;color:#7f8c8d;">Tampa visible in AI search. Jacksonville partial. Sunrise absent. 16-source audit.</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Published ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Tampa Keywords Reference Page</strong><br><span style="font-size:9pt;color:#7f8c8d;">22 keywords across 5 buckets with rankings — one-click copy for scans</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Published ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Client Portal — Full Build (7 pages)</strong><br><span style="font-size:9pt;color:#7f8c8d;">Dashboard + GBP Audit + Roadmap + LLM Visibility + Keywords + Feb Deliverables + GBP Copy Kit</span></td>
+      <td>Mar 11, 2026</td>
+      <td>Live ✅</td>
+    </tr>
+    <tr>
+      <td><strong>GSC + Google Analytics — Connected</strong><br><span style="font-size:9pt;color:#7f8c8d;">Now tracking all organic search clicks, impressions, and positions</span></td>
+      <td>Mar 2026</td>
+      <td>Verified ✅</td>
+    </tr>
+  </table>
+
+  <!-- Tampa Map Pack Rankings -->
+  <h2>&#127758; Tampa Google Maps Rankings — March 11, 2026 Scan</h2>
+  <div class="win-box">
+    <strong>17 of 22 target keywords ranking #1 or #2 on Google Maps</strong> — Tampa median rank: #1.00 across a 13×13 grid. This is an exceptionally strong starting position for a newly optimized listing.
+  </div>
+  <table>
+    <tr>
+      <th>Keyword Bucket</th>
+      <th>Keywords Tracked</th>
+      <th>Ranking #1–2</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Lightning Protection (Core)</td>
+      <td>8</td>
+      <td class="good">7/8 ✅</td>
+      <td>"lightning protection company near me" — gap at #3.35</td>
+    </tr>
+    <tr>
+      <td>Lightning Rod Installation</td>
+      <td>5</td>
+      <td class="good">4/5 ✅</td>
+      <td>Strong across residential + commercial</td>
+    </tr>
+    <tr>
+      <td>Commercial Lightning Protection</td>
+      <td>4</td>
+      <td class="warn">3/4</td>
+      <td>"commercial lightning protection contractor" — gap at #3.26</td>
+    </tr>
+    <tr>
+      <td>Specialty / Compliance</td>
+      <td>5</td>
+      <td class="good">3/5</td>
+      <td>Compliance/code searches — content opportunity Q2</td>
+    </tr>
+  </table>
+  <p style="font-size:9pt;color:#7f8c8d;">Source: Local Dominator scan, March 11, 2026. Sunrise and Jacksonville scans pending (target: Q2 2026 after post-verification settling period).</p>
+
+  <!-- GSC Baseline -->
+  <h2>&#128269; Google Search Console — First Data (Baseline Established)</h2>
+  <div class="info-box">
+    GSC was connected in March 2026. The data below represents the first 90-day window (Feb 1 – May 2, 2026) and serves as the campaign baseline for measuring future organic growth.
+  </div>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>90-Day Baseline (Feb–May 2026)</th>
+      <th>Assessment</th>
+    </tr>
+    <tr>
+      <td>Total Clicks</td>
+      <td>436</td>
+      <td class="warn">Below potential — CTR optimization needed</td>
+    </tr>
+    <tr>
+      <td>Total Impressions</td>
+      <td>70,287</td>
+      <td class="good">Strong reach for niche B2B industry</td>
+    </tr>
+    <tr>
+      <td>Average CTR</td>
+      <td>0.62%</td>
+      <td class="bad">Below 1–3% average — title tags are underperforming</td>
+    </tr>
+    <tr>
+      <td>Average Position</td>
+      <td>13.1</td>
+      <td class="warn">Bottom of page 1 — content and authority needed</td>
+    </tr>
+    <tr>
+      <td>Top Click Page</td>
+      <td>Homepage (179 clicks)</td>
+      <td class="neutral">Branded traffic strong (20.55% CTR branded)</td>
+    </tr>
+    <tr>
+      <td>Biggest Opportunity</td>
+      <td>/how-much-does-a-lightning-protection-system-cost</td>
+      <td class="bad">17,570 impressions, pos 6.2, only 0.40% CTR</td>
+    </tr>
+  </table>
+  <p><strong>The biggest Q2 lever:</strong> The cost page has 17,570 impressions at position 6.2 and only 0.40% CTR. Improving the title tag alone could generate 300–400 additional clicks per month.</p>
+
+  <!-- GBP Status -->
+  <h2>&#128205; Google Business Profile Status — All 3 Locations</h2>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Status</th>
+      <th>Reviews</th>
+      <th>Photos</th>
+      <th>Services</th>
+    </tr>
+    <tr>
+      <td><strong>Tampa (HQ)</strong></td>
+      <td class="good">Optimized ✅</td>
+      <td>78 reviews / 4.7 ★</td>
+      <td>20+ uploaded ✅</td>
+      <td>16 services ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Sunrise</strong></td>
+      <td class="good">Created + Verified ✅</td>
+      <td>—</td>
+      <td class="warn">Pending client photos</td>
+      <td>16 services ✅</td>
+    </tr>
+    <tr>
+      <td><strong>Jacksonville</strong></td>
+      <td class="good">Created + Verified ✅</td>
+      <td>—</td>
+      <td class="warn">Pending client photos</td>
+      <td>16 services ✅</td>
+    </tr>
+  </table>
+  <div class="gap-box">
+    <strong>Action needed — Sunrise &amp; Jacksonville photos:</strong> Sending 10+ photos per location to Google significantly increases GBP engagement and Map Pack ranking signals. Please send facility photos, team photos, or completed project photos for both locations.
+  </div>
+
+  <!-- Content Gap -->
+  <h2>&#9998; Content Status — Q1 Honest Assessment</h2>
+  <table>
+    <tr>
+      <th>Content Type</th>
+      <th>Q1 Target</th>
+      <th>Q1 Actual</th>
+      <th>Q2 Plan</th>
+    </tr>
+    <tr>
+      <td>Blog Posts</td>
+      <td>12 (4/month)</td>
+      <td class="bad">0</td>
+      <td>4/month — launch in April</td>
+    </tr>
+    <tr>
+      <td>GBP Posts (Tampa)</td>
+      <td>Ongoing</td>
+      <td class="good">Jan + Feb published ✅</td>
+      <td>Continue monthly cadence</td>
+    </tr>
+    <tr>
+      <td>GBP Posts (Sunrise + JAX)</td>
+      <td>Begin after verification</td>
+      <td class="warn">7 posts ready — not yet published</td>
+      <td>Publish upon photo receipt</td>
+    </tr>
+    <tr>
+      <td>Press Releases</td>
+      <td>1/quarter</td>
+      <td class="good">1 (ZooTampa — published Apr 1) ✅</td>
+      <td>Q2 topic TBD</td>
+    </tr>
+    <tr>
+      <td>Social Posts</td>
+      <td>108 (9/week)</td>
+      <td class="bad">0</td>
+      <td>Build social calendar Q2</td>
+    </tr>
+  </table>
+  <div class="gap-box">
+    <strong>Q1 blog gap acknowledged:</strong> Phase 1 focus was GBP infrastructure and keyword foundation — both are now complete. Blog and social content production begins in Q2. The pipeline is built; execution starts now.
+  </div>
+
+  <!-- Citations -->
+  <h2>&#128196; Directory Citations — Building to 40+</h2>
+  <table>
+    <tr>
+      <th>Directory</th>
+      <th>Status</th>
+      <th>Location</th>
+    </tr>
+    <tr><td>BBB (Better Business Bureau)</td><td class="good">Live — Accredited ✅</td><td>Tampa</td></tr>
+    <tr><td>BuildZoom</td><td class="good">Live — Top 8% FL ✅</td><td>Tampa</td></tr>
+    <tr><td>Birdeye</td><td class="good">Live — 19 reviews ✅</td><td>Tampa</td></tr>
+    <tr><td>Procore</td><td class="good">Live ✅</td><td>Tampa</td></tr>
+    <tr><td>Yelp</td><td class="good">Live ✅</td><td>Tampa</td></tr>
+    <tr><td>Tier 1 Citations (30+)</td><td class="warn">Planned — Q2 2026</td><td>All 3 locations</td></tr>
+  </table>
+  <p><strong>Q2 Citation target:</strong> 30 additional Tier 1 directories across Tampa, Sunrise, and Jacksonville. Full plan built and ready to execute.</p>
+
+  <!-- Q2 Priorities -->
+  <h2>&#127919; Q2 Priorities — April, May, June 2026</h2>
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Priority</th>
+      <th>Impact</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><strong>Cost page title tag rewrite</strong> — 17,570 impressions at pos 6.2, 0.40% CTR. New title: "Lightning Protection System Cost in 2026 | Free Estimates | All South"</td>
+      <td class="bad">Critical</td>
+      <td>Ready to execute</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Submit sitemap in GSC</strong> — No sitemap currently submitted. Google crawling blind.</td>
+      <td class="bad">Critical</td>
+      <td>5-minute fix — needs Rhonda/Chuck login</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Blog content launch</strong> — 4 posts/month targeting delta grounding, cost guides, and FL lightning protection compliance</td>
+      <td class="warn">High</td>
+      <td>Content calendar ready</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Sunrise + Jacksonville photo upload</strong> — 10+ photos each to GBP</td>
+      <td class="warn">High</td>
+      <td>Awaiting client photos</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Review campaign launch</strong> — Tampa target: 100+ reviews (currently 78)</td>
+      <td class="warn">High</td>
+      <td>Strategy ready — needs approval</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>30+ Tier 1 citations — Sunrise &amp; Jacksonville</strong></td>
+      <td class="warn">High</td>
+      <td>Plan built — ready to submit</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Sunrise + Jacksonville Local Dominator scan</strong> — first scan post-verification</td>
+      <td class="neutral">Medium</td>
+      <td>Scheduled Q2</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><strong>Farm page title tag</strong> — position 6.1, 1,966 impressions, 0.05% CTR</td>
+      <td class="neutral">Medium</td>
+      <td>Quick win — ready</td>
+    </tr>
+  </table>
+
+  <!-- Year-Long Tracking Table -->
+  <h2>&#128197; Year-Long Metrics Tracker</h2>
+  <p style="font-size:9pt;color:#7f8c8d;">This table tracks all key metrics month-over-month for the full 2026 campaign year.</p>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>Dec 2025 (Start)</th>
+      <th>Jan 2026</th>
+      <th>Feb 2026</th>
+      <th>Mar 2026</th>
+      <th>Apr 2026</th>
+      <th>May 2026</th>
+      <th>Jun 2026</th>
+    </tr>
+    <tr>
+      <td>GBP Listings Live</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td><strong>3 ✅</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Tampa Map Pack Rank</td>
+      <td>Not tracked</td>
+      <td>—</td>
+      <td>—</td>
+      <td><strong>#1.00 (17/22)</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Tampa Reviews</td>
+      <td>~78</td>
+      <td>~78</td>
+      <td>~78</td>
+      <td><strong>78</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Tampa Rating</td>
+      <td>4.7 ★</td>
+      <td>4.7 ★</td>
+      <td>4.7 ★</td>
+      <td><strong>4.7 ★</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Citations</td>
+      <td>Untracked</td>
+      <td>—</td>
+      <td>5</td>
+      <td><strong>5</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Blog Posts Published</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><strong>0</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>Press Releases</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td><strong>0</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>GSC Connected</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td><strong>Yes ✅</strong></td>
+      <td>—</td><td>—</td><td>—</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <!-- Contact -->
+  <h2>&#128222; Questions or Next Steps</h2>
+  <p>Ready to move on Q2 priorities. Contact us to review the blog content calendar, review campaign strategy, or discuss the citation build plan.</p>
+  <table>
+    <tr>
+      <td><strong>Agency:</strong> Nichefinder AI Agency</td>
+      <td><strong>Phone:</strong> (863) 999-9152</td>
+      <td><strong>Schedule:</strong> <a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM" target="_blank">Book a Call</a></td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    All South Lightning Protection — SEO Retainer Monthly Report &nbsp;|&nbsp; March 2026 &nbsp;|&nbsp; Nichefinder AI Agency &nbsp;|&nbsp; Prepared: May 2026
+  </div>
+
+</div>
+
+<script>
+function generatePDF() {
+  const element = document.querySelector('.page-body');
+  const opt = {
+    margin: [10, 10, 10, 10],
+    filename: 'AllSouth_Monthly_Report_Mar_2026.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(element).save();
+}
+</script>
+
+</body>
+</html>
