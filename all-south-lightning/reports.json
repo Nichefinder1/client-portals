@@ -7,7 +7,7 @@
     "campaign_status": "Active",
     "start_date": "December 2025",
     "goal": "All 3 locations active, optimized & in Map Pack Top 3 by December 2026",
-    "last_updated": "April 2, 2026"
+    "last_updated": "May 6, 2026"
   },
   "metrics": {
     "gbp_listings": 3,
@@ -154,15 +154,14 @@
     {
       "month": "2026-03",
       "month_name": "March 2026",
-      "is_current": true,
+      "is_current": false,
       "reports": [
         {
           "title": "Monthly Progress Report",
-          "file": null,
-          "description": "GBP Phase 1 completion, 22-keyword scan results (17/22 #1-2), content pipeline activation, Q2 priorities.",
-          "badge": "Due Mar 31",
-          "badge_color": "yellow",
-          "available_date": "March 31"
+          "file": "2026-03/Monthly_Progress_Report_Mar_2026.html",
+          "description": "Phase 1 complete — all 3 GBPs live, 17/22 Tampa keywords #1–2, GSC connected, SEO roadmap delivered.",
+          "badge": "View",
+          "badge_color": "blue"
         }
       ]
     },
