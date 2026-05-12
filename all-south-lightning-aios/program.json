@@ -7,14 +7,14 @@
     "program_months": 6,
     "total_weeks": 24,
     "start_date": "2026-03-26",
-    "last_updated": "2026-05-06",
-    "current_week": 6,
+    "last_updated": "2026-05-12",
+    "current_week": 7,
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 6: Email Triage Live — Performance Review & Next Direction",
-    "phase_description": "Chuck's AI email digest is live as of April 30 — running daily at 5:45 AM ET. Hetzner self-hosted n8n infrastructure deployed April 21. Week 6 session (May 7): verify triage is performing as expected, gather Chuck's feedback, and let him direct the next automation priority.",
-    "overall_progress_pct": 42,
+    "current_phase": "Week 7: Email Triage Fix + Brain Upgrade + AI Data Center Campaign",
+    "phase_description": "Week 6 review (May 12) identified 3 critical email triage bugs — emails missing from inbox, useless number IDs, no direct links. Fix deployed as v2 this week. Brain upgrade also this week (vector speed — 45-min delay reported). New campaign priority: AI data center lightning protection page + Google Ads (low competition, high urgency per Chuck). Jacksonville branch identified as next major push after triage is solid.",
+    "overall_progress_pct": 48,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -119,7 +119,7 @@
       "progress_pct": 12,
       "items": [
         { "label": "Automation opportunities identified", "status": "complete", "note": "Week 2 confirmed: email triage selected as #1 priority. Also identified: call transcription, smart scheduler, field crew photo gate, daily brief." },
-        { "label": "Email triage — Chuck's inbox", "status": "complete", "note": "LIVE April 30, 2026. Daily 5:45 AM ET digest to chuck@aslp.net. Runs on self-hosted n8n (Hetzner). Week 6 check-in May 7 — next inbox TBD, Chuck directs." },
+        { "label": "Email triage — Chuck's inbox", "status": "in_progress", "note": "LIVE April 30, 2026. Week 6 review (May 12) found 3 critical bugs: emails missing/unlocatable, useless email number IDs, no direct links. v2 fix in progress this week — adds clickable links, sender/subject IDs, source folder display, Action Items folder auto-move." },
         { "label": "Automation architecture designed", "status": "not_started" },
         { "label": "Voice/transcription agent", "status": "not_started", "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution." },
         { "label": "CRM workflows", "status": "not_started", "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live." },
@@ -131,11 +131,20 @@
   "quick_wins": [
     {
       "title": "Email Triage System",
-      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. Reads inbox each morning, categorizes into Action Required / FYI / Bulk Noise, delivers a single prioritized daily digest at 5:45 AM ET. LIVE April 30, 2026 on self-hosted n8n (Hetzner). Next inbox expansion TBD — direction confirmed in Week 6 session.",
+      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. Categorizes into Action Required / FYI / Bulk Noise, delivers a single prioritized daily digest at 5:45 AM ET. LIVE April 30, 2026. Week 6 review (May 12) found 3 critical bugs: emails missing from inbox (going to non-primary folders), useless number IDs, no direct email links. v2 fix deployed this week — adds clickable 'Open Email' buttons, identifies by sender/subject, shows source folder, auto-moves action items to 'Action Items' folder in Outlook.",
       "status": "live",
       "priority": 1,
-      "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out.",
-      "deployed_date": "2026-04-30"
+      "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out. Action items automatically moved to dedicated folder for immediate access.",
+      "deployed_date": "2026-04-30",
+      "updated_date": "2026-05-12"
+    },
+    {
+      "title": "AI Data Center Lightning Protection Campaign",
+      "description": "Dedicated service page + Google keyword campaign targeting AI data center construction — an exploding market issuing lightning protection contracts years in advance. Current competition on Google Ads is minimal, making traffic inexpensive to capture now. Chuck flagged this as URGENT in Week 6 session.",
+      "status": "in_progress",
+      "priority": 2,
+      "impact": "Positions All South as the go-to specialist for AI infrastructure lightning protection at the start of a multi-year construction boom.",
+      "deployed_date": null
     },
     {
       "title": "Trade Show Commercial Video",
@@ -317,19 +326,44 @@
         "Crystal Balog email triage — Phase 2 planned after Chuck's triage goes live"
       ],
       "chuck_verbatim_priority": ""
+    },
+    {
+      "week": 6,
+      "date": "2026-05-12",
+      "title": "Week 6: Email Triage Review + Strategic Planning",
+      "duration": "~65 minutes",
+      "format": "Zoom",
+      "topics": [
+        "Email triage performance review — 3 critical bugs identified: missing emails (~50% of action items can't be located), number IDs useless ('email 8' means nothing), no direct link to original email half the time",
+        "Action Items folder request — Chuck wants ACTION REQUIRED emails auto-moved to a dedicated Outlook folder",
+        "Brain performance issue — 45-minute delay reported; maintenance + vector upgrade committed for this week",
+        "AI data center campaign — URGENT; Chuck pushed hard; dedicated service page + Google Ads campaign approved",
+        "Website content strategy — 2 services/month commitment; start with services list review + FAQ outlines",
+        "Brain → website FAQ integration concept — users ask questions; if Brain can't answer, connect to office staff; needs further design planning",
+        "Employee portal design — links hub (Paychex, 401k) + gated training; no complex financial infrastructure needed",
+        "SEO review — 123 clicks/21K impressions last 28 days; surge protection + Jacksonville pages rising; social media 136% engagement increase",
+        "Javanni scheduling pain — flagged as urgent AI priority for near future; spending half her day on constantly changing client demands",
+        "Jacksonville branch — confirmed as next major focus after triage is solid; ready for build-up, underperforming vs Tampa",
+        "Trimble image API — Chuck has emailed Crystal; limited access to job pictures only; vendor API cost vs seat to be researched",
+        "Visual agent + image pipeline — 75% self-images / 25% AI content target; Faraday + TVSS images to be categorized",
+        "ASLP.NET domain issue — not resolving; critical — ~100,000 building maintenance tags reference this domain; Chuck to escalate to Scott",
+        "Payment status — check not received; Chuck to follow up with Angie; auto-debit setup planned"
+      ],
+      "chuck_verbatim_priority": "Fix the email triage — the emails are getting lost and I can't find them. And we need to jump on the data center market right now while it's wide open."
     }
   ],
   "upcoming_session": {
-    "label": "Week 6: Email Triage Performance Review",
-    "date": "2026-05-07",
+    "label": "Week 7: Triage Fix Review + Brain Back Online + Data Center Page Preview",
+    "date": "2026-05-19",
     "time": "TBD",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Email triage check-in — how has the daily digest been performing for Chuck?",
-      "Any adjustments needed to categories, timing, or format?",
-      "Chuck's direction for the next automation priority — let him lead",
-      "Brain content updates — any new SOPs, staff changes, or additions"
+      "Email triage v2 review — confirm bugs resolved, Action Items folder working",
+      "Brain back online — confirm speed improvement, demo for Chuck",
+      "AI data center service page preview",
+      "Chuck's services list review — first 2 services for content expansion",
+      "ASLP.NET domain status check (Chuck/Scott)"
     ]
   },
   "contact": {
