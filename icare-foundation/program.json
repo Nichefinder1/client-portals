@@ -11,7 +11,7 @@
     "website": "https://icaregives.org",
     "donate_url": "https://icaregives.org/donate",
     "fiscal_year": "January 1 – December 31",
-    "last_updated": "2026-04-22"
+    "last_updated": "2026-05-05"
   },
   "board": [
     {
@@ -80,7 +80,7 @@
     "florida_min": 3,
     "florida_compliant": true,
     "bylaws_version": "Revised Bylaws v5",
-    "bylaws_status": "Under legal review — bylaws workshop to be scheduled",
+    "bylaws_status": "Adopted — April 11, 2026. All motions passed. Board formally seated.",
     "voting_rules": [
       {
         "type": "Routine motions",
@@ -138,7 +138,7 @@
       {
         "name": "Debra Simorne",
         "title": "Director of Volunteer Operations",
-        "role": "Organizes IARE volunteers who sign up through the website database. Manages volunteer database and mass messaging for events.",
+        "role": "Organizes iCARE volunteers who sign up through the website database. Manages volunteer database and mass messaging for events.",
         "appointed": "April 9, 2026"
       }
     ]
@@ -168,7 +168,7 @@
       "url": "/programs/education-youth",
       "irs_alignment": "Educational Programs (core area)",
       "grant_priority": 3,
-      "note": "High funder interest — DOJ/OJJDP, Honda, Raymond James.",
+      "note": "High funder interest. NBA Foundation ($25K–$250K) requires mentoring program operational by Sept 2026.",
       "sub_programs": [
         {
           "name": "Annual Back-to-School Give-Away",
@@ -178,7 +178,7 @@
         {
           "name": "Youth Mentoring Program",
           "status": "in_development",
-          "description": "Program proposal live on site."
+          "description": "In development. Must launch Q3 2026 to qualify for NBA Foundation Sept cycle."
         },
         {
           "name": "Financial Literacy Program",
@@ -197,7 +197,7 @@
       "url": "/programs/career-development",
       "irs_alignment": "Community Outreach (partial)",
       "grant_priority": 5,
-      "note": "Bank of America RFP opens May 18. Women's Empowerment unlocks new funder categories.",
+      "note": "Bank of America RFP opens May 18. Women's Empowerment unlocks dedicated women's foundation funding.",
       "sub_programs": [
         {
           "name": "Job Training & Resume Coaching",
@@ -207,7 +207,7 @@
         {
           "name": "Women's Empowerment Program",
           "status": "in_development",
-          "description": "Unlocks women's foundation funding (Women's Foundation of FL, AAUW, Soroptimist, Grameen)."
+          "description": "Unlocks women's foundation funding — Women's Foundation of FL, AAUW, Soroptimist (eligible 2027)."
         },
         {
           "name": "Men's Development Program",
@@ -226,7 +226,7 @@
       "url": "/programs/health-wellness",
       "irs_alignment": "Health Resources (core area)",
       "grant_priority": 4,
-      "note": "MedShare distribution ($1,060.99 value, Nov 2025) supports this area.",
+      "note": "MedShare distribution ($1,060.99 value, Nov 2025) + basketball program = documented activity. Sobriety & Recovery unlocks SAMHSA funding.",
       "sub_programs": [
         {
           "name": "Basketball for Health Promotion",
@@ -236,12 +236,12 @@
         {
           "name": "Sobriety & Recovery Support",
           "status": "in_development",
-          "description": "Program proposal live on site."
+          "description": "In development. Unlocks SAMHSA, Florida Blue Foundation, and recovery-focused grants when operational."
         },
         {
           "name": "Wellness Seminars & Health Screenings",
           "status": "in_development",
-          "description": "MedShare medical supply distribution ties here (Nov 2025)."
+          "description": "MedShare medical supply distribution (Nov 2025) ties here. AdventHealth + BayCare community benefit funding possible."
         }
       ]
     },
@@ -250,7 +250,7 @@
       "url": "/programs/family-strengthening",
       "irs_alignment": "Community Outreach (partial)",
       "grant_priority": 2,
-      "note": "HHS/ACF HMRF is the priority federal grant ($6.25M potential, 5-year award).",
+      "note": "HHS/ACF HMRF is the priority federal grant (up to $6.25M / 5-year award). Requires SAM.gov registration.",
       "sub_programs": [
         {
           "name": "Couples Relationship Programs",
@@ -261,30 +261,6 @@
           "name": "Family Support Services",
           "status": "in_development",
           "description": "Program proposal live on site."
-        }
-      ]
-    },
-    {
-      "area": "Housing & Senior Services",
-      "url": "/programs/housing-senior",
-      "irs_alignment": "Housing Assistance / Senior Services",
-      "grant_priority": 6,
-      "note": "All programs in development. Addresses affordable housing shortage and senior aging-in-place needs across Greater Tampa Bay.",
-      "sub_programs": [
-        {
-          "name": "Affordable Home Development",
-          "status": "in_development",
-          "description": "Helps low-income families access safe, affordable housing through new construction, rehabilitation, homebuyer education, and down payment assistance."
-        },
-        {
-          "name": "Elderly Housing Support",
-          "status": "in_development",
-          "description": "Supports older adults aging in place via home modifications, senior-focused housing development, resource navigation, and isolation prevention."
-        },
-        {
-          "name": "Housing Stability Assistance",
-          "status": "in_development",
-          "description": "Emergency rental assistance, eviction prevention, housing case management, and rapid rehousing."
         }
       ]
     }
@@ -329,7 +305,7 @@
   ],
   "financials": {
     "fiscal_year": "2025",
-    "status": "Full year confirmed. iCare files Form 990-N (gross receipts ≤ $50K).",
+    "status": "Full year confirmed. IRS Form 990-N filed May 5, 2026.",
     "opening_balance": 400.0,
     "cash_revenue": 2730.0,
     "cash_revenue_period": "May – October 2025",
@@ -341,58 +317,19 @@
         "amount": 3208.44,
         "status": "confirmed",
         "items": [
-          {
-            "description": "501(c)(3) filing fee (IRS Form 1023)",
-            "amount": 650.0
-          },
-          {
-            "description": "iCARE T-Shirts (100)",
-            "amount": 1108.67
-          },
-          {
-            "description": "Visors & Embroidery",
-            "amount": 300.0
-          },
-          {
-            "description": "Magnets (1,000)",
-            "amount": 65.0
-          },
-          {
-            "description": "Business Cards",
-            "amount": 80.0
-          },
-          {
-            "description": "Tablecloth",
-            "amount": 300.0
-          },
-          {
-            "description": "8 ft Table",
-            "amount": 90.0
-          },
-          {
-            "description": "Virtual Mailbox x3 months",
-            "amount": 60.0
-          },
-          {
-            "description": "iCARE Tent",
-            "amount": 249.0
-          },
-          {
-            "description": "GoDaddy Website Hosting (1 year)",
-            "amount": 155.88
-          },
-          {
-            "description": "GoDaddy Email (1 year)",
-            "amount": 95.88
-          },
-          {
-            "description": "GoDaddy Domain Name (1 year)",
-            "amount": 22.16
-          },
-          {
-            "description": "Harland Checks",
-            "amount": 31.85
-          }
+          { "description": "501(c)(3) filing fee (IRS Form 1023)", "amount": 650.0 },
+          { "description": "iCARE T-Shirts (100)", "amount": 1108.67 },
+          { "description": "Visors & Embroidery", "amount": 300.0 },
+          { "description": "Magnets (1,000)", "amount": 65.0 },
+          { "description": "Business Cards", "amount": 80.0 },
+          { "description": "Tablecloth", "amount": 300.0 },
+          { "description": "8 ft Table", "amount": 90.0 },
+          { "description": "Virtual Mailbox x3 months", "amount": 60.0 },
+          { "description": "iCARE Tent", "amount": 249.0 },
+          { "description": "GoDaddy Website Hosting (1 year)", "amount": 155.88 },
+          { "description": "GoDaddy Email (1 year)", "amount": 95.88 },
+          { "description": "GoDaddy Domain Name (1 year)", "amount": 22.16 },
+          { "description": "Harland Checks", "amount": 31.85 }
         ]
       },
       {
@@ -400,75 +337,22 @@
         "amount": 2085.62,
         "status": "confirmed",
         "items": [
-          {
-            "vendor": "Walmart",
-            "description": "Food pantry purchases — full year 2025 (replaces Jun/Jul itemized entries)",
-            "amount": 1752.9
-          },
-          {
-            "vendor": "Sam's Club",
-            "date": "7/17/25",
-            "amount": 170.82
-          },
-          {
-            "vendor": "Publix",
-            "date": "8/3/25",
-            "amount": 162.9
-          }
+          { "vendor": "Walmart", "description": "Food pantry purchases — full year 2025", "amount": 1752.9 },
+          { "vendor": "Sam's Club", "date": "7/17/25", "amount": 170.82 },
+          { "vendor": "Publix", "date": "8/3/25", "amount": 162.9 }
         ]
       }
     ],
     "in_kind_total_confirmed": 14419.7,
-    "in_kind_note": "",
     "revenue_detail": [
-      {
-        "date": "5/2025",
-        "source": "Bank",
-        "description": "Opening balance",
-        "amount": 400.0
-      },
-      {
-        "date": "6/2025",
-        "source": "Zeffy",
-        "description": "Board dues — Regina Lock-DePass",
-        "amount": 240.0
-      },
-      {
-        "date": "7/2025",
-        "source": "Zeffy",
-        "description": "Board dues — Rhonda Reeder",
-        "amount": 240.0
-      },
-      {
-        "date": "7/2025",
-        "source": "Zeffy",
-        "description": "",
-        "amount": 150.0
-      },
-      {
-        "date": "7/2025",
-        "source": "Cash",
-        "description": "",
-        "amount": 500.0
-      },
-      {
-        "date": "8/2025",
-        "source": "Cash",
-        "description": "",
-        "amount": 300.0
-      },
-      {
-        "date": "9/2025",
-        "source": "Zeffy",
-        "description": "",
-        "amount": 300.0
-      },
-      {
-        "date": "10/2025",
-        "source": "Cash",
-        "description": "",
-        "amount": 600.0
-      }
+      { "date": "5/2025", "source": "Bank", "description": "Opening balance", "amount": 400.0 },
+      { "date": "6/2025", "source": "Zeffy", "description": "Board dues — Regina Lock-DePass", "amount": 240.0 },
+      { "date": "7/2025", "source": "Zeffy", "description": "Board dues — Rhonda Reeder", "amount": 240.0 },
+      { "date": "7/2025", "source": "Zeffy", "description": "", "amount": 150.0 },
+      { "date": "7/2025", "source": "Cash", "description": "", "amount": 500.0 },
+      { "date": "8/2025", "source": "Cash", "description": "", "amount": 300.0 },
+      { "date": "9/2025", "source": "Zeffy", "description": "", "amount": 300.0 },
+      { "date": "10/2025", "source": "Cash", "description": "", "amount": 600.0 }
     ],
     "inkind_detail": [
       {
@@ -499,7 +383,7 @@
       },
       {
         "donor": "Volunteers",
-        "description": "94 volunteer hours at Florida rate of $33/hr — documented for grant reporting and 990-N support",
+        "description": "94 volunteer hours at Florida rate of $33/hr",
         "value": 3102.0,
         "status": "confirmed",
         "hours": 94,
@@ -524,53 +408,147 @@
       }
     ],
     "blockers": [
-      "Dec 31, 2025 ending bank balance (good for internal records + grant apps)",
       "Collins Grant Consulting — paid or in-kind? (affects expense reporting)",
       "Attendance estimates for all 2025 events (required for grant applications)"
     ]
   },
   "grants": {
-    "readiness_pct": 65,
+    "readiness_pct": 75,
     "consultant": "Collins Grant Consulting",
     "aor": "Rhonda Reeder (President)",
-    "year1_target_low": 75000,
-    "year1_target_high": 125000,
+    "year1_target_low": 100000,
+    "year1_target_high": 190000,
+    "strategy_note": "Focus on zero-age-requirement funders now. Program development (Youth Mentoring, Sobriety & Recovery, Women's Empowerment) unlocks major grant categories. 2-year minimum funders go on calendar for May 2027.",
     "pipeline": [
       {
-        "funder": "Publix Super Markets Charities",
-        "area": "Food Security",
+        "funder": "Bank of America Empowering Communities RFP",
+        "area": "Food Security / Family Strengthening",
         "award": "Varies",
-        "deadline": "April 30, 2026",
+        "deadline": "May 18–Jun 29, 2026",
         "urgency": "urgent",
-        "status": "not_started",
-        "notes": "Hunger Relief window March 1–April 30. Direct mission match for food pantry."
+        "status": "apply_now",
+        "eligibility": "eligible",
+        "notes": "URGENT — deadline May 18. Register on NPO Hub before applying. No age requirement. Position: food security + family strengthening."
+      },
+      {
+        "funder": "Duke Energy Foundation",
+        "area": "All areas",
+        "award": "Up to $20K",
+        "deadline": "Rolling",
+        "urgency": "urgent",
+        "status": "apply_now",
+        "eligibility": "eligible",
+        "notes": "Rolling basis, no deadline. No age requirement. Community Opportunity + Local Resiliency angle."
+      },
+      {
+        "funder": "Aldi Community Gift Card Program",
+        "area": "Food Security",
+        "award": "$100–$1,000",
+        "deadline": "Rolling (through Oct 31, 2026)",
+        "urgency": "urgent",
+        "status": "apply_now",
+        "eligibility": "eligible",
+        "notes": "Gift cards for food pantry supply purchases. Low barrier, quick turnaround. No age requirement."
       },
       {
         "funder": "Wawa Foundation",
-        "area": "All areas",
+        "area": "Food Security / Health & Wellness",
         "award": "$2,500+",
-        "deadline": "Quarterly",
-        "urgency": "upcoming",
-        "status": "research",
-        "notes": "Next quarterly window may be open now."
-      },
-      {
-        "funder": "Bank of America Charitable Foundation",
-        "area": "Career Dev / Family",
-        "award": "Varies",
-        "deadline": "May 18–Jun 29, 2026",
+        "deadline": "July 2026 window",
         "urgency": "upcoming",
         "status": "prepare",
-        "notes": "Empowering Communities RFP. Opens May 18."
+        "eligibility": "eligible",
+        "notes": "No age requirement. Hunger + Health focus. Quarterly windows: Jan/Apr/Jul/Oct. Prepare now for July."
+      },
+      {
+        "funder": "NBA Foundation",
+        "area": "Education & Youth Development",
+        "award": "$25K–$250K",
+        "deadline": "September 2026 cycle",
+        "urgency": "upcoming",
+        "status": "prepare",
+        "eligibility": "eligible",
+        "notes": "Youth 14–24, school-to-career programs. No age requirement. Tampa Bay NBA market qualifies. Youth Mentoring must be operational before applying."
+      },
+      {
+        "funder": "Chick-fil-A True Inspiration Awards",
+        "area": "Food Security / Education & Youth / Family Strengthening",
+        "award": "$30K–$350K",
+        "deadline": "Summer 2026 (est.)",
+        "urgency": "upcoming",
+        "status": "prepare",
+        "eligibility": "eligible",
+        "notes": "No age requirement found. Childhood hunger + youth education + family services. $6M awarded to 56 orgs in 2026 cycle."
+      },
+      {
+        "funder": "Tampa Bay Buccaneers Foundation",
+        "area": "Health & Wellness / Education & Youth",
+        "award": "Up to $2,500",
+        "deadline": "Rolling",
+        "urgency": "upcoming",
+        "status": "apply_now",
+        "eligibility": "eligible",
+        "notes": "Youth sports development. Basketball for Health Promotion is a natural fit. Girls flag football expansion initiative active."
       },
       {
         "funder": "Community Foundation Tampa Bay",
         "area": "All 5 areas",
-        "award": "$5K–$55K (avg $28,700)",
-        "deadline": "Dec 1, 2026 cycle",
+        "award": "$10K–$50K (avg $28,700)",
+        "deadline": "Dec 2026 LOI / Mar 2027 full app",
+        "urgency": "annual",
+        "status": "build_relationship",
+        "eligibility": "eligible",
+        "notes": "Requires 1 x 990 filing — now satisfied. Best local fit. 5 focus areas map exactly to iCARE's. START RELATIONSHIP NOW. Apply Dec 2026."
+      },
+      {
+        "funder": "NBCUniversal Local Impact Grants",
+        "area": "Education & Youth",
+        "award": "Up to $225K",
+        "deadline": "March–April 2027 (next cycle)",
         "urgency": "annual",
         "status": "prep",
-        "notes": "Best local fit. Their 5 focus areas map exactly to iCARE's 5 areas. START RELATIONSHIP NOW."
+        "eligibility": "eligible",
+        "notes": "Requires 1+ year operating — now satisfied. Youth empowerment + community engagement. Apply 2027 cycle."
+      },
+      {
+        "funder": "United Way Suncoast",
+        "area": "All areas",
+        "award": "Up to $20K",
+        "deadline": "Spring 2027",
+        "urgency": "annual",
+        "status": "prep",
+        "eligibility": "eligible",
+        "notes": "ACE Capacity Grant. No age requirement. 75%+ clients in ALICE focus areas required — begin tracking participant data now."
+      },
+      {
+        "funder": "USDA Community Food Projects (NIFA)",
+        "area": "Food Security",
+        "award": "$125K–$400K over 4 years",
+        "deadline": "October 2026 (FY2027 cycle)",
+        "urgency": "annual",
+        "status": "prep",
+        "eligibility": "eligible",
+        "notes": "No age requirement. 1:1 match required (in-kind OK — $14K+ already documented). Strong food pantry case."
+      },
+      {
+        "funder": "Florida Blue Foundation — Mental Well-Being",
+        "area": "Health & Wellness",
+        "award": "$300K–$400K over 4 years",
+        "deadline": "Spring 2027 (est.)",
+        "urgency": "annual",
+        "status": "prep",
+        "eligibility": "eligible",
+        "notes": "Sobriety & Recovery program must be operational before applying."
+      },
+      {
+        "funder": "PGA REACH Foundation",
+        "area": "Health & Wellness / Education & Youth",
+        "award": "Up to $2,500",
+        "deadline": "Dec 2026–Jan 2027",
+        "urgency": "annual",
+        "status": "prep",
+        "eligibility": "eligible",
+        "notes": "Youth development / life skills. Basketball for Health Promotion angle."
       },
       {
         "funder": "HHS/ACF — HMRF Grants",
@@ -579,7 +557,18 @@
         "deadline": "Summer 2026 est.",
         "urgency": "federal",
         "status": "priority",
-        "notes": "Requires SAM.gov + 990 filed + strong evaluation data."
+        "eligibility": "eligible_verify",
+        "notes": "Top-priority federal grant. Requires SAM.gov registration (not done). Couples + Family Support programs must be documented."
+      },
+      {
+        "funder": "SAMHSA (via FL Dept of Children & Families)",
+        "area": "Health & Wellness",
+        "award": "$10K–$100K+",
+        "deadline": "State RFP cycles (annual)",
+        "urgency": "federal",
+        "status": "prep",
+        "eligibility": "eligible",
+        "notes": "Direct match to Sobriety & Recovery program (in development). No age requirement at state level. Program must launch first."
       },
       {
         "funder": "DOJ/OJJDP Youth Mentoring",
@@ -587,109 +576,98 @@
         "award": "$104M nationally",
         "deadline": "Annual",
         "urgency": "federal",
+        "status": "2027",
+        "eligibility": "eligible_2027",
+        "notes": "Mentoring program must be operational. SAM.gov required. Heavy competitive process. Target 2027."
+      },
+      {
+        "funder": "HHS/ACF — CSBG",
+        "area": "All areas",
+        "award": "State-distributed",
+        "deadline": "Apply through FL",
+        "urgency": "federal",
         "status": "research",
-        "notes": "Requires SAM.gov + Grants.gov."
+        "eligibility": "eligible",
+        "notes": "Federal poverty block grant distributed through FL state office."
+      },
+      {
+        "funder": "Suncoast Credit Union Foundation",
+        "area": "All areas",
+        "award": "$10K–$30K",
+        "deadline": "Apply May 2027",
+        "urgency": "2027",
+        "status": "not_eligible_yet",
+        "eligibility": "eligible_2027",
+        "notes": "EXPLICIT 2-year minimum. iCARE's own bank — highest priority once eligible May 2027."
       },
       {
         "funder": "American Honda Foundation",
         "area": "Education & Youth",
         "award": "$20K–$75K",
-        "deadline": "Quarterly",
-        "urgency": "upcoming",
-        "status": "research",
-        "notes": "Youth-focused. Science and education emphasis."
-      },
-      {
-        "funder": "Raymond James Foundation",
-        "area": "Education & Youth",
-        "award": "$10K–$25K",
-        "deadline": "TBD",
-        "urgency": "annual",
-        "status": "research",
-        "notes": "Tampa Bay Ready for School initiative. Local focus."
-      },
-      {
-        "funder": "United Way Suncoast",
-        "area": "All areas",
-        "award": "Up to $20K",
-        "deadline": "TBD",
-        "urgency": "annual",
-        "status": "research",
-        "notes": "ALICE families language required."
+        "deadline": "Apply May 2027",
+        "urgency": "2027",
+        "status": "not_eligible_yet",
+        "eligibility": "eligible_2027",
+        "notes": "Requires 2 years audited financials. DO NOT apply before May 2027."
       },
       {
         "funder": "Children's Board of Hillsborough County",
         "area": "Youth & Family",
         "award": "Varies",
-        "deadline": "TBD",
-        "urgency": "annual",
-        "status": "research",
-        "notes": "Small Nonprofit grant — specifically for orgs like iCARE."
+        "deadline": "Apply May 2027 (verify age req)",
+        "urgency": "2027",
+        "status": "verify",
+        "eligibility": "eligible_2027",
+        "notes": "Age requirement not explicitly stated — verify before applying. High fit for Youth Mentoring + Back-to-School."
+      },
+      {
+        "funder": "Raymond James Foundation",
+        "area": "Education & Youth",
+        "award": "$10K–$25K",
+        "deadline": "Apply May 2027",
+        "urgency": "2027",
+        "status": "not_eligible_yet",
+        "eligibility": "eligible_2027",
+        "notes": "Conservative funder, prefers established orgs. Tampa Bay local. Start relationship in 2026."
+      },
+      {
+        "funder": "Women's Foundation of Florida",
+        "area": "Career Development (Women's Empowerment)",
+        "award": "$1K–$2,500",
+        "deadline": "Apply May 2027",
+        "urgency": "2027",
+        "status": "not_eligible_yet",
+        "eligibility": "eligible_2027",
+        "notes": "Likely 2-year minimum. Women's Empowerment program must also be operational."
+      },
+      {
+        "funder": "Publix Super Markets Charities",
+        "area": "Food Security",
+        "award": "N/A",
+        "deadline": "Reapply May 2029",
+        "urgency": "denied",
+        "status": "denied",
+        "eligibility": "ineligible",
+        "notes": "DENIED April 2026. Requires 4+ years of operation. iCARE is ~1 year old. Do not reapply until May 2029."
       }
     ],
     "readiness_checklist": [
-      {
-        "item": "EIN registered",
-        "status": "done"
-      },
-      {
-        "item": "501(c)(3) determination received",
-        "status": "done"
-      },
-      {
-        "item": "Bank account open",
-        "status": "done"
-      },
-      {
-        "item": "Website with donation button",
-        "status": "done"
-      },
-      {
-        "item": "Zeffy donation platform",
-        "status": "done"
-      },
-      {
-        "item": "Program documentation (all 16 programs)",
-        "status": "done"
-      },
-      {
-        "item": "Evaluation framework / logic models",
-        "status": "done"
-      },
-      {
-        "item": "Grant language reference (2Gen framework)",
-        "status": "done"
-      },
-      {
-        "item": "Board bylaws formally adopted",
-        "status": "pending",
-        "note": "Under legal review — bylaws workshop to be scheduled"
-      },
-      {
-        "item": "GuideStar / Candid profile",
-        "status": "not_started",
-        "note": "Needed for grant credibility"
-      },
-      {
-        "item": "First 990-N (e-Postcard) filed",
-        "status": "pending",
-        "note": "Due May 15, 2026 — free, ~10 min online at irs.gov"
-      },
-      {
-        "item": "SAM.gov registration",
-        "status": "not_started",
-        "note": "Required for ALL federal grants"
-      },
-      {
-        "item": "Grants.gov registration",
-        "status": "not_started",
-        "note": "Required for federal grants"
-      },
-      {
-        "item": "FDACS solicitation registration",
-        "status": "confirm",
-        "note": "Status unknown — verify at fdacs.gov"
-      }
+      { "item": "EIN registered", "status": "done" },
+      { "item": "501(c)(3) determination received", "status": "done" },
+      { "item": "Bank account open", "status": "done" },
+      { "item": "Website with donation button", "status": "done" },
+      { "item": "Zeffy donation platform", "status": "done" },
+      { "item": "Program documentation (all 16 programs)", "status": "done" },
+      { "item": "Evaluation framework / logic models", "status": "done" },
+      { "item": "Grant language reference (2Gen framework)", "status": "done" },
+      { "item": "Board bylaws formally adopted", "status": "done", "note": "Adopted April 11, 2026 — all motions passed" },
+      { "item": "IRS Form 990-N filed", "status": "done", "note": "Filed May 5, 2026 — tax year 2025, Initial Return" },
+      { "item": "Florida Annual Report filed", "status": "done", "note": "Filed May 2026 — sunbiz.org — $61.25" },
+      { "item": "GuideStar / Candid profile", "status": "not_started", "note": "Do immediately — 990-N is filed, now eligible to create profile" },
+      { "item": "NPO Hub registration (Bank of America)", "status": "not_started", "note": "Required before BoA May 18 deadline — do this week" },
+      { "item": "SAM.gov registration", "status": "not_started", "note": "Required for ALL federal grants — free annual renewal" },
+      { "item": "Grants.gov registration", "status": "not_started", "note": "Required for federal grants" },
+      { "item": "FDACS solicitation registration", "status": "confirm", "note": "Status unknown — verify at fdacs.gov" }
     ]
   },
   "compliance": {
@@ -705,8 +683,8 @@
           "5 motions passed",
           "2026 board formally seated",
           "Debra Simorne appointed Director of Volunteer Operations",
-          "Bylaws under legal review — workshop to follow",
-          "Board Acknowledgment + COI forms being prepared by Corey"
+          "Bylaws adopted under Revised v5",
+          "Rhonda Reeder designated AOR for all grants"
         ]
       },
       {
@@ -714,10 +692,12 @@
         "item": "Publix Charities Hunger Relief Grant",
         "where": "publix.com/charities",
         "fee": "Free",
-        "status": "not_started",
-        "urgency": "critical",
+        "status": "denied",
+        "urgency": "done",
         "actions": [
-          "Apply NOW — window closes April 30"
+          "DENIED — requires 4+ years of operation",
+          "iCARE incorporated ~1 year (IRS determination May 2025)",
+          "Do not reapply until May 2029"
         ]
       },
       {
@@ -725,25 +705,23 @@
         "item": "Florida Annual Report",
         "where": "sunbiz.org",
         "fee": "$61.25",
-        "status": "not_started",
-        "urgency": "critical",
+        "status": "completed",
+        "urgency": "done",
         "actions": [
-          "Collect street addresses from all board members",
-          "File online at sunbiz.org"
+          "Filed — sunbiz.org"
         ]
       },
       {
-        "date": "May 15, 2026",
+        "date": "May 5, 2026",
         "item": "IRS Form 990-N e-Postcard (Tax Year 2025) — First Filing",
         "where": "irs.gov/charities",
         "fee": "Free",
-        "status": "not_started",
-        "urgency": "critical",
+        "status": "completed",
+        "urgency": "done",
         "actions": [
-          "File online at irs.gov — takes ~10 minutes",
-          "Need: EIN, tax year dates, principal officer name, confirm gross receipts ≤ $50K",
-          "Check 'Initial Return' — first 990-N filing",
-          "Rhonda Reeder signs as principal officer"
+          "Filed May 5, 2026",
+          "EIN 92-3071148, tax year 2025, Initial Return",
+          "Rhonda Reeder signed as principal officer"
         ]
       },
       {
@@ -751,19 +729,20 @@
         "item": "Bank of America Empowering Communities RFP Opens",
         "where": "bankofamerica.com/philanthropic",
         "fee": "Free",
-        "status": "prepare",
-        "urgency": "important",
+        "status": "urgent",
+        "urgency": "critical",
         "actions": [
-          "Begin application prep now",
-          "Deadline: June 29, 2026"
+          "Register on NPO Hub BEFORE May 18",
+          "Submit application May 18–June 29, 2026",
+          "Position: food security + family strengthening"
         ]
       }
     ],
     "ongoing": [
       {
-        "item": "FDACS Charitable Solicitation Registration",
-        "status": "confirm",
-        "note": "Status unknown — call 1-800-HELP-FLA to verify"
+        "item": "GuideStar / Candid Profile",
+        "status": "not_started",
+        "note": "990-N now filed — create profile immediately. Boosts grant credibility."
       },
       {
         "item": "SAM.gov Registration",
@@ -771,9 +750,14 @@
         "note": "Required for all federal grants — free annual renewal"
       },
       {
-        "item": "GuideStar / Candid Profile",
+        "item": "NPO Hub Registration (Bank of America)",
         "status": "not_started",
-        "note": "One-time setup — boosts grant credibility immediately"
+        "note": "Required before BoA May 18 deadline"
+      },
+      {
+        "item": "FDACS Charitable Solicitation Registration",
+        "status": "confirm",
+        "note": "Status unknown — call 1-800-HELP-FLA to verify"
       },
       {
         "item": "Conflict of Interest Disclosures",
@@ -783,42 +767,23 @@
       {
         "item": "Florida Sales Tax Exemption (DR-14)",
         "status": "confirm",
-        "note": "Renews every 5 years — confirm current date"
+        "note": "Renews every 5 years — confirm current status"
       }
     ],
     "completed": [
-      {
-        "item": "Florida nonprofit corporation formed (Chapter 617)",
-        "date": "2025"
-      },
-      {
-        "item": "IRS Form 1023 filed (full form)",
-        "date": "2025"
-      },
-      {
-        "item": "IRS 501(c)(3) determination received",
-        "date": "May 15, 2025"
-      },
-      {
-        "item": "EIN obtained — 92-3071148",
-        "date": "2025"
-      },
-      {
-        "item": "Suncoast business checking account opened",
-        "date": "2025"
-      },
-      {
-        "item": "Website live with donation capability",
-        "date": "January 2026"
-      },
-      {
-        "item": "37-page Next.js website deployed — icaregives.org",
-        "date": "2026-03"
-      },
-      {
-        "item": "Security hardening (14 CVEs patched)",
-        "date": "2026-03"
-      }
+      { "item": "Florida nonprofit corporation formed (Chapter 617)", "date": "2025" },
+      { "item": "IRS Form 1023 filed (full form)", "date": "2025" },
+      { "item": "IRS 501(c)(3) determination received", "date": "May 15, 2025" },
+      { "item": "EIN obtained — 92-3071148", "date": "2025" },
+      { "item": "Suncoast business checking account opened", "date": "2025" },
+      { "item": "Website live with donation capability", "date": "January 2026" },
+      { "item": "37-page Next.js website deployed — icaregives.org", "date": "2026-03" },
+      { "item": "Security hardening (14 CVEs patched)", "date": "2026-03" },
+      { "item": "Board formally seated — 5 members", "date": "April 9, 2026" },
+      { "item": "Revised Bylaws v5 adopted", "date": "April 11, 2026" },
+      { "item": "Board portal deployed — membersportal.icaregives.org", "date": "April 29, 2026" },
+      { "item": "Florida Annual Report filed — sunbiz.org", "date": "May 1, 2026" },
+      { "item": "IRS Form 990-N filed — tax year 2025, Initial Return", "date": "May 5, 2026" }
     ]
   },
   "strategy": {
@@ -826,47 +791,54 @@
     "geographic_focus": "Tampa Bay / Hillsborough County primary. International aspirations long-term — to be confirmed as the organization matures.",
     "model": "Two-Generation (Two-Gen): we serve children and their parents simultaneously across 5 interconnected program areas. This is our competitive differentiator with funders.",
     "why_it_matters_for_board": "Every program we run, every grant we apply for, every dollar we document — all of it builds a 3-year track record. Funders evaluate the board as credibility. Board members are not just governance — you are the foundation that unlocks funding.",
+    "grant_eligibility_rule": "MANDATORY: All grants require an eligibility pre-flight check before drafting. Minimum operating history, geography, and program fit must be verified. Publix was denied due to 4-year requirement — this check is non-negotiable.",
     "phases": [
       {
         "phase": "Phase 1 — 2025 — Launch (Complete)",
         "goal": "Build the legal and digital foundation.",
         "priorities": [
-          "Incorporated as Florida nonprofit + 501(c)(3) approved",
-          "EIN obtained + Suncoast business checking account opened",
-          "Website launched — icaregives.org (37 pages, 16 programs, Zeffy donations)",
-          "6 community events delivered — food bank, back-to-school, Thanksliving, MedShare",
-          "Phase 1 complete"
+          "Incorporated as Florida nonprofit + 501(c)(3) approved ✓",
+          "EIN obtained + Suncoast business checking account opened ✓",
+          "Website launched — icaregives.org (37 pages, 16 programs, Zeffy donations) ✓",
+          "6 community events delivered — food bank, back-to-school, Thanksliving, MedShare ✓",
+          "Phase 1 complete ✓"
         ]
       },
       {
-        "phase": "Phase 2 — 2026 — Foundation",
-        "goal": "Establish credibility. Get the compliance house in order so funders trust us.",
+        "phase": "Phase 2 — 2026 — Foundation (In Progress)",
+        "goal": "Establish compliance and credibility. Target quick-win grants with no age requirements.",
         "priorities": [
           "Board formally seated — April 9, 2026 ✓",
-          "File 990-N (e-Postcard) — builds public record grantors rely on",
-          "Create GuideStar/Candid profile — required by most foundations",
-          "Register SAM.gov — required for ANY federal grant",
-          "Land first external grants: Publix (April 30), Bank of America (June 29)",
-          "Year 1 funding target: $75K–$125K"
+          "Bylaws adopted — April 11, 2026 ✓",
+          "Florida Annual Report filed — May 2026 ✓",
+          "IRS Form 990-N filed — May 5, 2026 ✓",
+          "Create GuideStar/Candid profile — unblocked, do now",
+          "Register NPO Hub → Apply Bank of America RFP (deadline May 18–June 29)",
+          "Apply Duke Energy Foundation (rolling) + Aldi Gift Cards (rolling)",
+          "Prepare Wawa Foundation (July window) + Chick-fil-A (summer cycle)",
+          "Launch Youth Mentoring Program by Q3 → apply NBA Foundation (Sept cycle)",
+          "Year 1 funding target: $100K–$190K"
         ]
       },
       {
         "phase": "Year 2 — 2027 — Growth",
-        "goal": "Expand programming, add paid staff, pursue first federal grant.",
+        "goal": "2-year eligibility gates open. Expand programming. Pursue first federal grants.",
         "priorities": [
-          "First federal grant application (requires 2 years 990 history + SAM.gov)",
-          "Expand food pantry to documented monthly operations with attendance tracking",
-          "Launch career development and health programs with measurable outcomes",
-          "Build relationship with Community Foundation Tampa Bay (Dec 1 cycle)",
-          "Year 2 funding target: $200K–$300K"
+          "Apply: Suncoast Credit Union Foundation, American Honda, Children's Board, Raymond James",
+          "Apply: Women's Foundation of Florida (if Women's Empowerment program ready)",
+          "Apply DOJ/OJJDP Youth Mentoring (if mentoring operational + SAM.gov done)",
+          "Community Foundation Tampa Bay full application (March 2027)",
+          "Launch Sobriety & Recovery program → SAMHSA funding",
+          "Obtain 2-year CPA review or audit for major funder requirements",
+          "Year 2 funding target: $200K–$400K"
         ]
       },
       {
         "phase": "Year 3 — 2028 — Scale",
         "goal": "Become a recognized lead Two-Gen provider in Hillsborough County.",
         "priorities": [
-          "Eligible for larger foundation grants requiring 3 years of 990 history",
-          "Pursue HHS/ACF HMRF (up to $6.25M / 5-year federal award) — confirm eligibility requirements",
+          "Eligible for grants requiring 3 years of 990 history",
+          "Pursue HHS/ACF HMRF (up to $6.25M / 5-year federal award)",
           "Paid program staff in core areas",
           "Long-term funding target: $500K+"
         ]
@@ -883,50 +855,52 @@
   },
   "agenda": {
     "next_meeting": {
-      "date": "TBD — mid-week of April 14, 2026",
+      "date": "TBD",
       "time": "TBD",
       "location": "TBD",
       "status": "upcoming",
-      "format": "Workshop",
+      "format": "Working Session",
       "agenda_items": [
-        "Bylaws review — section by section (estimated 1 hour)",
-        "Vote to adopt revised bylaws (if ready)"
+        "Review grant pipeline — Bank of America application prep",
+        "NPO Hub registration walkthrough",
+        "GuideStar/Candid profile creation",
+        "SAM.gov registration (federal grant prerequisite)"
       ],
-      "notes": "Awaiting bylaws return from legal counsel. Rhonda Reeder to notify group when ready."
+      "notes": "Bank of America deadline May 18 — NPO Hub registration must happen before then."
     },
     "open_action_items": [
       {
-        "item": "Submit Publix Charities Hunger Relief grant application",
-        "owner": "Rhonda Reeder — President",
-        "due": "April 30, 2026",
-        "status": "not_started",
-        "priority": "critical"
-      },
-      {
-        "item": "Confirm attendance estimates for all 6 2025 events",
-        "owner": "Rhonda Reeder — President",
-        "due": "ASAP",
-        "status": "not_started",
-        "priority": "critical"
-      },
-      {
-        "item": "File Florida Annual Report at sunbiz.org ($61.25)",
+        "item": "Register on Bank of America NPO Hub",
         "owner": "Corey Reeder — Executive Director",
-        "due": "May 1, 2026",
+        "due": "Before May 18, 2026",
         "status": "not_started",
-        "priority": "high"
+        "priority": "critical"
       },
       {
-        "item": "File IRS Form 990-N (e-Postcard) at irs.gov",
-        "owner": "Rhonda Reeder — President",
-        "due": "May 15, 2026",
+        "item": "Apply to Bank of America Empowering Communities RFP",
+        "owner": "Rhonda Reeder — President (AOR)",
+        "due": "May 18–Jun 29, 2026",
         "status": "not_started",
-        "priority": "high"
+        "priority": "critical"
       },
       {
         "item": "Create GuideStar / Candid profile",
         "owner": "Corey Reeder — Executive Director",
-        "due": "After 990-N filed",
+        "due": "ASAP — 990-N now filed",
+        "status": "not_started",
+        "priority": "high"
+      },
+      {
+        "item": "Apply to Duke Energy Foundation (rolling grant)",
+        "owner": "Rhonda Reeder — President (AOR)",
+        "due": "This month",
+        "status": "not_started",
+        "priority": "high"
+      },
+      {
+        "item": "Apply to Aldi Community Gift Card Program",
+        "owner": "Corey Reeder — Executive Director",
+        "due": "Rolling (before Oct 31)",
         "status": "not_started",
         "priority": "medium"
       },
@@ -938,81 +912,39 @@
         "priority": "medium"
       },
       {
-        "item": "Confirm Dec 31, 2025 bank balance",
+        "item": "Confirm attendance estimates for all 6 2025 events",
         "owner": "Rhonda Reeder — President",
         "due": "ASAP",
-        "status": "completed",
-        "priority": "medium"
+        "status": "not_started",
+        "priority": "high"
       },
       {
         "item": "Transcribe and certify April 9 board meeting minutes",
         "owner": "Regina Lock-DePass — Secretary",
-        "due": "Within 30 days of April 9 meeting",
+        "due": "Overdue — within 30 days of April 9 meeting",
         "status": "not_started",
         "priority": "high"
       },
       {
         "item": "Submit professional headshot, bio, and full address to contact@icaregives.org",
         "owner": "Cedrick West, Joseph Simorne, Debra Simorne",
-        "due": "May 1, 2026",
-        "status": "not_started",
-        "priority": "high"
-      },
-      {
-        "item": "Update bank account to add Cedrick West as Treasurer (bring meeting minutes to bank)",
-        "owner": "Cedrick West — Treasurer, Regina Lock-DePass — Secretary",
         "due": "ASAP",
         "status": "not_started",
         "priority": "high"
       },
       {
-        "item": "Update Sunbiz record to reflect Cedrick West as Treasurer",
-        "owner": "Corey Reeder — Executive Director",
-        "due": "After bank visit",
+        "item": "Update bank account to add Cedrick West as Treasurer",
+        "owner": "Cedrick West — Treasurer, Regina Lock-DePass — Secretary",
+        "due": "ASAP (bring meeting minutes to bank)",
         "status": "not_started",
         "priority": "high"
-      },
-      {
-        "item": "Repaint food bank shed (church property) — Monday or Tuesday",
-        "owner": "Rhonda Reeder — President, Corey Reeder — Executive Director",
-        "due": "April 13–14, 2026",
-        "status": "not_started",
-        "priority": "medium"
-      },
-      {
-        "item": "Coordinate Jamaica trip logistics — May 4–9 (safety, iCARE rep, branded shirts)",
-        "owner": "Joseph Simorne — Board Member",
-        "due": "Before May 4, 2026",
-        "status": "not_started",
-        "priority": "high"
-      },
-      {
-        "item": "Order branded iCARE shirts for Jamaica trip team",
-        "owner": "Corey Reeder — Executive Director",
-        "due": "Before May 4, 2026",
-        "status": "not_started",
-        "priority": "medium"
       },
       {
         "item": "Organize volunteer database and manage volunteer operations",
         "owner": "Debra Simorne — Director of Volunteer Operations",
         "due": "Ongoing",
-        "status": "not_started",
+        "status": "in_progress",
         "priority": "medium"
-      },
-      {
-        "item": "Notify group when bylaws return from legal counsel — schedule bylaws workshop",
-        "owner": "Rhonda Reeder — President",
-        "due": "Mid-week April 14, 2026",
-        "status": "not_started",
-        "priority": "high"
-      },
-      {
-        "item": "Prepare board agreement and conflict of interest disclosure forms",
-        "owner": "Corey Reeder — Executive Director",
-        "due": "Before bylaws workshop",
-        "status": "not_started",
-        "priority": "high"
       }
     ],
     "past_meetings": [
@@ -1021,7 +953,7 @@
         "status": "completed",
         "motions_passed": [
           "Motion 1: Formally seated 5 board members for 2026",
-          "Motion 2: Authorized IRS Form 990-N filing (Rhonda Reeder, due May 15, 2026)",
+          "Motion 2: Authorized IRS Form 990-N filing (Rhonda Reeder, filed May 5, 2026)",
           "Motion 3: Set annual board dues at $240/year ($20/month, calendar year, due January)",
           "Motion 4: Designated Rhonda Reeder as Authorized Organizational Representative (AOR) for all grants",
           "Motion 5: Designated Rhonda Reeder as FDACS charitable solicitation representative"
@@ -1031,61 +963,11 @@
         ],
         "key_decisions": [
           "Board positions confirmed: Rhonda Reeder (President), Corey Reeder (Executive Director), Cedrick West (Treasurer), Regina Lock-DePass (Secretary), Joseph Simorne (Board Member)",
-          "Annual dues set at $20/month on calendar year basis — seed money for treasury",
-          "Jamaica trip (May 4–9) must have official iCARE representative — Debra Simorne volunteered",
-          "Bylaws workshop to be scheduled once bylaws return from legal counsel (mid next week)",
+          "Annual dues set at $20/month on calendar year basis",
+          "Bylaws adopted under Revised v5",
           "Cedrick West needs meeting minutes to update bank account as Treasurer"
         ],
-        "minutes_status": "pending — Regina Lock-DePass to transcribe",
-        "minutes": {
-          "status": "draft",
-          "prepared_by": "NicheFinders AI — pending Regina Lock-DePass review and signature",
-          "content": {
-            "date": "April 9, 2026",
-            "quorum": "5 of 5 present",
-            "motions_passed": [
-              {
-                "number": 1,
-                "title": "Seating of the 2026 Board of Directors",
-                "result": "Passed — all in favor",
-                "notes": "5 board members officially seated for 2026"
-              },
-              {
-                "number": 2,
-                "title": "Authorization of IRS Form 990-N Filing",
-                "result": "Passed — all in favor",
-                "notes": "Rhonda Reeder authorized as principal officer. Due May 15, 2026 at irs.gov"
-              },
-              {
-                "number": 3,
-                "title": "Setting of Annual Board Dues",
-                "result": "Passed — all in favor",
-                "notes": "$240/year ($20/month), calendar year, due January each year"
-              },
-              {
-                "number": 4,
-                "title": "Designation of Authorized Organizational Representative (AOR)",
-                "result": "Passed — all in favor",
-                "notes": "Rhonda Reeder designated as AOR for all grants"
-              },
-              {
-                "number": 5,
-                "title": "Designation of FDACS Authorized Representative",
-                "result": "Passed — all in favor",
-                "notes": "Rhonda Reeder designated as FDACS representative"
-              }
-            ],
-            "appointments": [
-              "Debra Simorne appointed as Director of Volunteer Operations"
-            ],
-            "certification": {
-              "secretary": "Regina Lock-DePass",
-              "signed": false,
-              "approved_by": "Rhonda Reeder",
-              "approved": false
-            }
-          }
-        }
+        "minutes_status": "pending — Regina Lock-DePass to transcribe and certify"
       }
     ]
   },

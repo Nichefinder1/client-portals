@@ -446,6 +446,10 @@ body > * { position: relative; z-index: 1; }
 .doc-btn-signed { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-border); }
 .doc-btn-signed:hover { background: var(--green); color: #fff; }
 .doc-btn-pending { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); cursor: default; }
+.doc-summary { font-size: 11px; color: var(--text-2); margin-top: 4px; line-height: 1.55; max-width: 520px; }
+.doc-sign-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 2px 8px; border-radius: 10px; margin-top: 5px; }
+.doc-sign-badge.needs-sig { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+.doc-sign-badge.adopted { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-border); }
 
 /* Upload zone */
 .upload-zone {
@@ -581,7 +585,7 @@ body > * { position: relative; z-index: 1; }
   <input name="doc-type">
   <input name="doc-name">
   <input name="upload-date">
-  <input type="file" name="file">
+  <input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
 </form>
 
 <!-- ─── NAV ─── -->
@@ -638,7 +642,7 @@ body > * { position: relative; z-index: 1; }
     <div>
       <div class="section-title">Organization Dashboard</div>
     </div>
-    <div class="section-sub">Last updated: April 10, 2026</div>
+    <div class="section-sub">Last updated: <span id="dashboard-updated-date"></span></div>
   </div>
 
   <!-- Org Identity Bar -->
@@ -688,7 +692,7 @@ body > * { position: relative; z-index: 1; }
     </div>
     <div class="stat-card" style="border-color:var(--gold-border);">
       <div class="stat-label">Grant Readiness</div>
-      <div class="stat-value" style="color:var(--gold);">65%</div>
+      <div class="stat-value" style="color:var(--gold);">75%</div>
       <div class="stat-note">30+ funders in pipeline</div>
     </div>
     <div class="stat-card" style="border-color:var(--border);">
@@ -700,25 +704,25 @@ body > * { position: relative; z-index: 1; }
 
   <!-- Critical Deadlines Strip -->
   <div class="card" style="border-color:var(--red-border); margin-bottom:16px;">
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:12px;">🔴 3 Critical Deadlines — Next 35 Days</div>
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:12px;">✅ All May Compliance Deadlines Complete</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
-      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;border:1px solid var(--green-border);">
         <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 30, 2026</div>
-        <div style="font-size:13px;font-weight:700;color:var(--text-1);">Publix Charities Grant</div>
-        <div style="font-size:11px;color:var(--text-3);">Hunger Relief window closes • Direct food pantry match</div>
-        <div style="margin-top:6px;"><span class="badge badge-red">Not Started — Urgent</span></div>
+        <div style="font-size:13px;font-weight:700;color:var(--green);">✅ Publix Charities Grant</div>
+        <div style="font-size:11px;color:var(--text-3);">Filed • Denied — not a blocker</div>
+        <div style="margin-top:6px;"><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
       </div>
-      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;border:1px solid var(--green-border);">
         <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 1, 2026</div>
-        <div style="font-size:13px;font-weight:700;color:var(--text-1);">Florida Annual Report</div>
-        <div style="font-size:11px;color:var(--text-3);">sunbiz.org • $61.25 fee</div>
-        <div style="margin-top:6px;"><span class="badge badge-gold">21 days</span></div>
+        <div style="font-size:13px;font-weight:700;color:var(--green);">✅ Florida Annual Report</div>
+        <div style="font-size:11px;color:var(--text-3);">Filed • sunbiz.org • $61.25</div>
+        <div style="margin-top:6px;"><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
       </div>
-      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;">
-        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 15, 2026</div>
-        <div style="font-size:13px;font-weight:700;color:var(--text-1);">IRS Form 990-N</div>
-        <div style="font-size:11px;color:var(--text-3);">e-Postcard • Free • irs.gov</div>
-        <div style="margin-top:6px;"><span class="badge badge-gold">Not Started</span></div>
+      <div style="background:var(--bg-mid);border-radius:8px;padding:12px;border:1px solid var(--green-border);">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">May 5, 2026</div>
+        <div style="font-size:13px;font-weight:700;color:var(--green);">✅ IRS Form 990-N</div>
+        <div style="font-size:11px;color:var(--text-3);">Filed early • Initial Return • EIN 92-3071148</div>
+        <div style="margin-top:6px;"><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
       </div>
       <div style="background:var(--bg-mid);border-radius:8px;padding:12px;border:1px solid var(--green-border);">
         <div style="font-size:11px;color:var(--text-3);margin-bottom:2px;">April 9, 2026</div>
@@ -1465,7 +1469,7 @@ body > * { position: relative; z-index: 1; }
   <div class="section-header">
     <div class="section-icon green">🏆</div>
     <div class="section-title">Grant Pipeline & Strategy</div>
-    <div class="section-sub">30+ funders identified • Year 1 target: $75K–$125K</div>
+    <div class="section-sub">45+ funders identified • Year 1 target: $100K–$250K</div>
   </div>
 
   <!-- Readiness Bar -->
@@ -1474,15 +1478,15 @@ body > * { position: relative; z-index: 1; }
       <div style="flex:1;min-width:200px;">
         <div class="readiness-label">
           <span>Grant Readiness Score</span>
-          <span>65%</span>
+          <span>75%</span>
         </div>
-        <div class="readiness-track"><div class="readiness-fill" style="width:65%;"></div></div>
+        <div class="readiness-track"><div class="readiness-fill" style="width:75%;"></div></div>
         <div style="font-size:11px;color:var(--text-3);margin-top:6px;">Consultant: Collins Grant Consulting • AOR: Rhonda Reeder — President</div>
       </div>
       <div style="display:flex;gap:16px;flex-wrap:wrap;">
         <div><div style="font-size:11px;color:var(--text-3);">Year 1 Target</div><div style="font-size:16px;font-weight:700;color:var(--gold);">$75K–$125K</div></div>
-        <div><div style="font-size:11px;color:var(--text-3);">Funders Identified</div><div style="font-size:16px;font-weight:700;color:var(--blue-light);">30+</div></div>
-        <div><div style="font-size:11px;color:var(--text-3);">Next Deadline</div><div style="font-size:16px;font-weight:700;color:var(--red);">Apr 30</div></div>
+        <div><div style="font-size:11px;color:var(--text-3);">Funders Identified</div><div style="font-size:16px;font-weight:700;color:var(--blue-light);">45+</div></div>
+        <div><div style="font-size:11px;color:var(--text-3);">Next Deadline</div><div style="font-size:16px;font-weight:700;color:var(--gold);">May 18</div></div>
       </div>
     </div>
   </div>
@@ -1502,9 +1506,13 @@ body > * { position: relative; z-index: 1; }
         <div class="check-item"><div class="check-icon">✅</div><div>Grant language reference (Two-Gen framework)</div></div>
         <div class="check-item"><div class="check-icon">✅</div><div><div>Board formally seated</div><div class="check-note">5 motions passed — April 9, 2026</div></div></div>
         <div class="check-item"><div class="check-icon">⬜</div><div><div>GuideStar / Candid profile</div><div class="check-note">One-time setup — immediate credibility boost</div></div></div>
-        <div class="check-item"><div class="check-icon">⬜</div><div><div>First 990-N (e-Postcard) filed</div><div class="check-note">Due May 15, 2026 — builds public record for grantors</div></div></div>
-        <div class="check-item"><div class="check-icon">⬜</div><div><div>SAM.gov registration</div><div class="check-note">Required for ALL federal grants</div></div></div>
-        <div class="check-item"><div class="check-icon">⬜</div><div><div>FDACS charitable solicitation registration</div><div class="check-note">Status unknown — verify at fdacs.gov</div></div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div><div>First 990-N (e-Postcard) filed</div><div class="check-note">Filed May 5, 2026 — Initial Return, tax year 2025</div></div></div>
+        <div class="check-item"><div class="check-icon">✅</div><div><div>NPO Hub registered (Bonterra)</div><div class="check-note">Completed May 7, 2026 — required for Bank of America RFP (May 18)</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>SAM.gov registration</div><div class="check-note">Required for ALL federal grants — 10-day activation, start ASAP</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>MyFloridaMarketPlace (MFMP)</div><div class="check-note">Florida's SAM.gov equivalent — required for state contracts &amp; grants</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>FDACS Food &amp; Nutrition Grant registration</div><div class="check-note">FL Dept of Agriculture — direct food pantry match. Register at fdacs.gov</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>dosgrants.com (FL Dept of State portal)</div><div class="check-note">Florida's centralized state grants portal — community programs, literacy, culture</div></div></div>
+        <div class="check-item"><div class="check-icon">⬜</div><div><div>Hillsborough County BOCC Grants</div><div class="check-note">County-level funding portal — hcfl.gov. Brandon = unincorporated Hillsborough</div></div></div>
       </div>
     </div>
     <div class="card">
@@ -1522,19 +1530,41 @@ body > * { position: relative; z-index: 1; }
     </div>
   </div>
 
-  <!-- Priority Grants -->
-  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:10px;">🔴 Apply Immediately</div>
-  <div class="grant-row" style="border-color:var(--red-border);">
-    <div><div class="grant-name">Publix Super Markets Charities</div><div class="grant-area">Food Security</div><div class="grant-notes">Hunger Relief window March 1–April 30. Direct food pantry mission match. Apply NOW — 25 days left.</div></div>
+  <!-- Active Applications -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:10px;">✅ Submitted / Sent</div>
+  <div class="grant-row" style="border-color:var(--green-border);">
+    <div><div class="grant-name">ALDI Community Gift Card Program</div><div class="grant-area">Food Security</div><div class="grant-notes">Application submitted May 12, 2026. Gift cards for food pantry supply purchases. Rolling deadline — Oct 31, 2026.</div></div>
+    <div class="grant-award">$100–$1,000</div>
+    <div class="grant-deadline">Oct 31, 2026</div>
+    <div><span class="badge badge-green">✅ Submitted</span></div>
+  </div>
+  <div class="grant-row" style="border-color:var(--green-border);">
+    <div><div class="grant-name">Duke Energy Foundation</div><div class="grant-area">All program areas</div><div class="grant-notes">Intro email sent May 12, 2026 to Foundation@duke-energy.com from contact@icaregives.org. Awaiting response.</div></div>
+    <div class="grant-award">Up to $20,000</div>
+    <div class="grant-deadline">Rolling</div>
+    <div><span class="badge badge-green">✅ Sent</span></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:10px;margin-top:16px;">🔴 Denied</div>
+  <div class="grant-row" style="opacity:0.6;">
+    <div><div class="grant-name">Publix Super Markets Charities</div><div class="grant-area">Food Security</div><div class="grant-notes">Applied April 2026 • Denied. Re-verify eligibility criteria (4-yr minimum — operational vs. 501c3) before next cycle.</div></div>
     <div class="grant-award">Varies</div>
-    <div class="grant-deadline" style="color:var(--red);font-weight:700;">April 30, 2026</div>
-    <div><span class="badge badge-red">Not Started</span></div>
+    <div class="grant-deadline">April 30, 2026</div>
+    <div><span class="badge badge-grey">Denied</span></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin:16px 0 10px;">🟡 Upcoming</div>
+  <div class="grant-row" style="border-color:var(--green-border);">
+    <div><div class="grant-name">Bank of America Empowering Communities</div><div class="grant-area">Career Development / Family Strengthening</div><div class="grant-notes">RFP opens May 18 — NPO Hub registration complete ✅. Apply immediately when window opens. Deadline: June 29, 2026.</div></div>
+    <div class="grant-award">Varies</div>
+    <div class="grant-deadline">Jun 29, 2026</div>
+    <div><span class="badge badge-gold">May 18 — Ready</span></div>
   </div>
   <div class="grant-row">
-    <div><div class="grant-name">Wawa Foundation</div><div class="grant-area">All program areas</div><div class="grant-notes">Quarterly funding window — next may be open now. Research immediately.</div></div>
+    <div><div class="grant-name">Wawa Foundation</div><div class="grant-area">All program areas</div><div class="grant-notes">Quarterly funding window — July 2026. Begin prep now.</div></div>
     <div class="grant-award">$2,500+</div>
-    <div class="grant-deadline">Quarterly</div>
-    <div><span class="badge badge-gold">Research</span></div>
+    <div class="grant-deadline">Jul 2026</div>
+    <div><span class="badge badge-gold">Prepare</span></div>
   </div>
 
   <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin:16px 0 10px;">🟡 Upcoming</div>
@@ -1585,10 +1615,147 @@ body > * { position: relative; z-index: 1; }
     <div><span class="badge badge-grey">Research</span></div>
   </div>
   <div class="grant-row">
-    <div><div class="grant-name">USDA Community Food Projects (NIFA)</div><div class="grant-area">Food Security</div><div class="grant-notes">Requires $1:$1 match. Strong case with active food pantry operations.</div></div>
-    <div class="grant-award">$125K–$400K</div>
-    <div class="grant-deadline">October annually</div>
-    <div><span class="badge badge-grey">Prep</span></div>
+    <div><div class="grant-name">USDA Community Food Projects (NIFA / CFPCGP)</div><div class="grant-area">Food Security</div><div class="grant-notes">After SAM.gov (~May 22): apply immediately. Est. $50K–$200K+. 1:1 match required (in-kind counts). 4yr pantry track record + 2Gen = strong fit. FY2027 NOFO est. June–July 2026.</div></div>
+    <div class="grant-award">$50K–$200K+</div>
+    <div class="grant-deadline">Jun–Jul 2026</div>
+    <div><span class="badge badge-blue">After SAM.gov</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">GusNIP — SNAP Nutrition Incentive Program</div><div class="grant-area">Food Security / Health</div><div class="grant-notes">After SAM.gov: design SNAP match program with Feeding Tampa Bay partnership. Incentive dollars for fresh produce access. nifa.usda.gov/gusnip</div></div>
+    <div class="grant-award">$50K–$150K</div>
+    <div class="grant-deadline">TBD 2026</div>
+    <div><span class="badge badge-blue">After SAM.gov</span></div>
+  </div>
+
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#a78bfa;margin:20px 0 10px;">🟣 Hidden Opportunities — Newly Identified (May 2026)</div>
+  <div style="font-size:11px;color:var(--text-3);margin-bottom:12px;">Low-competition, overlooked funders. LOIs in progress for top two.</div>
+  <div class="grant-row" style="border-color:#4c1d95;">
+    <div><div class="grant-name">Allegany Franciscan Ministries (ACOR / Tau)</div><div class="grant-area">All 5 program areas</div><div class="grant-notes">Tampa Bay-region Catholic foundation — funds ALL nonprofits, not just Catholic orgs. Explicitly prioritizes BIPOC-led organizations. Rolling applications. LOI drafted May 12, 2026.</div></div>
+    <div class="grant-award">Variable</div>
+    <div class="grant-deadline">Rolling</div>
+    <div><span class="badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">LOI Ready</span></div>
+  </div>
+  <div class="grant-row" style="border-color:#4c1d95;">
+    <div><div class="grant-name">W.K. Kellogg Foundation</div><div class="grant-area">All areas / Two-Generation</div><div class="grant-notes">National foundation actively seeking Black-led + woman-led nonprofits. Rolling deadlines, 30-day LOI response. iCARE's 2Gen model = rare differentiator. LOI drafted May 12, 2026.</div></div>
+    <div class="grant-award">$25K–$500K+</div>
+    <div class="grant-deadline">Rolling</div>
+    <div><span class="badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">LOI Ready</span></div>
+  </div>
+  <div class="grant-row" style="border-color:var(--green-border);">
+    <div><div class="grant-name">HCA Florida — Healthier Tomorrow Fund</div><div class="grant-area">Food Insecurity / Health Equity</div><div class="grant-notes">Outreach sent May 12, 2026 → Corp.FoundationsGifts@HCAHealthcare.com. Awaiting response / application portal details. Emerging fund, explicit food insecurity + health equity focus. Less competition than established foundations.</div></div>
+    <div class="grant-award">$10K–$25K</div>
+    <div class="grant-deadline">Annual</div>
+    <div><span class="badge badge-green">✅ Outreach Sent 5/12</span></div>
+  </div>
+  <div class="grant-row" style="border-color:var(--green-border);">
+    <div><div class="grant-name">Tampa General Hospital Foundation</div><div class="grant-area">Community Health / Social Determinants</div><div class="grant-notes">Outreach sent May 12, 2026 → sponsorship@tgh.org. Asked for 2026 RFP guidelines. Awaiting response. IRS-required community benefit grants — almost no small nonprofits pursue these.</div></div>
+    <div class="grant-award">$15K–$50K</div>
+    <div class="grant-deadline">Annual</div>
+    <div><span class="badge badge-green">✅ Outreach Sent 5/12</span></div>
+  </div>
+  <div class="grant-row" style="border-color:var(--green-border);">
+    <div><div class="grant-name">BayCare Health System Foundation</div><div class="grant-area">Health Equity / Food Access</div><div class="grant-notes">Outreach sent May 12, 2026 → SJHFoundation@baycare.org. Asked about community grant program. Awaiting response. Explicit social determinants focus including food insecurity. Hillsborough County = geographic match.</div></div>
+    <div class="grant-award">Variable</div>
+    <div class="grant-deadline">Annual</div>
+    <div><span class="badge badge-green">✅ Outreach Sent 5/12</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">Jessie Ball duPont Fund</div><div class="grant-area">Food Security / Family Support</div><div class="grant-notes">Southeast US focus, strong FL presence. Explicit "Community Safety Net Fund" — food security direct match. $25K–$100K range. dupontfund.org</div></div>
+    <div class="grant-award">$25K–$100K</div>
+    <div class="grant-deadline">Annual</div>
+    <div><span class="badge badge-blue">Prep</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">Junior League of Tampa</div><div class="grant-area">Education / Community Need</div><div class="grant-notes">Very low competition. iCARE's 4+ year operational history meets eligibility. $3K + volunteer support. Check jltampa.org for next application cycle.</div></div>
+    <div class="grant-award">Up to $3,000 + volunteers</div>
+    <div class="grant-deadline">Biannual</div>
+    <div><span class="badge badge-grey">Check Cycle</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">Florida Blue Foundation — Food Security</div><div class="grant-area">Food Security / Health Equity</div><div class="grant-notes">2026 cycle closed. Monitor floridablue.com/foundation starting August 2026 for reopening. $14.5M invested in food security since 2020. High fit — 501(c)(3) + SNAP-eligible population.</div></div>
+    <div class="grant-award">$15K–$25K</div>
+    <div class="grant-deadline">Monitor Q4 2026</div>
+    <div><span class="badge badge-grey">Monitor</span></div>
+  </div>
+  <div class="grant-row">
+    <div><div class="grant-name">Aspen Institute Ascend — 2Gen Accelerator</div><div class="grant-area">Two-Generation / Family Economic Mobility</div><div class="grant-notes">$170K grant for orgs to document their 2Gen approach. iCARE IS a 2Gen organization — rare and fundable. Monitor ascend.aspeninstitute.org for next cohort opening.</div></div>
+    <div class="grant-award">Up to $170K</div>
+    <div class="grant-deadline">Cohort TBD</div>
+    <div><span class="badge badge-grey">Monitor</span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 5B — STAFFING & CAPACITY BUILDING GRANTS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="staffing-grants">
+  <div class="section-header">
+    <div class="section-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">💼</div>
+    <div class="section-title">Staffing & Capacity Building Grants</div>
+  </div>
+  <p style="font-size:13px;color:var(--text-2);margin-bottom:20px;">Grants that fund salaries, volunteer stipends, Executive Director compensation, and organizational capacity — the fastest path to paid staff.</p>
+
+  <!-- Apply Now -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Apply Now — Rolling</div>
+  <div class="grant-table" style="margin-bottom:24px;">
+    <div class="grant-header">
+      <div>Funder</div><div>Award</div><div>Deadline</div><div>Status</div>
+    </div>
+
+    <div class="grant-row" style="background:rgba(16,185,129,0.06);border-left:3px solid #10b981;">
+      <div><div class="grant-name">AmeriCorps VISTA</div><div class="grant-meta">Inquiry sent May 12, 2026 → unitedway@uwsuncoast.org. Asked to be connected with VISTA placement coordinator. Awaiting response. National Service — Full-time staff member at ZERO cost to iCARE. Federal government pays the stipend. Apply through United Way Suncoast (Tampa Bay VISTA sponsor). Covers ED-level work for 1 full year.</div></div>
+      <div class="grant-award">~$20K value/yr</div>
+      <div class="grant-deadline">Rolling</div>
+      <div><span class="badge badge-green">✅ Outreach Sent 5/12</span></div>
+    </div>
+
+    <div class="grant-row" style="background:rgba(245,158,11,0.06);border-left:3px solid var(--gold);">
+      <div><div class="grant-name">United Way Suncoast — ACE Grant</div><div class="grant-meta">2026 window closed May 1 — missed by 11 days. Relationship email sent May 12, 2026 → unitedway@uwsuncoast.org asking about next cycle dates. Awaiting reply. Next cycle est. spring 2027. Unrestricted GOS — direct match for ALICE families, iCARE budget, and program model.</div></div>
+      <div class="grant-award">Up to $20K</div>
+      <div class="grant-deadline">Next Cycle 2027</div>
+      <div><span class="badge badge-grey">2026 Closed • Next Cycle 2027</span></div>
+    </div>
+
+    <div class="grant-row">
+      <div><div class="grant-name">Community Foundation Tampa Bay — Venture Fund</div><div class="grant-meta">Grassroots/startup nonprofit capacity fund. GOS available. Start relationship now — Dec 2026 LOI window. Don't wait to make first contact.</div></div>
+      <div class="grant-award">$10K–$50K</div>
+      <div class="grant-deadline">Dec 2026 LOI</div>
+      <div><span class="badge badge-blue">Build Relationship</span></div>
+    </div>
+  </div>
+
+  <!-- Prepare for 2027 -->
+  <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:12px;">Prepare Now — Apply 2027</div>
+  <div class="grant-table" style="margin-bottom:24px;">
+    <div class="grant-header">
+      <div>Funder</div><div>Award</div><div>Eligible</div><div>Status</div>
+    </div>
+
+    <div class="grant-row">
+      <div><div class="grant-name">Ben &amp; Jerry's Foundation</div><div class="grant-meta">Unrestricted general operating support — no restrictions on how funds are used. 2026 cycle closed Feb 25. Prepare narrative now for 2027 open.</div></div>
+      <div class="grant-award">$20K GOS</div>
+      <div class="grant-deadline">2027 Cycle</div>
+      <div><span class="badge badge-grey">Prepare</span></div>
+    </div>
+
+    <div class="grant-row">
+      <div><div class="grant-name">Echoing Green Fellowship</div><div class="grant-meta">$100K 2-year stipend for social entrepreneur / Executive Director. Corey or Rhonda eligible to apply. iCARE's 2Gen model is a rare differentiator. Watch for fall 2026 cohort application window.</div></div>
+      <div class="grant-award">$100K / 2 yrs</div>
+      <div class="grant-deadline">Watch Fall 2026</div>
+      <div><span class="badge badge-grey">Monitor</span></div>
+    </div>
+  </div>
+
+  <!-- Stacking Strategy -->
+  <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:16px;margin-top:4px;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#10b981;margin-bottom:10px;">🎯 Stacking Strategy — Paid Staff by Q4 2026</div>
+    <div style="font-size:13px;color:var(--text-2);display:flex;flex-direction:column;gap:6px;">
+      <div><span style="color:#10b981;font-weight:600;">Step 1:</span> AmeriCorps VISTA → Full-time member, zero cost, handles coordinator duties immediately</div>
+      <div><span style="color:#10b981;font-weight:600;">Step 2:</span> United Way Suncoast ACE ($20K) → Funds ED partial salary + operations</div>
+      <div><span style="color:#10b981;font-weight:600;">Step 3:</span> AFM + WKKF LOIs (submitted this week) → Program coordinator line items in both budgets</div>
+      <div><span style="color:#10b981;font-weight:600;">Step 4:</span> CFTB relationship → GOS + capacity grant Dec 2026 LOI</div>
+      <div style="margin-top:8px;font-weight:600;color:var(--text-1);">Stack 1+2+3 = realistic paid ED + coordinator by Q4 2026</div>
+    </div>
   </div>
 </section>
 
@@ -1624,55 +1791,50 @@ body > * { position: relative; z-index: 1; }
       <div><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
     </div>
 
-    <div class="deadline-item urgent">
+    <div class="deadline-item" style="border-color:var(--green-border);background:var(--green-dim);opacity:0.7;">
       <div class="deadline-date-col">
-        <div class="deadline-date">April 30</div>
-        <div class="deadline-day">8 days</div>
+        <div class="deadline-date" style="color:var(--green);">April 30</div>
+        <div class="deadline-day" style="color:var(--green);">Complete</div>
       </div>
       <div class="deadline-body">
-        <div class="deadline-title">Publix Super Markets Charities — Grant Deadline</div>
-        <div class="deadline-meta">publix.com/charities • Free to apply</div>
+        <div class="deadline-title">Publix Super Markets Charities — Grant</div>
+        <div class="deadline-meta">Applied • Denied — re-verify eligibility before next cycle</div>
         <div class="deadline-actions">
-          <div class="deadline-action">Apply immediately — Hunger Relief window closes April 30</div>
-          <div class="deadline-action">Direct mission match: food pantry + youth programs</div>
+          <div class="deadline-action" style="color:var(--text-3);">Filed April 2026 • Denied • Not a blocker for other grants</div>
         </div>
       </div>
-      <div><span class="badge badge-red">Apply Now</span></div>
+      <div><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
     </div>
 
-    <div class="deadline-item critical">
+    <div class="deadline-item" style="border-color:var(--green-border);background:var(--green-dim);">
       <div class="deadline-date-col">
-        <div class="deadline-date">May 1</div>
-        <div class="deadline-day">9 days</div>
+        <div class="deadline-date" style="color:var(--green);">May 1</div>
+        <div class="deadline-day" style="color:var(--green);">Complete</div>
       </div>
       <div class="deadline-body">
         <div class="deadline-title">Florida Annual Report</div>
-        <div class="deadline-meta">sunbiz.org • $61.25 fee • CANNOT be changed after submission</div>
+        <div class="deadline-meta">sunbiz.org • $61.25 • Filed</div>
         <div class="deadline-actions">
-          <div class="deadline-action">Collect street addresses from all 5 board members</div>
-          <div class="deadline-action">File online at sunbiz.org in Step 9: edit board member info</div>
+          <div class="deadline-action" style="color:var(--green);">✅ Filed May 1, 2026 — sunbiz.org</div>
         </div>
-        <div class="deadline-blocker">⚠ Warning: Listing someone without permission = 3rd degree felony under Florida law. Confirm all names and consent first.</div>
       </div>
-      <div><span class="badge badge-gold">Not Started</span></div>
+      <div><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
     </div>
 
-    <div class="deadline-item critical">
+    <div class="deadline-item" style="border-color:var(--green-border);background:var(--green-dim);">
       <div class="deadline-date-col">
-        <div class="deadline-date">May 15</div>
-        <div class="deadline-day">40 days</div>
+        <div class="deadline-date" style="color:var(--green);">May 5</div>
+        <div class="deadline-day" style="color:var(--green);">Complete</div>
       </div>
       <div class="deadline-body">
-        <div class="deadline-title">IRS Form 990-N (e-Postcard) — Tax Year 2025 — First Filing</div>
-        <div class="deadline-meta">irs.gov/charities • Free • Gross receipts ≤ $50K — no balance sheet required</div>
+        <div class="deadline-title">IRS Form 990-N (e-Postcard) — Tax Year 2025 — Initial Return</div>
+        <div class="deadline-meta">irs.gov • Filed early (due May 15) • EIN 92-3071148</div>
         <div class="deadline-actions">
-          <div class="deadline-action">File online at IRS.gov — takes ~10 minutes</div>
-          <div class="deadline-action">Need: EIN, tax year dates, principal officer name, confirmation gross receipts ≤ $50K</div>
-          <div class="deadline-action">Check "Initial Return" — this is iCARE's first 990-N filing</div>
-          <div class="deadline-action">Rhonda Reeder signs as principal officer</div>
+          <div class="deadline-action" style="color:var(--green);">✅ Filed May 5, 2026 — 10 days ahead of deadline</div>
+          <div class="deadline-action" style="color:var(--green);">✅ Unblocks GuideStar/Candid profile — create now</div>
         </div>
       </div>
-      <div><span class="badge badge-gold">Not Started</span></div>
+      <div><span class="badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);">Done</span></div>
     </div>
 
     <div class="deadline-item important">
@@ -1734,7 +1896,7 @@ body > * { position: relative; z-index: 1; }
     <div>
       <div class="section-title">Governance Documents</div>
     </div>
-    <div class="section-sub">Minutes • Bylaws • Board Agreements • Signed Documents</div>
+    <div class="section-sub">Minutes • Bylaws • Board Agreements • Legal &amp; Compliance • Signed Documents</div>
   </div>
 
   <!-- Folders -->
@@ -1753,7 +1915,9 @@ body > * { position: relative; z-index: 1; }
           <span class="doc-type-icon">📄</span>
           <div class="doc-info">
             <div class="doc-name">April 9, 2026 — First Board Meeting Minutes</div>
-            <div class="doc-meta">Draft • Prepared by NicheFinders AI • Pending Secretary signature</div>
+            <div class="doc-meta">Draft • Prepared by NicheFinders AI</div>
+            <div class="doc-summary">Official record of the first board meeting — documents board seating, officer elections, and all motions passed. Must be reviewed and certified by the Secretary to become the official legal record.</div>
+            <span class="doc-sign-badge needs-sig">✍ Needs Secretary Signature</span>
           </div>
           <div class="doc-actions">
             <button class="doc-btn doc-btn-dl" onclick="downloadMinutes()">⬇ Download</button>
@@ -1768,14 +1932,21 @@ body > * { position: relative; z-index: 1; }
       <div class="doc-folder-header" onclick="toggleFolder('folder-bylaws', this)">
         <span class="doc-folder-icon">📋</span>
         <span class="doc-folder-title">Bylaws</span>
-        <span class="doc-folder-count" id="folder-bylaws-count">Pending legal review</span>
+        <span class="doc-folder-count" id="folder-bylaws-count">1 document</span>
         <span class="doc-folder-chevron" id="folder-bylaws-chevron">▶</span>
       </div>
       <div class="doc-folder-body" id="folder-bylaws">
-        <div style="text-align:center;padding:24px;color:var(--text-3);font-size:13px;">
-          <div style="font-size:24px;margin-bottom:8px;">⚖️</div>
-          Revised bylaws are with legal counsel. Expected mid-week April 14, 2026.<br>
-          <span style="font-size:11px;">Rhonda Reeder will notify the board when ready for the workshop.</span>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">iCARE Foundation Bylaws — Final</div>
+            <div class="doc-meta">PDF • Adopted April 11, 2026</div>
+            <div class="doc-summary">Governing rules of iCARE Foundation — defines board structure, officer duties, voting procedures, quorum requirements, conflict of interest policy, and amendment process. The foundation's primary governing document.</div>
+            <span class="doc-sign-badge adopted">✓ Formally Adopted</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/iCARE_Bylaws_Final.pdf" download>⬇ Download</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1784,15 +1955,117 @@ body > * { position: relative; z-index: 1; }
     <div class="doc-folder">
       <div class="doc-folder-header" onclick="toggleFolder('folder-agreements', this)">
         <span class="doc-folder-icon">✍️</span>
-        <span class="doc-folder-title">Board Agreements &amp; Conflict of Interest Forms</span>
-        <span class="doc-folder-count" id="folder-agreements-count">Pending preparation</span>
+        <span class="doc-folder-title">Board Agreements, COI &amp; NDA</span>
+        <span class="doc-folder-count" id="folder-agreements-count">3 documents</span>
         <span class="doc-folder-chevron" id="folder-agreements-chevron">▶</span>
       </div>
       <div class="doc-folder-body" id="folder-agreements">
-        <div style="text-align:center;padding:24px;color:var(--text-3);font-size:13px;">
-          <div style="font-size:24px;margin-bottom:8px;">📑</div>
-          Board agreement and conflict of interest disclosure forms are being prepared.<br>
-          <span style="font-size:11px;">Required for grant applications. Due at bylaws workshop.</span>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">Board Member Agreement</div>
+            <div class="doc-meta">Word doc • Required — all 5 board members</div>
+            <div class="doc-summary">Each board member's written commitment to iCARE — confirms duties, attendance expectations, fiduciary responsibilities, and conduct standards. Download, sign, and upload your signed copy below.</div>
+            <span class="doc-sign-badge needs-sig">✍ Needs Signature — All 5 Board Members</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/iCARE_Board_Member_Agreement.docx" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">Conflict of Interest Disclosure Form</div>
+            <div class="doc-meta">PDF • Annual • Required by IRS best practices</div>
+            <div class="doc-summary">Each board member discloses any personal, financial, or professional interests that could conflict with iCARE's mission. Required by IRS governance guidelines and nearly all grant funders. Must be re-signed every year.</div>
+            <span class="doc-sign-badge needs-sig">✍ Needs Signature — All 5 Board Members</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/ICARE_Conflict_of_Interest_Final.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">Board Member NDA</div>
+            <div class="doc-meta">Word doc • Required — all 5 board members</div>
+            <div class="doc-summary">Confidentiality agreement protecting iCARE's organizational information, donor records, financial data, and board discussions. Prohibits unauthorized disclosure to outside parties. Download, sign, and upload your signed copy below.</div>
+            <span class="doc-sign-badge needs-sig">✍ Needs Signature — All 5 Board Members</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/ICARE_Board_NDA.docx" download>⬇ Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal & Compliance -->
+    <div class="doc-folder">
+      <div class="doc-folder-header" onclick="toggleFolder('folder-legal', this)">
+        <span class="doc-folder-icon">🏛️</span>
+        <span class="doc-folder-title">Legal &amp; Compliance</span>
+        <span class="doc-folder-count" id="folder-legal-count">5 documents</span>
+        <span class="doc-folder-chevron" id="folder-legal-chevron">▶</span>
+      </div>
+      <div class="doc-folder-body" id="folder-legal">
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">IRS Determination Letter (Letter 947)</div>
+            <div class="doc-meta">PDF • Issued May 15, 2025 • EIN 92-3071148</div>
+            <div class="doc-summary">Official IRS recognition of iCARE Foundation as a 501(c)(3) Public Charity. Required attachment for virtually every grant application. Effective date: March 19, 2025.</div>
+            <span class="doc-sign-badge adopted">✓ Official IRS Document</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/DeterminationLetter_iCare.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">Florida Charitable Registration Application</div>
+            <div class="doc-meta">PDF • State of Florida • Required for soliciting donations in FL</div>
+            <div class="doc-summary">Florida Department of Agriculture and Consumer Services charitable organization registration. Required to legally solicit donations from Florida residents. Must be renewed annually.</div>
+            <span class="doc-sign-badge adopted">✓ Filed</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/Charitable_Registration_Application.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">Florida Annual Report Certificate</div>
+            <div class="doc-meta">PDF • Sunbiz.org • Filed 2026</div>
+            <div class="doc-summary">State of Florida Division of Corporations annual report certificate confirming iCARE Foundation is an active, registered nonprofit corporation in good standing. Required by grant funders to verify active status.</div>
+            <span class="doc-sign-badge adopted">✓ Filed — Active &amp; In Good Standing</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/ICARE_Certificate_Annual_Report.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">IRS Form 990-N Filing Confirmation</div>
+            <div class="doc-meta">Image • Filed May 5, 2026 • Tax Year 2025 — Initial Return</div>
+            <div class="doc-summary">Confirmation that iCARE Foundation filed IRS Form 990-N (e-Postcard) for tax year 2025. Keeps 501(c)(3) status active — three consecutive missed filings results in automatic revocation.</div>
+            <span class="doc-sign-badge adopted">✓ Filed on Time</span>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/iCare_990N_confirmation.png" target="_blank">⬇ View / Download</a>
+          </div>
+        </div>
+        <div class="doc-row">
+          <span class="doc-type-icon">📄</span>
+          <div class="doc-info">
+            <div class="doc-name">Official Letterhead</div>
+            <div class="doc-meta">PDF • Use for official correspondence</div>
+            <div class="doc-summary">iCARE Foundation official letterhead for formal communications, grant correspondence, and official notices. Use this template for any letter sent on behalf of the organization.</div>
+          </div>
+          <div class="doc-actions">
+            <a class="doc-btn doc-btn-dl" href="docs/iCare_Letterhead.pdf" download>⬇ Download</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1834,6 +2107,7 @@ body > * { position: relative; z-index: 1; }
             <option value="bylaws">Bylaws (Signed)</option>
             <option value="coi">Conflict of Interest Form</option>
             <option value="board-agreement">Board Member Agreement</option>
+            <option value="nda">Board Member NDA</option>
             <option value="other">Other Governance Document</option>
           </select>
         </div>
@@ -1850,8 +2124,8 @@ body > * { position: relative; z-index: 1; }
            ondrop="handleDrop(event)">
         <div class="upload-zone-icon">📎</div>
         <div class="upload-zone-text">Drag &amp; drop your signed document here</div>
-        <div class="upload-zone-sub">PDF, JPG, or PNG • Max 10MB</div>
-        <input type="file" id="upload-file-input" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="handleFileSelect(event)">
+        <div class="upload-zone-sub">PDF, JPG, PNG, or Word doc • Max 8MB</div>
+        <input type="file" id="upload-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="display:none;" onchange="handleFileSelect(event)">
         <button class="upload-select-btn" onclick="document.getElementById('upload-file-input').click()">Browse Files</button>
       </div>
 
@@ -1939,20 +2213,21 @@ body > * { position: relative; z-index: 1; }
       Board Portal for <strong>Community Advancement Resource Enrichment, Inc. (iCARE)</strong> •
       EIN 92-3071148 • 501(c)(3) Public Charity •
       Maintained by <strong>NicheFinders AI</strong> •
-      Last updated April 10, 2026
+      Last updated <span id="footer-updated-date"></span>
     </div>
   </div>
 </footer>
 
 <script>
 // ─── CONFIG ──────────────────────────────────────────────────────
-const AIRTABLE_BASE = 'appkKo8Ap1u5ijogd';
-const AIRTABLE_TABLE = 'iCare Board Ideas';
-const AIRTABLE_KEY = 'REDACTED_AIRTABLE_KEY';
-const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`;
+const IDEAS_API = '/.netlify/functions/ideas-api';
 
 // ─── AUTH STATE ───────────────────────────────────────────────────
-const IDENTITY_URL = 'https://icare-board-portal.netlify.app/.netlify/identity';
+const IDENTITY_URL = window.location.origin + '/.netlify/identity';
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 // Handle invite/recovery tokens from Netlify email links
 (function handleToken() {
@@ -2078,6 +2353,7 @@ function showPortal(user) {
   document.getElementById('user-email').textContent = user.email;
   loadProgramData();
   loadIdeas();
+  loadUploadedDocs();
 }
 
 function showGate() {
@@ -2254,9 +2530,7 @@ async function loadIdeas() {
   const feed = document.getElementById('ideas-feed');
   feed.innerHTML = '<div class="ideas-loading">Loading ideas...</div>';
   try {
-    const res = await fetch(`${AIRTABLE_URL}?sort[0][field]=Upvotes&sort[0][direction]=desc`, {
-      headers: { 'Authorization': `Bearer ${AIRTABLE_KEY}` }
-    });
+    const res = await fetch(IDEAS_API);
     const data = await res.json();
     if (!data.records || data.records.length === 0) {
       feed.innerHTML = '<div class="ideas-empty">No ideas yet. Be the first to submit one above.</div>';
@@ -2300,18 +2574,16 @@ function renderIdeaCard(record) {
   `;
 }
 
-function escapeHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
 async function upvoteIdea(recordId, currentVotes, hasVoted) {
   if (hasVoted) { showToast('You already voted for this idea.', false); return; }
-  const newCount = currentVotes + 1;
   try {
-    await fetch(`${AIRTABLE_URL}/${recordId}`, {
+    await fetch(IDEAS_API, {
       method: 'PATCH',
-      headers: { 'Authorization': `Bearer ${AIRTABLE_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields: { Upvotes: newCount } })
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${currentUser?.token?.access_token || ''}`
+      },
+      body: JSON.stringify({ recordId })
     });
     const voted = JSON.parse(localStorage.getItem('voted_ideas') || '[]');
     voted.push(recordId);
@@ -2331,6 +2603,7 @@ const DOC_TYPE_LABELS = {
   'bylaws':          'Bylaws',
   'coi':             'Conflict of Interest Form',
   'board-agreement': 'Board Member Agreement',
+  'nda':             'Board Member NDA',
   'other':           'Governance Document'
 };
 
@@ -2505,26 +2778,22 @@ function downloadMinutes() {
   const meeting = programData && programData.agenda && programData.agenda.past_meetings &&
     programData.agenda.past_meetings.find(m => m.date === 'April 9, 2026');
 
-  if (!meeting || !meeting.minutes) {
+  if (!meeting) {
     showToast('Minutes document not available yet.', true);
     return;
   }
 
-  const m = meeting.minutes.content;
-  const motions = (m.motions_passed || []).map(mo =>
-    `Motion ${mo.number}: ${mo.title}\nResult: ${mo.result}\n${mo.notes ? 'Notes: ' + mo.notes : ''}`
-  ).join('\n\n');
-
-  const appointments = (m.appointments || []).join('\n');
+  const motions = (meeting.motions_passed || []).join('\n');
+  const appointments = (meeting.appointments || []).join('\n');
+  const dateSlug = meeting.date.replace(/\s+/g, '').replace(/,/g, '');
 
   const text = `MINUTES OF THE BOARD OF DIRECTORS
 Community Advancement Resource Enrichment, Inc. (iCARE Foundation)
-First Meeting of 2026 — ${m.date}
+Meeting Date — ${meeting.date}
 
 EIN: 92-3071148
-Quorum: ${m.quorum}
-
-STATUS: ${meeting.status.toUpperCase()} — ${meeting.minutes.prepared_by}
+Status: ${(meeting.status || '').toUpperCase()}
+Minutes Status: ${meeting.minutes_status || 'Pending certification'}
 
 ═══════════════════════════════════════
 MOTIONS PASSED
@@ -2540,12 +2809,11 @@ ${appointments}
 CERTIFICATION
 ═══════════════════════════════════════
 Secretary Signature: _________________________
-${m.certification.secretary}
 
 Date: _________________________
 
 Approved by: _________________________
-${m.certification.approved_by}, President
+President
 
 Date: _________________________
 
@@ -2556,7 +2824,7 @@ This document is confidential — for board members only.
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'iCARE_Board_Minutes_April9_2026_DRAFT.txt';
+  a.download = `iCARE_Board_Minutes_${dateSlug}_DRAFT.txt`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -2589,14 +2857,14 @@ function handleFileSelect(e) {
 }
 
 function processFile(file) {
-  const maxSize = 10 * 1024 * 1024; // 10MB
-  const allowed = ['application/pdf', 'image/jpeg', 'image/png'];
+  const maxSize = 8 * 1024 * 1024; // 8MB — Netlify Forms limit
+  const allowed = ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
   if (!allowed.includes(file.type)) {
-    showToast('Only PDF, JPG, or PNG files are allowed.', true);
+    showToast('Only PDF, JPG, PNG, or Word files are allowed.', true);
     return;
   }
   if (file.size > maxSize) {
-    showToast('File must be under 10MB.', true);
+    showToast('File must be under 8MB.', true);
     return;
   }
   selectedFile = file;
@@ -2644,6 +2912,7 @@ async function submitUpload() {
     // Use Netlify Forms for file storage
     const formData = new FormData();
     formData.append('form-name', 'governance-doc-upload');
+    formData.append('bot-field', '');
     formData.append('uploaded-by', currentUser ? currentUser.email : 'unknown');
     formData.append('doc-type', docType);
     formData.append('doc-name', docName);
@@ -2664,10 +2933,12 @@ async function submitUpload() {
       statusEl.textContent = 'Upload complete!';
       resultEl.style.display = 'block';
       resultEl.style.color = 'var(--green)';
-      resultEl.textContent = '✅ Document uploaded successfully. NicheFinders AI will be notified and will add it to the signed documents archive.';
+      resultEl.textContent = '✅ Document uploaded. It will appear in the Signed Documents Archive for all board members within a few minutes.';
 
-      // Add to local signed docs list immediately
-      addToSignedList(docName, docType, currentUser ? currentUser.email : 'Board Member');
+      // Refresh archive from server after brief delay (Netlify Forms processes async)
+      const uploaderName = currentUser ? currentUser.email : 'Board Member';
+      saveUploadedDoc(docName, docType, uploaderName);
+      setTimeout(async () => { await loadUploadedDocs(); }, 3000);
 
       // Reset form
       clearFileSelection();
@@ -2691,7 +2962,7 @@ async function submitUpload() {
   }
 }
 
-function addToSignedList(name, type, uploadedBy) {
+function addToSignedList(name, type, uploadedBy, fileUrl, uploadDate) {
   const listEl = document.getElementById('signed-docs-list');
   const emptyEl = document.getElementById('signed-empty');
   const countEl = document.getElementById('folder-signed-count');
@@ -2700,17 +2971,21 @@ function addToSignedList(name, type, uploadedBy) {
 
   const typeLabels = DOC_TYPE_LABELS;
 
-  const date = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  const date = uploadDate || new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  const safeUrl = fileUrl && fileUrl.startsWith('https://') ? fileUrl : null;
+  const dlBtn = safeUrl
+    ? `<a class="doc-btn doc-btn-dl" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener">⬇ Download</a>`
+    : `<span class="doc-btn doc-btn-signed">✓ Uploaded</span>`;
   const row = document.createElement('div');
   row.className = 'doc-row';
   row.innerHTML = `
     <span class="doc-type-icon">✅</span>
     <div class="doc-info">
       <div class="doc-name">${escapeHtml(name)}</div>
-      <div class="doc-meta">${escapeHtml(typeLabels[type] || type)} • Uploaded ${date} by ${escapeHtml(uploadedBy)} • Pending archive</div>
+      <div class="doc-meta">${escapeHtml(typeLabels[type] || type)} • Uploaded ${date} by ${escapeHtml(uploadedBy)}</div>
     </div>
     <div class="doc-actions">
-      <span class="doc-btn doc-btn-signed">✓ Uploaded</span>
+      ${dlBtn}
     </div>`;
 
   if (listEl) listEl.appendChild(row);
@@ -2726,6 +3001,76 @@ function addToSignedList(name, type, uploadedBy) {
   if (chevron) chevron.classList.add('open');
 }
 
+async function loadUploadedDocs() {
+  const listEl = document.getElementById('signed-docs-list');
+  const emptyEl = document.getElementById('signed-empty');
+  const countEl = document.getElementById('folder-signed-count');
+
+  try {
+    const stored = localStorage.getItem('nf_user');
+    const user = stored ? JSON.parse(stored) : null;
+    const token = user?.token?.access_token;
+    if (!token) return;
+
+    const res = await fetch('/.netlify/functions/list-uploads', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error('status ' + res.status);
+
+    const data = await res.json();
+    const docs = (data.submissions || []).filter(d => d.fileUrl);
+    if (!docs.length) return;
+
+    // Clear placeholder and existing rows
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (listEl) listEl.querySelectorAll('.doc-row').forEach(r => r.remove());
+
+    docs.forEach(doc => {
+      addToSignedList(
+        doc.docName || doc.docType,
+        doc.docType,
+        doc.uploadedBy,
+        doc.fileUrl,
+        doc.uploadDate
+          ? new Date(doc.uploadDate).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' })
+          : null
+      );
+    });
+
+  } catch(e) {
+    // Fall back to localStorage entries (per-device, no download links)
+    try {
+      const stored = JSON.parse(localStorage.getItem('icare_uploaded_docs') || '[]');
+      if (stored.length) {
+        if (emptyEl) emptyEl.style.display = 'none';
+        stored.forEach(doc => addToSignedList(doc.name, doc.type, doc.uploadedBy, null, doc.date));
+      }
+    } catch(e2) {}
+  }
+}
+
+function saveUploadedDoc(name, type, uploadedBy) {
+  try {
+    const stored = JSON.parse(localStorage.getItem('icare_uploaded_docs') || '[]');
+    stored.push({
+      name: name,
+      type: type,
+      uploadedBy: uploadedBy,
+      date: new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' })
+    });
+    localStorage.setItem('icare_uploaded_docs', JSON.stringify(stored));
+  } catch(e) {}
+}
+
+// ─── DYNAMIC DATES ───────────────────────────────────────────────
+(function setDates() {
+  const d = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  const f = document.getElementById('footer-updated-date');
+  const db = document.getElementById('dashboard-updated-date');
+  if (f) f.textContent = d;
+  if (db) db.textContent = d;
+})();
+
 async function submitIdea() {
   const titleEl = document.getElementById('idea-title-input');
   const catEl = document.getElementById('idea-category');
@@ -2735,7 +3080,7 @@ async function submitIdea() {
   const title = titleEl.value.trim();
   const category = catEl.value;
   const description = descEl.value.trim();
-  const submittedBy = currentUser?.user_metadata?.full_name || currentUser?.email || 'Board Member';
+  const submittedBy = currentUser?.name || currentUser?.email || 'Board Member';
 
   if (!title) { showToast('Please enter a title.', true); titleEl.focus(); return; }
   if (!category) { showToast('Please select a category.', true); catEl.focus(); return; }
@@ -2745,9 +3090,12 @@ async function submitIdea() {
   btn.textContent = 'Submitting...';
 
   try {
-    await fetch(AIRTABLE_URL, {
+    await fetch(IDEAS_API, {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${AIRTABLE_KEY}`, 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${currentUser?.token?.access_token || ''}`
+      },
       body: JSON.stringify({
         fields: {
           Title: title,
