@@ -7,14 +7,14 @@
     "program_months": 6,
     "total_weeks": 24,
     "start_date": "2026-03-26",
-    "last_updated": "2026-05-12",
+    "last_updated": "2026-05-13",
     "current_week": 7,
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 7: Email Triage Fix + Brain Upgrade + AI Data Center Campaign",
-    "phase_description": "Week 6 review (May 12) identified 3 critical email triage bugs — emails missing from inbox, useless number IDs, no direct links. Fix deployed as v2 this week. Brain upgrade also this week (vector speed — 45-min delay reported). New campaign priority: AI data center lightning protection page + Google Ads (low competition, high urgency per Chuck). Jacksonville branch identified as next major push after triage is solid.",
-    "overall_progress_pct": 48,
+    "current_phase": "Week 7: Brain v2 LIVE + Email Triage v2 + AI Data Center Campaign",
+    "phase_description": "Brain rebuilt from the ground up (May 13) — migrated from Supabase to self-hosted pgvector on DigitalOcean, upgraded to NVIDIA NIM embeddings (2048-dim), added LLM reranking (15 candidates → Haiku selects top 5 → Sonnet answers). Speed issue resolved, concurrent users supported. Email triage v2 fix also in progress this week (clickable links, sender/subject IDs, Action Items folder auto-move). AI data center lightning protection page + Google Ads campaign is the new strategic priority Chuck pushed hard on in Week 6.",
+    "overall_progress_pct": 52,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -23,14 +23,14 @@
       "label": "Business Brain",
       "subtitle": "Knowledge & Intelligence Layer",
       "status": "in_progress",
-      "progress_pct": 40,
+      "progress_pct": 55,
       "items": [
         { "label": "SOP structure & documentation", "status": "in_progress", "note": "Chuck wrote all SOPs himself — needs attorney review via Paychex. Policy gaps identified." },
         { "label": "Company playbooks", "status": "in_progress", "note": "Training videos (AI-based) being created by Chuck to eliminate telephone effect. Retraining older crew now." },
         { "label": "Internal knowledge base", "status": "not_started", "note": "Information siloing is #1 pain — estimators, PMs, accounting all on separate platforms. Trimble Connect will centralize." },
         { "label": "Training documentation", "status": "in_progress", "note": "AI video series active. OSHA 10 → safety gear → technical training. Retraining older crew in progress." },
         { "label": "Decision support tools", "status": "not_started", "note": "Chuck tried Trimble AI layer live on call to find avg contract size — it failed. This is the core brain gap." },
-        { "label": "Brain installation", "status": "complete", "note": "Live at brain.allsouthlightningprotection.com. HTTPS secured. Chuck and Morgan have accounts. 164 knowledge chunks across 10 business context files. Used live Week 4 — surfaced personnel backup gaps and structural blind spots. Staff directory current at 49 employees." },
+        { "label": "Brain installation", "status": "complete", "note": "v2 LIVE May 13, 2026. Rebuilt on self-hosted pgvector (DigitalOcean) — no auto-pause, scales for concurrent users. Upgraded to NVIDIA NIM embeddings (llama-nemotron-embed-1b-v2, 2048-dim) + LLM reranking (Haiku scores 15 candidates, Sonnet answers top 5). 159 knowledge chunks across 10 business context files. Chuck and Morgan have accounts at brain.allsouthlightningprotection.com." },
         { "label": "SOP digital system", "status": "complete", "note": "All 15 SOPs loaded into Brain in full text and queryable. Field staff paper-only risk addressed." },
         { "label": "Staff directory & SOP library", "status": "complete", "note": "45-person staff directory with roles loaded into Brain. 15 SOPs and policies loaded and queryable. Ask the Brain: 'Who handles scheduling?' or 'What is the cellphone policy?'" }
       ],
@@ -336,7 +336,7 @@
       "topics": [
         "Email triage performance review — 3 critical bugs identified: missing emails (~50% of action items can't be located), number IDs useless ('email 8' means nothing), no direct link to original email half the time",
         "Action Items folder request — Chuck wants ACTION REQUIRED emails auto-moved to a dedicated Outlook folder",
-        "Brain performance issue — 45-minute delay reported; maintenance + vector upgrade committed for this week",
+        "Brain v2 deployed May 13 — speed issue resolved. Self-hosted pgvector + NIM embeddings + reranker. No more 45-min delays. Supports concurrent users.",
         "AI data center campaign — URGENT; Chuck pushed hard; dedicated service page + Google Ads campaign approved",
         "Website content strategy — 2 services/month commitment; start with services list review + FAQ outlines",
         "Brain → website FAQ integration concept — users ask questions; if Brain can't answer, connect to office staff; needs further design planning",
@@ -360,7 +360,7 @@
     "format": "Zoom",
     "agenda": [
       "Email triage v2 review — confirm bugs resolved, Action Items folder working",
-      "Brain back online — confirm speed improvement, demo for Chuck",
+      "Brain v2 LIVE — confirm performance with Chuck, walk through upgrade highlights",
       "AI data center service page preview",
       "Chuck's services list review — first 2 services for content expansion",
       "ASLP.NET domain status check (Chuck/Scott)"
