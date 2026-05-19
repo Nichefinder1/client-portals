@@ -104,7 +104,7 @@
       "status": "in_progress",
       "progress_pct": 15,
       "items": [
-        { "label": "Lead generation mapping", "status": "complete", "note": "Electricians (#1 referral source), trade shows, on-site pre-bids, Google SEO + Ads. ~300 active jobs across 3 locations." },
+        { "label": "Lead generation mapping", "status": "complete", "note": "Electricians (#1 referral source), trade shows, on-site pre-bids, Google Ads. ~300 active jobs across 3 locations." },
         { "label": "Lead intake mapping", "status": "complete", "note": "Joe answers main line, routes to Jeff/Morgan (estimating) or Ron (sales). Leads also bypass to Charley/Giovanni via text/email. Admin staff discouraged from technical questions but sometimes answer — causes issues." },
         { "label": "Quoting process mapping", "status": "complete", "note": "Jeff reviews up to 1,000 pages of architect drawings + spec books per job manually. ~1 week turnaround. Quote = final letter only. Massive AI opportunity for document analysis." },
         { "label": "Scheduling mapping", "status": "complete", "note": "Giovanni is scheduler. Overwhelmed by volume + constant field changes. Uses email + Outlook calendar. Sometimes denies customer requests rather than problem-solving — damaging customer confidence." },
@@ -341,7 +341,6 @@
         "Website content strategy — 2 services/month commitment; start with services list review + FAQ outlines",
         "Brain → website FAQ integration concept — users ask questions; if Brain can't answer, connect to office staff; needs further design planning",
         "Employee portal design — links hub (Paychex, 401k) + gated training; no complex financial infrastructure needed",
-        "SEO review — 123 clicks/21K impressions last 28 days; surge protection + Jacksonville pages rising; social media 136% engagement increase",
         "Javanni scheduling pain — flagged as urgent AI priority for near future; spending half her day on constantly changing client demands",
         "Jacksonville branch — confirmed as next major focus after triage is solid; ready for build-up, underperforming vs Tampa",
         "Trimble image API — Chuck has emailed Crystal; limited access to job pictures only; vendor API cost vs seat to be researched",
