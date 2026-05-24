@@ -782,16 +782,15 @@ function downloadPDF() {
 
 <div class="card-grid" style="margin-bottom: 30px;">
 
-<div class="card" style="border-left: 5px solid #c0392b;">
-<div class="card-header" style="background-color: #c0392b;">
-<h3>🚨 CRITICAL: www vs. Non-www Canonical Split</h3>
+<div class="card" style="border-left: 5px solid #27ae60;">
+<div class="card-header" style="background-color: #27ae60;">
+<h3>✅ RESOLVED: www vs. Non-www Canonical Split</h3>
 </div>
 <div class="card-body">
 <p style="font-size: 10pt;"><strong>Identified:</strong> May 2, 2026 via GSC data analysis<br>
-<strong>Impact:</strong> Non-www impressions dropped 68% (11.2K → 3.6K) immediately after April 14 page edit. Average position collapsed from 7.2 → 19.2. www version did NOT gain those impressions — Google is in re-evaluation limbo for both versions, bleeding authority from the entire domain.<br>
-<strong>Root cause:</strong> The drain cleaning page edit on April 14 likely reset WordPress General Settings URL or Yoast canonical preference, causing Google to see conflicting canonical signals between foxvalleyplumbing.com (non-www) and www.foxvalleyplumbing.com.<br>
-<strong>Status:</strong> 🔴 Fix assigned to Rhonda — Week of May 4–8, 2026<br>
-<strong>Fix:</strong> (1) Verify WordPress General Settings → both URL fields = https://foxvalleyplumbing.com (no www). (2) Add/verify .htaccess 301 redirect: www → non-www. (3) Update sitemap from www to non-www. (4) Resubmit sitemap in GSC. (5) Check Yoast canonical settings site-wide.</p>
+<strong>Impact:</strong> Non-www impressions had dropped 68% (11.2K → 3.6K) with average position collapsing from 7.2 → 19.2 — Google was in re-evaluation limbo for both versions.<br>
+<strong>Fix completed by Rhonda (May 2026):</strong> WordPress General Settings corrected to https://foxvalleyplumbing.com (non-www), .htaccess 301 redirect www → non-www verified, sitemap updated and resubmitted in GSC, Yoast canonical settings corrected site-wide.<br>
+<strong>Status:</strong> ✅ Complete — monitoring GSC for impression/position recovery.</p>
 </div>
 </div>
 
