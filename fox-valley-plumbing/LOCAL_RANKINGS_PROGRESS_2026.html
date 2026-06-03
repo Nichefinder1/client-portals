@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fox Valley Plumbing & Backflow — Local Rankings Progress 2026</title>
+<style>
+  :root {
+    --navy: #0d2e57;
+    --blue: #1a5296;
+    --blue-light: #2563a8;
+    --text: #1a1a2e;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+
+    --rank-1: #166534; --rank-1-bg: #dcfce7;
+    --rank-2: #15803d; --rank-2-bg: #d1fae5;
+    --rank-3: #047857; --rank-3-bg: #d1fae5;
+    --rank-4: #065f46; --rank-4-bg: #a7f3d0;
+    --rank-7: #ca8a04; --rank-7-bg: #fef9c3;
+    --rank-12: #d97706; --rank-12-bg: #fef3c7;
+    --rank-17: #c2410c; --rank-17-bg: #ffedd5;
+    --rank-21: #991b1b; --rank-21-bg: #fee2e2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--navy);
+    color: white;
+    padding: 32px 40px 28px;
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand { font-size: 12px; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: white; line-height: 1.3; }
+  .header-meta { text-align: right; font-size: 12px; color: #93c5fd; line-height: 1.8; }
+  .header-meta strong { color: white; }
+
+  .scan-timeline {
+    display: flex;
+    gap: 0;
+    margin-top: 24px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .scan-date {
+    flex: 1;
+    padding: 12px 16px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  .scan-date:last-child { border-right: none; }
+  .scan-date .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: #93c5fd; margin-bottom: 3px; }
+  .scan-date .date { font-size: 15px; font-weight: 700; color: white; }
+  .scan-date .sub { font-size: 11px; color: #bfdbfe; margin-top: 2px; }
+  .scan-date .arrow { color: #60a5fa; font-size: 18px; display: flex; align-items: center; justify-content: center; padding: 0 8px; }
+
+  /* SUMMARY CARDS */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 24px 40px;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .card .num { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; }
+  .card .label { font-size: 11px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .card .change { font-size: 11px; font-weight: 600; margin-top: 6px; }
+  .card .change.up { color: #16a34a; }
+  .card .change.down { color: #dc2626; }
+  .card .change.flat { color: var(--muted); }
+
+  /* ALERT BOX */
+  .alert-box {
+    margin: 0 40px 20px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--blue);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: #1e3a5f;
+    line-height: 1.6;
+  }
+  .alert-box strong { color: var(--navy); }
+
+  /* TABLE SECTION */
+  .section { margin: 0 40px 32px; }
+  .section-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 0 0 10px 10px;
+  }
+
+  thead th {
+    background: var(--navy);
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  thead th:first-child { text-align: left; border-radius: 0; }
+
+  tbody tr:nth-child(even) { background: #fafbff; }
+  tbody tr:hover { background: #eff6ff; }
+
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  td:first-child { font-size: 12.5px; font-weight: 500; color: var(--text); }
+
+  .rank-cell {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .rank-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+    min-width: 42px;
+    text-align: center;
+  }
+
+  .r1  { background: #dcfce7; color: #14532d; }
+  .r4  { background: #d1fae5; color: #065f46; }
+  .r8  { background: #fef9c3; color: #713f12; }
+  .r13 { background: #ffedd5; color: #7c2d12; }
+  .r18 { background: #fee2e2; color: #7f1d1d; }
+  .r21 { background: #f1f5f9; color: #94a3b8; font-style: italic; }
+  .r-na { background: #f1f5f9; color: #cbd5e1; font-size: 10px; }
+
+  .delta {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .delta-up   { color: #16a34a; }
+  .delta-down { color: #dc2626; }
+  .delta-flat { color: var(--muted); }
+
+  /* FOOTER */
+  .footer {
+    margin: 8px 40px 40px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .legend-dot {
+    width: 28px;
+    height: 18px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media print {
+    body { font-size: 11px; }
+    .header { padding: 24px 28px 20px; }
+    .summary { padding: 16px 28px; }
+    .section { margin: 0 28px 24px; }
+    .alert-box { margin: 0 28px 16px; }
+    .footer { margin: 8px 28px 28px; }
+    td { padding: 7px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="brand">Fox Valley Plumbing &amp; Backflow</div>
+      <h1>Local Map Pack Rankings — Progress Report</h1>
+    </div>
+    <div class="header-meta">
+      <div><strong>Report Date</strong> — June 3, 2026</div>
+      <div><strong>Grid Size</strong> — 13×13 (169 data points per scan)</div>
+      <div><strong>Platform</strong> — Google Maps + Local Finder</div>
+      <div><strong>Lower rank = better position</strong></div>
+    </div>
+  </div>
+
+  <div class="scan-timeline">
+    <div class="scan-date">
+      <div class="label">Baseline</div>
+      <div class="date">Jan 18, 2026</div>
+      <div class="sub">Start of engagement</div>
+    </div>
+    <div class="scan-date" style="flex:0;padding:0 4px;background:transparent;border:none;">
+      <div style="color:#60a5fa;font-size:20px;display:flex;align-items:center;height:100%;">→</div>
+    </div>
+    <div class="scan-date">
+      <div class="label">Mid-Point</div>
+      <div class="date">Mar 9, 2026</div>
+      <div class="sub">Post homepage + SEO updates</div>
+    </div>
+    <div class="scan-date" style="flex:0;padding:0 4px;background:transparent;border:none;">
+      <div style="color:#60a5fa;font-size:20px;display:flex;align-items:center;height:100%;">→</div>
+    </div>
+    <div class="scan-date" style="background:rgba(255,255,255,0.12);">
+      <div class="label">Current</div>
+      <div class="date">Jun 2, 2026</div>
+      <div class="sub">Latest scan</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary">
+  <div class="card">
+    <div class="num">6</div>
+    <div class="label">Keywords Ranked #1–3</div>
+    <div class="change up">All backflow + gas line</div>
+  </div>
+  <div class="card">
+    <div class="num">14</div>
+    <div class="label">Keywords in Top 7</div>
+    <div class="change up">↑ Up from ~4 at baseline</div>
+  </div>
+  <div class="card">
+    <div class="num">+8.2</div>
+    <div class="label">Best Single Improvement</div>
+    <div class="change up">24-hr plumber Elgin (Jan → Jun)</div>
+  </div>
+  <div class="card">
+    <div class="num">53</div>
+    <div class="label">Apr 13 Local Pack Drops</div>
+    <div class="change flat">↩ Fully recovered by June</div>
+  </div>
+</div>
+
+<!-- APRIL CONTEXT ALERT -->
+<div class="alert-box">
+  <strong>⚡ April 13 Context:</strong> On April 13, Local Pack (Google 3-pack) rankings showed "20+" for nearly every keyword — while Google Maps app rankings held steady at 5–8 for core terms on the same day. This pattern is consistent with a temporary GBP re-evaluation triggered by the homepage title tag update made on that date. <strong>All rankings fully recovered by June and surpassed March levels in most categories.</strong>
+</div>
+
+<!-- TABLE: BACKFLOW -->
+<div class="section">
+  <div class="section-title">Backflow Services — Dominant Category</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:38%">Keyword</th>
+        <th>Jan 18</th>
+        <th>Mar 9</th>
+        <th>Jun 2</th>
+        <th>Change (Jan→Jun)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>backflow preventer repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r1">1.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r1">1.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r1">1.0</span></td>
+        <td class="delta delta-flat">— Locked #1</td>
+      </tr>
+      <tr>
+        <td>backflow repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r1">1.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r1">1.1</span></td>
+        <td class="delta delta-flat">— Locked #1</td>
+      </tr>
+      <tr>
+        <td>backflow testing elgin</td>
+        <td class="rank-cell"><span class="rank-badge r1">1.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r1">1.7</span></td>
+        <td class="rank-cell"><span class="rank-badge r1">1.6</span></td>
+        <td class="delta delta-flat">↔ Steady #1–2</td>
+      </tr>
+      <tr>
+        <td>backflow testing south elgin</td>
+        <td class="rank-cell"><span class="rank-badge r1">2.7</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r1">2.4</span></td>
+        <td class="delta delta-up">↑ +0.2</td>
+      </tr>
+      <tr>
+        <td>backflow certification elgin</td>
+        <td class="rank-cell"><span class="rank-badge r1">1.5</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">3.6</span></td>
+        <td class="delta delta-down">↓ −2.1</td>
+      </tr>
+      <tr>
+        <td>backflow <span style="font-weight:400;color:#94a3b8">(generic)</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">4.5</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.9</span></td>
+        <td class="delta delta-down">↓ −1.4 (Mar→Jun)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TABLE: CORE PLUMBER -->
+<div class="section">
+  <div class="section-title">Core "Plumber" Terms</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:38%">Keyword</th>
+        <th>Jan 18</th>
+        <th>Mar 9</th>
+        <th>Jun 2</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>plumber elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.5</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.5</span></td>
+        <td class="delta delta-flat">↔ Stable</td>
+      </tr>
+      <tr>
+        <td>elgin plumber</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.8</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">7.1</span></td>
+        <td class="delta delta-down">↓ −1.4 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>plumber in elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">6.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.9</span></td>
+        <td class="delta delta-down">↓ −0.9 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>elgin plumbers</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">6.1</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">7.1</span></td>
+        <td class="delta delta-down">↓ −1.0 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>plumbing services elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">6.3</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">7.4</span></td>
+        <td class="delta delta-down">↓ −1.1 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>plumbing company elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.7</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">7.6</span></td>
+        <td class="delta delta-down">↓ −0.9 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>plumbing elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.2</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">9.8</span></td>
+        <td class="delta delta-down">↓ −1.6 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>plumbing installation elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">6.3</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.8</span></td>
+        <td class="delta delta-flat">↔ Stable</td>
+      </tr>
+      <tr>
+        <td>elgin plumbing repair</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">9.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.5</span></td>
+        <td class="delta delta-up">↑ +0.5 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>plumbers elgin il</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.4</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">13.3</span></td>
+        <td class="delta delta-down" style="color:#b91c1c;font-size:13px">↓ −7.9 ⚠</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TABLE: EMERGENCY -->
+<div class="section">
+  <div class="section-title">Emergency &amp; 24-Hour Terms</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:38%">Keyword</th>
+        <th>Jan 18</th>
+        <th>Mar 9</th>
+        <th>Jun 2</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>emergency plumber elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.9</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.0</span></td>
+        <td class="delta delta-up">↑ +0.9 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>elgin emergency plumber</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">9.1</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.1</span></td>
+        <td class="delta delta-up">↑ +1.0 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>24/7 plumber elgin</td>
+        <td class="rank-cell"><span class="rank-badge r13">13.6</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">12.9</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">9.3</span></td>
+        <td class="delta delta-up">↑ +4.4 (Jan→Jun)</td>
+      </tr>
+      <tr>
+        <td>24 hour plumber elgin</td>
+        <td class="rank-cell"><span class="rank-badge r18">16.7</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.5</span></td>
+        <td class="delta delta-up" style="color:#15803d;font-size:13px">↑ +8.2 🏆</td>
+      </tr>
+      <tr>
+        <td>hour plumber elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">4.6</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.3</span></td>
+        <td class="delta delta-flat">↔ Stable top-5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TABLE: SPECIALTY SERVICES -->
+<div class="section">
+  <div class="section-title">Specialty Services</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:38%">Keyword</th>
+        <th>Jan 18</th>
+        <th>Mar 9</th>
+        <th>Jun 2</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>gas line repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r4">4.4</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">3.8</span></td>
+        <td class="delta delta-up">↑ +0.6</td>
+      </tr>
+      <tr>
+        <td>faucet repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r8">7.9</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">4.6</span></td>
+        <td class="delta delta-up">↑ +3.3</td>
+      </tr>
+      <tr>
+        <td>ejector pump repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r1">2.8</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">4.2</span></td>
+        <td class="delta delta-down">↓ −1.5</td>
+      </tr>
+      <tr>
+        <td>kitchen plumbing elgin</td>
+        <td class="rank-cell"><span class="rank-badge r4">4.2</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">3.2</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.7</span></td>
+        <td class="delta delta-down">↓ −1.5 (Jan→Jun)</td>
+      </tr>
+      <tr>
+        <td>water line repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r8">7.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.8</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">7.2</span></td>
+        <td class="delta delta-flat">↔ Stable</td>
+      </tr>
+      <tr>
+        <td>pipe repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r8">6.7</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.8</span></td>
+        <td class="delta delta-flat">↔ Stable</td>
+      </tr>
+      <tr>
+        <td>sewer line repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r8">9.7</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">9.3</span></td>
+        <td class="delta delta-up">↑ +0.4</td>
+      </tr>
+      <tr>
+        <td>toilet repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r18">16.9</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.8</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">10.7</span></td>
+        <td class="delta delta-up">↑ +6.2 (Jan→Jun)</td>
+      </tr>
+      <tr>
+        <td>bathroom plumbing elgin</td>
+        <td class="rank-cell"><span class="rank-badge r13">14.6</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">11.5</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">10.4</span></td>
+        <td class="delta delta-up">↑ +4.2 (Jan→Jun)</td>
+      </tr>
+      <tr>
+        <td>garbage disposal repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r21">20+</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">11.5</span></td>
+        <td class="delta delta-up" style="color:#15803d;font-size:13px">↑ +9.5 🏆</td>
+      </tr>
+      <tr>
+        <td>leak detection elgin</td>
+        <td class="rank-cell"><span class="rank-badge r8">7.6</span></td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">11.7</span></td>
+        <td class="delta delta-down">↓ −4.2 ⚠</td>
+      </tr>
+      <tr>
+        <td>water heater repair elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">6.5</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">11.9</span></td>
+        <td class="delta delta-down" style="color:#b91c1c;font-size:13px">↓ −5.5 ⚠</td>
+      </tr>
+      <tr>
+        <td>south elgin plumbers</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.8</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">8.9</span></td>
+        <td class="delta delta-flat">↔ Stable</td>
+      </tr>
+      <tr>
+        <td>plumber south elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">7.9</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">10.3</span></td>
+        <td class="delta delta-down">↓ −2.4 (Mar→Jun)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TABLE: DRAIN & HYDRO -->
+<div class="section">
+  <div class="section-title">Drain Cleaning &amp; Hydro Jetting</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:38%">Keyword</th>
+        <th>Jan 18</th>
+        <th>Mar 9</th>
+        <th>Jun 2</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>hydro jetting elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r4">5.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">12.0</span></td>
+        <td class="delta delta-down" style="color:#b91c1c;font-size:13px">↓ −7.0 ⚠</td>
+      </tr>
+      <tr>
+        <td>hydro jetting south elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r8">6.6</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">12.2</span></td>
+        <td class="delta delta-down" style="color:#b91c1c;font-size:13px">↓ −5.6 ⚠</td>
+      </tr>
+      <tr>
+        <td>drain cleaning services elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r18">17.2</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">13.3</span></td>
+        <td class="delta delta-up">↑ +4.0 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>drain cleaning elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r18">18.0</span></td>
+        <td class="rank-cell"><span class="rank-badge r18">16.9</span></td>
+        <td class="delta delta-up">↑ +1.1 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>elgin drain cleaning</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r21">19.2</span></td>
+        <td class="rank-cell"><span class="rank-badge r18">18.0</span></td>
+        <td class="delta delta-up">↑ +1.2 (Mar→Jun)</td>
+      </tr>
+      <tr>
+        <td>drain cleaning south elgin</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r13">11.1</span></td>
+        <td class="rank-cell"><span class="rank-badge r18">15.0</span></td>
+        <td class="delta delta-down">↓ −4.0 (Mar→Jun) ⚠</td>
+      </tr>
+      <tr>
+        <td>sump pump repair</td>
+        <td class="rank-cell"><span class="rank-badge r-na">—</span></td>
+        <td class="rank-cell"><span class="rank-badge r18">15.2</span></td>
+        <td class="rank-cell"><span class="rank-badge r21">18.8</span></td>
+        <td class="delta delta-down">↓ −3.6 (Mar→Jun)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- GSC SECTION -->
+<div class="section">
+  <div class="section-title">Google Search Console — Organic Performance</div>
+  <div style="background:white;border:1px solid var(--border);border-radius:0 0 10px 10px;padding:40px 32px;text-align:center;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;background:#eff6ff;border-radius:50%;margin-bottom:16px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a5296" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">Search Console Data Coming Soon</div>
+    <div style="font-size:12px;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.7;">
+      Impressions, clicks, average position, and CTR by keyword will be added here. This section will show organic search performance alongside local map pack rankings for a complete visibility picture.
+    </div>
+    <div style="margin-top:20px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+      <div style="text-align:center;padding:12px 24px;background:var(--bg);border:1px solid var(--border);border-radius:8px;min-width:110px;">
+        <div style="font-size:20px;font-weight:800;color:#cbd5e1;">—</div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px;">Total Clicks</div>
+      </div>
+      <div style="text-align:center;padding:12px 24px;background:var(--bg);border:1px solid var(--border);border-radius:8px;min-width:110px;">
+        <div style="font-size:20px;font-weight:800;color:#cbd5e1;">—</div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px;">Impressions</div>
+      </div>
+      <div style="text-align:center;padding:12px 24px;background:var(--bg);border:1px solid var(--border);border-radius:8px;min-width:110px;">
+        <div style="font-size:20px;font-weight:800;color:#cbd5e1;">—</div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px;">Avg CTR</div>
+      </div>
+      <div style="text-align:center;padding:12px 24px;background:var(--bg);border:1px solid var(--border);border-radius:8px;min-width:110px;">
+        <div style="font-size:20px;font-weight:800;color:#cbd5e1;">—</div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px;">Avg Position</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Ranking Scale Legend:</strong>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot r1">1–3</span> Top 3 — consistently in the map pack</div>
+    <div class="legend-item"><span class="legend-dot r4">4–7</span> Strong — typically map pack eligible</div>
+    <div class="legend-item"><span class="legend-dot r8">8–12</span> Competitive — edge of pack</div>
+    <div class="legend-item"><span class="legend-dot r13">13–17</span> Needs work</div>
+    <div class="legend-item"><span class="legend-dot r18">18–20</span> Weak — below pack</div>
+    <div class="legend-item"><span class="legend-dot r21">20+</span> Not ranked / minimal visibility</div>
+  </div>
+  <div style="margin-top:14px;color:#94a3b8">
+    Data source: Local Services Maps Export 6/3/2026 · All scans 13×13 grid (169 data points) · Average rank across Google Maps + Google Local Finder · Rankings represent the geographic center of Elgin, IL
+  </div>
+</div>
+
+</body>
+</html>
