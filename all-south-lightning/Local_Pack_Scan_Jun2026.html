@@ -5,11 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Local Pack Scan — June 2026 | All South Lightning Protection</title>
 <style>
+:root {
+  --clr-brand-dark:  #154360;
+  --clr-brand:       #1a5276;
+  --clr-brand-mid:   #2874a6;
+  --clr-brand-tint:  #eaf0fb;
+  --clr-brand-soft:  #d6eaf8;
+
+  --clr-win:         #1e8449;
+  --clr-win-mid:     #27ae60;
+  --clr-win-tint:    #d5f5e3;
+
+  --clr-warn:        #e67e22;
+  --clr-warn-dark:   #ca6f1e;
+  --clr-warn-deep:   #935116;
+  --clr-warn-olive:  #7d6608;
+  --clr-warn-tint:   #fdf2e9;
+  --clr-warn-soft:   #fdebd0;
+
+  --clr-gap:         #922b21;
+  --clr-gap-mid:     #c0392b;
+  --clr-gap-tint:    #fadbd8;
+
+  --clr-teal:        #117a8b;
+
+  --clr-text:        #333333;
+  --clr-muted:       #7f8c8d;
+  --clr-muted-dark:  #5d6d7e;
+  --clr-subtle:      #95a5a6;
+  --clr-surface:     #f5f6fa;
+  --clr-card:        #ffffff;
+  --clr-border:      #f0f2f5;
+  --clr-divider:     #d5d8dc;
+  --clr-na-bg:       #f2f3f4;
+}
+
 @media print { .portal-nav { display: none !important; } }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; background: #f5f6fa; color: #333; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; background: var(--clr-surface); color: var(--clr-text); }
 
-.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: var(--clr-brand-dark); z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 .portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
 .portal-nav-brand { display:flex; align-items:center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink:0; }
 .portal-nav-brand img { height: 28px; width: auto; display: block; }
@@ -17,7 +52,13 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; min-height: 44px; display: inline-flex; align-items: center; }
 .portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
 
-.page-header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
+@media (max-width: 600px) {
+  .portal-nav-inner { flex-wrap: nowrap; }
+  .portal-nav-links { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .portal-nav-links::-webkit-scrollbar { display: none; }
+}
+
+.page-header { background: linear-gradient(135deg, var(--clr-brand), var(--clr-brand-mid)); color: white; padding: 40px; text-align: center; }
 .page-header h1 { font-size: 24pt; margin-bottom: 8px; }
 .page-header .subtitle { font-size: 11pt; opacity: 0.85; }
 .page-header .scan-meta { margin-top: 16px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
@@ -28,7 +69,7 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
 
 /* Win banner */
-.win-banner { background: linear-gradient(135deg, #1e8449, #27ae60); color: white; border-radius: 12px; padding: 24px 30px; margin-bottom: 30px; }
+.win-banner { background: linear-gradient(135deg, var(--clr-win), var(--clr-win-mid)); color: white; border-radius: 12px; padding: 24px 30px; margin-bottom: 30px; }
 .win-banner h2 { font-size: 16pt; margin-bottom: 16px; }
 .wins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
 .win-item { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 14px 18px; }
@@ -38,62 +79,65 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 .win-item .badge { font-size: 8pt; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
 
 /* Watch banner */
-.watch-banner { background: #fdf2e9; border: 2px solid #e67e22; border-radius: 12px; padding: 20px 24px; margin-bottom: 30px; }
-.watch-banner h2 { color: #ca6f1e; font-size: 14pt; margin-bottom: 12px; }
+.watch-banner { background: var(--clr-warn-tint); border: 2px solid var(--clr-warn); border-radius: 12px; padding: 20px 24px; margin-bottom: 30px; }
+.watch-banner h2 { color: var(--clr-warn-dark); font-size: 14pt; margin-bottom: 12px; }
 .watch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 .watch-item { background: rgba(230,126,34,0.1); border-radius: 8px; padding: 12px 16px; border: 1px solid rgba(230,126,34,0.3); }
-.watch-item .kw { font-size: 9.5pt; color: #7d6608; margin-bottom: 4px; }
-.watch-item .ranks { font-size: 12pt; font-weight: bold; color: #ca6f1e; }
-.watch-item .note { font-size: 8.5pt; color: #935116; margin-top: 4px; }
+.watch-item .kw { font-size: 9.5pt; color: var(--clr-warn-olive); margin-bottom: 4px; }
+.watch-item .ranks { font-size: 12pt; font-weight: bold; color: var(--clr-warn-dark); }
+.watch-item .note { font-size: 8.5pt; color: var(--clr-warn-deep); margin-top: 4px; }
 
 /* Section header */
-.section-header { margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #1a5276; }
-.section-header h2 { color: #1a5276; font-size: 15pt; }
-.section-header p { font-size: 9.5pt; color: #7f8c8d; margin-top: 4px; }
+.section-header { margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--clr-brand); }
+.section-header h2 { color: var(--clr-brand); font-size: 15pt; }
+.section-header p { font-size: 9.5pt; color: var(--clr-muted); margin-top: 4px; }
 
 /* Comparison table */
-.compare-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 30px; font-size: 10pt; }
-.compare-table th { background: #1a5276; color: white; padding: 10px 14px; text-align: left; font-size: 9.5pt; }
+.compare-table { width: 100%; border-collapse: collapse; background: var(--clr-card); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 30px; font-size: 10pt; }
+.compare-table th { background: var(--clr-brand); color: white; padding: 10px 14px; text-align: left; font-size: 9.5pt; }
 .compare-table th:nth-child(2), .compare-table th:nth-child(3) { text-align: center; }
 .compare-table th:last-child { text-align: center; }
-.compare-table td { padding: 10px 14px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+.compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--clr-border); vertical-align: middle; }
 .compare-table tr:last-child td { border-bottom: none; }
-.compare-table tr.cat-header td { background: #eaf0fb; font-weight: bold; color: #1a5276; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; padding: 7px 14px; }
+.compare-table tr.cat-header td { background: var(--clr-brand-tint); font-weight: bold; color: var(--clr-brand); font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; padding: 7px 14px; }
 .compare-table td.rank { text-align: center; font-weight: bold; font-size: 11pt; border-radius: 6px; }
 .compare-table td.change { text-align: center; font-weight: bold; font-size: 10pt; }
 .compare-table td.keyword { font-size: 10pt; }
 
 /* Rank color classes */
-.rank-1 { background: #d5f5e3; color: #1e8449; }          /* #1.00–1.09 */
-.rank-12 { background: #d6eaf8; color: #1a5276; }          /* #1.10–2.00 */
-.rank-3 { background: #fdebd0; color: #935116; }           /* #2.01–3.00 */
-.rank-gap { background: #fadbd8; color: #922b21; }         /* >3.00 */
-.rank-na { background: #f2f3f4; color: #5d6d7e; font-size: 9pt; font-weight: normal; }
+.rank-1   { background: var(--clr-win-tint);  color: var(--clr-win); }
+.rank-12  { background: var(--clr-brand-soft); color: var(--clr-brand); }
+.rank-3   { background: var(--clr-warn-soft);  color: var(--clr-warn-deep); }
+.rank-gap { background: var(--clr-gap-tint);   color: var(--clr-gap); }
+.rank-na  { background: var(--clr-na-bg);      color: var(--clr-muted-dark); font-size: 9pt; font-weight: normal; }
 
 /* Change indicators */
-.change-up { color: #1e8449; }
-.change-down { color: #c0392b; }
-.change-flat { color: #5d6d7e; }
-.change-big { color: #117a8b; font-size: 12pt; }
+.change-up   { color: var(--clr-win); }
+.change-down { color: var(--clr-gap-mid); }
+.change-flat { color: var(--clr-muted-dark); }
+.change-big  { color: var(--clr-teal); font-size: 12pt; }
 
 /* Summary cards */
 .summary-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 30px; }
-.summary-card { background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.summary-card { background: var(--clr-card); border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .summary-card .num { font-size: 26pt; font-weight: bold; display: block; margin-bottom: 4px; }
-.summary-card .lbl { font-size: 9pt; color: #7f8c8d; }
+.summary-card .lbl { font-size: 9pt; color: var(--clr-muted); }
 .summary-card .sub { font-size: 9pt; margin-top: 4px; }
+.summary-card.win  .num, .summary-card.win  .sub { color: var(--clr-win-mid); }
+.summary-card.warn .num, .summary-card.warn .sub { color: var(--clr-warn); }
+.summary-card.gap  .num, .summary-card.gap  .sub { color: var(--clr-gap-mid); }
 
 /* Gap action items */
-.gap-list { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 30px; }
-.gap-list h3 { color: #1a5276; margin-bottom: 16px; font-size: 13pt; }
-.gap-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f0f2f5; }
+.gap-list { background: var(--clr-card); border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 30px; }
+.gap-list h3 { color: var(--clr-brand); margin-bottom: 16px; font-size: 13pt; }
+.gap-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--clr-border); }
 .gap-item:last-child { border-bottom: none; }
-.gap-rank-badge { background: #fadbd8; color: #922b21; font-weight: bold; font-size: 11pt; padding: 6px 12px; border-radius: 8px; white-space: nowrap; min-width: 70px; text-align: center; }
-.gap-rank-badge.improving { background: #fdebd0; color: #935116; }
+.gap-rank-badge { background: var(--clr-gap-tint); color: var(--clr-gap); font-weight: bold; font-size: 11pt; padding: 6px 12px; border-radius: 8px; white-space: nowrap; min-width: 70px; text-align: center; }
+.gap-rank-badge.improving { background: var(--clr-warn-soft); color: var(--clr-warn-deep); }
 .gap-content .kw { font-weight: bold; font-size: 10.5pt; }
-.gap-content .action { font-size: 9.5pt; color: #7f8c8d; margin-top: 3px; }
+.gap-content .action { font-size: 9.5pt; color: var(--clr-muted); margin-top: 3px; }
 
-.footer { font-size: 9pt; color: #95a5a6; text-align: center; margin-top: 30px; padding-top: 14px; border-top: 1px solid #d5d8dc; }
+.footer { font-size: 9pt; color: var(--clr-subtle); text-align: center; margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--clr-divider); }
 </style>
 </head>
 <body>
@@ -191,25 +235,25 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
 
 <!-- Summary stats -->
 <div class="summary-row">
-  <div class="summary-card">
-    <span class="num" style="color:#27ae60;">17</span>
+  <div class="summary-card win">
+    <span class="num">17</span>
     <span class="lbl">Keywords at #1–2</span>
-    <span class="sub" style="color:#27ae60;">Same as March ✅</span>
+    <span class="sub">Same as March ✅</span>
   </div>
-  <div class="summary-card">
-    <span class="num" style="color:#27ae60;">13</span>
+  <div class="summary-card win">
+    <span class="num">13</span>
     <span class="lbl">Keywords at #1.00–1.09</span>
-    <span class="sub" style="color:#27ae60;">Dominant position</span>
+    <span class="sub">Dominant position</span>
   </div>
-  <div class="summary-card">
-    <span class="num" style="color:#e67e22;">1</span>
+  <div class="summary-card warn">
+    <span class="num">1</span>
     <span class="lbl">Keywords at #2–3</span>
-    <span class="sub" style="color:#e67e22;">Commercial LP contractor</span>
+    <span class="sub">Commercial LP contractor</span>
   </div>
-  <div class="summary-card">
-    <span class="num" style="color:#c0392b;">3</span>
+  <div class="summary-card gap">
+    <span class="num">3</span>
     <span class="lbl">Gap Keywords (&gt;3)</span>
-    <span class="sub" style="color:#c0392b;">Lightning rod FL, hospital, NFPA 780</span>
+    <span class="sub">Lightning rod FL, hospital, NFPA 780</span>
   </div>
 </div>
 
@@ -240,42 +284,42 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-1">#1.01</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 <tr>
   <td class="keyword">lightning protection Tampa FL</td>
   <td class="rank rank-1">#1.02</td>
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">Tampa lightning rod installation</td>
   <td class="rank rank-1">#1.08</td>
   <td class="rank rank-1">#1.07</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 <tr>
   <td class="keyword">lightning protection contractor Tampa FL</td>
   <td class="rank rank-12">#1.28</td>
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">lightning protection contractors Tampa</td>
   <td class="rank rank-12">#1.31</td>
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">commercial lightning protection Tampa</td>
   <td class="rank rank-12">#1.30</td>
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 
 <tr class="cat-header"><td colspan="5">&#128176; Transactional</td></tr>
@@ -284,35 +328,35 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
   <td class="keyword">affordable lightning rod installation Tampa</td>
   <td class="rank rank-1">#1.03</td>
   <td class="rank rank-na" colspan="2">Not scanned Jun 2026</td>
-  <td class="change change-flat">—</td>
+  <td class="change change-flat"><span role="img" aria-label="not scanned">—</span></td>
 </tr>
 <tr>
   <td class="keyword">lightning protection system cost</td>
   <td class="rank rank-12">#1.45</td>
   <td class="rank rank-gap">#7.17</td>
   <td class="rank rank-12">#1.14</td>
-  <td class="change change-down">⚠</td>
+  <td class="change change-down"><span role="img" aria-label="worsened">⚠</span></td>
 </tr>
 <tr>
   <td class="keyword">best lightning protection contractors near me</td>
   <td class="rank rank-12">#1.55</td>
   <td class="rank rank-12">#1.23</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">lightning rod installation Florida</td>
   <td class="rank rank-12">#1.26</td>
   <td class="rank rank-3">#3.20</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-down">↓</td>
+  <td class="change change-down"><span role="img" aria-label="regressed">↓</span></td>
 </tr>
 <tr>
   <td class="keyword">commercial lightning protection contractor</td>
   <td class="rank rank-3">#2.75</td>
   <td class="rank rank-3">#2.29</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 
 <tr class="cat-header"><td colspan="5">&#128295; Service-Specific</td></tr>
@@ -322,28 +366,28 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
   <td class="rank rank-1">#1.03</td>
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-12">#1.11</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">surge protection Tampa FL</td>
   <td class="rank rank-1">#1.08</td>
   <td class="rank rank-1">#1.02</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">lightning protection system inspection</td>
   <td class="rank rank-1">#1.05</td>
   <td class="rank rank-1">#1.04</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 <tr>
   <td class="keyword">professional lightning rod installation</td>
   <td class="rank rank-12">#1.65</td>
   <td class="rank rank-12">#1.68</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 
 <tr class="cat-header"><td colspan="5">&#127970; Sector / B2B</td></tr>
@@ -353,21 +397,21 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-1">#1.00</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 <tr>
   <td class="keyword">data center lightning protection Tampa</td>
   <td class="rank rank-12">#1.42</td>
   <td class="rank rank-1">#1.05</td>
   <td class="rank rank-12">#1.29</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
   <td class="keyword">hospital lightning protection Tampa FL</td>
   <td class="rank rank-gap">#4.17</td>
   <td class="rank rank-gap">#4.06</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 
 <tr class="cat-header"><td colspan="5">&#128218; Compliance</td></tr>
@@ -377,28 +421,28 @@ body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.
   <td class="rank rank-1">#1.03</td>
   <td class="rank rank-1">#1.04</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 <tr>
   <td class="keyword">UL 96A certified lightning protection</td>
   <td class="rank rank-12">#1.56</td>
   <td class="rank rank-12">#1.34</td>
   <td class="rank rank-na">N/A</td>
-  <td class="change change-up">↑</td>
+  <td class="change change-up"><span role="img" aria-label="improved">↑</span></td>
 </tr>
 <tr>
-  <td class="keyword" style="font-weight:bold;color:#1e8449;">Florida lightning protection code</td>
+  <td class="keyword" style="font-weight:bold;color:var(--clr-win);">Florida lightning protection code</td>
   <td class="rank rank-gap">#3.26</td>
   <td class="rank rank-1">#1.01</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-big">&#8593;&#8593;</td>
+  <td class="change change-big"><span role="img" aria-label="major improvement">↑↑</span></td>
 </tr>
 <tr>
   <td class="keyword">NFPA 780 lightning protection Florida</td>
   <td class="rank rank-gap">#13.01</td>
   <td class="rank rank-gap">#12.38</td>
   <td class="rank rank-na">—</td>
-  <td class="change change-flat">≈</td>
+  <td class="change change-flat"><span role="img" aria-label="no change">≈</span></td>
 </tr>
 
 </tbody>
