@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Pack Scan — June 2026 | All South Lightning Protection</title>
+<style>
+@media print { .portal-nav { display: none !important; } }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; background: #f5f6fa; color: #333; }
+
+.portal-nav { position: sticky; top: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { display:flex; align-items:center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink:0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 10px; font-size: 9pt; font-weight: bold; white-space: nowrap; transition: background 0.2s; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+
+.page-header { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 40px; text-align: center; }
+.page-header h1 { font-size: 24pt; margin-bottom: 8px; }
+.page-header .subtitle { font-size: 11pt; opacity: 0.85; }
+.page-header .scan-meta { margin-top: 16px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.page-header .meta-item { text-align: center; }
+.page-header .meta-value { display: block; font-size: 20pt; font-weight: bold; }
+.page-header .meta-label { font-size: 9pt; opacity: 0.75; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+
+/* Win banner */
+.win-banner { background: linear-gradient(135deg, #1e8449, #27ae60); color: white; border-radius: 12px; padding: 24px 30px; margin-bottom: 30px; }
+.win-banner h2 { font-size: 16pt; margin-bottom: 16px; }
+.wins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.win-item { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 14px 18px; }
+.win-item .kw { font-size: 9.5pt; opacity: 0.85; margin-bottom: 6px; }
+.win-item .ranks { font-size: 13pt; font-weight: bold; }
+.win-item .arrow { color: #a9dfbf; margin: 0 6px; }
+.win-item .badge { font-size: 8pt; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
+
+/* Watch banner */
+.watch-banner { background: #fdf2e9; border: 2px solid #e67e22; border-radius: 12px; padding: 20px 24px; margin-bottom: 30px; }
+.watch-banner h2 { color: #ca6f1e; font-size: 14pt; margin-bottom: 12px; }
+.watch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.watch-item { background: rgba(230,126,34,0.08); border-radius: 8px; padding: 12px 16px; border-left: 3px solid #e67e22; }
+.watch-item .kw { font-size: 9.5pt; color: #7d6608; margin-bottom: 4px; }
+.watch-item .ranks { font-size: 12pt; font-weight: bold; color: #ca6f1e; }
+.watch-item .note { font-size: 8.5pt; color: #935116; margin-top: 4px; }
+
+/* Section header */
+.section-header { margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #1a5276; }
+.section-header h2 { color: #1a5276; font-size: 15pt; }
+.section-header p { font-size: 9.5pt; color: #7f8c8d; margin-top: 4px; }
+
+/* Comparison table */
+.compare-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 30px; font-size: 10pt; }
+.compare-table th { background: #1a5276; color: white; padding: 10px 14px; text-align: left; font-size: 9.5pt; }
+.compare-table th:nth-child(2), .compare-table th:nth-child(3) { text-align: center; }
+.compare-table th:last-child { text-align: center; }
+.compare-table td { padding: 10px 14px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr.cat-header td { background: #eaf0fb; font-weight: bold; color: #1a5276; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; padding: 7px 14px; }
+.compare-table td.rank { text-align: center; font-weight: bold; font-size: 11pt; border-radius: 6px; }
+.compare-table td.change { text-align: center; font-weight: bold; font-size: 10pt; }
+.compare-table td.keyword { font-size: 10pt; }
+
+/* Rank color classes */
+.rank-1 { background: #d5f5e3; color: #1e8449; }          /* #1.00–1.09 */
+.rank-12 { background: #d6eaf8; color: #1a5276; }          /* #1.10–2.00 */
+.rank-3 { background: #fdebd0; color: #935116; }           /* #2.01–3.00 */
+.rank-gap { background: #fadbd8; color: #922b21; }         /* >3.00 */
+.rank-na { background: #f2f3f4; color: #7f8c8d; font-size: 9pt; font-weight: normal; }
+
+/* Change indicators */
+.change-up { color: #1e8449; }
+.change-down { color: #c0392b; }
+.change-flat { color: #7f8c8d; }
+.change-big { color: #117a8b; font-size: 12pt; }
+
+/* Summary cards */
+.summary-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 30px; }
+.summary-card { background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.summary-card .num { font-size: 26pt; font-weight: bold; display: block; margin-bottom: 4px; }
+.summary-card .lbl { font-size: 9pt; color: #7f8c8d; }
+.summary-card .sub { font-size: 9pt; margin-top: 4px; }
+
+/* Gap action items */
+.gap-list { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 30px; }
+.gap-list h3 { color: #1a5276; margin-bottom: 16px; font-size: 13pt; }
+.gap-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f0f2f5; }
+.gap-item:last-child { border-bottom: none; }
+.gap-rank-badge { background: #fadbd8; color: #922b21; font-weight: bold; font-size: 11pt; padding: 6px 12px; border-radius: 8px; white-space: nowrap; min-width: 70px; text-align: center; }
+.gap-rank-badge.improving { background: #fdebd0; color: #935116; }
+.gap-content .kw { font-weight: bold; font-size: 10.5pt; }
+.gap-content .action { font-size: 9.5pt; color: #7f8c8d; margin-top: 3px; }
+
+.footer { font-size: 9pt; color: #95a5a6; text-align: center; margin-top: 30px; padding-top: 14px; border-top: 1px solid #d5d8dc; }
+</style>
+</head>
+<body>
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+  <span class="portal-nav-brand"><img src="../assets/nichefinders-logo.png" alt="Nichefinder AI Agency"></span>
+  <div class="portal-nav-links">
+    <a href="index.html">&#127968; Dashboard</a>
+    <a href="GBP_Audit.html">&#128269; GBP Audit</a>
+    <a href="Local_SEO_Roadmap.html">&#128200; SEO Roadmap</a>
+    <a href="LLM_Visibility_Analysis.html">&#129504; LLM Visibility</a>
+    <a href="Tampa_Keywords.html">&#128269; Tampa Keywords</a>
+    <a href="Local_Pack_Scan_Jun2026.html" class="active">&#128200; Jun 2026 Scan</a>
+    <a href="GBP_UPDATE_CONTENT_AGENCY.html" style="background-color:rgba(39,174,96,0.25);color:#90ee90;">&#128203; GBP Copy Kit</a>
+  </div>
+</div>
+</nav>
+
+<div class="page-header">
+  <h1>&#128200; Local Pack Scan — June 2026</h1>
+  <p class="subtitle">Tampa Market · Google Maps & Local Finder · 13×13 Grid · Scanned June 5, 2026</p>
+  <div class="scan-meta">
+    <div class="meta-item">
+      <span class="meta-value">17/21</span>
+      <span class="meta-label">Keywords Ranking #1–2</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">#1.00</span>
+      <span class="meta-label">Median Rank (maintained)</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">3</span>
+      <span class="meta-label">Keywords Improved from March</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">13×13</span>
+      <span class="meta-label">Grid Size · 169 Points</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Wins -->
+<div class="win-banner">
+  <h2>&#127942; Improvements Since March 2026</h2>
+  <div class="wins-grid">
+    <div class="win-item">
+      <div class="kw">Florida lightning protection code</div>
+      <div class="ranks">#3.26 <span class="arrow">→</span> <strong>#1.01</strong> <span class="badge">MAJOR WIN</span></div>
+    </div>
+    <div class="win-item">
+      <div class="kw">UL 96A certified lightning protection</div>
+      <div class="ranks">#1.56 <span class="arrow">→</span> <strong>#1.34</strong> <span class="badge">improved</span></div>
+    </div>
+    <div class="win-item">
+      <div class="kw">data center lightning protection Tampa</div>
+      <div class="ranks">#1.42 <span class="arrow">→</span> <strong>#1.05</strong> <span class="badge">improved</span></div>
+    </div>
+    <div class="win-item">
+      <div class="kw">commercial lightning protection contractor</div>
+      <div class="ranks">#2.75 <span class="arrow">→</span> <strong>#2.29</strong> <span class="badge">moving right</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Watch list -->
+<div class="watch-banner">
+  <h2>&#9888;&#65039; Keywords to Watch</h2>
+  <div class="watch-grid">
+    <div class="watch-item">
+      <div class="kw">lightning rod installation Florida</div>
+      <div class="ranks">#1.26 → #3.20</div>
+      <div class="note">Slipped from #1 zone — content refresh needed</div>
+    </div>
+    <div class="watch-item">
+      <div class="kw">lightning protection system cost (Local Finder)</div>
+      <div class="ranks">Finder #1.45 → #7.17</div>
+      <div class="note">Maps still #1.14 — Local Finder rank dropped</div>
+    </div>
+    <div class="watch-item">
+      <div class="kw">hospital lightning protection Tampa FL</div>
+      <div class="ranks">#4.17 → #4.06</div>
+      <div class="note">Slight improvement — healthcare content push needed</div>
+    </div>
+    <div class="watch-item">
+      <div class="kw">NFPA 780 lightning protection Florida</div>
+      <div class="ranks">#13.01 → #12.38</div>
+      <div class="note">Minimal change — dedicated compliance page needed</div>
+    </div>
+  </div>
+</div>
+
+<!-- Summary stats -->
+<div class="summary-row">
+  <div class="summary-card">
+    <span class="num" style="color:#27ae60;">17</span>
+    <span class="lbl">Keywords at #1–2</span>
+    <span class="sub" style="color:#27ae60;">Same as March ✅</span>
+  </div>
+  <div class="summary-card">
+    <span class="num" style="color:#27ae60;">13</span>
+    <span class="lbl">Keywords at #1.00–1.09</span>
+    <span class="sub" style="color:#27ae60;">Dominant position</span>
+  </div>
+  <div class="summary-card">
+    <span class="num" style="color:#e67e22;">1</span>
+    <span class="lbl">Keywords at #2–3</span>
+    <span class="sub" style="color:#e67e22;">Commercial LP contractor</span>
+  </div>
+  <div class="summary-card">
+    <span class="num" style="color:#c0392b;">3</span>
+    <span class="lbl">Gap Keywords (&gt;3)</span>
+    <span class="sub" style="color:#c0392b;">Lightning rod FL, hospital, NFPA 780</span>
+  </div>
+</div>
+
+<!-- Full comparison table -->
+<div class="section-header">
+  <h2>Full Keyword Comparison — March vs. June 2026</h2>
+  <p>All rankings from Local Dominator 13×13 grid scan. March = March 11, 2026. June = June 5, 2026. LF = Local Finder. Maps = Google Maps.</p>
+</div>
+
+<table class="compare-table">
+<thead>
+<tr>
+  <th style="width:40%;">Keyword</th>
+  <th style="width:16%; text-align:center;">Mar 2026 (LF)</th>
+  <th style="width:16%; text-align:center;">Jun 2026 (LF)</th>
+  <th style="width:16%; text-align:center;">Jun 2026 (Maps)</th>
+  <th style="width:12%; text-align:center;">Change</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="cat-header"><td colspan="5">&#128205; Local / Map Pack</td></tr>
+
+<tr>
+  <td class="keyword">Tampa lightning protection services</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-1">#1.01</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+<tr>
+  <td class="keyword">lightning protection Tampa FL</td>
+  <td class="rank rank-1">#1.02</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">Tampa lightning rod installation</td>
+  <td class="rank rank-1">#1.08</td>
+  <td class="rank rank-1">#1.07</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+<tr>
+  <td class="keyword">lightning protection contractor Tampa FL</td>
+  <td class="rank rank-12">#1.28</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">lightning protection contractors Tampa</td>
+  <td class="rank rank-12">#1.31</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">commercial lightning protection Tampa</td>
+  <td class="rank rank-12">#1.30</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+
+<tr class="cat-header"><td colspan="5">&#128176; Transactional</td></tr>
+
+<tr>
+  <td class="keyword">affordable lightning rod installation Tampa</td>
+  <td class="rank rank-1">#1.03</td>
+  <td class="rank rank-na" colspan="2">Not scanned Jun 2026</td>
+  <td class="change change-flat">—</td>
+</tr>
+<tr>
+  <td class="keyword">lightning protection system cost</td>
+  <td class="rank rank-12">#1.45</td>
+  <td class="rank rank-gap">#7.17</td>
+  <td class="rank rank-12">#1.14</td>
+  <td class="change change-down">⚠</td>
+</tr>
+<tr>
+  <td class="keyword">best lightning protection contractors near me</td>
+  <td class="rank rank-12">#1.55</td>
+  <td class="rank rank-12">#1.23</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">lightning rod installation Florida</td>
+  <td class="rank rank-12">#1.26</td>
+  <td class="rank rank-3">#3.20</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-down">↓</td>
+</tr>
+<tr>
+  <td class="keyword">commercial lightning protection contractor</td>
+  <td class="rank rank-3">#2.75</td>
+  <td class="rank rank-3">#2.29</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+
+<tr class="cat-header"><td colspan="5">&#128295; Service-Specific</td></tr>
+
+<tr>
+  <td class="keyword">Tampa Bay surge protection services</td>
+  <td class="rank rank-1">#1.03</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-12">#1.11</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">surge protection Tampa FL</td>
+  <td class="rank rank-1">#1.08</td>
+  <td class="rank rank-1">#1.02</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">lightning protection system inspection</td>
+  <td class="rank rank-1">#1.05</td>
+  <td class="rank rank-1">#1.04</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+<tr>
+  <td class="keyword">professional lightning rod installation</td>
+  <td class="rank rank-12">#1.65</td>
+  <td class="rank rank-12">#1.68</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+
+<tr class="cat-header"><td colspan="5">&#127970; Sector / B2B</td></tr>
+
+<tr>
+  <td class="keyword">commercial building lightning protection Tampa</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-1">#1.00</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+<tr>
+  <td class="keyword">data center lightning protection Tampa</td>
+  <td class="rank rank-12">#1.42</td>
+  <td class="rank rank-1">#1.05</td>
+  <td class="rank rank-12">#1.29</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword">hospital lightning protection Tampa FL</td>
+  <td class="rank rank-gap">#4.17</td>
+  <td class="rank rank-gap">#4.06</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+
+<tr class="cat-header"><td colspan="5">&#128218; Compliance</td></tr>
+
+<tr>
+  <td class="keyword">lightning protection services Florida</td>
+  <td class="rank rank-1">#1.03</td>
+  <td class="rank rank-1">#1.04</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+<tr>
+  <td class="keyword">UL 96A certified lightning protection</td>
+  <td class="rank rank-12">#1.56</td>
+  <td class="rank rank-12">#1.34</td>
+  <td class="rank rank-na">N/A</td>
+  <td class="change change-up">↑</td>
+</tr>
+<tr>
+  <td class="keyword" style="font-weight:bold;color:#1e8449;">Florida lightning protection code</td>
+  <td class="rank rank-gap">#3.26</td>
+  <td class="rank rank-1">#1.01</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-big">&#8593;&#8593;</td>
+</tr>
+<tr>
+  <td class="keyword">NFPA 780 lightning protection Florida</td>
+  <td class="rank rank-gap">#13.01</td>
+  <td class="rank rank-gap">#12.38</td>
+  <td class="rank rank-na">—</td>
+  <td class="change change-flat">≈</td>
+</tr>
+
+</tbody>
+</table>
+
+<!-- Rank key -->
+<div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:30px; font-size:9.5pt;">
+  <span style="display:inline-flex;align-items:center;gap:6px;"><span style="background:#d5f5e3;color:#1e8449;padding:3px 10px;border-radius:6px;font-weight:bold;">#1.00–1.09</span> Dominant</span>
+  <span style="display:inline-flex;align-items:center;gap:6px;"><span style="background:#d6eaf8;color:#1a5276;padding:3px 10px;border-radius:6px;font-weight:bold;">#1.10–2.00</span> Strong</span>
+  <span style="display:inline-flex;align-items:center;gap:6px;"><span style="background:#fdebd0;color:#935116;padding:3px 10px;border-radius:6px;font-weight:bold;">#2.01–3.00</span> Needs push</span>
+  <span style="display:inline-flex;align-items:center;gap:6px;"><span style="background:#fadbd8;color:#922b21;padding:3px 10px;border-radius:6px;font-weight:bold;">&gt;3.00</span> Gap</span>
+</div>
+
+<!-- Gap action items -->
+<div class="section-header">
+  <h2>Gap Keywords — Next Actions</h2>
+  <p>Keywords below #2 that need content and citation authority to break through</p>
+</div>
+
+<div class="gap-list">
+  <div class="gap-item">
+    <div class="gap-rank-badge">&#9660; #3.20</div>
+    <div class="gap-content">
+      <div class="kw">lightning rod installation Florida</div>
+      <div class="action">Regressed from #1.26 (Mar) → Add statewide service area page targeting broader FL coverage. Internal link from Tampa page. Refresh GBP description to include "Florida" service area language.</div>
+    </div>
+  </div>
+  <div class="gap-item">
+    <div class="gap-rank-badge improving">&#8593; #2.29</div>
+    <div class="gap-content">
+      <div class="kw">commercial lightning protection contractor</div>
+      <div class="action">Improving from #2.75 — continue pushing. Build one case study post targeting commercial clients. Add "commercial contractor" language to GBP description. 1–2 more commercial citations.</div>
+    </div>
+  </div>
+  <div class="gap-item">
+    <div class="gap-rank-badge">&#9660; #4.06</div>
+    <div class="gap-content">
+      <div class="kw">hospital lightning protection Tampa FL</div>
+      <div class="action">Slow movement. Needs a dedicated healthcare LP page with schema markup, hospital project mentions (AdventHealth, Moffitt references), and 2–3 healthcare-specific citations.</div>
+    </div>
+  </div>
+  <div class="gap-item">
+    <div class="gap-rank-badge">&#9660; #12.38</div>
+    <div class="gap-content">
+      <div class="kw">NFPA 780 lightning protection Florida</div>
+      <div class="action">Not ranking in map pack — informational intent won't rank in local pack without a service page specifically targeting NFPA 780 + Florida context. Add page + schema. Long-term play.</div>
+    </div>
+  </div>
+  <div class="gap-item">
+    <div class="gap-rank-badge">&#9660; #7.17</div>
+    <div class="gap-content">
+      <div class="kw">lightning protection system cost (Local Finder)</div>
+      <div class="action">Maps still strong at #1.14 — Local Finder slipped. Ensure cost page URL matches GBP website link. Update GBP posts mentioning cost. May self-correct with next Google index cycle.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>All South Lightning Protection — Tampa Local Pack Scan | June 5, 2026 · 13×13 grid · 169 scan points</p>
+  <p>Powered by Local Dominator · Reported by Nichefinder AI Agency · nichefindersai@gmail.com</p>
+</div>
+
+</div>
+</body>
+</html>
