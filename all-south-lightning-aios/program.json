@@ -9,6 +9,7 @@
     "start_date": "2026-03-26",
     "last_updated": "2026-06-10",
     "current_week": 11,
+    "current_week_note": "Scheduling discovery complete. Jovani OAuth live. Smart Scheduler build starts now.",
     "account_manager": "Corey Reeder"
   },
   "overview": {
@@ -107,7 +108,7 @@
         { "label": "Lead generation mapping", "status": "complete", "note": "Electricians (#1 referral source), trade shows, on-site pre-bids, Google Ads. ~300 active jobs across 3 locations." },
         { "label": "Lead intake mapping", "status": "complete", "note": "Joe answers main line, routes to Jeff/Morgan (estimating) or Ron (sales). Leads also bypass to Charley/Giovanni via text/email. Admin staff discouraged from technical questions but sometimes answer — causes issues." },
         { "label": "Quoting process mapping", "status": "complete", "note": "Jeff reviews up to 1,000 pages of architect drawings + spec books per job manually. ~1 week turnaround. Quote = final letter only. Massive AI opportunity for document analysis." },
-        { "label": "Scheduling mapping", "status": "complete", "note": "Giovanni is scheduler. Overwhelmed by volume + constant field changes. Uses email + Outlook calendar. Sometimes denies customer requests rather than problem-solving — damaging customer confidence." },
+        { "label": "Scheduling mapping", "status": "complete", "note": "Javanni (Jovani) is Tampa scheduler only. ~30 requests/day. Each crew has own @aslp.net Outlook calendar. 3–6 week horizon. Crew tiers: Hayden=hospital (any-capable), Nathaniel=government, Roberto=large commercial (any-capable), Josh/Nate/Adam=simple jobs only. New jobs: email from Ron/Jeff/Morgan → Trimble assignment. Rescheduling root causes: (1) site not ready — APM role being deployed for pre-arrival checks, (2) safety conflicts on partial installs, (3) double bookings. Jovani OAuth credential live: 0ZVgWEThV7997LnX." },
         { "label": "Follow-up mapping", "status": "not_started", "note": "Post-job follow-up not systematized. Review requests happen but not consistently." },
         { "label": "Retention mapping", "status": "complete", "note": "Monday.com annual email system ineffective — GC/electrician hires don't share building owner contact. QR sticker on electrical panels is workaround but not in closeout checklist. Inspection dept growth is long-term vision." }
       ]
@@ -123,7 +124,7 @@
         { "label": "Automation architecture designed", "status": "not_started" },
         { "label": "Voice/transcription agent", "status": "not_started", "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution." },
         { "label": "CRM workflows", "status": "not_started", "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live." },
-        { "label": "Automated scheduling", "status": "planned", "note": "Smart Scheduler — Week 11 target. Giovanni uses Outlook Calendar. AI queries Business Brain for crew load + constraints → suggests options → 1-click approval → calendar auto-updated. Permissions: same Azure AD Graph API app as email triage. 3 questions pending: Giovanni's email, locations covered, crew Outlook accounts." },
+        { "label": "Automated scheduling", "status": "in_progress", "note": "Smart Scheduler — Week 11 active build. Jovani OAuth live (cred 0ZVgWEThV7997LnX). All crew have individual @aslp.net Outlook calendars — full calendar access path confirmed. Trigger: email from Ron/Jeff/Morgan + Trimble assignment. AI matches job type → crew tier → checks Outlook availability → generates 2–3 options → Jovani 1-click approves → calendar invites sent. Crew tiers hardcoded: hospital→Hayden, govt→Nathaniel, large commercial→Roberto, simple→general pool. APM site-readiness check integration planned. Template client notification in design. Brain embedded silently for crew profiles + constraints." },
         { "label": "Performance reporting", "status": "not_started", "note": "Chuck drones job sites manually ~1x/week to spot-check crew accountability. No reporting loop." }
       ]
     }
@@ -163,13 +164,22 @@
       "deployed_date": null
     },
     {
-      "title": "Smart Scheduler — Giovanni",
-      "description": "Giovanni (scheduler) overwhelmed — uses email + Outlook, sometimes denies customer requests instead of finding solutions. Smart Scheduler queued as Week 11 deliverable. AI layer queries the Business Brain for crew availability, job constraints, and current workload → generates 2–3 rescheduling options → Giovanni approves with 1 click → Outlook calendars updated automatically + client notified. Permissions path shared with email triage (same Azure AD app). 3 questions pending for Chuck before build starts.",
-      "status": "planned",
+      "title": "Smart Scheduler — Jovani",
+      "description": "Jovani handles Tampa scheduling (~30 requests/day). Crew each have own @aslp.net Outlook calendars. Crew tiers confirmed: Hayden=hospital/any, Nathaniel=government, Roberto=large commercial/any, Josh/Nate/Adam=simple only. New job trigger: Ron/Jeff/Morgan email + Trimble assignment. Main rescheduling pain: site not ready (APM role being deployed) + double bookings. AI matches job type → assigns correct foreman tier → checks Outlook availability → presents 2–3 options → Jovani 1-click approves → calendar invites auto-sent. OAuth credential LIVE (0ZVgWEThV7997LnX). Build starting Week 11.",
+      "status": "in_progress",
       "priority": 2,
       "impact": "Transforms 'I can't do that' into 'Here are your options.' Stops revenue loss from poor scheduling decisions. Restores customer confidence. Brain gets used daily without Giovanni ever thinking about it.",
       "deployed_date": null,
       "planned_week": 11
+    },
+    {
+      "title": "Project Template Automation",
+      "description": "Chuck identified a need to standardize how job requirements are communicated to clients and subcontractors at the start of each project. Template system to cover job phases, staging requirements, and subcontractor prep — delivered automatically when job is assigned. Saves ~5 hrs/week. Next step: connect template to Trimble job details for auto-delivery.",
+      "status": "planned",
+      "priority": 3,
+      "impact": "Eliminates manual communication overhead, educates subcontractors without on-site supervision, reduces rescheduling from unprepared sites.",
+      "deployed_date": null,
+      "planned_week": 12
     },
     {
       "title": "Field Crew Photo Gate",
@@ -386,6 +396,26 @@
       "chuck_verbatim_priority": ""
     },
     {
+      "week": 11,
+      "date": "2026-06-10",
+      "title": "Week 11: Scheduling Discovery + Jovani OAuth Live",
+      "duration": "~30 minutes",
+      "format": "Google Meet",
+      "topics": [
+        "Confirmed Javanni (Jovani) = Tampa scheduler only. Credential live: 0ZVgWEThV7997LnX.",
+        "All crew confirmed: individual @aslp.net Outlook calendars — full crew calendar access path viable",
+        "New job trigger confirmed: email from Ron/Jeff/Morgan + Trimble assignment",
+        "Crew tier matrix locked: Hayden=hospital/any, Nathaniel=govt, Roberto=large commercial/any, Josh/Nate/Adam=simple",
+        "Root causes of rescheduling: site not ready (#1), safety/partial install conflicts (#2), double bookings (#3)",
+        "APM (Assistant Project Manager) role being deployed for pre-arrival site checks",
+        "Template communication system in development — saves ~5 hrs/week once live",
+        "Scott confirmed global Azure AD permissions on this call",
+        "Smart Scheduler build unblocked — starting Week 11",
+        "Action item: Invite Roberto to next meeting to discuss his role"
+      ],
+      "chuck_verbatim_priority": "Create a standard project template and automate delivery to clients at the start of each job."
+    },
+    {
       "week": 10,
       "date": "2026-06-03",
       "title": "Week 10: Google Ads Jacksonville Launch + Local Pack Rescan",
@@ -403,15 +433,16 @@
     }
   ],
   "upcoming_session": {
-    "label": "Week 11: Email Triage Unblock + Smart Scheduler Kickoff",
-    "date": "TBD — week of June 16, 2026",
+    "label": "Week 12: Smart Scheduler Build Review + Roberto Intro",
+    "date": "TBD — week of June 23, 2026",
     "time": "TBD",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Email Triage V3 status — Scott App Registration fix (target: this week)",
-      "Smart Scheduler scoping — confirm Giovanni's Outlook setup, locations, crew accounts",
-      "Brain activation strategy — embed Brain into daily workflows vs. passive URL",
+      "Smart Scheduler demo — n8n workflow walkthrough with Jovani",
+      "Invite Roberto Garcia — discuss his large commercial project oversight role",
+      "Email Triage V3 — confirm live and stable",
+      "Project template automation — scope and timeline",
       "May SEO report review",
       "Press release — Ron quote + distribution channel decision"
     ]
