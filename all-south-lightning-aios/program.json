@@ -7,14 +7,14 @@
     "program_months": 6,
     "total_weeks": 24,
     "start_date": "2026-03-26",
-    "last_updated": "2026-05-13",
-    "current_week": 7,
+    "last_updated": "2026-06-10",
+    "current_week": 11,
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 7: Brain v2 LIVE + Email Triage v2 + AI Data Center Campaign",
-    "phase_description": "Brain rebuilt from the ground up (May 13) — migrated from Supabase to self-hosted pgvector on DigitalOcean, upgraded to NVIDIA NIM embeddings (2048-dim), added LLM reranking (15 candidates → Haiku selects top 5 → Sonnet answers). Speed issue resolved, concurrent users supported. Email triage v2 fix also in progress this week (clickable links, sender/subject IDs, Action Items folder auto-move). AI data center lightning protection page + Google Ads campaign is the new strategic priority Chuck pushed hard on in Week 6.",
-    "overall_progress_pct": 52,
+    "current_phase": "Week 11: Giovanni Smart Scheduler — Planning + Permissions",
+    "phase_description": "Email Triage V3 is built and wired (workflow B1e0Gnd99ZupHts4) but blocked on Azure AD client ID fix (Scott/IT must confirm correct App Registration). Smart Scheduler for Giovanni is next up — AI-powered scheduling assistant using Outlook Calendar + Business Brain to stop customer request denials and restore scheduling confidence. Permissions path shared with email triage (same Graph API app). Google Ads live in Jacksonville: 2 Search campaigns at $18/day, Manual CPC, Mon–Fri. Local Pack rescan June 5 confirms Tampa dominance (17/21 keywords #1–2). May SEO report in progress.",
+    "overall_progress_pct": 62,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -123,7 +123,7 @@
         { "label": "Automation architecture designed", "status": "not_started" },
         { "label": "Voice/transcription agent", "status": "not_started", "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution." },
         { "label": "CRM workflows", "status": "not_started", "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live." },
-        { "label": "Automated scheduling", "status": "not_started" },
+        { "label": "Automated scheduling", "status": "planned", "note": "Smart Scheduler — Week 11 target. Giovanni uses Outlook Calendar. AI queries Business Brain for crew load + constraints → suggests options → 1-click approval → calendar auto-updated. Permissions: same Azure AD Graph API app as email triage. 3 questions pending: Giovanni's email, locations covered, crew Outlook accounts." },
         { "label": "Performance reporting", "status": "not_started", "note": "Chuck drones job sites manually ~1x/week to spot-check crew accountability. No reporting loop." }
       ]
     }
@@ -163,12 +163,13 @@
       "deployed_date": null
     },
     {
-      "title": "Smart Scheduler",
-      "description": "Giovanni (scheduler) overwhelmed — uses email + Outlook, sometimes denies customer requests. Smart scheduler looks at overall workload, rearranges tasks/personnel to accommodate new requests without overcommitting.",
-      "status": "identified",
-      "priority": 3,
-      "impact": "Stops revenue loss from poor scheduling decisions. Restores customer confidence.",
-      "deployed_date": null
+      "title": "Smart Scheduler — Giovanni",
+      "description": "Giovanni (scheduler) overwhelmed — uses email + Outlook, sometimes denies customer requests instead of finding solutions. Smart Scheduler queued as Week 11 deliverable. AI layer queries the Business Brain for crew availability, job constraints, and current workload → generates 2–3 rescheduling options → Giovanni approves with 1 click → Outlook calendars updated automatically + client notified. Permissions path shared with email triage (same Azure AD app). 3 questions pending for Chuck before build starts.",
+      "status": "planned",
+      "priority": 2,
+      "impact": "Transforms 'I can't do that' into 'Here are your options.' Stops revenue loss from poor scheduling decisions. Restores customer confidence. Brain gets used daily without Giovanni ever thinking about it.",
+      "deployed_date": null,
+      "planned_week": 11
     },
     {
       "title": "Field Crew Photo Gate",
@@ -351,18 +352,68 @@
       "chuck_verbatim_priority": "Fix the email triage — the emails are getting lost and I can't find them. And we need to jump on the data center market right now while it's wide open."
     }
   ],
+  "past_sessions_addendum": [
+    {
+      "week": 7,
+      "date": "2026-05-15",
+      "title": "Week 7: Email Triage V3 Architecture Lock",
+      "duration": "~40 minutes",
+      "format": "Zoom",
+      "topics": [
+        "Email triage V3 architecture locked — time-based lookback, dynamic Action Items folder lookup, sender-rule triage + Claude judgment for external",
+        "V3 scheduled: 5:45 AM daily, 24hr lookback, digest to chuck@aslp.net from digest@allsouthlightningprotection.com",
+        "Resend domain setup complete — allsouthlightningprotection@gmail.com, DNS records sent to Rhonda",
+        "Internal email routing confirmed: Ron/Crystal/Angie/Javanni = Action Required; Jeff/Morgan/Jordan/Foremen = FYI",
+        "Chuck confirmed Action Items folder created in Outlook — replaces Jobs Folder at same tier",
+        "Brain NIM upgrade confirmed faster: Chuck reported significantly improved retrieval speed",
+        "Scott escalation: AADSTS700016 client ID mismatch — App Registration screenshot needed from Scott"
+      ],
+      "chuck_verbatim_priority": "Get the triage right — I need to know where to find the emails and have a link I can click to open them directly."
+    },
+    {
+      "week": 8,
+      "date": "2026-05-19",
+      "title": "Week 8/9: Press Release Verification + Hospital List Confirmed",
+      "duration": "~30 minutes",
+      "format": "Zoom",
+      "topics": [
+        "Healthcare press release: 4 discrepancies resolved live with Chuck",
+        "Hospital count updated 14 → 16 (Shriners Children's added)",
+        "Featured projects confirmed: AdventHealth Riverview (APG) + Moffitt Cancer Center Speros Branch (APG)",
+        "Miller Electric = confirmed official partnership",
+        "Remaining open items: Ron quote, legal hospital-naming sign-off, distribution channel decision"
+      ],
+      "chuck_verbatim_priority": ""
+    },
+    {
+      "week": 10,
+      "date": "2026-06-03",
+      "title": "Week 10: Google Ads Jacksonville Launch + Local Pack Rescan",
+      "duration": "Async delivery",
+      "format": "Delivered",
+      "topics": [
+        "2 Search campaigns launched — Jacksonville DMA. $18/day total. Manual CPC. Mon–Fri 8am–5pm.",
+        "Campaign 1: Commercial & Data Center (4 ad groups). Campaign 2: Residential (1 ad group).",
+        "All RSAs: 15 headlines, 4 descriptions, Jacksonville-specific. Excellent ad strength target.",
+        "Local Pack rescan June 5: 17/21 Tampa keywords #1–2. FL LP code #3.26 → #1.01 (big win).",
+        "Regressions flagged: Lightning rod FL #1.26 → #3.20, LP cost Local Finder #1.45 → #7.17",
+        "Local_Pack_Scan_Jun2026.html delivered to portal — March vs. June comparison + gap action items"
+      ],
+      "chuck_verbatim_priority": ""
+    }
+  ],
   "upcoming_session": {
-    "label": "Week 7: Triage Fix Review + Brain Back Online + Data Center Page Preview",
-    "date": "2026-05-19",
+    "label": "Week 11: Email Triage Unblock + Smart Scheduler Kickoff",
+    "date": "TBD — week of June 16, 2026",
     "time": "TBD",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Email triage v2 review — confirm bugs resolved, Action Items folder working",
-      "Brain v2 LIVE — confirm performance with Chuck, walk through upgrade highlights",
-      "AI data center service page preview",
-      "Chuck's services list review — first 2 services for content expansion",
-      "ASLP.NET domain status check (Chuck/Scott)"
+      "Email Triage V3 status — Scott App Registration fix (target: this week)",
+      "Smart Scheduler scoping — confirm Giovanni's Outlook setup, locations, crew accounts",
+      "Brain activation strategy — embed Brain into daily workflows vs. passive URL",
+      "May SEO report review",
+      "Press release — Ron quote + distribution channel decision"
     ]
   },
   "contact": {
