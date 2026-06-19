@@ -9,7 +9,7 @@
     "start_date": "2026-03-26",
     "last_updated": "2026-06-19",
     "current_week": 12,
-    "current_week_note": "Week 12 meeting (Jun 19). Email Triage V3 LIVE + hardened (retry x3, idempotency, Telegram fail-safe) on 8KDAPERmsxs2zvz4. Jovani Smart Scheduler: requirements locked, clickable mock built for review. Build kickoff.",
+    "current_week_note": "Week 12 done (Jun 19): Live Scheduler mock demoed, triage link-bug fixed live. Decisions locked — scheduler replaces manual calendar, APM stays manual, intake via PM/estimators. Building toward the September demo for Ron.",
     "account_manager": "Corey Reeder"
   },
   "overview": {
@@ -453,7 +453,7 @@
     },
     {
       "title": "Smart Scheduler — Jovani",
-      "description": "Jovani handles Tampa scheduling (~30 requests/day). Crew each have own @aslp.net Outlook calendars. Crew tiers confirmed: Hayden=hospital/any, Nathaniel=government, Roberto=large commercial/any, Josh/Nate/Adam=simple only. New job trigger: Ron/Jeff/Morgan email + Trimble assignment. Main rescheduling pain: site not ready (APM role being deployed) + double bookings. AI matches job type → assigns correct foreman tier → checks Outlook availability → presents 2–3 options → Jovani 1-click approves → calendar invites auto-sent. OAuth credential LIVE (0ZVgWEThV7997LnX). Build starting Week 11.",
+      "description": "Live Scheduler for Tampa: real-time crew availability board + 1-click reschedule. Becomes the PRIMARY data tool (replaces manual calendar management). Matches job type to the right crew tier, checks Outlook calendars via Graph API, shows distance-from-site, and supports intra-day time slots / split-shifts. Intake via PM + estimators; client-notify triggered by the estimator's email. APM site checks stay manual (excluded). 5 crews (foreman + worker each). OAuth live (0ZVgWEThV7997LnX). Target: two builds to demo to Ron by September.",
       "status": "in_progress",
       "priority": 2,
       "impact": "Transforms 'I can't do that' into 'Here are your options.' Stops revenue loss from poor scheduling decisions. Restores customer confidence. Brain gets used daily without Jovani ever thinking about it.",
@@ -718,20 +718,37 @@
         "Local_Pack_Scan_Jun2026.html delivered to portal — March vs. June comparison + gap action items"
       ],
       "chuck_verbatim_priority": ""
+    },
+    {
+      "week": 12,
+      "date": "2026-06-19",
+      "title": "Week 12: Live Scheduler Demo + Triage Link-Fix",
+      "duration": "~40 minutes",
+      "format": "Google Meet",
+      "topics": [
+        "Live Scheduler mock demoed — approval queue + crew availability board (1-click reschedule).",
+        "Decision: Live Scheduler becomes the PRIMARY data tool, replacing manual calendar management.",
+        "Decision: APM site-readiness checks stay MANUAL — excluded from the automated scheduler.",
+        "Confirmed crew structure: 5 crews, each a foreman + 1 worker, each on own Outlook calendar.",
+        "Intake = PM + estimators; client-notify email triggered by the estimator.",
+        "New requirements: intra-day time slots / split-shifts + distance-from-site in approvals.",
+        "Email Triage Open/Reply link mismatch fixed and deployed live.",
+        "Target: two Live Scheduler builds to present to Ron by September (AIOS evaluation)."
+      ],
+      "chuck_verbatim_priority": ""
     }
   ],
   "upcoming_session": {
-    "label": "Week 12: Jovani Smart Scheduler Mock Review",
-    "date": "Thursday, June 19, 2026",
-    "time": "10:00 AM ET",
+    "label": "Week 13: Live Scheduler Progress Review",
+    "date": "Tuesday, ~July 30, 2026 (tentative — confirming)",
+    "time": "3:00 PM ET",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Jovani Smart Scheduler — walk through the clickable mock (1-click crew approval)",
-      "Confirm requirements: crew count per foreman, single intake channel, APM trigger flow",
-      "Email Triage V3 — confirm live & hardened (no more daily failures)",
-      "Project template automation (client notifications) — scope and timeline",
-      "Press release — Ron quote + distribution channel decision"
+      "Live Scheduler build progress — time slots / split-shift handling",
+      "Crew availability board with distance-from-site in the approval view",
+      "Estimator-triggered client notifications — wiring",
+      "Path to the September demo for Ron (two version builds)"
     ]
   },
   "contact": {
