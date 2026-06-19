@@ -254,7 +254,7 @@
 
   var currentJob=null;
 
-  function pick(btn){
+  function pick(btn, skipScroll){
     document.querySelectorAll(".chip").forEach(function(b){ b.classList.remove("active"); });
     btn.classList.add("active");
     document.getElementById("q").value = btn.textContent;
@@ -293,8 +293,11 @@
     var curSlot=document.querySelector('.slot[data-crew="'+crewIx+'"][data-day="'+cur.day+'"]');
     if(curSlot){ curSlot.className="slot current"; curSlot.textContent="This job"; curSlot.onclick=null; }
 
-    document.getElementById("job").scrollIntoView({behavior:"smooth", block:"start"});
+    if(!skipScroll){ document.getElementById("job").scrollIntoView({behavior:"smooth", block:"start"}); }
   }
+
+  // Auto-load a caller on open so the board lands fully colored (green/red/amber all visible).
+  pick(document.querySelector('.chip[data-job="hospital"]'), true);
 
   function assign(ci, di, el){
     document.querySelectorAll(".slot.chosen").forEach(function(s){ s.classList.remove("chosen"); s.classList.add("pick"); s.textContent=""; });
