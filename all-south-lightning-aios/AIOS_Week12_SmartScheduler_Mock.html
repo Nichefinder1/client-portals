@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Smart Scheduler — Jovani's Queue · All South Lightning Protection</title>
+<style>
+  :root {
+    /* All South — technical-credible, safety-first B2B */
+    --ink: oklch(22% 0.03 250);
+    --ink-soft: oklch(45% 0.02 250);
+    --line: oklch(90% 0.01 250);
+    --surface: oklch(99% 0.004 250);
+    --panel: oklch(100% 0 0);
+    --bg: oklch(96.5% 0.008 250);
+    --bolt: oklch(72% 0.18 85);        /* lightning amber */
+    --bolt-deep: oklch(60% 0.16 70);
+    --steel: oklch(48% 0.09 250);      /* All South steel blue */
+    --steel-deep: oklch(34% 0.08 255);
+    --go: oklch(62% 0.15 155);
+    --go-soft: oklch(95% 0.04 155);
+    --warn: oklch(68% 0.15 55);
+    --warn-soft: oklch(96% 0.04 65);
+    --radius: 14px;
+    --shadow: 0 1px 2px oklch(30% 0.05 255 / 0.05), 0 8px 24px -8px oklch(30% 0.05 255 / 0.18);
+    --shadow-lift: 0 2px 4px oklch(30% 0.05 255 / 0.06), 0 18px 40px -12px oklch(30% 0.05 255 / 0.28);
+    --space: clamp(1rem, 0.6rem + 2vw, 2rem);
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "SFMono-Regular", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: var(--font); color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 100% -10%, oklch(72% 0.18 85 / 0.06), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, oklch(48% 0.09 250 / 0.07), transparent 60%),
+      var(--bg);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.45;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: var(--space); }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;
+    padding: 1rem 1.25rem; margin-bottom: 1.1rem;
+    background: linear-gradient(180deg, var(--steel-deep), var(--steel));
+    border-radius: var(--radius); color: white; box-shadow: var(--shadow-lift);
+  }
+  .bolt-badge {
+    width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center;
+    background: linear-gradient(160deg, var(--bolt), var(--bolt-deep));
+    box-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.4), 0 2px 8px oklch(60% 0.16 70 / 0.5);
+    flex: none;
+  }
+  .bolt-badge svg { width: 20px; height: 20px; }
+  .brand { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand b { font-size: 0.95rem; letter-spacing: 0.2px; }
+  .brand span { font-size: 0.72rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1.4px; }
+  .topbar .who { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; }
+  .topbar .who .pill {
+    background: oklch(100% 0 0 / 0.14); border: 1px solid oklch(100% 0 0 / 0.22);
+    padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.72rem; backdrop-filter: blur(6px);
+  }
+  .avatar {
+    width: 32px; height: 32px; border-radius: 50%; flex: none;
+    background: linear-gradient(150deg, var(--bolt), var(--bolt-deep));
+    display: grid; place-items: center; font-weight: 700; font-size: 0.8rem; color: var(--steel-deep);
+  }
+
+  .mock-flag {
+    font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--bolt-deep);
+    background: var(--warn-soft); border: 1px dashed var(--bolt); display: inline-flex; gap: 0.4rem;
+    padding: 0.3rem 0.7rem; border-radius: 999px; margin-bottom: 1rem; font-weight: 600;
+  }
+
+  /* ---- Stat strip ---- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.4rem; }
+  .stat {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 0.85rem 1rem; box-shadow: var(--shadow);
+  }
+  .stat .n { font-size: 1.5rem; font-weight: 750; letter-spacing: -0.5px; }
+  .stat .l { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.6px; }
+  .stat.alert .n { color: var(--bolt-deep); }
+
+  .layout { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+
+  .col-head { display: flex; align-items: baseline; gap: 0.6rem; margin: 0.4rem 0 0.2rem; }
+  .col-head h2 { font-size: 1.05rem; margin: 0; letter-spacing: -0.3px; }
+  .col-head .count { font-size: 0.78rem; color: var(--ink-soft); }
+
+  /* ---- Request card ---- */
+  .req {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .25s, transform .25s;
+  }
+  .req:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+  .req-top {
+    display: flex; gap: 0.9rem; align-items: flex-start; padding: 1.1rem 1.2rem 0.8rem;
+    background: linear-gradient(180deg, oklch(98% 0.03 85 / 0.5), transparent);
+  }
+  .req-top.govt { background: linear-gradient(180deg, oklch(97% 0.025 255 / 0.6), transparent); }
+  .jobtype {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 0.22rem 0.55rem; border-radius: 6px; white-space: nowrap;
+  }
+  .jt-hospital { background: oklch(95% 0.05 25); color: oklch(48% 0.16 25); }
+  .jt-govt { background: oklch(94% 0.04 255); color: var(--steel-deep); }
+  .req-meta { flex: 1; min-width: 0; }
+  .req-meta h3 { margin: 0 0 0.2rem; font-size: 1rem; letter-spacing: -0.2px; }
+  .req-sub { font-size: 0.82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; }
+  .req-sub b { color: var(--ink); font-weight: 600; }
+  .chan {
+    font-size: 0.7rem; color: var(--ink-soft); border: 1px solid var(--line);
+    padding: 0.15rem 0.5rem; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* ---- AI analysis ---- */
+  .ai {
+    margin: 0 1.2rem; padding: 0.75rem 0.9rem; border-radius: 10px;
+    background: linear-gradient(180deg, oklch(97% 0.02 250), oklch(98.5% 0.01 250));
+    border: 1px solid var(--line); font-size: 0.82rem;
+  }
+  .ai-head { display: flex; align-items: center; gap: 0.5rem; font-weight: 650; color: var(--steel-deep); margin-bottom: 0.4rem; }
+  .ai-head .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--go); box-shadow: 0 0 0 3px var(--go-soft); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .ai ul { margin: 0.3rem 0 0; padding-left: 1.1rem; color: var(--ink-soft); }
+  .ai ul li { margin: 0.15rem 0; }
+  .ai ul li b { color: var(--ink); }
+
+  /* ---- Options ---- */
+  .opts { padding: 0.9rem 1.2rem 1.2rem; display: grid; gap: 0.7rem; }
+  .opt {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 0.9rem; align-items: center;
+    padding: 0.8rem 0.9rem; border: 1.5px solid var(--line); border-radius: 11px;
+    background: var(--surface); cursor: pointer; transition: border-color .2s, background .2s, transform .15s;
+  }
+  .opt:hover { border-color: var(--steel); transform: translateX(2px); }
+  .opt.best { border-color: var(--bolt); background: linear-gradient(90deg, var(--warn-soft), var(--surface) 60%); }
+  .rank {
+    width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center;
+    font-weight: 750; font-size: 0.85rem; flex: none; background: var(--steel); color: white;
+  }
+  .opt.best .rank { background: linear-gradient(150deg, var(--bolt), var(--bolt-deep)); color: var(--steel-deep); }
+  .opt-body b { font-size: 0.92rem; }
+  .opt-body .reason { font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.1rem; }
+  .tag-best { font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--bolt-deep); }
+  .approve {
+    border: none; background: linear-gradient(180deg, var(--steel), var(--steel-deep)); color: white;
+    font-weight: 650; font-size: 0.82rem; padding: 0.55rem 1rem; border-radius: 9px; cursor: pointer;
+    white-space: nowrap; box-shadow: 0 2px 8px oklch(34% 0.08 255 / 0.3); transition: transform .12s, filter .2s;
+  }
+  .opt.best .approve { background: linear-gradient(180deg, var(--bolt), var(--bolt-deep)); color: var(--steel-deep); }
+  .approve:hover { transform: translateY(-1px); filter: brightness(1.06); }
+  .approve:active { transform: translateY(1px); }
+
+  /* ---- APM flag ---- */
+  .apm {
+    margin: 0 1.2rem 1.1rem; padding: 0.6rem 0.85rem; border-radius: 9px;
+    background: var(--warn-soft); border: 1px solid var(--warn); font-size: 0.8rem;
+    display: flex; gap: 0.5rem; align-items: center; color: oklch(40% 0.1 55);
+  }
+
+  /* ---- Confirmation state ---- */
+  .done { padding: 1.4rem 1.2rem; text-align: center; display: none; }
+  .req.approved .opts, .req.approved .apm, .req.approved .ai { display: none; }
+  .req.approved .done { display: block; animation: rise .35s var(--ease, cubic-bezier(0.16,1,0.3,1)); }
+  .req.approved .req-top { background: linear-gradient(180deg, var(--go-soft), transparent); }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .done .check { width: 46px; height: 46px; margin: 0 auto 0.6rem; border-radius: 50%; background: var(--go-soft); display: grid; place-items: center; }
+  .done .check svg { width: 24px; height: 24px; stroke: var(--go); }
+  .done h4 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .done .recv { font-size: 0.83rem; color: var(--ink-soft); }
+  .done .recv b { color: var(--ink); }
+  .done .trace { margin-top: 0.7rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); display: inline-flex; flex-direction: column; gap: 0.2rem; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.8rem; }
+  .done .trace span::before { content: "→ "; color: var(--go); }
+
+  footer { margin-top: 1.6rem; font-size: 0.74rem; color: var(--ink-soft); text-align: center; line-height: 1.6; }
+  footer code { font-family: var(--mono); background: var(--surface); border: 1px solid var(--line); padding: 0.05rem 0.35rem; border-radius: 5px; }
+
+  @media (max-width: 620px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .opt { grid-template-columns: auto 1fr; }
+    .opt .approve { grid-column: 2; justify-self: start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <span class="bolt-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="white"/></svg>
+    </span>
+    <span class="brand"><b>All South Lightning Protection</b><span>AI OS · Smart Scheduler</span></span>
+    <div class="who">
+      <span class="pill">Tampa</span>
+      <span class="avatar">J</span>
+      <span><b id="who-name">Jovani</b><br><span style="opacity:.75;font-size:.72rem">jovani@aslp.net</span></span>
+    </div>
+  </header>
+
+  <span class="mock-flag">◆ Visual mock · Week 12 · for review with Chuck — not yet live</span>
+
+  <!-- Stats -->
+  <section class="stats" aria-label="Today at a glance">
+    <div class="stat"><div class="n">11</div><div class="l">New today</div></div>
+    <div class="stat alert"><div class="n">2</div><div class="l">Need approval</div></div>
+    <div class="stat"><div class="n">3–6<span style="font-size:.9rem">wk</span></div><div class="l">Horizon</div></div>
+    <div class="stat"><div class="n">~30</div><div class="l">Daily requests</div></div>
+  </section>
+
+  <div class="col-head"><h2>Awaiting your 1-click approval</h2><span class="count">AI pre-matched · you decide</span></div>
+
+  <div class="layout">
+
+    <!-- REQUEST 1 — Hospital reschedule -->
+    <article class="req" id="req1">
+      <div class="req-top">
+        <span class="jobtype jt-hospital">Hospital</span>
+        <div class="req-meta">
+          <h3>Reschedule — St. Joseph's Hospital, Bldg 4 (grounding + air terminals)</h3>
+          <div class="req-sub">
+            <span><b>Requested by:</b> facilities PM (Crystal relayed)</span>
+            <span><b>New window:</b> wk of Jul 7</span>
+            <span><b>On-site:</b> M. Alvarez · (813) 555-0142</span>
+          </div>
+        </div>
+        <span class="chan">via email</span>
+      </div>
+
+      <div class="ai">
+        <div class="ai-head"><span class="dot"></span> Brain analysis</div>
+        <ul>
+          <li><b>Job type:</b> Hospital → requires hospital-certified foreman tier</li>
+          <li><b>Clearance:</b> standard — no govt background check needed</li>
+          <li><b>Constraint:</b> grounding pathway must complete before air terminals (no partial install)</li>
+          <li><b>Calendars checked:</b> 4 foreman + crew Outlook accounts, wk of Jul 7</li>
+        </ul>
+      </div>
+
+      <div class="opts">
+        <div class="opt best" onclick="approve('req1','Hayden')">
+          <span class="rank">1</span>
+          <div class="opt-body">
+            <b>Hayden — Hospital crew</b> <span class="tag-best">· best match</span>
+            <div class="reason">Hospital specialist · open Mon–Wed Jul 7–9 · 2 crew available · 18 mi from site</div>
+          </div>
+          <button class="approve">Approve →</button>
+        </div>
+        <div class="opt" onclick="approve('req1','Roberto')">
+          <span class="rank">2</span>
+          <div class="opt-body">
+            <b>Roberto — Large commercial</b>
+            <div class="reason">Full capability (can run hospital) · open Thu–Fri Jul 10–11 · 1 crew available</div>
+          </div>
+          <button class="approve">Approve →</button>
+        </div>
+      </div>
+
+      <div class="apm">⚠️ APM site-readiness check recommended before confirm — Bldg 4 had a concrete-trade conflict last visit.</div>
+
+      <div class="done">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h4>Scheduled — <span class="picked">Hayden</span> assigned</h4>
+        <p class="recv">Outlook invites sent · client notified via template · APM check requested</p>
+        <div class="trace">
+          <span>Calendar invite → <b class="picked">Hayden</b> + crew (job loc, timing, on-site contact)</span>
+          <span>Client email → St. Joseph's facilities (job-phase template)</span>
+          <span>APM dispatch → site-readiness check queued</span>
+          <span>Trimble → assignment updated</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- REQUEST 2 — Government new job -->
+    <article class="req" id="req2">
+      <div class="req-top govt">
+        <span class="jobtype jt-govt">Government</span>
+        <div class="req-meta">
+          <h3>New job — MacDill AFB perimeter facility (lightning protection install)</h3>
+          <div class="req-sub">
+            <span><b>Approved by:</b> Ron (email) → Trimble assigned</span>
+            <span><b>Target:</b> wk of Jul 14</span>
+            <span><b>On-site:</b> base escort required</span>
+          </div>
+        </div>
+        <span class="chan">via Trimble</span>
+      </div>
+
+      <div class="ai">
+        <div class="ai-head"><span class="dot"></span> Brain analysis</div>
+        <ul>
+          <li><b>Job type:</b> Government → security clearance gate applied</li>
+          <li><b>Clearance:</b> background check REQUIRED — only cleared crew eligible</li>
+          <li><b>Filtered out:</b> Josh / Nate / Adam (no govt clearance)</li>
+          <li><b>Calendars checked:</b> cleared foreman only, wk of Jul 14</li>
+        </ul>
+      </div>
+
+      <div class="opts">
+        <div class="opt best" onclick="approve('req2','Nathaniel')">
+          <span class="rank">1</span>
+          <div class="opt-body">
+            <b>Nathaniel Been — Government crew</b> <span class="tag-best">· best match</span>
+            <div class="reason">Govt-cleared specialist · open wk of Jul 14 · base access on file</div>
+          </div>
+          <button class="approve">Approve →</button>
+        </div>
+        <div class="opt" onclick="approve('req2','Roberto')">
+          <span class="rank">2</span>
+          <div class="opt-body">
+            <b>Roberto — Large commercial (cleared)</b>
+            <div class="reason">Full capability · cleared · open Jul 16–18 · backup if Nathaniel slips</div>
+          </div>
+          <button class="approve">Approve →</button>
+        </div>
+      </div>
+
+      <div class="done">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h4>Scheduled — <span class="picked">Nathaniel Been</span> assigned</h4>
+        <p class="recv">Outlook invites sent · client notified via template · base escort flagged</p>
+        <div class="trace">
+          <span>Calendar invite → <b class="picked">Nathaniel</b> + cleared crew</span>
+          <span>Client email → MacDill POC (job-phase template)</span>
+          <span>Trimble → assignment updated</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    Mock for Week 12 review · data illustrative · logic from locked Week 11 specs (crew-tier matching, clearance gate, calendar check, 1-click approve).<br>
+    Live build connects: Jovani's Outlook <code>0ZVgWEThV7997LnX</code> · crew @aslp.net calendars (Graph API) · Brain crew profiles · Trimble.<br>
+    <b>Open before live:</b> crew count per foreman · client-notify template (Chuck) · APM trigger flow · single intake channel.
+  </footer>
+</div>
+
+<script>
+  function approve(reqId, name) {
+    var card = document.getElementById(reqId);
+    card.querySelectorAll('.picked').forEach(function(el){ el.textContent = name; });
+    card.classList.add('approved');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html>
