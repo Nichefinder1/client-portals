@@ -444,14 +444,6 @@
       "deployed_date": null
     },
     {
-      "title": "Trade Show Commercial Video",
-      "description": "AI-produced commercial video for the Tampa construction trade show (April 28, 2026). Designed for trade show booth display — looping format with captions for a loud expo floor environment. Showcases All South's commercial lightning protection work and capabilities.",
-      "status": "live",
-      "priority": 2,
-      "impact": "Professional brand presence at the April 28 Tampa expo. No production crew needed — delivered via the AI OS program.",
-      "deployed_date": "2026-04-23"
-    },
-    {
       "title": "Phone Call Transcription",
       "description": "Calls transcribed automatically → organized into lead file → moves to job file. Solves costly disputes when customers claim job details differ from agreement. Otter removed for being too aggressive.",
       "status": "identified",
