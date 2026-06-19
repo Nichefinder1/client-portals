@@ -721,7 +721,7 @@
     }
   ],
   "upcoming_session": {
-    "label": "Week 12: Jovani Smart Scheduler Mock Review + Roberto Intro",
+    "label": "Week 12: Jovani Smart Scheduler Mock Review",
     "date": "Thursday, June 19, 2026",
     "time": "10:00 AM ET",
     "duration": "60 minutes",
@@ -729,7 +729,6 @@
     "agenda": [
       "Jovani Smart Scheduler — walk through the clickable mock (1-click crew approval)",
       "Confirm requirements: crew count per foreman, single intake channel, APM trigger flow",
-      "Invite Roberto Garcia — discuss his large commercial project oversight role",
       "Email Triage V3 — confirm live & hardened (no more daily failures)",
       "Project template automation (client notifications) — scope and timeline",
       "Press release — Ron quote + distribution channel decision"
