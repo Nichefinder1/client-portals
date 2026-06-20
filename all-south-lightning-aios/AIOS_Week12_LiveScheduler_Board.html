@@ -12,37 +12,35 @@
     --bg: oklch(96.5% 0.008 250); --bolt: oklch(72% 0.18 85); --bolt-deep: oklch(60% 0.16 70);
     --steel: oklch(48% 0.09 250); --steel-deep: oklch(34% 0.08 255);
     --go: oklch(62% 0.15 155);
-    --open-soft: oklch(95.5% 0.04 155); --open-line: oklch(82% 0.08 155); --open-ink: oklch(46% 0.12 155);
-    --no-soft: oklch(95.5% 0.035 25); --no-line: oklch(83% 0.075 25); --no-ink: oklch(52% 0.13 25);
-    --warn-soft: oklch(96% 0.04 65); --warn: oklch(68% 0.15 55);
+    --open-soft: oklch(95.5% 0.04 155); --open-line: oklch(82% 0.08 155); --open-ink: oklch(40% 0.13 155);
+    --no-soft: oklch(94% 0.04 25); --no-line: oklch(80% 0.08 25); --no-ink: oklch(46% 0.14 25);
     --radius: 14px;
     --shadow: 0 1px 2px oklch(30% .05 255/.05), 0 8px 24px -10px oklch(30% .05 255/.2);
     --shadow-lift: 0 2px 6px oklch(30% .05 255/.07), 0 18px 40px -12px oklch(30% .05 255/.28);
+    --warn-soft: oklch(96% 0.04 65); --warn: oklch(68% 0.15 55);
     --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --hh: 46px;            /* pixels per hour */
   }
   * { box-sizing: border-box; }
   body { margin:0; font-family:var(--font); color:var(--ink); line-height:1.45;
     background: radial-gradient(1100px 540px at 100% -10%, oklch(72% .18 85/.06), transparent 60%),
                 radial-gradient(820px 460px at -10% 110%, oklch(48% .09 250/.07), transparent 60%), var(--bg);
     -webkit-font-smoothing:antialiased; }
-  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(1rem,.6rem+2vw,2rem); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: clamp(1rem,.6rem+2vw,2rem); }
 
   .topbar { display:flex; align-items:center; gap:.85rem; flex-wrap:wrap; padding:1rem 1.25rem; margin-bottom:1rem;
     background: linear-gradient(180deg,var(--steel-deep),var(--steel)); border-radius:var(--radius);
     color: oklch(99% .004 250); box-shadow: var(--shadow-lift); }
   .bolt-badge { width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none;
-    background: linear-gradient(160deg,var(--bolt),var(--bolt-deep));
-    box-shadow: inset 0 1px 0 oklch(100% 0 0/.4), 0 2px 8px oklch(60% .16 70/.5); }
+    background: linear-gradient(160deg,var(--bolt),var(--bolt-deep)); box-shadow: inset 0 1px 0 oklch(100% 0 0/.4), 0 2px 8px oklch(60% .16 70/.5); }
   .bolt-badge svg { width:20px;height:20px; }
   .brand { display:flex; flex-direction:column; line-height:1.15; }
-  .brand b { font-size:.95rem; letter-spacing:.2px; }
-  .brand span { font-size:.72rem; opacity:.82; text-transform:uppercase; letter-spacing:1.4px; }
+  .brand b { font-size:.95rem; } .brand span { font-size:.72rem; opacity:.82; text-transform:uppercase; letter-spacing:1.4px; }
   .who { margin-left:auto; display:flex; align-items:center; gap:.6rem; font-size:.85rem; }
   .who .pill { background: oklch(100% 0 0/.14); border:1px solid oklch(100% 0 0/.22); padding:.25rem .6rem; border-radius:999px; font-size:.72rem; }
-  .avatar { width:32px;height:32px;border-radius:50%;flex:none; background: linear-gradient(150deg,var(--bolt),var(--bolt-deep));
-    display:grid;place-items:center;font-weight:700;font-size:.8rem;color:var(--steel-deep); }
+  .avatar { width:32px;height:32px;border-radius:50%;flex:none; background: linear-gradient(150deg,var(--bolt),var(--bolt-deep)); display:grid;place-items:center;font-weight:700;font-size:.8rem;color:var(--steel-deep); }
 
   .flags { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
   .tag { font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; padding:.3rem .7rem; border-radius:999px; font-weight:600; }
@@ -70,15 +68,27 @@
   .jobtype { font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:.22rem .55rem;border-radius:6px;white-space:nowrap; }
   .jt-hospital { background: oklch(95% .05 25); color: oklch(48% .16 25); }
   .jt-government { background: oklch(94% .04 255); color: var(--steel-deep); }
-  .job-head h2 { margin:0; font-size:1.02rem; letter-spacing:-.2px; flex:1; min-width:200px; }
+  .job-head h2 { margin:0; font-size:1.02rem; flex:1; min-width:200px; }
   .job-sub { font-size:.82rem; color:var(--ink-soft); margin-top:.25rem; display:flex; flex-wrap:wrap; gap:.3rem .9rem; }
   .job-sub b { color:var(--ink); }
   .elig { margin-top:.7rem; font-size:.82rem; padding:.5rem .7rem; border-radius:9px; background:var(--open-soft); border:1px solid var(--open-line); color:oklch(40% .1 155); }
   .elig b { color:oklch(34% .12 155); }
 
+  /* week navigator */
+  .weeknav { display:flex; gap:.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+  .daybtn { flex:1; min-width:92px; background:var(--panel); border:1.5px solid var(--line); border-radius:11px; padding:.6rem .7rem; cursor:pointer; text-align:left; transition:border-color .2s, transform .12s; }
+  .daybtn:hover { border-color:var(--steel); transform:translateY(-1px); }
+  .daybtn.sel { border-color:var(--bolt); background:var(--warn-soft); }
+  .daybtn .dn { font-size:.82rem; font-weight:700; }
+  .daybtn .dd { font-size:.7rem; color:var(--ink-soft); }
+  .daybtn .fill { height:5px; border-radius:3px; background:var(--open-soft); margin-top:.45rem; overflow:hidden; }
+  .daybtn .fill i { display:block; height:100%; background:linear-gradient(90deg,var(--no-line),var(--no-ink)); }
+  .daybtn .ft { font-size:.64rem; color:var(--ink-faint); margin-top:.25rem; }
+
+  /* day timeline */
   .board-card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
-  .board-head { display:flex; align-items:center; justify-content:space-between; padding:.9rem 1.2rem; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:.5rem; }
-  .board-head h3 { margin:0; font-size:1rem; letter-spacing:-.2px; }
+  .board-head { display:flex; align-items:center; justify-content:space-between; padding:.85rem 1.2rem; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:.5rem; }
+  .board-head h3 { margin:0; font-size:1rem; }
   .board-head .srcnote { font-size:.74rem; color:var(--ink-soft); }
   .legend { display:flex; gap:.9rem; font-size:.74rem; color:var(--ink-soft); flex-wrap:wrap; }
   .legend i { width:11px;height:11px;border-radius:3px;display:inline-block;vertical-align:-1px;margin-right:.3rem; }
@@ -86,30 +96,31 @@
   .lg-busy i { background:var(--no-soft); border:1px solid var(--no-line); }
   .lg-cur i { background:var(--warn-soft); border:1px solid var(--bolt); }
 
-  .scroll { overflow-x:auto; }
-  table.grid { border-collapse:separate; border-spacing:0; width:100%; min-width:920px; }
-  table.grid th, table.grid td { padding:0; }
-  table.grid th.crew-h { text-align:left; padding:.6rem .9rem .6rem 1.5rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.6px; color:var(--ink-soft); position:sticky; left:0; background:var(--panel); z-index:3; border-bottom:1px solid var(--line); }
-  .day-h { font-size:.72rem; color:var(--steel-deep); font-weight:700; padding:.5rem .3rem .15rem; text-align:center; border-bottom:none; white-space:nowrap; }
-  .day-h span { display:block; font-size:.62rem; color:var(--ink-faint); font-weight:500; }
-  .half-h { font-size:.6rem; color:var(--ink-faint); font-weight:600; text-transform:uppercase; letter-spacing:.5px; text-align:center; padding:0 .3rem .4rem; border-bottom:1px solid var(--line); }
-  table.grid td.crew { position:sticky; left:0; background:var(--panel); z-index:2; padding:.55rem 1rem .55rem 1.5rem; border-bottom:1px solid var(--line); width:196px; }
-  .crew b { font-size:.86rem; display:block; }
-  .crew small { font-size:.69rem; color:var(--ink-soft); display:block; }
-  .crew .pair { font-size:.66rem; color:var(--ink-faint); }
-  td.slot-cell { border-bottom:1px solid var(--line); border-left:1px solid var(--line); padding:.25rem; vertical-align:middle; }
-  td.slot-cell.daystart { border-left:1px solid var(--steel-deep); }
-  .slot { height:44px; border-radius:7px; font-size:.66rem; display:grid; place-items:center; text-align:center; padding:.15rem; line-height:1.1; border:1px solid transparent; }
-  .slot.busy { background:var(--no-soft); color:var(--no-ink); border-color:var(--no-line); }
-  .slot.open { background:var(--open-soft); color:var(--open-ink); border-color:var(--open-line); font-weight:600; }
-  .slot.current { background:var(--warn-soft); color:var(--bolt-deep); border-color:var(--bolt); font-weight:650; }
-  tr.crew-row.ineligible { opacity:.4; }
-  tr.crew-row.ineligible .crew small { color:var(--warn); }
-  .slot.open.pick { cursor:pointer; background:oklch(91% 0.09 155); color:oklch(34% .13 155); border:1.5px solid oklch(66% 0.15 155); font-weight:700; box-shadow:inset 0 0 0 2px oklch(66% 0.15 155/.12); transition:transform .14s var(--ease), box-shadow .2s; }
-  .slot.open.pick:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
-  .slot.open.pick::after { content:"+ Assign"; }
-  .slot.chosen { background: linear-gradient(150deg,var(--go),oklch(54% .14 155)); color:oklch(99% .02 155); border-color:transparent; font-weight:700; }
-  .slot.chosen::after { content:"✓ Booked"; }
+  .crewhdr { display:flex; padding:0 0 0 56px; border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--panel); z-index:5; }
+  .crewhdr .ch { flex:1; padding:.5rem .5rem; border-left:1px solid var(--line); min-width:0; }
+  .crewhdr .ch b { font-size:.78rem; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .crewhdr .ch small { font-size:.64rem; color:var(--ink-soft); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .crewhdr .ch.dim { opacity:.4; }
+
+  .tlscroll { overflow:auto; max-height:560px; }
+  .tlwrap { min-width:760px; }
+  .timeline { display:flex; position:relative; }
+  .gutter { width:56px; flex:none; position:relative; }
+  .gutter .hr { height:var(--hh); font-size:.66rem; color:var(--ink-faint); text-align:right; padding-right:.4rem; transform:translateY(-.5em); }
+  .lanes { flex:1; display:flex; position:relative; }
+  .lane { flex:1; position:relative; border-left:1px solid var(--line);
+    background:repeating-linear-gradient(to bottom, transparent, transparent calc(var(--hh) - 1px), var(--line) calc(var(--hh) - 1px), var(--line) var(--hh)); }
+  .lane.dim { opacity:.38; }
+  .ev { position:absolute; left:4px; right:4px; border-radius:7px; padding:3px 6px; font-size:.66rem; line-height:1.15; overflow:hidden; border:1px solid transparent; }
+  .ev.busy { background:var(--no-soft); color:var(--no-ink); border-color:var(--no-line); }
+  .ev.busy b { font-weight:700; } .ev .t { font-family:var(--mono); font-size:.6rem; opacity:.85; }
+  .ev.current { background:var(--warn-soft); color:var(--bolt-deep); border-color:var(--bolt); font-weight:650; }
+  .gap { position:absolute; left:4px; right:4px; border-radius:7px; border:1px dashed var(--open-line); background:var(--open-soft); color:var(--open-ink);
+    font-size:.64rem; display:grid; place-items:center; text-align:center; }
+  .gap.pick { cursor:pointer; border:1.5px solid oklch(66% .15 155); background:oklch(93% .07 155); font-weight:650; transition:transform .12s var(--ease), box-shadow .2s; }
+  .gap.pick:hover { transform:scale(1.01); box-shadow:var(--shadow); }
+  .nowline { position:absolute; left:0; right:0; height:2px; background:var(--bolt); z-index:4; }
+  .nowline::before { content:""; position:absolute; left:-3px; top:-3px; width:8px; height:8px; border-radius:50%; background:var(--bolt); }
 
   .confirm { display:none; margin-top:1rem; background:var(--panel); border:1px solid var(--open-line); border-radius:var(--radius); box-shadow:var(--shadow); padding:1.1rem 1.2rem; animation:rise .3s var(--ease); }
   .confirm.show { display:block; }
@@ -137,12 +148,12 @@
 
   <div class="flags">
     <span class="tag mock">◆ Visual mock · Week 12</span>
-    <span class="tag src">Single source of truth: Jovani's calendar (synced w/ crews)</span>
-    <span class="tag assume">Assumption: crew = a category on each event — confirm Jun 30</span>
+    <span class="tag src">Mirrors Jovani's Outlook calendar (real clock times)</span>
+    <span class="tag assume">Crew = a category on each event — confirm Jun 30</span>
   </div>
 
   <section class="callbar">
-    <div class="lead"><span class="live-dot"></span> Jovani schedules &amp; reschedules everything here — booking stays in the calendar, the board just makes it visible and assists.</div>
+    <div class="lead"><span class="live-dot"></span> Pick a day, see the real hour-by-hour timeline, move a job to an exact open time — writes straight back to the calendar.</div>
     <div class="search">
       <input id="q" type="text" placeholder="Search client, site, or phone…" aria-label="Search a job" autocomplete="off" />
       <div class="quick" role="group" aria-label="Recent">
@@ -151,7 +162,7 @@
         <button class="chip" data-job="none" onclick="clearJob(this)">Just browsing</button>
       </div>
     </div>
-    <div class="hint">Days are split into <b>AM / PM</b> so a crew can run multiple stops in one day (split-shift). Tap a caller to highlight qualified crews; tap any green slot to (re)assign.</div>
+    <div class="hint">Times are <b>real clock hours</b> (7a–6p), matching Outlook — so a 9:00 and a 10:30 are distinct, movable blocks. Tap a day above the board to switch days; tap any green open window to (re)assign at that time.</div>
   </section>
 
   <section class="job" id="job">
@@ -164,23 +175,25 @@
     <div class="elig" id="elig"></div>
   </section>
 
+  <div class="weeknav" id="weeknav"></div>
+
   <section class="board-card">
     <div class="board-head">
-      <div><h3>Crew availability — week of Jul 6 (Tampa)</h3><div class="srcnote">Read live from Jovani's Outlook calendar · 5 crews · AM/PM slots</div></div>
+      <div><h3 id="daytitle">—</h3><div class="srcnote">Hourly view · reads Jovani's Outlook calendar · 5 Tampa crews</div></div>
       <div class="legend">
         <span class="lg-open"><i></i>Open</span>
         <span class="lg-busy"><i></i>Booked</span>
         <span class="lg-cur"><i></i>This job now</span>
       </div>
     </div>
-    <div class="scroll">
-      <table class="grid" id="grid">
-        <thead>
-          <tr id="dayrow"><th class="crew-h" rowspan="2">Crew</th></tr>
-          <tr id="halfrow"></tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
+    <div class="crewhdr" id="crewhdr"></div>
+    <div class="tlscroll">
+      <div class="tlwrap">
+        <div class="timeline">
+          <div class="gutter" id="gutter"></div>
+          <div class="lanes" id="lanes"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -193,83 +206,117 @@
   </section>
 
   <footer>
-    Mock for Week 12 · consolidated single board (replaces the approval-queue concept) · data illustrative.<br>
-    Reads <b>Jovani's calendar</b> (Graph API, OAuth <code>0ZVgWEThV7997LnX</code>) which is synced with the crew calendars; writes reschedules back to it.<br>
-    <b>Confirm Jun 30:</b> how each event identifies its crew (category / color / overlaid calendars) · the exact 5 Tampa foreman+installer pairings.
+    Mock for Week 12 · consolidated single board · hourly timeline mirrors Outlook · data illustrative.<br>
+    Reads <b>Jovani's calendar</b> (Graph API, OAuth <code>0ZVgWEThV7997LnX</code>, synced w/ crews); reschedules write the exact new time back.<br>
+    <b>Confirm Jun 30:</b> how each event identifies its crew (category/color/overlaid) · the exact 5 Tampa foreman+installer pairings.
   </footer>
 </div>
 
 <script>
-  // Week of Jul 6, Mon–Fri, each split AM/PM. slot index = day*2 + (0 AM | 1 PM)
+  var DAY_START = 7, DAY_END = 18;           // 7am–6pm
   var DAYS = [{d:"Mon",n:"Jul 6"},{d:"Tue",n:"Jul 7"},{d:"Wed",n:"Jul 8"},{d:"Thu",n:"Jul 9"},{d:"Fri",n:"Jul 10"}];
-  // 5 Tampa crews. 3 specialist foremen confirmed; 2 general crews labeled TBD (names confirm Jun 30).
+  // 5 Tampa crews. 3 specialist foremen confirmed; 2 general crews TBD (names confirm Jun 30).
+  // bookings: per crew, per dayIndex → [{s,e,label}] in decimal hours (9.5 = 9:30).
   var CREWS = [
-    {name:"Hayden Jamison", tier:"Hospital · any project", pair:"+ installer", does:["hospital","commercial","simple"],
-     booked:{0:"St. Anthony's",1:"St. Anthony's",2:"",3:"",6:"Tampa General",9:""}},
-    {name:"Roberto Garcia", tier:"Large commercial · cleared", pair:"+ installer", does:["hospital","government","commercial","simple"],
-     booked:{4:"Westshore",5:"Westshore",6:"MacDill AM",7:"Exalt PM",8:""}},
-    {name:"Nathaniel Been", tier:"Government · cleared", pair:"+ installer", does:["government","simple"],
-     booked:{0:"MacDill",2:"",8:"Coast Guard"}},
-    {name:"Crew D (TBD)", tier:"General · confirm 6/30", pair:"+ installer", does:["commercial","simple"],
-     booked:{1:"Brandon",2:"Brandon",5:"Riverview"}},
-    {name:"Crew E (TBD)", tier:"Simple · confirm 6/30", pair:"+ installer", does:["simple"],
-     booked:{3:"Plant City",6:"Largo",7:"Largo"}}
+    {name:"Hayden Jamison", tier:"Hospital · any project", does:["hospital","commercial","simple"], book:{
+      0:[{s:7,e:11,label:"St. Anthony's"},{s:13,e:16,label:"St. Anthony's"}],
+      1:[{s:8,e:12.5,label:"Tampa General"}],
+      3:[{s:9,e:11,label:"St. Joseph's Bldg 4"}],
+      4:[{s:7.5,e:10,label:"AdventHealth"}] }},
+    {name:"Roberto Garcia", tier:"Large commercial · cleared", does:["hospital","government","commercial","simple"], book:{
+      2:[{s:7,e:11,label:"MacDill (AM)"},{s:13,e:15.5,label:"Exalt N. Port (PM)"}],
+      3:[{s:8,e:12,label:"Westshore"}],
+      4:[{s:8,e:11,label:"Westshore"}] }},
+    {name:"Nathaniel Been", tier:"Government · cleared", does:["government","simple"], book:{
+      0:[{s:7,e:12,label:"MacDill perimeter"}],
+      4:[{s:9,e:13,label:"Coast Guard Stn"}] }},
+    {name:"Crew D (TBD)", tier:"General · confirm 6/30", does:["commercial","simple"], book:{
+      1:[{s:8,e:11,label:"Brandon"},{s:12,e:15,label:"Brandon ph2"}],
+      2:[{s:7,e:10,label:"Riverview"}] }},
+    {name:"Crew E (TBD)", tier:"Simple · confirm 6/30", does:["simple"], book:{
+      0:[{s:7,e:9,label:"Plant City"}],
+      3:[{s:13,e:16,label:"Largo"}],
+      4:[{s:8,e:11,label:"Largo"}] }}
   ];
   var JOBS = {
     hospital: { chip:"Hospital", chipClass:"jt-hospital", title:"St. Joseph's Hospital — Bldg 4 (grounding + air terminals)",
-      sub:["<b>Caller:</b> facilities PM","<b>Phone:</b> (813) 555-0142","<b>Currently:</b> Hayden · Thu Jul 9 AM","<b>Move reason:</b> concrete trade overrun"],
-      current:{crew:"Hayden Jamison", slot:6},
-      eligHtml:"<b>Hospital job</b> → hospital-capable crews lit: <b>Hayden</b> and <b>Roberto</b>. Others dimmed." },
+      sub:["<b>Caller:</b> facilities PM","<b>Phone:</b> (813) 555-0142","<b>Currently:</b> Hayden · Thu Jul 9, 9:00–11:00","<b>Move reason:</b> concrete trade overrun"],
+      day:3, current:{crew:"Hayden Jamison", s:9, e:11}, dur:2,
+      eligHtml:"<b>Hospital job</b> (2 hr) → hospital-capable crews active: <b>Hayden</b> &amp; <b>Roberto</b>. Others dimmed. Pick any green window at the exact time you need." },
     government: { chip:"Government", chipClass:"jt-government", title:"MacDill AFB — perimeter facility (install)",
-      sub:["<b>Caller:</b> base POC","<b>Phone:</b> (813) 555-0199","<b>Currently:</b> Nathaniel · Wed Jul 8","<b>Move reason:</b> base access window changed"],
-      current:{crew:"Nathaniel Been", slot:4},
-      eligHtml:"<b>Government job</b> → clearance gate: only <b>Nathaniel</b> and <b>Roberto</b> (cleared) lit. Others dimmed." }
+      sub:["<b>Caller:</b> base POC","<b>Phone:</b> (813) 555-0199","<b>Currently:</b> Nathaniel · Mon Jul 6, 7:00–12:00","<b>Move reason:</b> base access window changed"],
+      day:0, current:{crew:"Nathaniel Been", s:7, e:12}, dur:4,
+      eligHtml:"<b>Government job</b> (4 hr) → clearance gate: only <b>Nathaniel</b> &amp; <b>Roberto</b> (cleared) active. Pick a green window." }
   };
 
-  var SLOTS = DAYS.length * 2;
-  // header rows
-  var dayrow=document.getElementById("dayrow"), halfrow=document.getElementById("halfrow");
-  DAYS.forEach(function(d){
-    var th=document.createElement("th"); th.className="day-h"; th.colSpan=2; th.innerHTML=d.d+"<span>"+d.n+"</span>"; dayrow.appendChild(th);
-    ["AM","PM"].forEach(function(h){ var t=document.createElement("th"); t.className="half-h"; t.textContent=h; halfrow.appendChild(t); });
-  });
-  // body
-  var rows=document.getElementById("rows");
-  CREWS.forEach(function(c, ci){
-    var tr=document.createElement("tr"); tr.className="crew-row"; tr.dataset.crew=ci;
-    var th=document.createElement("td"); th.className="crew";
-    th.innerHTML="<b>"+c.name+"</b><small>"+c.tier+"</small><span class='pair'>"+c.pair+"</span>"; tr.appendChild(th);
-    for (var s=0; s<SLOTS; s++){
-      var td=document.createElement("td"); td.className="slot-cell"+(s%2===0?" daystart":"");
-      var div=document.createElement("div");
-      var label=c.booked[s];
-      if (label){ div.className="slot busy"; div.textContent=label; }
-      else { div.className="slot open"; div.textContent="Open"; }
-      div.dataset.crew=ci; div.dataset.slot=s;
-      td.appendChild(div); tr.appendChild(td);
-    }
-    rows.appendChild(tr);
+  var HH = 46, selDay = 3, currentJob = null;
+  function fmt(h){ var hr=Math.floor(h+1e-9), m=Math.round((h-hr)*60); var ap=hr>=12?'p':'a'; var h12=((hr+11)%12)+1; return h12+(m?':'+(m<10?'0'+m:m):'')+ap; }
+  function fmtFull(h){ var hr=Math.floor(h+1e-9), m=Math.round((h-hr)*60); var ap=hr>=12?'PM':'AM'; var h12=((hr+11)%12)+1; return h12+':'+(m<10?'0'+m:m)+' '+ap; }
+
+  // gutter hour labels
+  var gutter=document.getElementById("gutter");
+  for(var h=DAY_START; h<=DAY_END; h++){ var d=document.createElement("div"); d.className="hr"; d.style.height=HH+"px"; d.textContent=fmt(h); gutter.appendChild(d); }
+  document.getElementById("gutter").style.height = ((DAY_END-DAY_START)*HH)+"px";
+
+  // week nav
+  function dayFill(di){ var booked=0; CREWS.forEach(function(c){ (c.book[di]||[]).forEach(function(b){ booked+=(b.e-b.s); }); }); var cap=CREWS.length*(DAY_END-DAY_START); return Math.round(booked/cap*100); }
+  var weeknav=document.getElementById("weeknav");
+  DAYS.forEach(function(d,di){
+    var b=document.createElement("button"); b.className="daybtn"+(di===selDay?" sel":""); b.dataset.day=di;
+    b.innerHTML="<div class='dn'>"+d.d+"</div><div class='dd'>"+d.n+"</div><div class='fill'><i style='width:"+dayFill(di)+"%'></i></div><div class='ft'>"+dayFill(di)+"% booked</div>";
+    b.onclick=function(){ selDay=di; document.querySelectorAll(".daybtn").forEach(function(x){x.classList.remove("sel");}); b.classList.add("sel"); renderDay(); };
+    weeknav.appendChild(b);
   });
 
-  var currentJob=null;
-  function fmtSlot(s){ var d=DAYS[Math.floor(s/2)]; return d.d+" "+d.n+" "+(s%2===0?"AM":"PM"); }
+  function eligible(c){ return !currentJob || c.does.indexOf(currentJobType())>-1; }
+  function currentJobType(){ var a=document.querySelector(".chip.active"); return a?a.dataset.job:"none"; }
 
-  function resetSlots(){
-    document.querySelectorAll(".slot").forEach(function(el){
-      var ci=+el.dataset.crew, s=+el.dataset.slot, label=CREWS[ci].booked[s];
-      el.className = label ? "slot busy" : "slot open";
-      el.textContent = label ? label : "Open";
-      el.onclick=null;
+  function renderHeader(){
+    var h=document.getElementById("crewhdr"); h.innerHTML="";
+    CREWS.forEach(function(c){ var el=document.createElement("div"); el.className="ch"+(eligible(c)?"":" dim");
+      el.innerHTML="<b>"+c.name+"</b><small>"+c.tier+(eligible(c)?"":" · not qualified")+"</small>"; h.appendChild(el); });
+  }
+
+  function renderDay(){
+    document.getElementById("daytitle").textContent = DAYS[selDay].d+" "+DAYS[selDay].n+" — hour by hour";
+    renderHeader();
+    var lanes=document.getElementById("lanes"); lanes.innerHTML="";
+    lanes.style.height=((DAY_END-DAY_START)*HH)+"px";
+    CREWS.forEach(function(c, ci){
+      var lane=document.createElement("div"); lane.className="lane"+(eligible(c)?"":" dim");
+      var evs=(c.book[selDay]||[]).slice().sort(function(a,b){return a.s-b.s;});
+      // booked blocks
+      evs.forEach(function(b){
+        var isCur = currentJob && currentJob.current.crew===c.name && Math.abs(currentJob.current.s-b.s)<1e-6 && selDay===currentJob.day;
+        var el=document.createElement("div"); el.className="ev "+(isCur?"current":"busy");
+        el.style.top=((b.s-DAY_START)*HH)+"px"; el.style.height=Math.max(((b.e-b.s)*HH-3),16)+"px";
+        el.innerHTML="<div class='t'>"+fmt(b.s)+"–"+fmt(b.e)+"</div><b>"+(isCur?"◆ this job":b.label)+"</b>";
+        lane.appendChild(el);
+      });
+      // open gaps
+      var cursor=DAY_START;
+      var segs=[];
+      evs.forEach(function(b){ if(b.s>cursor) segs.push({s:cursor,e:b.s}); cursor=Math.max(cursor,b.e); });
+      if(cursor<DAY_END) segs.push({s:cursor,e:DAY_END});
+      segs.forEach(function(g){
+        if(g.e-g.s < 0.5) return;
+        var el=document.createElement("div");
+        var canPick = currentJob && eligible(c);
+        el.className="gap"+(canPick?" pick":"");
+        el.style.top=((g.s-DAY_START)*HH+2)+"px"; el.style.height=((g.e-g.s)*HH-4)+"px";
+        el.textContent = canPick ? ("open "+fmt(g.s)+"–"+fmt(g.e)+"  + assign") : ("open "+fmt(g.s)+"–"+fmt(g.e));
+        if(canPick){ el.onclick=function(){ assign(c, g, ci); }; }
+        lane.appendChild(el);
+      });
+      lanes.appendChild(lane);
     });
-    document.querySelectorAll(".crew-row").forEach(function(tr){ tr.classList.remove("ineligible"); var ci=+tr.dataset.crew; tr.querySelector(".crew small").textContent=CREWS[ci].tier; });
   }
 
   function clearJob(btn){
     document.querySelectorAll(".chip").forEach(function(b){ b.classList.remove("active"); });
     if(btn) btn.classList.add("active");
     currentJob=null; document.getElementById("job").classList.remove("show"); document.getElementById("confirm").classList.remove("show");
-    document.getElementById("q").value="";
-    resetSlots();
+    document.getElementById("q").value=""; renderDay();
   }
 
   function pick(btn, skipScroll){
@@ -277,46 +324,33 @@
     btn.classList.add("active");
     document.getElementById("q").value=btn.textContent;
     currentJob=JOBS[btn.dataset.job];
+    selDay=currentJob.day;
+    document.querySelectorAll(".daybtn").forEach(function(x){ x.classList.toggle("sel", +x.dataset.day===selDay); });
     var jc=document.getElementById("jobchip"); jc.className="jobtype "+currentJob.chipClass; jc.textContent=currentJob.chip;
     document.getElementById("jobtitle").textContent=currentJob.title;
     document.getElementById("jobsub").innerHTML=currentJob.sub.map(function(x){return "<span>"+x+"</span>";}).join("");
     document.getElementById("elig").innerHTML=currentJob.eligHtml;
     document.getElementById("job").classList.add("show");
     document.getElementById("confirm").classList.remove("show");
-
-    resetSlots();
-    var type=btn.dataset.job;
-    CREWS.forEach(function(c, ci){
-      var tr=document.querySelector('tr.crew-row[data-crew="'+ci+'"]');
-      var eligible=c.does.indexOf(type)>-1;
-      tr.classList.toggle("ineligible", !eligible);
-      if(!eligible) tr.querySelector(".crew small").textContent=c.tier+" · not qualified";
-      tr.querySelectorAll(".slot").forEach(function(el){
-        if(eligible && el.classList.contains("open")){ el.classList.add("pick"); el.textContent=""; el.onclick=function(){ assign(ci, +el.dataset.slot, el); }; }
-      });
-    });
-    var cur=currentJob.current, crewIx=CREWS.findIndex(function(c){return c.name===cur.crew;});
-    var curEl=document.querySelector('.slot[data-crew="'+crewIx+'"][data-slot="'+cur.slot+'"]');
-    if(curEl){ curEl.className="slot current"; curEl.textContent="This job"; curEl.onclick=null; }
+    renderDay();
     if(!skipScroll) document.getElementById("job").scrollIntoView({behavior:"smooth", block:"start"});
   }
 
-  function assign(ci, s, el){
-    document.querySelectorAll(".slot.chosen").forEach(function(x){ x.classList.remove("chosen"); x.classList.add("pick"); x.textContent=""; });
-    el.classList.remove("pick"); el.classList.add("chosen"); el.textContent="";
-    var crew=CREWS[ci].name, when=fmtSlot(s);
-    document.getElementById("confirm-h").textContent="Rescheduled — "+crew+" · "+when;
+  function assign(c, gap, ci){
+    var dur = currentJob ? currentJob.dur : 2;
+    var start = gap.s, end = Math.min(gap.s+dur, gap.e);
+    document.getElementById("confirm-h").textContent="Rescheduled — "+c.name+" · "+DAYS[selDay].d+" "+fmtFull(start)+"–"+fmtFull(end);
     document.getElementById("confirm-sub").textContent=currentJob ? currentJob.title : "";
     document.getElementById("confirm-trace").innerHTML=
-      "<span>Jovani's calendar updated → "+crew+" booked "+when+"</span>"+
-      "<span>Old slot released"+(currentJob?" → "+currentJob.current.crew:"")+"</span>"+
+      "<span>Jovani's calendar → "+c.name+" booked "+DAYS[selDay].n+" "+fmtFull(start)+"–"+fmtFull(end)+"</span>"+
+      "<span>Old slot released"+(currentJob?" → "+currentJob.current.crew+" "+fmtFull(currentJob.current.s):"")+"</span>"+
       "<span>Synced to crew calendar (Outlook)</span>"+
       "<span>Client notice → estimator-triggered template</span>";
     document.getElementById("confirm").classList.add("show");
     document.getElementById("confirm").scrollIntoView({behavior:"smooth", block:"center"});
   }
 
-  // land populated so AM/PM + all colors show on open
+  // land on the hospital job (Thu) so real time blocks + colors show on open
   pick(document.querySelector('.chip[data-job="hospital"]'), true);
 </script>
 </body>
