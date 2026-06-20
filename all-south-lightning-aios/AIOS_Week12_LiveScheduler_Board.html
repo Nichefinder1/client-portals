@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Live Scheduler — Jovani's Board · All South Lightning Protection</title>
+<style>
+  :root {
+    --ink: oklch(22% 0.03 250); --ink-soft: oklch(45% 0.02 250); --ink-faint: oklch(62% 0.015 250);
+    --line: oklch(90% 0.01 250); --surface: oklch(99% 0.004 250); --panel: oklch(99.5% 0.003 250);
+    --bg: oklch(96.5% 0.008 250); --bolt: oklch(72% 0.18 85); --bolt-deep: oklch(60% 0.16 70);
+    --steel: oklch(48% 0.09 250); --steel-deep: oklch(34% 0.08 255);
+    --go: oklch(62% 0.15 155);
+    --open-soft: oklch(95.5% 0.04 155); --open-line: oklch(82% 0.08 155); --open-ink: oklch(46% 0.12 155);
+    --no-soft: oklch(95.5% 0.035 25); --no-line: oklch(83% 0.075 25); --no-ink: oklch(52% 0.13 25);
+    --warn-soft: oklch(96% 0.04 65); --warn: oklch(68% 0.15 55);
+    --radius: 14px;
+    --shadow: 0 1px 2px oklch(30% .05 255/.05), 0 8px 24px -10px oklch(30% .05 255/.2);
+    --shadow-lift: 0 2px 6px oklch(30% .05 255/.07), 0 18px 40px -12px oklch(30% .05 255/.28);
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:var(--font); color:var(--ink); line-height:1.45;
+    background: radial-gradient(1100px 540px at 100% -10%, oklch(72% .18 85/.06), transparent 60%),
+                radial-gradient(820px 460px at -10% 110%, oklch(48% .09 250/.07), transparent 60%), var(--bg);
+    -webkit-font-smoothing:antialiased; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(1rem,.6rem+2vw,2rem); }
+
+  .topbar { display:flex; align-items:center; gap:.85rem; flex-wrap:wrap; padding:1rem 1.25rem; margin-bottom:1rem;
+    background: linear-gradient(180deg,var(--steel-deep),var(--steel)); border-radius:var(--radius);
+    color: oklch(99% .004 250); box-shadow: var(--shadow-lift); }
+  .bolt-badge { width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none;
+    background: linear-gradient(160deg,var(--bolt),var(--bolt-deep));
+    box-shadow: inset 0 1px 0 oklch(100% 0 0/.4), 0 2px 8px oklch(60% .16 70/.5); }
+  .bolt-badge svg { width:20px;height:20px; }
+  .brand { display:flex; flex-direction:column; line-height:1.15; }
+  .brand b { font-size:.95rem; letter-spacing:.2px; }
+  .brand span { font-size:.72rem; opacity:.82; text-transform:uppercase; letter-spacing:1.4px; }
+  .who { margin-left:auto; display:flex; align-items:center; gap:.6rem; font-size:.85rem; }
+  .who .pill { background: oklch(100% 0 0/.14); border:1px solid oklch(100% 0 0/.22); padding:.25rem .6rem; border-radius:999px; font-size:.72rem; }
+  .avatar { width:32px;height:32px;border-radius:50%;flex:none; background: linear-gradient(150deg,var(--bolt),var(--bolt-deep));
+    display:grid;place-items:center;font-weight:700;font-size:.8rem;color:var(--steel-deep); }
+
+  .flags { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+  .tag { font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; padding:.3rem .7rem; border-radius:999px; font-weight:600; }
+  .tag.mock { color:var(--bolt-deep); background:var(--warn-soft); border:1px dashed var(--bolt); }
+  .tag.src { color:var(--open-ink); background:var(--open-soft); border:1px solid var(--open-line); }
+  .tag.assume { color:var(--steel-deep); background:oklch(94% .03 255); border:1px solid oklch(85% .04 255); }
+
+  .callbar { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:1rem 1.2rem; margin-bottom:1rem; }
+  .callbar .lead { display:flex; align-items:center; gap:.5rem; font-size:.82rem; color:var(--ink-soft); margin-bottom:.6rem; }
+  .live-dot { width:8px;height:8px;border-radius:50%;background:var(--warn); box-shadow:0 0 0 3px var(--warn-soft); animation:pulse 1.8s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+  .search { display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; }
+  .search input { flex:1; min-width:220px; font-size:.95rem; color:var(--ink); padding:.7rem .9rem; border:1.5px solid var(--line); border-radius:10px; background:var(--surface); }
+  .search input:focus { outline:none; border-color:var(--steel); box-shadow:0 0 0 3px oklch(48% .09 250/.12); }
+  .quick { display:flex; gap:.4rem; flex-wrap:wrap; }
+  .chip { font-size:.8rem; padding:.5rem .8rem; border:1.5px solid var(--line); border-radius:999px; background:var(--surface); cursor:pointer; color:var(--ink); transition:border-color .2s, background .2s; }
+  .chip:hover { border-color:var(--steel); }
+  .chip.active { border-color:var(--bolt); background:var(--warn-soft); color:var(--bolt-deep); font-weight:600; }
+  .hint { font-size:.74rem; color:var(--ink-faint); margin-top:.5rem; }
+
+  .job { display:none; margin-bottom:1rem; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:1rem 1.2rem; animation:rise .3s var(--ease); }
+  .job.show { display:block; }
+  @keyframes rise { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+  .job-head { display:flex; gap:.8rem; align-items:flex-start; flex-wrap:wrap; }
+  .jobtype { font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:.22rem .55rem;border-radius:6px;white-space:nowrap; }
+  .jt-hospital { background: oklch(95% .05 25); color: oklch(48% .16 25); }
+  .jt-government { background: oklch(94% .04 255); color: var(--steel-deep); }
+  .job-head h2 { margin:0; font-size:1.02rem; letter-spacing:-.2px; flex:1; min-width:200px; }
+  .job-sub { font-size:.82rem; color:var(--ink-soft); margin-top:.25rem; display:flex; flex-wrap:wrap; gap:.3rem .9rem; }
+  .job-sub b { color:var(--ink); }
+  .elig { margin-top:.7rem; font-size:.82rem; padding:.5rem .7rem; border-radius:9px; background:var(--open-soft); border:1px solid var(--open-line); color:oklch(40% .1 155); }
+  .elig b { color:oklch(34% .12 155); }
+
+  .board-card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+  .board-head { display:flex; align-items:center; justify-content:space-between; padding:.9rem 1.2rem; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:.5rem; }
+  .board-head h3 { margin:0; font-size:1rem; letter-spacing:-.2px; }
+  .board-head .srcnote { font-size:.74rem; color:var(--ink-soft); }
+  .legend { display:flex; gap:.9rem; font-size:.74rem; color:var(--ink-soft); flex-wrap:wrap; }
+  .legend i { width:11px;height:11px;border-radius:3px;display:inline-block;vertical-align:-1px;margin-right:.3rem; }
+  .lg-open i { background:var(--open-soft); border:1px solid var(--open-line); }
+  .lg-busy i { background:var(--no-soft); border:1px solid var(--no-line); }
+  .lg-cur i { background:var(--warn-soft); border:1px solid var(--bolt); }
+
+  .scroll { overflow-x:auto; }
+  table.grid { border-collapse:separate; border-spacing:0; width:100%; min-width:920px; }
+  table.grid th, table.grid td { padding:0; }
+  table.grid th.crew-h { text-align:left; padding:.6rem .9rem .6rem 1.5rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.6px; color:var(--ink-soft); position:sticky; left:0; background:var(--panel); z-index:3; border-bottom:1px solid var(--line); }
+  .day-h { font-size:.72rem; color:var(--steel-deep); font-weight:700; padding:.5rem .3rem .15rem; text-align:center; border-bottom:none; white-space:nowrap; }
+  .day-h span { display:block; font-size:.62rem; color:var(--ink-faint); font-weight:500; }
+  .half-h { font-size:.6rem; color:var(--ink-faint); font-weight:600; text-transform:uppercase; letter-spacing:.5px; text-align:center; padding:0 .3rem .4rem; border-bottom:1px solid var(--line); }
+  table.grid td.crew { position:sticky; left:0; background:var(--panel); z-index:2; padding:.55rem 1rem .55rem 1.5rem; border-bottom:1px solid var(--line); width:196px; }
+  .crew b { font-size:.86rem; display:block; }
+  .crew small { font-size:.69rem; color:var(--ink-soft); display:block; }
+  .crew .pair { font-size:.66rem; color:var(--ink-faint); }
+  td.slot-cell { border-bottom:1px solid var(--line); border-left:1px solid var(--line); padding:.25rem; vertical-align:middle; }
+  td.slot-cell.daystart { border-left:1px solid var(--steel-deep); }
+  .slot { height:44px; border-radius:7px; font-size:.66rem; display:grid; place-items:center; text-align:center; padding:.15rem; line-height:1.1; border:1px solid transparent; }
+  .slot.busy { background:var(--no-soft); color:var(--no-ink); border-color:var(--no-line); }
+  .slot.open { background:var(--open-soft); color:var(--open-ink); border-color:var(--open-line); font-weight:600; }
+  .slot.current { background:var(--warn-soft); color:var(--bolt-deep); border-color:var(--bolt); font-weight:650; }
+  tr.crew-row.ineligible { opacity:.4; }
+  tr.crew-row.ineligible .crew small { color:var(--warn); }
+  .slot.open.pick { cursor:pointer; background:oklch(91% 0.09 155); color:oklch(34% .13 155); border:1.5px solid oklch(66% 0.15 155); font-weight:700; box-shadow:inset 0 0 0 2px oklch(66% 0.15 155/.12); transition:transform .14s var(--ease), box-shadow .2s; }
+  .slot.open.pick:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+  .slot.open.pick::after { content:"+ Assign"; }
+  .slot.chosen { background: linear-gradient(150deg,var(--go),oklch(54% .14 155)); color:oklch(99% .02 155); border-color:transparent; font-weight:700; }
+  .slot.chosen::after { content:"✓ Booked"; }
+
+  .confirm { display:none; margin-top:1rem; background:var(--panel); border:1px solid var(--open-line); border-radius:var(--radius); box-shadow:var(--shadow); padding:1.1rem 1.2rem; animation:rise .3s var(--ease); }
+  .confirm.show { display:block; }
+  .confirm .row { display:flex; gap:.7rem; align-items:center; }
+  .confirm .check { width:40px;height:40px;border-radius:50%;background:var(--open-soft);display:grid;place-items:center;flex:none; }
+  .confirm .check svg { width:22px;height:22px;stroke:var(--go); }
+  .confirm h4 { margin:0; font-size:1rem; }
+  .confirm .trace { margin-top:.7rem; font-family:var(--mono); font-size:.74rem; color:var(--ink-soft); display:grid; gap:.25rem; background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:.7rem .85rem; }
+  .confirm .trace span::before { content:"→ "; color:var(--go); }
+
+  footer { margin-top:1.5rem; font-size:.74rem; color:var(--ink-soft); text-align:center; line-height:1.6; }
+  footer code { font-family:var(--mono); background:var(--surface); border:1px solid var(--line); padding:.05rem .35rem; border-radius:5px; }
+  @media (max-width:600px){ .who .pill{ display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <span class="bolt-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="oklch(99% .004 250)"/></svg></span>
+    <span class="brand"><b>All South Lightning Protection</b><span>AI OS · Live Scheduler · Jovani's Board</span></span>
+    <div class="who"><span class="pill">Tampa</span><span class="avatar">J</span>
+      <span><b>Jovani</b> (J.J. Rivera)<br><span style="opacity:.75;font-size:.72rem">jovani@aslp.net</span></span></div>
+  </header>
+
+  <div class="flags">
+    <span class="tag mock">◆ Visual mock · Week 12</span>
+    <span class="tag src">Single source of truth: Jovani's calendar (synced w/ crews)</span>
+    <span class="tag assume">Assumption: crew = a category on each event — confirm Jun 30</span>
+  </div>
+
+  <section class="callbar">
+    <div class="lead"><span class="live-dot"></span> Jovani schedules &amp; reschedules everything here — booking stays in the calendar, the board just makes it visible and assists.</div>
+    <div class="search">
+      <input id="q" type="text" placeholder="Search client, site, or phone…" aria-label="Search a job" autocomplete="off" />
+      <div class="quick" role="group" aria-label="Recent">
+        <button class="chip" data-job="hospital" onclick="pick(this)">St. Joseph's Hospital</button>
+        <button class="chip" data-job="government" onclick="pick(this)">MacDill AFB</button>
+        <button class="chip" data-job="none" onclick="clearJob(this)">Just browsing</button>
+      </div>
+    </div>
+    <div class="hint">Days are split into <b>AM / PM</b> so a crew can run multiple stops in one day (split-shift). Tap a caller to highlight qualified crews; tap any green slot to (re)assign.</div>
+  </section>
+
+  <section class="job" id="job">
+    <div class="job-head">
+      <span class="jobtype" id="jobchip"></span>
+      <h2 id="jobtitle"></h2>
+      <span class="jobtype" style="background:var(--warn-soft);color:var(--bolt-deep)">needs scheduling</span>
+    </div>
+    <div class="job-sub" id="jobsub"></div>
+    <div class="elig" id="elig"></div>
+  </section>
+
+  <section class="board-card">
+    <div class="board-head">
+      <div><h3>Crew availability — week of Jul 6 (Tampa)</h3><div class="srcnote">Read live from Jovani's Outlook calendar · 5 crews · AM/PM slots</div></div>
+      <div class="legend">
+        <span class="lg-open"><i></i>Open</span>
+        <span class="lg-busy"><i></i>Booked</span>
+        <span class="lg-cur"><i></i>This job now</span>
+      </div>
+    </div>
+    <div class="scroll">
+      <table class="grid" id="grid">
+        <thead>
+          <tr id="dayrow"><th class="crew-h" rowspan="2">Crew</th></tr>
+          <tr id="halfrow"></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="confirm" id="confirm">
+    <div class="row">
+      <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+      <div><h4 id="confirm-h"></h4><div style="font-size:.83rem;color:var(--ink-soft)" id="confirm-sub"></div></div>
+    </div>
+    <div class="trace" id="confirm-trace"></div>
+  </section>
+
+  <footer>
+    Mock for Week 12 · consolidated single board (replaces the approval-queue concept) · data illustrative.<br>
+    Reads <b>Jovani's calendar</b> (Graph API, OAuth <code>0ZVgWEThV7997LnX</code>) which is synced with the crew calendars; writes reschedules back to it.<br>
+    <b>Confirm Jun 30:</b> how each event identifies its crew (category / color / overlaid calendars) · the exact 5 Tampa foreman+installer pairings.
+  </footer>
+</div>
+
+<script>
+  // Week of Jul 6, Mon–Fri, each split AM/PM. slot index = day*2 + (0 AM | 1 PM)
+  var DAYS = [{d:"Mon",n:"Jul 6"},{d:"Tue",n:"Jul 7"},{d:"Wed",n:"Jul 8"},{d:"Thu",n:"Jul 9"},{d:"Fri",n:"Jul 10"}];
+  // 5 Tampa crews. 3 specialist foremen confirmed; 2 general crews labeled TBD (names confirm Jun 30).
+  var CREWS = [
+    {name:"Hayden Jamison", tier:"Hospital · any project", pair:"+ installer", does:["hospital","commercial","simple"],
+     booked:{0:"St. Anthony's",1:"St. Anthony's",2:"",3:"",6:"Tampa General",9:""}},
+    {name:"Roberto Garcia", tier:"Large commercial · cleared", pair:"+ installer", does:["hospital","government","commercial","simple"],
+     booked:{4:"Westshore",5:"Westshore",6:"MacDill AM",7:"Exalt PM",8:""}},
+    {name:"Nathaniel Been", tier:"Government · cleared", pair:"+ installer", does:["government","simple"],
+     booked:{0:"MacDill",2:"",8:"Coast Guard"}},
+    {name:"Crew D (TBD)", tier:"General · confirm 6/30", pair:"+ installer", does:["commercial","simple"],
+     booked:{1:"Brandon",2:"Brandon",5:"Riverview"}},
+    {name:"Crew E (TBD)", tier:"Simple · confirm 6/30", pair:"+ installer", does:["simple"],
+     booked:{3:"Plant City",6:"Largo",7:"Largo"}}
+  ];
+  var JOBS = {
+    hospital: { chip:"Hospital", chipClass:"jt-hospital", title:"St. Joseph's Hospital — Bldg 4 (grounding + air terminals)",
+      sub:["<b>Caller:</b> facilities PM","<b>Phone:</b> (813) 555-0142","<b>Currently:</b> Hayden · Thu Jul 9 AM","<b>Move reason:</b> concrete trade overrun"],
+      current:{crew:"Hayden Jamison", slot:6},
+      eligHtml:"<b>Hospital job</b> → hospital-capable crews lit: <b>Hayden</b> and <b>Roberto</b>. Others dimmed." },
+    government: { chip:"Government", chipClass:"jt-government", title:"MacDill AFB — perimeter facility (install)",
+      sub:["<b>Caller:</b> base POC","<b>Phone:</b> (813) 555-0199","<b>Currently:</b> Nathaniel · Wed Jul 8","<b>Move reason:</b> base access window changed"],
+      current:{crew:"Nathaniel Been", slot:4},
+      eligHtml:"<b>Government job</b> → clearance gate: only <b>Nathaniel</b> and <b>Roberto</b> (cleared) lit. Others dimmed." }
+  };
+
+  var SLOTS = DAYS.length * 2;
+  // header rows
+  var dayrow=document.getElementById("dayrow"), halfrow=document.getElementById("halfrow");
+  DAYS.forEach(function(d){
+    var th=document.createElement("th"); th.className="day-h"; th.colSpan=2; th.innerHTML=d.d+"<span>"+d.n+"</span>"; dayrow.appendChild(th);
+    ["AM","PM"].forEach(function(h){ var t=document.createElement("th"); t.className="half-h"; t.textContent=h; halfrow.appendChild(t); });
+  });
+  // body
+  var rows=document.getElementById("rows");
+  CREWS.forEach(function(c, ci){
+    var tr=document.createElement("tr"); tr.className="crew-row"; tr.dataset.crew=ci;
+    var th=document.createElement("td"); th.className="crew";
+    th.innerHTML="<b>"+c.name+"</b><small>"+c.tier+"</small><span class='pair'>"+c.pair+"</span>"; tr.appendChild(th);
+    for (var s=0; s<SLOTS; s++){
+      var td=document.createElement("td"); td.className="slot-cell"+(s%2===0?" daystart":"");
+      var div=document.createElement("div");
+      var label=c.booked[s];
+      if (label){ div.className="slot busy"; div.textContent=label; }
+      else { div.className="slot open"; div.textContent="Open"; }
+      div.dataset.crew=ci; div.dataset.slot=s;
+      td.appendChild(div); tr.appendChild(td);
+    }
+    rows.appendChild(tr);
+  });
+
+  var currentJob=null;
+  function fmtSlot(s){ var d=DAYS[Math.floor(s/2)]; return d.d+" "+d.n+" "+(s%2===0?"AM":"PM"); }
+
+  function resetSlots(){
+    document.querySelectorAll(".slot").forEach(function(el){
+      var ci=+el.dataset.crew, s=+el.dataset.slot, label=CREWS[ci].booked[s];
+      el.className = label ? "slot busy" : "slot open";
+      el.textContent = label ? label : "Open";
+      el.onclick=null;
+    });
+    document.querySelectorAll(".crew-row").forEach(function(tr){ tr.classList.remove("ineligible"); var ci=+tr.dataset.crew; tr.querySelector(".crew small").textContent=CREWS[ci].tier; });
+  }
+
+  function clearJob(btn){
+    document.querySelectorAll(".chip").forEach(function(b){ b.classList.remove("active"); });
+    if(btn) btn.classList.add("active");
+    currentJob=null; document.getElementById("job").classList.remove("show"); document.getElementById("confirm").classList.remove("show");
+    document.getElementById("q").value="";
+    resetSlots();
+  }
+
+  function pick(btn, skipScroll){
+    document.querySelectorAll(".chip").forEach(function(b){ b.classList.remove("active"); });
+    btn.classList.add("active");
+    document.getElementById("q").value=btn.textContent;
+    currentJob=JOBS[btn.dataset.job];
+    var jc=document.getElementById("jobchip"); jc.className="jobtype "+currentJob.chipClass; jc.textContent=currentJob.chip;
+    document.getElementById("jobtitle").textContent=currentJob.title;
+    document.getElementById("jobsub").innerHTML=currentJob.sub.map(function(x){return "<span>"+x+"</span>";}).join("");
+    document.getElementById("elig").innerHTML=currentJob.eligHtml;
+    document.getElementById("job").classList.add("show");
+    document.getElementById("confirm").classList.remove("show");
+
+    resetSlots();
+    var type=btn.dataset.job;
+    CREWS.forEach(function(c, ci){
+      var tr=document.querySelector('tr.crew-row[data-crew="'+ci+'"]');
+      var eligible=c.does.indexOf(type)>-1;
+      tr.classList.toggle("ineligible", !eligible);
+      if(!eligible) tr.querySelector(".crew small").textContent=c.tier+" · not qualified";
+      tr.querySelectorAll(".slot").forEach(function(el){
+        if(eligible && el.classList.contains("open")){ el.classList.add("pick"); el.textContent=""; el.onclick=function(){ assign(ci, +el.dataset.slot, el); }; }
+      });
+    });
+    var cur=currentJob.current, crewIx=CREWS.findIndex(function(c){return c.name===cur.crew;});
+    var curEl=document.querySelector('.slot[data-crew="'+crewIx+'"][data-slot="'+cur.slot+'"]');
+    if(curEl){ curEl.className="slot current"; curEl.textContent="This job"; curEl.onclick=null; }
+    if(!skipScroll) document.getElementById("job").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function assign(ci, s, el){
+    document.querySelectorAll(".slot.chosen").forEach(function(x){ x.classList.remove("chosen"); x.classList.add("pick"); x.textContent=""; });
+    el.classList.remove("pick"); el.classList.add("chosen"); el.textContent="";
+    var crew=CREWS[ci].name, when=fmtSlot(s);
+    document.getElementById("confirm-h").textContent="Rescheduled — "+crew+" · "+when;
+    document.getElementById("confirm-sub").textContent=currentJob ? currentJob.title : "";
+    document.getElementById("confirm-trace").innerHTML=
+      "<span>Jovani's calendar updated → "+crew+" booked "+when+"</span>"+
+      "<span>Old slot released"+(currentJob?" → "+currentJob.current.crew:"")+"</span>"+
+      "<span>Synced to crew calendar (Outlook)</span>"+
+      "<span>Client notice → estimator-triggered template</span>";
+    document.getElementById("confirm").classList.add("show");
+    document.getElementById("confirm").scrollIntoView({behavior:"smooth", block:"center"});
+  }
+
+  // land populated so AM/PM + all colors show on open
+  pick(document.querySelector('.chip[data-job="hospital"]'), true);
+</script>
+</body>
+</html>
