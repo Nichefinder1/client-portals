@@ -7,7 +7,7 @@
     "campaign_status": "Active",
     "start_date": "December 2025",
     "goal": "All 3 locations active, optimized & in Map Pack Top 3 by December 2026",
-    "last_updated": "June 6, 2026"
+    "last_updated": "June 22, 2026"
   },
   "metrics": {
     "gbp_listings": 3,
@@ -25,19 +25,19 @@
     "citations": "5",
     "citations_note": "BBB, BuildZoom, Birdeye, Procore, Yelp — building to 40+",
     "content_execution": {
-      "blog_posts_published": 0,
+      "blog_posts_published": 20,
       "blog_posts_target": 12,
-      "blog_posts_note": "Q1 2026 — 4/month target",
+      "blog_posts_note": "Q1 12/12 + Q2 8/8 (through May) published — caught up",
       "social_posts_published": 0,
       "social_posts_target": 108,
-      "social_posts_note": "Q1 2026 — 9/week across 5 platforms",
+      "social_posts_note": "On track — 12/week cadence (Sun/Wed/Sat) across platforms",
       "press_releases_published": 1,
       "press_releases_target": 4,
       "press_releases_note": "1/quarter — Q1 complete: ZooTampa published April 1, 2026",
       "press_releases_distribution_url": "https://www.einpresswire.com/report/AtuzfdacnqcF8IqW",
       "backlinks_built": 0,
       "backlinks_target": 30,
-      "backlinks_note": "Q1 2026 — 15-30/quarter target"
+      "backlinks_note": "Q2 — current through May 15, 2026 per delivery scorecard; full count pending citation build"
     }
   },
   "dashboard": {
@@ -68,8 +68,8 @@
       "gbp_website_clicks":  {"value": "Connected ✅",            "trend": "up"},
       "citations":           {"value": "5",                       "trend": "flat"},
       "gbp_posts":           {"value": "In Progress",             "trend": "up"},
-      "blog_posts":          {"value": "0",                       "trend": "flat"},
-      "social_posts":        {"value": "0",                       "trend": "flat"}
+      "blog_posts":          {"value": "20 ✅",                   "trend": "up"},
+      "social_posts":        {"value": "On Track ✅",             "trend": "up"}
     },
     "location_cards": [
       {
@@ -219,7 +219,9 @@
       "Commercial video — April 28 deadline (trade show)",
       "Website redesign — in planning",
       "June 5, 2026 rescan: Florida LP code jumped #3.26 → #1.01 — was a flagged Q2 gap keyword",
-      "17/21 Tampa keywords holding #1–2 — dominant position maintained (Jun 5, 2026)"
+      "17/21 Tampa keywords holding #1–2 — dominant position maintained (Jun 5, 2026)",
+      "Blog content published — 20 posts live (12 Q1 + 8 Q2 through May)",
+      "Jacksonville Google Ads landing pages set — mapped to Jacksonville-focused blog posts (Jun 22, 2026)"
     ],
     "strengths": [
       "Tampa GBP: 4.7 stars, 78 reviews — strong foundation",
@@ -230,13 +232,14 @@
       "In-house CAD/sealed engineering drawings"
     ],
     "next_focus": [
+      "<strong>🔨 In Progress — New SEO pages:</strong> Data Center (statewide) + Tampa, Jacksonville &amp; Sunrise city landing pages — content built, publishing to the site now",
       "<strong>Upload 10+ photos to Sunrise GBP</strong> — Pending client photos",
       "<strong>Upload 10+ photos to Jacksonville GBP</strong> — Pending client photos",
       "<strong>Launch review generation campaign</strong> — Tampa target: 100+ reviews (currently 78)",
       "<strong>Build citation profile</strong> — 40+ directory citations across all 3 FL locations (Tier 1 first)",
-      "<strong>Fix: \"lightning rod installation Florida\"</strong> — regressed #1.26 → #3.20. Add statewide service area page.",
+      "<strong>Fix: \"lightning rod installation Florida\"</strong> — regressed #1.26 → #3.20. Statewide service-area coverage being added via the new city pages (in progress).",
       "<strong>Push: \"commercial lightning protection contractor\"</strong> — at #2.29 (improving from #2.75). One commercial case study post will move this.",
-      "<strong>Healthcare: Build hospital LP page</strong> — hospital LP Tampa FL at #4.06. Needs dedicated page + AdventHealth/Moffitt references.",
+      "<strong>Healthcare: Build hospital LP page</strong> — hospital LP Tampa FL at #4.06. Needs dedicated page + hospital project references. (Packet up next — Phase 2.)",
       "<strong>Compliance page: NFPA 780</strong> — still at #12.38. Dedicated page with Florida LP code context needed.",
       "<strong>Monitor: LP system cost (Local Finder)</strong> — Finder slipped to #7.17 (Maps still #1.14). Check GBP website link matches cost page URL."
     ]
