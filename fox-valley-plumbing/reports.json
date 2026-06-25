@@ -7,66 +7,67 @@
     "campaign_status": "Active",
     "start_date": "January 2026",
     "goal": "Rank #1 for all 58 keywords by December 2026",
-    "last_updated": "May 6, 2026"
+    "last_updated": "June 25, 2026"
   },
   "metrics": {
-    "keywords_at_1": 11,
+    "keywords_top_3": 6,
+    "keywords_top_7": 14,
     "total_keywords": 58,
-    "goal_progress": 19,
-    "keywords_improved_vs_baseline": 26,
-    "organic_clicks": "239",
-    "organic_clicks_note": "Verified from GSC — January 2026 baseline",
-    "reviews": 125,
+    "keywords_top_3_note": "June 2, 2026 13×13 grid scan — 6 keywords in the top 3, 14 in the top 7 (up from ~4 at baseline)",
+    "keywords_improved_vs_baseline": 28,
+    "organic_clicks": "672",
+    "organic_clicks_note": "Verified from GSC — 90-day window ending June 22, 2026 (+9.4%)",
+    "organic_impressions": "364,309",
+    "organic_avg_position": 19.9,
+    "reviews": 123,
     "review_rating": 4.8,
+    "reviews_note": "4.8 stars — velocity slowed, newest review ~9 weeks old",
     "bbb_status": "A+ Accredited",
     "bbb_date": "February 13, 2026",
-    "citations": "10+",
-    "citations_note": "In Progress — building to 60",
+    "citations": "30+",
+    "citations_note": "Through June 2026 — building to 40+",
     "content_execution": {
-      "blog_posts_published": 12,
-      "blog_posts_target": 12,
-      "blog_posts_note": "Q1 2026 — 4/month — Complete ✅",
-      "social_posts_published": 84,
-      "social_posts_target": 84,
-      "social_posts_note": "Q1 2026 — 42 Facebook + 42 GBP posts — Complete ✅",
+      "blog_posts_published": 23,
+      "blog_posts_note": "Jan–Jun 2026 — 4/month cadence (June: 3 of 4 published, 1 remaining)",
+      "social_posts_published": 107,
+      "social_posts_note": "Jan–Jun 2026 — 53 Facebook + 54 Google Business Profile posts",
       "press_releases_published": 1,
       "press_releases_target": 1,
-      "press_releases_note": "Q1 2026 — BBB A+ Accreditation — Published Apr 12, 2026",
+      "press_releases_note": "BBB A+ Accreditation — Published Apr 12, 2026",
       "backlinks_built": 30,
-      "backlinks_target": 30,
-      "backlinks_note": "Q1 2026 — 10+/month — Complete ✅"
+      "backlinks_note": "30+ directory citations through June 2026"
     }
   },
   "one_time_reports": [
     {
       "title": "GBP Audit",
       "file": "GBP_Audit.html",
-      "date": "Updated February 4, 2026",
-      "description": "Google Business Profile audit. Score improved: 37/70 (D+) → 62/70 (A-). All critical issues resolved.",
+      "date": "Updated June 25, 2026",
+      "description": "Google Business Profile audit. Score improved: 37/70 (D+) → 62/70 (A-). All critical issues resolved; June status added.",
       "badge": "UPDATED",
       "badge_color": "green"
     },
     {
       "title": "Website Optimization Roadmap",
       "file": "Website_Optimization_Roadmap.html",
-      "date": "January 28, 2026",
-      "description": "Full-year website SEO plan: 34 pages to create, keyword assignments, quarterly timeline.",
+      "date": "Updated June 25, 2026",
+      "description": "Full-year website SEO plan: 34 pages to create, keyword assignments, quarterly timeline. Q3 page queue active.",
       "badge": "Strategy",
       "badge_color": "purple"
     },
     {
       "title": "LLM Visibility Analysis",
       "file": "LLM_Visibility_Analysis.html",
-      "date": "Updated March 10, 2026",
-      "description": "AI/ChatGPT visibility. Updated March 2026: Strong for backflow, Partial for general plumber. BBB A+ resolved.",
+      "date": "Updated June 25, 2026",
+      "description": "AI/ChatGPT visibility. June 2026: Strong for backflow, Partial for general plumber. BBB A+ resolved.",
       "badge": "UPDATED",
       "badge_color": "green"
     },
     {
-      "title": "Local Dominator Rankings",
-      "file": "LOCAL_DOMINATOR_BASELINE_JAN_2026.html",
-      "date": "Updated March 9, 2026",
-      "description": "Keyword rankings — January baseline + March 2026 scan. 26 keywords improved. Full before/after tracking.",
+      "title": "Local Map Pack Rankings",
+      "file": "LOCAL_RANKINGS_PROGRESS_2026.html",
+      "date": "Latest scan June 2, 2026",
+      "description": "Keyword rankings — January baseline through June 2 scan. Jan→June progress across all keyword clusters.",
       "badge": "UPDATED",
       "badge_color": "green"
     }
@@ -75,32 +76,60 @@
     {
       "title": "GBP Optimization Checklist",
       "file": "GBP_Optimization_Checklist.html",
-      "date": "Completed February 4, 2026",
-      "description": "Phase 1 Complete: Hours set, 24 services added, description added, service area defined. Phase 2-3 ongoing.",
-      "badge": "Phase 1 Done",
+      "date": "Updated June 25, 2026",
+      "description": "Phase 1 & 2 complete; Phase 3 ongoing — 54 GBP posts Jan–Jun, review monitoring, Q&A. Monthly health check recurring.",
+      "badge": "Active",
       "badge_color": "green"
     },
     {
       "title": "Citation Building Checklist",
       "file": null,
-      "date": "Started March 2026",
-      "description": "35+ directory citations underway. Tier 1 high-authority sites first. Expertise.com & Three Best Rated targeted next.",
-      "badge": "In Progress",
-      "badge_color": "yellow"
+      "date": "Updated June 2026",
+      "description": "30+ directory citations live. Tier 1 high-authority sites complete. Expertise.com & Three Best Rated are earned (review-volume driven), not submission-based.",
+      "badge": "30+ Live",
+      "badge_color": "green"
     }
   ],
   "monthly_reports": [
     {
-      "month": "2026-04",
-      "month_name": "April 2026",
+      "month": "2026-06",
+      "month_name": "June 2026",
       "is_current": true,
       "reports": [
         {
           "title": "Monthly Progress Report",
-          "file": null,
-          "description": "April 2026 report in preparation. Requires GSC export for April. Targeted delivery: May 15, 2026.",
-          "badge": "Coming Soon",
-          "badge_color": "yellow"
+          "file": "2026-06/Monthly_Progress_Report_Jun_2026.html",
+          "description": "June 2026: CPC control, Quality Score roadmap, June 2 ranking scan, speed and conversion infrastructure.",
+          "badge": "View",
+          "badge_color": "blue"
+        }
+      ]
+    },
+    {
+      "month": "2026-05",
+      "month_name": "May 2026",
+      "is_current": false,
+      "reports": [
+        {
+          "title": "Monthly Progress Report",
+          "file": "2026-05/Monthly_Progress_Report_May_2026.html",
+          "description": "May 2026: service-page rewrites, www→non-www canonical fix, blog and social execution.",
+          "badge": "View",
+          "badge_color": "blue"
+        }
+      ]
+    },
+    {
+      "month": "2026-04",
+      "month_name": "April 2026",
+      "is_current": false,
+      "reports": [
+        {
+          "title": "Monthly Progress Report",
+          "file": "2026-04/Monthly_Progress_Report_Apr_2026.html",
+          "description": "April 2026: 246 landing pages live, conversion tracking, drain cleaning content refresh.",
+          "badge": "View",
+          "badge_color": "blue"
         }
       ]
     },
@@ -142,26 +171,26 @@
       "12-city service area defined",
       "BBB Accreditation — A+ earned February 13, 2026",
       "246 AdWords landing pages live (11 cities × 20+ services) + Google Ads tag",
-      "Microsoft Clarity heatmap installed — all 246 landing pages live (Apr 23, 2026)",
-      "Gas line repair page content delivered — optimized for 'gas line repair Elgin IL' (May 3, 2026)"
+      "Heatmap & behavior tracking installed across all 246 landing pages (Apr 23, 2026)",
+      "Gas line repair page content delivered — optimized for 'gas line repair Elgin IL' (May 3, 2026)",
+      "Google Ads CPC brought under control — blended $12.98/click, no bid breach since June 4, 2026",
+      "June 2 ranking scan complete — 6 keywords in top 3, 14 in top 7"
     ],
     "strengths": [
       "#1 for ALL backflow keywords — dominant AI visibility for backflow",
-      "Strong 4.8 star rating (125 reviews)",
+      "Strong 4.8 star rating (123 reviews)",
       "BBB A+ Accredited — matches top competitors",
       "15+ years in business (founded July 2010, BBB verified)",
       "More services listed than any tracked competitor",
       "24/7 emergency availability"
     ],
     "next_focus": [
-      "April monthly report — delivery target May 15, 2026",
-      "Microsoft Clarity first heatmap report — data available May 7+",
-      "Refresh drain cleaning content (ranking dip)",
-      "Emergency plumbing page — 9,000+ impressions, 2 clicks",
-      "Main sewer line page — 8,000+ impressions, 2 clicks",
-      "Google review campaign — target 200+ reviews (needs approval)",
-      "Submit to Expertise.com and Three Best Rated",
-      "Next Local Dominator ranking scan (last: March 9)"
+      "Quality Score re-crawl recheck — bid-unlock gate (~July 1–7)",
+      "Restart Google review campaign — target 200+ reviews (velocity stalled, newest ~9 weeks old)",
+      "Landing-page speed (INP) + CRO improvements across the 246-page set",
+      "Q3 service-page queue: hydro jetting, water heater, sump pump, leak detection rewrites",
+      "Earn Expertise.com & Three Best Rated placement via review volume (curated, not submission-based)",
+      "Continue monthly ranking scans (latest: June 2, 2026)"
     ]
   },
   "contact": {
