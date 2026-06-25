@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>June 2026 Progress Report — Fox Valley Plumbing | Nichefinder AI</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+.download-bar { position: fixed; top: 58px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+.download-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 10pt; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.btn-pdf { background-color: #c0392b; color: white; }
+.btn-print { background-color: #1a5276; color: white; }
+@media print { .download-bar, .portal-nav { display: none !important; } }
+body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; margin: 1in; color: #333; }
+.portal-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; background-color: #154360; z-index: 1500; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.portal-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+.portal-nav-brand { display:flex; align-items:center; padding: 8px 14px 8px 0; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 5px; flex-shrink:0; }
+.portal-nav-brand img { height: 28px; width: auto; display: block; }
+.portal-nav-links { display: flex; flex-wrap: wrap; }
+.portal-nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 9px; font-size: 9pt; font-weight: bold; white-space: nowrap; }
+.portal-nav-links a:hover, .portal-nav-links a.active { background-color: rgba(255,255,255,0.15); color: white; }
+h1 { font-size: 24pt; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; margin-top: 0; }
+h2 { font-size: 18pt; color: #2874a6; margin-top: 24pt; border-bottom: 1px solid #d5d8dc; padding-bottom: 5px; }
+table { border-collapse: collapse; width: 100%; margin: 12pt 0; font-size: 10pt; }
+th { background-color: #1a5276; color: white; padding: 10px; text-align: left; font-weight: bold; }
+td { padding: 8px 10px; border: 1px solid #d5d8dc; }
+tr:nth-child(even) { background-color: #f8f9f9; }
+.header-info { font-size: 10pt; color: #7f8c8d; margin-bottom: 20px; }
+.footer { font-size: 9pt; color: #95a5a6; margin-top: 30px; border-top: 1px solid #d5d8dc; padding-top: 10px; }
+hr { border: none; border-top: 1px solid #d5d8dc; margin: 20px 0; }
+.metrics-row { display: flex; justify-content: space-between; margin: 20px 0; flex-wrap: wrap; }
+.metric-card { background: linear-gradient(135deg, #1a5276, #2874a6); color: white; padding: 20px; border-radius: 10px; text-align: center; flex: 1; margin: 5px; min-width: 140px; }
+.metric-number { font-size: 28pt; font-weight: bold; display: block; }
+.metric-label { font-size: 10pt; opacity: 0.9; }
+.metric-change { font-size: 11pt; margin-top: 5px; }
+.positive { color: #82e0aa; }
+.neutral { color: #f7dc6f; }
+.status-complete { background-color: #d5f5e3; color: #1e8449; padding: 3px 10px; border-radius: 3px; font-weight: bold; }
+.status-progress { background-color: #fef9e7; color: #9c640c; padding: 3px 10px; border-radius: 3px; font-weight: bold; }
+.summary-box { background-color: #e8f6f3; border-left: 4px solid #1abc9c; padding: 15px; margin: 20px 0; }
+.win-box { background: linear-gradient(135deg,#1e8449,#27ae60); color:white; padding: 18px; margin: 18px 0; border-radius: 8px; }
+.highlight-box { background-color: #fef9e7; border: 1px solid #f39c12; padding: 15px; margin: 15px 0; border-radius: 5px; }
+.success-box { background-color: #d5f5e3; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+.green-text { color: #27ae60; font-weight: bold; }
+.red-text { color: #c0392b; font-weight: bold; }
+</style>
+</head>
+<body style="padding-top: 60px;">
+
+<nav class="portal-nav">
+<div class="portal-nav-inner">
+<span class="portal-nav-brand"><img src="../../assets/nichefinders-logo.png" alt="Nichefinder AI Agency"></span>
+<div class="portal-nav-links">
+<a href="../index.html">&#127968; Overview</a>
+<a href="../Google_Ads_Performance.html">Google Ads</a>
+<a href="../Social_Media_Performance.html">Social Media</a>
+<a href="../Deliverables.html">Deliverables</a>
+<a href="../../2026-02/Monthly_Progress_Report_Feb_2026.html">Feb</a>
+<a href="../../2026-03/Monthly_Progress_Report_Mar_2026.html">Mar</a>
+<a href="../../2026-04/Monthly_Progress_Report_Apr_2026.html">Apr</a>
+<a href="../../2026-05/Monthly_Progress_Report_May_2026.html">May</a>
+<a href="#" class="active">Jun</a>
+</div>
+</div>
+</nav>
+
+<div class="download-bar">
+<button class="download-btn btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+<button class="download-btn btn-print" onclick="window.print()">&#128424; Print</button>
+</div>
+<script>
+function downloadPDF(){const o={margin:0.5,filename:'FVP_June_2026_Progress_Report.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'in',format:'letter',orientation:'portrait'}};document.querySelector('.download-bar').style.display='none';html2pdf().set(o).from(document.body).save().then(()=>{document.querySelector('.download-bar').style.display='flex';});}
+</script>
+
+<h1>Fox Valley Plumbing &amp; Backflow<br>Monthly Progress Report — June 2026</h1>
+
+<div class="header-info">
+<strong>Reporting Period:</strong> June 1–25, 2026 (in progress) &nbsp;|&nbsp;
+<strong>Prepared by:</strong> Nichefinder AI Agency &nbsp;|&nbsp;
+<strong>Account Manager:</strong> Corey Reeder &nbsp;|&nbsp;
+<strong>Report Date:</strong> June 25, 2026
+</div>
+
+<div class="win-box">
+<strong>🏆 The Win of the Month — Cost-Per-Click Brought Under Control (June 4):</strong> Early June, automated bidding was allowing cost-per-click to spike to $59–$177 on some keywords, above your $15 target. We diagnosed and fixed it on June 4. Every day since, CPC has held under your cap (averaging $12.98), cutting cost-per-lead roughly in half — from about $83 to about $54.
+</div>
+
+<div class="summary-box">
+<strong>June Summary:</strong> A heavy optimization month. After the CPC fix, we launched two new campaigns (Sump Pump, Tankless Water Heater) on June 7, ran a full-site integrity repair, and cut mobile landing-page load time (emergency page 5.15s → 1.69s). We completed a Quality Score audit, pulled fresh Google Search Console and GA4 data, verified the Microsoft Clarity tracking, and built a landing-page conversion-optimization roadmap. The June 2 Local Dominator scan confirmed backflow dominance and strong emergency gains, while flagging a handful of keywords for Q3 page work. Your client portal was also rebuilt into a 7-tab one-stop dashboard.
+</div>
+
+<h2>June Scorecard</h2>
+<div class="metrics-row">
+<div class="metric-card"><span class="metric-number">$12.98</span><span class="metric-label">Avg Cost-Per-Click</span><span class="metric-change positive">✅ under $15 cap</span></div>
+<div class="metric-card"><span class="metric-number">23</span><span class="metric-label">Phone Leads (Jun 4–25)</span><span class="metric-change positive">✅ from paid</span></div>
+<div class="metric-card"><span class="metric-number">$54</span><span class="metric-label">Cost Per Lead</span><span class="metric-change positive">down from ~$83</span></div>
+<div class="metric-card"><span class="metric-number">123</span><span class="metric-label">Google Reviews</span><span class="metric-change neutral">4.8★</span></div>
+</div>
+
+<h2>Deliverables Completed — June 2026</h2>
+<table>
+<tr><th>Deliverable</th><th>Date</th><th>Status</th><th>Notes</th></tr>
+<tr><td><strong>Cost-Per-Click Overage Fixed</strong></td><td>Jun 4</td><td><span class="status-complete">RESOLVED ✅</span></td><td>CPC $59–177 → $12.98 avg; held under $15 cap every day since.</td></tr>
+<tr><td><strong>Sump Pump + Tankless Campaigns Launched</strong></td><td>Jun 7</td><td><span class="status-complete">LIVE ✅</span></td><td>Two new dedicated campaigns (now 6 total). Ramping.</td></tr>
+<tr><td><strong>High-Converting Ad Groups Re-Enabled</strong></td><td>Jun 12</td><td><span class="status-complete">COMPLETE ✅</span></td><td>Reactivated proven ad groups now that CPC is controlled.</td></tr>
+<tr><td><strong>Full-Site Integrity Repair (246 pages)</strong></td><td>Jun 12</td><td><span class="status-complete">COMPLETE ✅</span></td><td>Fixed pre-existing template issues across every page; all 246 URLs verified live.</td></tr>
+<tr><td><strong>Mobile Landing-Page Speed Optimization</strong></td><td>Jun 21–22</td><td><span class="status-complete">COMPLETE ✅</span></td><td>Emergency page 5.15s → 1.69s (performance 79 → 98); 218 pages improved.</td></tr>
+<tr><td><strong>Quality Score Audit</strong></td><td>Jun 21</td><td><span class="status-complete">COMPLETE ✅</span></td><td>Identified landing-page-experience as the lever; speed work targets it. QS re-crawl expected early July.</td></tr>
+<tr><td><strong>Fresh GSC + GA4 + Clarity Analysis</strong></td><td>Jun 25</td><td><span class="status-complete">COMPLETE ✅</span></td><td>Organic, city-level, and behavior data refreshed. Conversions verified firing correctly.</td></tr>
+<tr><td><strong>Landing-Page CRO Roadmap</strong></td><td>Jun 25</td><td><span class="status-complete">COMPLETE ✅</span></td><td>Sticky click-to-call, above-fold trust signals, speed, message-matching — lifts conversions and Quality Score.</td></tr>
+<tr><td><strong>Client Portal Rebuilt (7-Tab Dashboard)</strong></td><td>Jun 25</td><td><span class="status-complete">LIVE ✅</span></td><td>Overview, Google Local, Google Ads, Social Media, Website &amp; SEO, Strategy, Deliverables.</td></tr>
+<tr><td><strong>June Blog Posts (3 of 4)</strong></td><td>Jun 2026</td><td><span class="status-progress">3 OF 4</span></td><td>3 published; 1 remaining to close the month. YTD blog total: 23.</td></tr>
+</table>
+
+<h2>Google Ads Performance — June 4–25, 2026</h2>
+<table>
+<tr><th>Campaign</th><th>Clicks</th><th>Avg CPC</th><th>Phone Leads</th><th>Spend</th></tr>
+<tr><td>Backflow Testing — Elgin</td><td>63</td><td>$13.92</td><td>15</td><td>$877</td></tr>
+<tr><td>Emergency Plumbing — Elgin</td><td>25</td><td>$10.99</td><td>5</td><td>$275</td></tr>
+<tr><td>Plumbing Services — Elgin</td><td>7</td><td>$11.62</td><td>3</td><td>$81</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>95</strong></td><td><strong>$12.98</strong></td><td><strong>23</strong></td><td><strong>$1,233</strong></td></tr>
+</table>
+<p style="font-size:9.5pt;color:#7f8c8d;">Sump Pump &amp; Tankless launched Jun 7 and are still ramping. Full detail on the Google Ads tab.</p>
+
+<h2>Local Rankings — June 2 Scan (Jan → June)</h2>
+<div class="success-box"><strong>✅ Backflow:</strong> locked #1–2 across all backflow terms. <strong>✅ Emergency cluster:</strong> major improvement — "24 hour plumber Elgin" +8.2, "garbage disposal repair Elgin" +9.5 vs January. <strong>✅ Core "plumber Elgin"</strong> cluster moved into the 5–8 range.</div>
+<div class="highlight-box"><strong>Flagged for Q3 page work:</strong> a few keywords slipped since March and need page rewrites — hydro jetting, water heater repair, sump pump, and leak detection. "plumbers elgin il" dropped (Google Business Profile attribute check underway). Full 13×13 grid on the <strong>Google Local</strong> tab.</div>
+
+<h2>Organic Search (Google Search Console) — 90-Day</h2>
+<table>
+<tr><th>Metric</th><th>Current (90-day, ending Jun 22)</th><th>vs Prior 90 Days</th></tr>
+<tr><td>Impressions</td><td>364,309</td><td class="green-text">+9.4%</td></tr>
+<tr><td>Clicks</td><td>672</td><td>Flat</td></tr>
+<tr><td>Average Position</td><td>19.9</td><td class="green-text">↑ from 21.7</td></tr>
+<tr><td>Average CTR</td><td>0.18%</td><td>Optimization focus (title/page rewrites)</td></tr>
+</table>
+
+<h2>Review Velocity — June 2026</h2>
+<table>
+<tr><th>Platform</th><th>Jan Baseline</th><th>June</th><th>Goal</th></tr>
+<tr><td>Google Reviews</td><td>124</td><td><strong>123</strong></td><td>200+ by Dec 2026</td></tr>
+<tr><td>Star Rating</td><td>4.8</td><td><strong>4.8</strong></td><td>Maintain 4.7+</td></tr>
+</table>
+<div class="highlight-box"><strong>Action needed:</strong> review velocity has stalled — the most recent Google review is about 9 weeks old, and the count ticked from 125 to 123 (Google filtered two). Restarting a proactive review campaign (post-job follow-up text/email with a direct review link) is the top organic priority — it drives both map-pack ranking and "best plumber" directory placement.</div>
+
+<h2>July 2026 Priorities</h2>
+<table>
+<tr><th>Priority</th><th>Action</th></tr>
+<tr><td>🔴 #1</td><td>Quality Score re-crawl recheck (~Jul 1–7). If money keywords reach QS 6+, begin controlled bid scaling on Backflow.</td></tr>
+<tr><td>🔴 #2</td><td>Landing-page conversion + speed upgrades (sticky click-to-call, above-fold trust, faster interaction).</td></tr>
+<tr><td>🔴 #3</td><td>Restart Google review-generation campaign (toward 200).</td></tr>
+<tr><td>🟡 #4</td><td>Q3 page rewrites — hydro jetting, water heater, sump pump, leak detection.</td></tr>
+<tr><td>🟡 #5</td><td>Finish the last June blog post; continue social cadence.</td></tr>
+</table>
+
+<h2>Monthly Metrics vs. Baseline</h2>
+<table>
+<tr><th>Metric</th><th>Jan (Baseline)</th><th>Apr</th><th>May</th><th>June</th><th>Trend</th></tr>
+<tr><td>Google Reviews</td><td>124</td><td>125</td><td>125</td><td><strong>123</strong></td><td>→ Restart campaign</td></tr>
+<tr><td>GBP Score</td><td>37/70</td><td>62/70</td><td>62/70</td><td><strong>62/70</strong></td><td>✅ Holding</td></tr>
+<tr><td>Active Citations</td><td>10+</td><td>30+</td><td>30+</td><td><strong>30+</strong></td><td>✅ Maintained</td></tr>
+<tr><td>Blog Posts (cumulative)</td><td>0</td><td>16</td><td>20</td><td><strong>23</strong></td><td>✅ On schedule (1 left)</td></tr>
+<tr><td>Google Ads Campaigns</td><td>—</td><td>—</td><td>4</td><td><strong>6</strong></td><td>✅ +Sump Pump, +Tankless</td></tr>
+<tr><td>Avg Cost-Per-Click</td><td>—</td><td>—</td><td>—</td><td><strong>$12.98 ✅</strong></td><td>✅ Under $15 cap</td></tr>
+<tr><td>Organic Impressions (90d)</td><td>—</td><td>—</td><td>—</td><td><strong>364K (+9%)</strong></td><td>✅ Reach growing</td></tr>
+</table>
+
+<hr>
+<div class="footer">
+<p>Nichefinder AI Agency &mdash; Fox Valley Plumbing &amp; Backflow Monthly Report &mdash; June 2026 (in progress)</p>
+<p>Questions? <a href="mailto:nichefindersai@gmail.com">nichefindersai@gmail.com</a> | (863) 999-9152 | <a href="https://nichefinder.coreyreeder.com/widget/booking/3SsTl1rDYbbKP6kHXeRM" target="_blank">Schedule a Call</a></p>
+</div>
+
+</body>
+</html>
