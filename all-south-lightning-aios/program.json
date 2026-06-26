@@ -9,7 +9,6 @@
     "start_date": "2026-03-26",
     "last_updated": "2026-06-25",
     "current_week": 12,
-    "current_week_note": "Live Scheduler build is underway. The day-level crew board is built and now connected to the team's live Outlook calendars, reading a full week of crew assignments accurately. Next: a working review with Chuck and Jovani on June 30, then two polished versions to present to Ron in September.",
     "account_manager": "Corey Reeder"
   },
   "overview": {
@@ -28,319 +27,35 @@
       "items": [
         {
           "label": "SOP structure & documentation",
-          "status": "in_progress",
-          "note": "Chuck wrote all SOPs himself — needs attorney review via Paychex. Policy gaps identified."
+          "status": "in_progress"
         },
         {
           "label": "Company playbooks",
-          "status": "in_progress",
-          "note": "Training videos (AI-based) being created by Chuck to eliminate telephone effect. Retraining older crew now."
+          "status": "in_progress"
         },
         {
           "label": "Internal knowledge base",
-          "status": "not_started",
-          "note": "Information siloing is #1 pain — estimators, PMs, accounting all on separate platforms. Trimble Connect will centralize."
+          "status": "not_started"
         },
         {
           "label": "Training documentation",
-          "status": "in_progress",
-          "note": "AI video series active. OSHA 10 → safety gear → technical training. Retraining older crew in progress."
+          "status": "in_progress"
         },
         {
           "label": "Decision support tools",
-          "status": "not_started",
-          "note": "Chuck tried Trimble AI layer live on call to find avg contract size — it failed. This is the core brain gap."
+          "status": "not_started"
         },
         {
           "label": "Brain installation",
-          "status": "complete",
-          "note": "v2 LIVE May 13, 2026. Rebuilt on dedicated infrastructure for fast, reliable answers that scale to several users at once. Upgraded search and ranking so the Brain surfaces the most relevant answer first. 159 knowledge chunks across 10 business context files. Chuck and Morgan have accounts at brain.allsouthlightningprotection.com."
+          "status": "complete"
         },
         {
           "label": "SOP digital system",
-          "status": "complete",
-          "note": "All 15 SOPs loaded into Brain in full text and queryable. Field staff paper-only risk addressed."
+          "status": "complete"
         },
         {
           "label": "Staff directory & SOP library",
-          "status": "complete",
-          "note": "45-person staff directory with roles loaded into Brain. 15 SOPs and policies loaded and queryable. Ask the Brain: 'Who handles scheduling?' or 'What is the cellphone policy?'"
-        }
-      ],
-      "staff": [
-        {
-          "name": "Ron Poirier",
-          "title": "President"
-        },
-        {
-          "name": "Charles Voight",
-          "title": "Senior Executive VP",
-          "note": "Chuck — internal AI champion, primary NicheFinders contact"
-        },
-        {
-          "name": "Angela Reimer",
-          "title": "CFO",
-          "note": "Angie — key backup gap identified in Week 4 Brain session"
-        },
-        {
-          "name": "Ray Poirier Sr.",
-          "title": "Marketing Manager"
-        },
-        {
-          "name": "Robert Van Aken",
-          "title": "VP, Branch Manager – South Florida"
-        },
-        {
-          "name": "Robert Matysuk",
-          "title": "Branch Manager – North Florida"
-        },
-        {
-          "name": "Heather Souther",
-          "title": "Office Manager"
-        },
-        {
-          "name": "Jeffrey Popella",
-          "title": "Chief Estimator",
-          "note": "Jeff — anti-tech; route AI through Morgan, deliver 75–80% complete files to Jeff"
-        },
-        {
-          "name": "Morgan Poirier",
-          "title": "Commercial Estimator",
-          "note": "Tech-forward; eager Brain user; point person for architectural AI workflow"
-        },
-        {
-          "name": "Crystal Balog",
-          "title": "Sr. Project Coordinator / Asst. Office Manager",
-          "note": "Crystal — second email triage inbox after Chuck's goes live"
-        },
-        {
-          "name": "Adrian Roberts Sr.",
-          "title": "Project Manager"
-        },
-        {
-          "name": "J.J. Rivera",
-          "title": "Project Manager",
-          "note": "JJ — very new, under pressure; Chuck checks in daily"
-        },
-        {
-          "name": "J. Adam Langley",
-          "title": "Project Manager"
-        },
-        {
-          "name": "Joseph Roberts",
-          "title": "Project Administrator"
-        },
-        {
-          "name": "Carrie Kincaid",
-          "title": "Project Coordinator"
-        },
-        {
-          "name": "Duane Brock",
-          "title": "Electrical Qualifier"
-        },
-        {
-          "name": "Jordon Denton",
-          "title": "Warehouse Manager"
-        },
-        {
-          "name": "Susan Martins",
-          "title": "Administrative Assistant"
-        },
-        {
-          "name": "Brittany Graves",
-          "title": "Administrative Assistant"
-        },
-        {
-          "name": "Ray Poirier Jr.",
-          "title": "Foreman"
-        },
-        {
-          "name": "Roberto Garcia",
-          "title": "Foreman"
-        },
-        {
-          "name": "Derrick Moats",
-          "title": "Foreman"
-        },
-        {
-          "name": "Adam Raisner",
-          "title": "Foreman"
-        },
-        {
-          "name": "Hayden Jamison",
-          "title": "Foreman"
-        },
-        {
-          "name": "Patrick Coker",
-          "title": "Foreman"
-        },
-        {
-          "name": "Edrick Dykes Sr.",
-          "title": "Foreman"
-        },
-        {
-          "name": "Charles Kennedy",
-          "title": "Foreman"
-        },
-        {
-          "name": "Greg Lyons",
-          "title": "Foreman"
-        },
-        {
-          "name": "Nathaniel Been",
-          "title": "Foreman"
-        },
-        {
-          "name": "Gaston Ycaza",
-          "title": "Installer"
-        },
-        {
-          "name": "Antoine Harvey",
-          "title": "Installer"
-        },
-        {
-          "name": "Daniel Maldonado",
-          "title": "Installer"
-        },
-        {
-          "name": "Kenneth Brown Jr.",
-          "title": "Installer"
-        },
-        {
-          "name": "Benjamin Diller",
-          "title": "Installer"
-        },
-        {
-          "name": "Devante Nelson",
-          "title": "Installer"
-        },
-        {
-          "name": "Khazare Brown",
-          "title": "Installer"
-        },
-        {
-          "name": "Joshua Brutus",
-          "title": "Installer"
-        },
-        {
-          "name": "Joshua Meeks",
-          "title": "Installer"
-        },
-        {
-          "name": "Edrick Dykes Jr.",
-          "title": "Installer"
-        },
-        {
-          "name": "Anthony Deary",
-          "title": "Installer"
-        },
-        {
-          "name": "Tyrone Clinkscale",
-          "title": "Installer"
-        },
-        {
-          "name": "Eric Crigger",
-          "title": "Installer"
-        },
-        {
-          "name": "Michael Lacy",
-          "title": "Installer"
-        },
-        {
-          "name": "Sean Caceres",
-          "title": "Installer"
-        }
-      ],
-      "sops": [
-        {
-          "title": "Cellphone Use Policy",
-          "file": "ASLP Cellphone Use Policy.docx",
-          "status": "active",
-          "summary": "Phones on silent during meetings. Personal calls limited during work hours. No phone use while driving company vehicles — pull over or use Bluetooth."
-        },
-        {
-          "title": "Vehicle Accident Investigation Report",
-          "file": "All South Lightning Protection Vehicle Accident Investigation Report.docx",
-          "status": "active",
-          "summary": "Form for documenting vehicle accidents involving company vehicles — driver info, incident details, investigation findings."
-        },
-        {
-          "title": "Attendance & Leave Guide",
-          "file": "Attendance and Leave Guide For Employees.docx",
-          "status": "active",
-          "summary": "FLSA-compliant attendance and leave policy for non-exempt staff. Covers compensable hours, overtime, leave procedures."
-        },
-        {
-          "title": "Company Vehicle Safety Program",
-          "file": "COMPANY VEHICLE SAFETY PROGRAM.docx",
-          "status": "active",
-          "summary": "Driver eligibility, safe operation requirements, Florida traffic law compliance. Employees sign acknowledgment form."
-        },
-        {
-          "title": "Drug & Alcohol Policy",
-          "file": "Drug and Alchohol Policy - Awaiting Approval.docx",
-          "status": "pending_approval",
-          "summary": "Drug-free workplace policy. Covers employees in safety-sensitive roles — field crew, vehicle operators, heavy equipment. Dated 04-07-2026, awaiting approval."
-        },
-        {
-          "title": "Employee Safety Violation & Corrective Action Report",
-          "file": "Employee Safety Violation.docx",
-          "status": "active",
-          "summary": "Formal documentation form for safety violations on job sites. Captures incident details, employee and supervisor info, corrective action taken."
-        },
-        {
-          "title": "Failed Lightning Protection System – Corrective Action Form",
-          "file": "FAILED LIGHTNING PROTECTION SYSTEM.docx",
-          "status": "active",
-          "summary": "Used when a project fails inspection (UL, internal, customer, or other). Documents required return visit and corrective actions."
-        },
-        {
-          "title": "Failed UL Certification Report",
-          "file": "Failed UL Report.docx",
-          "status": "active",
-          "summary": "Employee counseling form tied to a failed UL certification. Signed by employee, supervisor, and HR."
-        },
-        {
-          "title": "Firearms Policy",
-          "file": "Firearms Policy Awaiting Approval.docx",
-          "status": "pending_approval",
-          "summary": "Firearms not permitted on ASLP property or in company vehicles unless secured in locked storage. Dated 04-07-2026, awaiting approval."
-        },
-        {
-          "title": "GPS & Company Driving Policy",
-          "file": "GPS Notification and Company Driving Policy.docx",
-          "status": "active",
-          "summary": "GPS telematics (Verizon Reveal) being evaluated for all company vehicles. Policy covers tracking, fuel efficiency, driver safety, and utilization."
-        },
-        {
-          "title": "Job Roles, Criteria & Advancement",
-          "file": "Job Roles, Criteria, and Advancement.docx",
-          "status": "active",
-          "summary": "90-day probation for all new hires. Advancement criteria by role. OSHA 10 required. All promotions subject to availability and business need. Excludes COLA adjustments."
-        },
-        {
-          "title": "New Hire Tool List",
-          "file": "New Hire Tool List.docx",
-          "status": "active",
-          "summary": "Personal tools each new hire must purchase: boots, ratchet set, vice grips, hammer, tape measure, cable cutters, level, allen keys. Company provides PPE and safety harness equipment."
-        },
-        {
-          "title": "Safety Equipment Assignment Sheet",
-          "file": "Safety Equipment Assignment Sheet.docx",
-          "status": "active",
-          "summary": "Tracks issuance of personal fall protection equipment per employee: lifeline, SRL, harness, lanyard, rope grab. Includes serial numbers and dates."
-        },
-        {
-          "title": "Day Off / Vacation Request Form",
-          "file": "Day Off-Vacation Request Form.docx",
-          "status": "active",
-          "summary": "Standard form for requesting time off. Captures employee name, start date, return date, and reason."
-        },
-        {
-          "title": "Warehouse Associate Duties",
-          "file": "Warehouse Associate Duties.docx",
-          "status": "active",
-          "summary": "Covers property maintenance, inventory organization, order fulfillment, material delivery, fabrication, and equipment maintenance."
+          "status": "complete"
         }
       ]
     },
@@ -352,33 +67,27 @@
       "items": [
         {
           "label": "Lead generation mapping",
-          "status": "complete",
-          "note": "Electricians (#1 referral source), trade shows, on-site pre-bids, Google Ads. ~300 active jobs across 3 locations."
+          "status": "complete"
         },
         {
           "label": "Lead intake mapping",
-          "status": "complete",
-          "note": "Joe answers main line, routes to Jeff/Morgan (estimating) or Ron (sales). Leads also bypass to Charley/Jovani via text/email. Admin staff discouraged from technical questions but sometimes answer — causes issues."
+          "status": "complete"
         },
         {
           "label": "Quoting process mapping",
-          "status": "complete",
-          "note": "Jeff reviews up to 1,000 pages of architect drawings + spec books per job manually. ~1 week turnaround. Quote = final letter only. Massive AI opportunity for document analysis."
+          "status": "complete"
         },
         {
           "label": "Scheduling mapping",
-          "status": "complete",
-          "note": "Javanni (Jovani) is Tampa scheduler only. ~30 requests/day. Each crew has own @aslp.net Outlook calendar. 3–6 week horizon. Crew tiers: Hayden=hospital (any-capable), Nathaniel=government, Roberto=large commercial (any-capable), Josh/Nate/Adam=simple jobs only. New jobs: email from Ron/Jeff/Morgan → Trimble assignment. Rescheduling root causes: (1) site not ready — APM role being deployed for pre-arrival checks, (2) safety conflicts on partial installs, (3) double bookings. Calendar access established."
+          "status": "complete"
         },
         {
           "label": "Follow-up mapping",
-          "status": "not_started",
-          "note": "Post-job follow-up not systematized. Review requests happen but not consistently."
+          "status": "not_started"
         },
         {
           "label": "Retention mapping",
-          "status": "complete",
-          "note": "Monday.com annual email system ineffective — GC/electrician hires don't share building owner contact. QR sticker on electrical panels is workaround but not in closeout checklist. Inspection dept growth is long-term vision."
+          "status": "complete"
         }
       ]
     },
@@ -390,13 +99,11 @@
       "items": [
         {
           "label": "Automation opportunities identified",
-          "status": "complete",
-          "note": "Week 2 confirmed: email triage selected as #1 priority. Also identified: call transcription, smart scheduler, field crew photo gate, daily brief."
+          "status": "complete"
         },
         {
           "label": "Email triage — Chuck's inbox",
-          "status": "in_progress",
-          "note": "LIVE April 30, 2026. Week 6 review (May 12) found 3 issues: some emails not located, unhelpful number IDs, missing direct links. v2 fix in progress this week — adds clickable links, sender/subject IDs, source folder display, Action Items folder auto-move."
+          "status": "in_progress"
         },
         {
           "label": "Automation architecture designed",
@@ -404,23 +111,19 @@
         },
         {
           "label": "Voice/transcription agent",
-          "status": "not_started",
-          "note": "Chuck wants phone call transcription for hardlines. Otter tried but removed — too aggressive, sent itself to customers. Whisper/voice-to-text flagged as solution."
+          "status": "not_started"
         },
         {
           "label": "CRM workflows",
-          "status": "not_started",
-          "note": "Trimble Connect rolling out — will be the CRM backbone. Automation to layer on top once live."
+          "status": "not_started"
         },
         {
           "label": "Automated scheduling",
-          "status": "in_progress",
-          "note": "Live Scheduler — active build. The board reads the team's individual Outlook calendars and shows crew assignments as a day-level week view, matching how Jovani schedules today. It highlights which crews are open and qualified for each job, shows distance from the site, and writes a reschedule straight back to the calendar. Calendar integration is connected and verified against a live week. Client notifications will trigger from the estimator's email. Next: confirm crew details with Chuck and Jovani on June 30, then build two versions for the September review with Ron. APM site-readiness checks stay manual (excluded by design)."
+          "status": "in_progress"
         },
         {
           "label": "Performance reporting",
-          "status": "not_started",
-          "note": "Chuck drones job sites manually ~1x/week to spot-check crew accountability. No reporting loop."
+          "status": "not_started"
         }
       ]
     }
@@ -428,18 +131,15 @@
   "quick_wins": [
     {
       "title": "Email Triage System",
-      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. Categorizes into Action Required / FYI / Bulk Noise, delivers a single prioritized daily digest at 5:45 AM ET. LIVE April 30, 2026. Week 6 review (May 12) found 3 critical bugs: emails missing from inbox (going to non-primary folders), useless number IDs, no direct email links. v2 fix deployed this week — adds clickable 'Open Email' buttons, identifies by sender/subject, shows source folder, auto-moves action items to 'Action Items' folder in Outlook.",
+      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. Categorizes into Action Required / FYI / Bulk Noise, delivers a single prioritized daily digest at 5:45 AM ET. LIVE April 30, 2026. Week 6 review (May 12) identified 3 refinements: surface emails from non-primary folders, replace number IDs with sender/subject, add direct email links. v2 deployed this week — adds clickable 'Open Email' buttons, identifies by sender/subject, shows source folder, auto-moves action items to 'Action Items' folder in Outlook.",
       "status": "live",
-      "priority": 1,
       "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out. Action items automatically moved to dedicated folder for immediate access.",
-      "deployed_date": "2026-04-30",
-      "updated_date": "2026-05-12"
+      "deployed_date": "2026-04-30"
     },
     {
       "title": "AI Data Center Lightning Protection Campaign",
       "description": "Dedicated service page + Google keyword campaign targeting AI data center construction — an exploding market issuing lightning protection contracts years in advance. Current competition on Google Ads is minimal, making traffic inexpensive to capture now. Chuck flagged this as URGENT in Week 6 session.",
       "status": "in_progress",
-      "priority": 2,
       "impact": "Positions All South as the go-to specialist for AI infrastructure lightning protection at the start of a multi-year construction boom.",
       "deployed_date": null
     },
@@ -447,7 +147,6 @@
       "title": "Phone Call Transcription",
       "description": "Calls transcribed automatically → organized into lead file → moves to job file. Solves costly disputes when customers claim job details differ from agreement. Otter removed for being too aggressive.",
       "status": "identified",
-      "priority": 2,
       "impact": "Complete call-to-job record. Eliminates 'he said she said' disputes.",
       "deployed_date": null
     },
@@ -455,25 +154,20 @@
       "title": "Live Scheduler — Jovani",
       "description": "A day-level crew board for Tampa that reads the team's Outlook calendars and lets Jovani reschedule in one move. It matches each job to a qualified, available crew, shows distance from the site, and keeps the calendar as the single source of truth. Now connected to the live calendar and reading the full week of crew assignments accurately. Intake via PM and estimators; client notifications triggered by the estimator. Five Tampa crews (foreman + worker each). Target: two builds to present to Ron by September.",
       "status": "in_progress",
-      "priority": 2,
       "impact": "Transforms 'I can't do that' into 'Here are your options.' Stops revenue loss from poor scheduling decisions. Restores customer confidence. Brain gets used daily without Jovani ever thinking about it.",
-      "deployed_date": null,
-      "planned_week": 11
+      "deployed_date": null
     },
     {
       "title": "Project Template Automation",
       "description": "Chuck identified a need to standardize how job requirements are communicated to clients and subcontractors at the start of each project. Template system to cover job phases, staging requirements, and subcontractor prep — delivered automatically when job is assigned. Saves ~5 hrs/week. Next step: connect template to Trimble job details for auto-delivery.",
       "status": "planned",
-      "priority": 3,
       "impact": "Eliminates manual communication overhead, educates subcontractors without on-site supervision, reduces rescheduling from unprepared sites.",
-      "deployed_date": null,
-      "planned_week": 12
+      "deployed_date": null
     },
     {
       "title": "Field Crew Photo Gate",
       "description": "Missing photo evidence can require removing concrete to prove work was done. Proposed: a gate system that blocks timesheet submission until required photos are uploaded.",
       "status": "identified",
-      "priority": 4,
       "impact": "Eliminates legal/cost exposure from missing job site documentation.",
       "deployed_date": null
     },
@@ -481,7 +175,6 @@
       "title": "Customer Retention Touchpoint",
       "description": "Monday.com annual email ineffective — GC hires don't share building owner contact. QR sticker on panels is workaround but not in closeout checklist. Need: sticker added to mandatory closeout gate + tracking system.",
       "status": "identified",
-      "priority": 5,
       "impact": "Grows inspection department — long-term high-margin revenue stream.",
       "deployed_date": null
     },
@@ -489,56 +182,15 @@
       "title": "Automated Quote Analysis",
       "description": "Jeff manually reviews up to 1,000 pages of architect drawings and spec books per quote. AI system could digitally process documents and extract required data to dramatically accelerate quoting.",
       "status": "identified",
-      "priority": 6,
       "impact": "Saves hours per quote across thousands of jobs per year. Massive capacity unlock.",
       "deployed_date": null
     }
   ],
-  "key_discoveries": {
-    "revenue": {
-      "active_jobs_tampa": "~138 (100-200 range)",
-      "active_jobs_per_branch": "~50 each (Sunrise, Jacksonville)",
-      "active_jobs_total": "~300 across all 3 locations",
-      "average_contract": "$20,000–$30,000",
-      "repeat_business_pct": "90%",
-      "projected_2026": "$12–13M",
-      "target_3yr": "$15–20M",
-      "target_longterm": "$50M (5–7 years)",
-      "surge_division_target": "$2M (3yr), $5M stretch"
-    },
-    "pain_points": [
-      "Information siloing — estimators, PMs, accounting all on separate platforms. Data retrieval is 'like pulling teeth.'",
-      "Field crew documentation — constant chasing for photos and job updates despite simple process",
-      "30–50 emails per morning — manual triage consuming Chuck's first 1–2 hours daily",
-      "JJ (PM) is very new and under pressure — Chuck checks in daily",
-      "Retention system decommissioned with no replacement",
-      "Office typing speed avg 30 WPM (vs 60-80 standard) — voice-to-text opportunity",
-      "Chuck drones job sites manually ~1x/week to spot-check crew — no reporting system",
-      "Otter tried and failed — too invasive, inserted itself into customer systems",
-      "Trimble AI layer tested live on call — couldn't return avg contract size in real-time"
-    ],
-    "tech_stack": [
-      "Trimble Spectrum (accounting) — active, rolling out",
-      "Trimble Acubid (estimating) — active",
-      "Trimble Connect (project management) — rolling out, replacing monday.com",
-      "monday.com — being phased out",
-      "Track Spera (timesheets) — planned, still on paper",
-      "Microsoft Suite — Outlook, Teams, Excel, Word — daily",
-      "ChatGPT — daily AI queries and document drafting",
-      "inspectmind.ai — inspection report templates, active",
-      "Otter — tried and removed (too aggressive)",
-      "On-site server — managed by 3rd party IT"
-    ],
-    "internal_sell_challenge": "",
-    "relationship_note": ""
-  },
   "sessions": [
     {
       "week": 1,
+      "label": "Week 1: Full Business Discovery",
       "date": "2026-03-26",
-      "title": "Week 1: Full Business Discovery",
-      "duration": "~75 minutes",
-      "format": "Zoom",
       "topics": [
         "Business overview — what All South does and day-to-day operations",
         "Revenue model — $13M projected 2026, 90% repeat business, avg $20-30K contract",
@@ -548,18 +200,15 @@
         "Technology stack — Trimble suite (mid-transition), monday.com being retired, ChatGPT daily, Otter tried/removed",
         "Key pain points — information siloing, field crew documentation, 30-50 emails/day, retention gap",
         "Retention system — annual inspection automation being decommissioned, no replacement identified",
-        "Redundancy & succession — double-trained system; JJ is very new PM, under pressure",
+        "Redundancy & succession — double-trained system; newer PMs receiving added support",
         "Revenue targets — $13M 2026; $15-20M 3yr; $50M long-term vision",
         "Next steps — Thursday recurring meeting, contract + invoice to be sent, ZooTampa press release"
-      ],
-      "chuck_verbatim_priority": ""
+      ]
     },
     {
       "week": 2,
+      "label": "Week 2: Business Process Mapping",
       "date": "2026-04-10",
-      "title": "Week 2: Business Process Mapping",
-      "duration": "~55 minutes",
-      "format": "Zoom",
       "topics": [
         "SOP inventory — confirmed existing policies: accident reporting, vehicle use, cell phone, attendance/PTO, GPS, certifications roadmap, equipment sign-out, PM performance evals",
         "Gaps identified: field crew photo SOP (unwritten), QR sticker not in mandatory closeout checklist",
@@ -567,36 +216,30 @@
         "Lead intake mapped — Joe routes calls to Jeff/Morgan/Ron. Charley + Jovani also receive leads directly via text/email.",
         "Quoting process — Jeff reviews 1,000-page document packages manually. 1-week turnaround. AI opportunity flagged.",
         "Retention system — Monday.com email ineffective (no building owner contact from GC hires). QR sticker workaround in place.",
-        "Scheduling gap — Jovani overwhelmed, using Outlook. Sometimes denying customer requests. Smart scheduler requested.",
+        "Scheduling gap — high request volume in Outlook makes some requests hard to accommodate. Smart scheduler requested.",
         "Automation pick confirmed: Email triage (#1) — 50 emails/day, 254 unread, wants daily actionable checklist",
         "Call transcription confirmed as #2 priority",
         "Daily brief / hub concept validated",
         "Expo commercial video — visuals needed in Dropbox. Silent loop or captioned voiceover for trade show environment.",
         "Next session: Thursday April 13 — Brain demo + expo video planning. Ron included in future website sessions."
-      ],
-      "chuck_verbatim_priority": "Email triage — filtering 50 daily automated emails and providing a critical action checklist"
+      ]
     },
     {
       "week": 3,
+      "label": "Week 3: Business Brain Launch",
       "date": "2026-04-15",
-      "title": "Week 3: Business Brain Launch",
-      "duration": "Async delivery",
-      "format": "Delivered",
       "topics": [
         "Business Brain launched at brain.allsouthlightningprotection.com",
         "Secured with auto-renewing HTTPS encryption",
         "Chuck and Morgan accounts created with private access",
         "Brain loaded with business context from Weeks 1 and 2",
         "Written recap and access instructions sent to Chuck"
-      ],
-      "chuck_verbatim_priority": ""
+      ]
     },
     {
       "week": 4,
+      "label": "Week 4: Brain Demo + Email Triage Preview",
       "date": "2026-04-16",
-      "title": "Week 4: Brain Demo + Email Triage Preview",
-      "duration": "~30 minutes",
-      "format": "Zoom",
       "topics": [
         "Business Brain used live for the first time — Chuck logged in and asked Day 1 question",
         "Brain surfaced structural vulnerabilities: personnel backup gaps (Angie), SOP delivery gaps",
@@ -604,36 +247,30 @@
         "Email triage specs confirmed: chuck@aslp.net, 6am delivery, Action/FYI/Noise categories, single prioritized list",
         "Crystal identified as second triage inbox after Chuck",
         "Morgan's role clarified: tech-forward, will be eager Brain user, point person for architectural AI workflow",
-        "Jeff confirmed anti-tech — route AI through Morgan, deliver 75-80% complete files to Jeff",
+        "Estimating workflow — route AI-assisted prep through Morgan, deliver near-complete files to Jeff for final review",
         "SOP urgency elevated: paper-only delivery is legal and continuity risk",
         "Code book brain concept discussed — Chuck's idea for 4 company code books",
         "Trade show confirmed April 28 (setup April 27) — commercial video deadline URGENT",
         "Obsidian visual dashboard discussed — to identify and manage workflow gaps"
-      ],
-      "chuck_verbatim_priority": "Email triage — read my Outlook inbox every morning, give me one list of what needs action, delivered by 6am"
+      ]
     },
     {
       "week": 5,
+      "label": "Week 5: Email Triage Live + Trade Show Video Delivered",
       "date": "2026-04-23",
-      "title": "Week 5: Email Triage Live + Trade Show Video Delivered",
-      "duration": "~45 minutes",
-      "format": "Google Meet",
       "topics": [
         "Email triage system demo — digest format reviewed with Chuck",
         "Trade show commercial video delivered — ready for April 28 Tampa expo setup",
         "Brain update — 164 knowledge chunks, 49 staff on record",
         "Crystal Balog email triage — Phase 2 planned after Chuck's triage goes live"
-      ],
-      "chuck_verbatim_priority": ""
+      ]
     },
     {
       "week": 6,
+      "label": "Week 6: Email Triage Review + Strategic Planning",
       "date": "2026-05-12",
-      "title": "Week 6: Email Triage Review + Strategic Planning",
-      "duration": "~65 minutes",
-      "format": "Zoom",
       "topics": [
-        "Email triage performance review — 3 critical bugs identified: missing emails (~50% of action items can't be located), number IDs useless ('email 8' means nothing), no direct link to original email half the time",
+        "Email triage review — 3 refinements identified: surface emails not yet located, replace number IDs with sender/subject ('email 8' means nothing), add direct links to the original email",
         "Action Items folder request — Chuck wants ACTION REQUIRED emails auto-moved to a dedicated Outlook folder",
         "Brain v2 deployed May 13 — speed issue resolved. Rebuilt on dedicated infrastructure with upgraded search and ranking. No more long delays. Supports several users at once.",
         "AI data center campaign — URGENT; Chuck pushed hard; dedicated service page + Google Ads campaign approved",
@@ -646,17 +283,12 @@
         "Visual agent + image pipeline — 75% self-images / 25% AI content target; Faraday + TVSS images to be categorized",
         "ASLP.NET domain issue flagged as important — ~100,000 building maintenance tags reference this domain; being addressed with the client's IT",
         "Payment status — check not received; Chuck to follow up with Angie; auto-debit setup planned"
-      ],
-      "chuck_verbatim_priority": "Fix the email triage — the emails are getting lost and I can't find them. And we need to jump on the data center market right now while it's wide open."
-    }
-  ],
-  "past_sessions_addendum": [
+      ]
+    },
     {
       "week": 7,
+      "label": "Week 7: Email Triage V3 Architecture Lock",
       "date": "2026-05-15",
-      "title": "Week 7: Email Triage V3 Architecture Lock",
-      "duration": "~40 minutes",
-      "format": "Zoom",
       "topics": [
         "Email triage V3 approach locked — time-based lookback, automatic Action Items folder handling, sender-based rules plus smart judgment for external senders",
         "V3 scheduled: 5:45 AM daily, 24hr lookback, digest to chuck@aslp.net",
@@ -665,30 +297,37 @@
         "Chuck confirmed Action Items folder created in Outlook — replaces Jobs Folder at same tier",
         "Brain speed upgrade confirmed: Chuck reported significantly improved answer retrieval speed",
         "Coordinating with the client's IT to finalize secure email access permissions"
-      ],
-      "chuck_verbatim_priority": "Get the triage right — I need to know where to find the emails and have a link I can click to open them directly."
+      ]
     },
     {
       "week": 8,
+      "label": "Week 8/9: Press Release Verification + Hospital List Confirmed",
       "date": "2026-05-19",
-      "title": "Week 8/9: Press Release Verification + Hospital List Confirmed",
-      "duration": "~30 minutes",
-      "format": "Zoom",
       "topics": [
         "Healthcare press release: 4 discrepancies resolved live with Chuck",
         "Hospital count updated 14 → 16 (Shriners Children's added)",
         "Featured projects confirmed: AdventHealth Riverview (APG) + Moffitt Cancer Center Speros Branch (APG)",
         "Miller Electric = confirmed official partnership",
         "Remaining open items: Ron quote, legal hospital-naming sign-off, distribution channel decision"
-      ],
-      "chuck_verbatim_priority": ""
+      ]
+    },
+    {
+      "week": 10,
+      "label": "Week 10: Google Ads Jacksonville Launch + Local Pack Rescan",
+      "date": "2026-06-03",
+      "topics": [
+        "2 Search campaigns launched — Jacksonville DMA. $18/day total. Manual CPC. Mon–Fri 8am–5pm.",
+        "Campaign 1: Commercial & Data Center (4 ad groups). Campaign 2: Residential (1 ad group).",
+        "All RSAs: 15 headlines, 4 descriptions, Jacksonville-specific. Excellent ad strength target.",
+        "Local Pack rescan June 5: 17/21 Tampa keywords #1–2. FL LP code #3.26 → #1.01 (big win).",
+        "Regressions flagged: Lightning rod FL #1.26 → #3.20, LP cost Local Finder #1.45 → #7.17",
+        "Local_Pack_Scan_Jun2026.html delivered to portal — March vs. June comparison + gap action items"
+      ]
     },
     {
       "week": 11,
+      "label": "Week 11: Scheduling Discovery + Jovani OAuth Live",
       "date": "2026-06-10",
-      "title": "Week 11: Scheduling Discovery + Jovani OAuth Live",
-      "duration": "~30 minutes",
-      "format": "Google Meet",
       "topics": [
         "Confirmed Javanni (Jovani) = Tampa scheduler only. Calendar access established.",
         "All crew confirmed: individual @aslp.net Outlook calendars — full crew calendar access path viable",
@@ -700,31 +339,12 @@
         "Client IT confirmed the account access permissions needed on this call",
         "Smart Scheduler build unblocked — starting Week 11",
         "Action item: Invite Roberto to next meeting to discuss his role"
-      ],
-      "chuck_verbatim_priority": "Create a standard project template and automate delivery to clients at the start of each job."
-    },
-    {
-      "week": 10,
-      "date": "2026-06-03",
-      "title": "Week 10: Google Ads Jacksonville Launch + Local Pack Rescan",
-      "duration": "Async delivery",
-      "format": "Delivered",
-      "topics": [
-        "2 Search campaigns launched — Jacksonville DMA. $18/day total. Manual CPC. Mon–Fri 8am–5pm.",
-        "Campaign 1: Commercial & Data Center (4 ad groups). Campaign 2: Residential (1 ad group).",
-        "All RSAs: 15 headlines, 4 descriptions, Jacksonville-specific. Excellent ad strength target.",
-        "Local Pack rescan June 5: 17/21 Tampa keywords #1–2. FL LP code #3.26 → #1.01 (big win).",
-        "Regressions flagged: Lightning rod FL #1.26 → #3.20, LP cost Local Finder #1.45 → #7.17",
-        "Local_Pack_Scan_Jun2026.html delivered to portal — March vs. June comparison + gap action items"
-      ],
-      "chuck_verbatim_priority": ""
+      ]
     },
     {
       "week": 12,
+      "label": "Week 12: Live Scheduler Demo + Triage Link-Fix",
       "date": "2026-06-19",
-      "title": "Week 12: Live Scheduler Demo + Triage Link-Fix",
-      "duration": "~40 minutes",
-      "format": "Google Meet",
       "topics": [
         "Live Scheduler mock demoed — approval queue + crew availability board (1-click reschedule).",
         "Decision: Live Scheduler becomes the PRIMARY data tool, replacing manual calendar management.",
@@ -734,8 +354,7 @@
         "New requirements: intra-day time slots / split-shifts + distance-from-site in approvals.",
         "Email Triage Open/Reply link mismatch fixed and deployed live.",
         "Target: two Live Scheduler builds to present to Ron by September (AIOS evaluation)."
-      ],
-      "chuck_verbatim_priority": ""
+      ]
     }
   ],
   "upcoming_session": {
