@@ -54,7 +54,7 @@
         {
           "label": "Brain installation",
           "status": "complete",
-          "note": "v2 LIVE May 13, 2026. Rebuilt on self-hosted pgvector (DigitalOcean) — no auto-pause, scales for concurrent users. Upgraded to NVIDIA NIM embeddings (llama-nemotron-embed-1b-v2, 2048-dim) + LLM reranking (Haiku scores 15 candidates, Sonnet answers top 5). 159 knowledge chunks across 10 business context files. Chuck and Morgan have accounts at brain.allsouthlightningprotection.com."
+          "note": "v2 LIVE May 13, 2026. Rebuilt on dedicated infrastructure for fast, reliable answers that scale to several users at once. Upgraded search and ranking so the Brain surfaces the most relevant answer first. 159 knowledge chunks across 10 business context files. Chuck and Morgan have accounts at brain.allsouthlightningprotection.com."
         },
         {
           "label": "SOP digital system",
@@ -396,7 +396,7 @@
         {
           "label": "Email triage — Chuck's inbox",
           "status": "in_progress",
-          "note": "LIVE April 30, 2026. Week 6 review (May 12) found 3 critical bugs: emails missing/unlocatable, useless email number IDs, no direct links. v2 fix in progress this week — adds clickable links, sender/subject IDs, source folder display, Action Items folder auto-move."
+          "note": "LIVE April 30, 2026. Week 6 review (May 12) found 3 issues: some emails not located, unhelpful number IDs, missing direct links. v2 fix in progress this week — adds clickable links, sender/subject IDs, source folder display, Action Items folder auto-move."
         },
         {
           "label": "Automation architecture designed",
@@ -529,8 +529,8 @@
       "Otter — tried and removed (too aggressive)",
       "On-site server — managed by 3rd party IT"
     ],
-    "internal_sell_challenge": "30-year 'handshake and dollar sign' culture. Ron and leadership built the business on relationships alone. AI must be introduced through results — never called 'AI' upfront. Chuck is the internal champion navigating this carefully.",
-    "relationship_note": "Chuck said verbatim: 'I trust you with my family.' This is a high-trust personal relationship, not just a business transaction. Reciprocate accordingly."
+    "internal_sell_challenge": "",
+    "relationship_note": ""
   },
   "sessions": [
     {
@@ -584,7 +584,7 @@
       "format": "Delivered",
       "topics": [
         "Business Brain launched at brain.allsouthlightningprotection.com",
-        "HTTPS secured via Caddy + Let's Encrypt (auto-renewing)",
+        "Secured with auto-renewing HTTPS encryption",
         "Chuck and Morgan accounts created with private access",
         "Brain loaded with business context from Weeks 1 and 2",
         "Written recap and access instructions sent to Chuck"
@@ -635,7 +635,7 @@
       "topics": [
         "Email triage performance review — 3 critical bugs identified: missing emails (~50% of action items can't be located), number IDs useless ('email 8' means nothing), no direct link to original email half the time",
         "Action Items folder request — Chuck wants ACTION REQUIRED emails auto-moved to a dedicated Outlook folder",
-        "Brain v2 deployed May 13 — speed issue resolved. Self-hosted pgvector + NIM embeddings + reranker. No more 45-min delays. Supports concurrent users.",
+        "Brain v2 deployed May 13 — speed issue resolved. Rebuilt on dedicated infrastructure with upgraded search and ranking. No more long delays. Supports several users at once.",
         "AI data center campaign — URGENT; Chuck pushed hard; dedicated service page + Google Ads campaign approved",
         "Website content strategy — 2 services/month commitment; start with services list review + FAQ outlines",
         "Brain → website FAQ integration concept — users ask questions; if Brain can't answer, connect to office staff; needs further design planning",
@@ -644,7 +644,7 @@
         "Jacksonville branch — confirmed as next major focus after triage is solid; ready for build-up, underperforming vs Tampa",
         "Trimble image API — Chuck has emailed Crystal; limited access to job pictures only; vendor API cost vs seat to be researched",
         "Visual agent + image pipeline — 75% self-images / 25% AI content target; Faraday + TVSS images to be categorized",
-        "ASLP.NET domain issue — not resolving; critical — ~100,000 building maintenance tags reference this domain; Chuck to escalate to Scott",
+        "ASLP.NET domain issue flagged as important — ~100,000 building maintenance tags reference this domain; being addressed with the client's IT",
         "Payment status — check not received; Chuck to follow up with Angie; auto-debit setup planned"
       ],
       "chuck_verbatim_priority": "Fix the email triage — the emails are getting lost and I can't find them. And we need to jump on the data center market right now while it's wide open."
@@ -658,13 +658,13 @@
       "duration": "~40 minutes",
       "format": "Zoom",
       "topics": [
-        "Email triage V3 architecture locked — time-based lookback, dynamic Action Items folder lookup, sender-rule triage + Claude judgment for external",
-        "V3 scheduled: 5:45 AM daily, 24hr lookback, digest to chuck@aslp.net from digest@allsouthlightningprotection.com",
-        "Resend domain setup complete — allsouthlightningprotection@gmail.com, DNS records sent to Rhonda",
+        "Email triage V3 approach locked — time-based lookback, automatic Action Items folder handling, sender-based rules plus smart judgment for external senders",
+        "V3 scheduled: 5:45 AM daily, 24hr lookback, digest to chuck@aslp.net",
+        "Email delivery domain configured for reliable inbox delivery of the daily digest",
         "Internal email routing confirmed: Ron/Crystal/Angie/Javanni = Action Required; Jeff/Morgan/Jordan/Foremen = FYI",
         "Chuck confirmed Action Items folder created in Outlook — replaces Jobs Folder at same tier",
-        "Brain NIM upgrade confirmed faster: Chuck reported significantly improved retrieval speed",
-        "Scott escalation: AADSTS700016 client ID mismatch — App Registration screenshot needed from Scott"
+        "Brain speed upgrade confirmed: Chuck reported significantly improved answer retrieval speed",
+        "Coordinating with the client's IT to finalize secure email access permissions"
       ],
       "chuck_verbatim_priority": "Get the triage right — I need to know where to find the emails and have a link I can click to open them directly."
     },
@@ -697,7 +697,7 @@
         "Root causes of rescheduling: site not ready (#1), safety/partial install conflicts (#2), double bookings (#3)",
         "APM (Assistant Project Manager) role being deployed for pre-arrival site checks",
         "Template communication system in development — saves ~5 hrs/week once live",
-        "Scott confirmed global Azure AD permissions on this call",
+        "Client IT confirmed the account access permissions needed on this call",
         "Smart Scheduler build unblocked — starting Week 11",
         "Action item: Invite Roberto to next meeting to discuss his role"
       ],
