@@ -7,15 +7,15 @@
     "program_months": 6,
     "total_weeks": 24,
     "start_date": "2026-03-26",
-    "last_updated": "2026-06-19",
+    "last_updated": "2026-06-25",
     "current_week": 12,
-    "current_week_note": "Week 12 done (Jun 19): Live Scheduler mock demoed, triage link-bug fixed live. Decisions locked — scheduler replaces manual calendar, APM stays manual, intake via PM/estimators. Building toward the September demo for Ron.",
+    "current_week_note": "Live Scheduler build is underway. The day-level crew board is built and now connected to the team's live Outlook calendars, reading a full week of crew assignments accurately. Next: a working review with Chuck and Jovani on June 30, then two polished versions to present to Ron in September.",
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Week 12: Jovani Smart Scheduler — Mock Review + Build Kickoff",
-    "phase_description": "Email Triage V3 is LIVE and hardened on workflow 8KDAPERmsxs2zvz4 (retry x3 on fetch/AI/send, Send-Digest idempotency key, Telegram preview can't kill the run) — runs 5:30 AM ET daily. Jovani's Smart Scheduler is the active build: AI matches each job to the right foreman tier (Hayden=hospital, Nathaniel=government, Roberto=large commercial, general crew=simple), checks Outlook calendars via Graph API, and hands Jovani 2-3 options to approve in one click. Requirements are locked from Week 11 discovery; a clickable visual mock is ready for Chuck's review. Google Ads live in Jacksonville: 2 Search campaigns at $18/day, Manual CPC, Mon-Fri. Local Pack rescan confirms Tampa dominance (17/21 keywords #1-2).",
-    "overall_progress_pct": 66,
+    "current_phase": "Live Scheduler — Build + Calendar Integration",
+    "phase_description": "Email Triage is live and hardened, delivering Chuck a single prioritized action list every morning at 5:30 AM ET. The Live Scheduler is the active build: a day-level crew board that reads the team's Outlook calendars, shows which crews are open and qualified for each job, flags travel distance to the site, and lets Jovani reschedule in one move. It is now connected to the live calendar and confirmed to read the full week of crew assignments accurately. Next is a working review with Chuck and Jovani on June 30, then two polished versions to present to Ron in September. Google Ads continue in Jacksonville, and the latest Local Pack rescan confirms Tampa dominance (17 of 21 keywords ranked #1-2).",
+    "overall_progress_pct": 68,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -368,7 +368,7 @@
         {
           "label": "Scheduling mapping",
           "status": "complete",
-          "note": "Javanni (Jovani) is Tampa scheduler only. ~30 requests/day. Each crew has own @aslp.net Outlook calendar. 3–6 week horizon. Crew tiers: Hayden=hospital (any-capable), Nathaniel=government, Roberto=large commercial (any-capable), Josh/Nate/Adam=simple jobs only. New jobs: email from Ron/Jeff/Morgan → Trimble assignment. Rescheduling root causes: (1) site not ready — APM role being deployed for pre-arrival checks, (2) safety conflicts on partial installs, (3) double bookings. Jovani OAuth credential live: 0ZVgWEThV7997LnX."
+          "note": "Javanni (Jovani) is Tampa scheduler only. ~30 requests/day. Each crew has own @aslp.net Outlook calendar. 3–6 week horizon. Crew tiers: Hayden=hospital (any-capable), Nathaniel=government, Roberto=large commercial (any-capable), Josh/Nate/Adam=simple jobs only. New jobs: email from Ron/Jeff/Morgan → Trimble assignment. Rescheduling root causes: (1) site not ready — APM role being deployed for pre-arrival checks, (2) safety conflicts on partial installs, (3) double bookings. Calendar access established."
         },
         {
           "label": "Follow-up mapping",
@@ -415,7 +415,7 @@
         {
           "label": "Automated scheduling",
           "status": "in_progress",
-          "note": "Smart Scheduler — Week 11 active build. Jovani OAuth live (cred 0ZVgWEThV7997LnX). All crew have individual @aslp.net Outlook calendars — full calendar access path confirmed. Trigger: email from Ron/Jeff/Morgan + Trimble assignment. AI matches job type → crew tier → checks Outlook availability → generates 2–3 options → Jovani 1-click approves → calendar invites sent. Crew tiers hardcoded: hospital→Hayden, govt→Nathaniel, large commercial→Roberto, simple→general pool. APM site-readiness check integration planned. Template client notification in design. Brain embedded silently for crew profiles + constraints."
+          "note": "Live Scheduler — active build. The board reads the team's individual Outlook calendars and shows crew assignments as a day-level week view, matching how Jovani schedules today. It highlights which crews are open and qualified for each job, shows distance from the site, and writes a reschedule straight back to the calendar. Calendar integration is connected and verified against a live week. Client notifications will trigger from the estimator's email. Next: confirm crew details with Chuck and Jovani on June 30, then build two versions for the September review with Ron. APM site-readiness checks stay manual (excluded by design)."
         },
         {
           "label": "Performance reporting",
@@ -452,8 +452,8 @@
       "deployed_date": null
     },
     {
-      "title": "Smart Scheduler — Jovani",
-      "description": "Live Scheduler for Tampa: real-time crew availability board + 1-click reschedule. Becomes the PRIMARY data tool (replaces manual calendar management). Matches job type to the right crew tier, checks Outlook calendars via Graph API, shows distance-from-site, and supports intra-day time slots / split-shifts. Intake via PM + estimators; client-notify triggered by the estimator's email. APM site checks stay manual (excluded). 5 crews (foreman + worker each). OAuth live (0ZVgWEThV7997LnX). Target: two builds to demo to Ron by September.",
+      "title": "Live Scheduler — Jovani",
+      "description": "A day-level crew board for Tampa that reads the team's Outlook calendars and lets Jovani reschedule in one move. It matches each job to a qualified, available crew, shows distance from the site, and keeps the calendar as the single source of truth. Now connected to the live calendar and reading the full week of crew assignments accurately. Intake via PM and estimators; client notifications triggered by the estimator. Five Tampa crews (foreman + worker each). Target: two builds to present to Ron by September.",
       "status": "in_progress",
       "priority": 2,
       "impact": "Transforms 'I can't do that' into 'Here are your options.' Stops revenue loss from poor scheduling decisions. Restores customer confidence. Brain gets used daily without Jovani ever thinking about it.",
@@ -690,7 +690,7 @@
       "duration": "~30 minutes",
       "format": "Google Meet",
       "topics": [
-        "Confirmed Javanni (Jovani) = Tampa scheduler only. Credential live: 0ZVgWEThV7997LnX.",
+        "Confirmed Javanni (Jovani) = Tampa scheduler only. Calendar access established.",
         "All crew confirmed: individual @aslp.net Outlook calendars — full crew calendar access path viable",
         "New job trigger confirmed: email from Ron/Jeff/Morgan + Trimble assignment",
         "Crew tier matrix locked: Hayden=hospital/any, Nathaniel=govt, Roberto=large commercial/any, Josh/Nate/Adam=simple",
@@ -739,15 +739,16 @@
     }
   ],
   "upcoming_session": {
-    "label": "Week 13: Live Scheduler Progress Review",
+    "label": "Week 13: Live Scheduler Review with Chuck + Jovani",
     "date": "Tuesday, June 30, 2026",
     "time": "3:00 PM ET",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Live Scheduler build progress — time slots / split-shift handling",
-      "Crew availability board with distance-from-site in the approval view",
-      "Estimator-triggered client notifications — wiring",
+      "Walkthrough of the working day-level crew board, reading the live Outlook calendars",
+      "Confirm the five Tampa crews and their crew pairings",
+      "Crew skills, clearances, and travel-distance setup",
+      "Day-level scheduling vs. intra-day time slots",
       "Path to the September demo for Ron (two version builds)"
     ]
   },
