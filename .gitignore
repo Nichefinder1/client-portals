@@ -1,0 +1,18 @@
+# This is a PUBLIC GitHub Pages repo — never commit client documents, PII, or secrets.
+
+# Editor/scratch
+whats-next.md
+**/whats-next.md
+
+# Client documents (legal / governance / PII) — must NEVER be in a public repo
+**/docs/
+**/*.pdf
+**/*.docx
+**/*.doc
+
+# Serverless functions + deps (belong to the client's own hosting, not this public repo)
+**/netlify/functions/
+**/node_modules/
+**/package.json
+**/package-lock.json
+.netlify/
