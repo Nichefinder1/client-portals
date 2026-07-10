@@ -12,9 +12,9 @@
     "account_manager": "Corey Reeder"
   },
   "overview": {
-    "current_phase": "Live Scheduler — Build + Calendar Integration",
-    "phase_description": "Email Triage is live and hardened, delivering Chuck a single prioritized action list every morning at 5:30 AM ET. The Live Scheduler is the active build: a day-level crew board that reads the team's Outlook calendars, shows which crews are open and qualified for each job, flags travel distance to the site, and lets Jovani reschedule in one move. It is now connected to the live calendar and confirmed to read the full week of crew assignments accurately. Next is a working review with Chuck and Jovani on June 30, then two polished versions to present to Ron in September. Google Ads continue in Jacksonville, and the latest Local Pack rescan confirms Tampa dominance (17 of 21 keywords ranked #1-2).",
-    "overall_progress_pct": 68,
+    "current_phase": "Smart Scheduler — Live Pilot + Data Integration",
+    "phase_description": "Email Triage remains live and hardened, delivering Chuck a single prioritized action list every morning at 5:30 AM ET. The Smart Scheduler is now LIVE and secured on All South's own cloud — Chuck and Jovani have private logins and are actively building and testing real weeks. It shows which crews are open and qualified for each job, guards inspection deadlines, flags travel distance, and reschedules in one move. This week we added a full-month calendar view (Outlook-style) at Chuck's request and switched the board to live, real-time dates. Next is connecting incoming project alerts and historical project data so the unscheduled queue fills itself — eliminating manual entry — on the path to full go-live and the September demo for Ron. Google Ads now run statewide across Jacksonville, Tampa, and South Florida, and Tampa local search dominance holds (17 of 21 keywords ranked #1-2).",
+    "overall_progress_pct": 74,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -355,20 +355,49 @@
         "Email Triage Open/Reply link mismatch fixed and deployed live.",
         "Target: two Live Scheduler builds to present to Ron by September (AIOS evaluation)."
       ]
+    },
+    {
+      "week": 14,
+      "label": "Week 14: Smart Scheduler Deployed Live + Secured",
+      "date": "2026-07-01",
+      "topics": [
+        "Smart Scheduler deployed LIVE and secured on All South's own private cloud (individual logins).",
+        "Hourly, Outlook-style crew board: shows open + qualified crews per job, guards inspection deadlines, flags travel distance, one-move reschedule.",
+        "Crew model finalized: 4 defined crews (foreman = stable identity, installers rotate per job), 5th crew pending.",
+        "Read-only, revocable share links so the field can view the schedule without a login.",
+        "Built-in help assistant added for the team."
+      ]
+    },
+    {
+      "week": 15,
+      "label": "Week 15: Scheduler Working Session — Chuck + Jovani",
+      "date": "2026-07-10",
+      "topics": [
+        "Chuck and Jovani received secure logins and built a real mock schedule live on the board.",
+        "Added a full-month calendar view (Outlook-style) for whole-month visibility, at Chuck's request.",
+        "Switched the board to live, real-time dates so the calendar matches the real week.",
+        "Corrected crew setup so each foreman stands alone and installers rotate freely.",
+        "Confirmed scheduling logic: blocks a job when required certifications are missing, with a manual override when needed.",
+        "Planned auto-ingest of incoming project alerts and project data to fill the unscheduled queue automatically — removing manual entry into multiple systems.",
+        "Roster intake expanded to capture certifications (OSHA 10/30, equipment operation), driving status, and background checks.",
+        "Corrected regulatory terminology to ACHA (Agency for Health Care Administration).",
+        "Roadmap discussed: role-based training modules (Installer 1/2, Foreman) and estimating integration with Morgan."
+      ]
     }
   ],
   "upcoming_session": {
-    "label": "Week 13: Live Scheduler Review with Chuck + Jovani",
-    "date": "Tuesday, June 30, 2026",
-    "time": "3:00 PM ET",
+    "label": "Data Integration + Go-Live Prep",
+    "date": "Tuesday (designated office-work day)",
+    "time": "TBC",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Walkthrough of the working day-level crew board, reading the live Outlook calendars",
-      "Confirm the five Tampa crews and their crew pairings",
-      "Crew skills, clearances, and travel-distance setup",
-      "Day-level scheduling vs. intra-day time slots",
-      "Path to the September demo for Ron (two version builds)"
+      "Chuck's testing notes from the week on the live board",
+      "Connect incoming project alerts + project data to auto-fill the unscheduled queue",
+      "Import historical project data via file export",
+      "Finalize roster data (certifications, driving status) from the intake sheet",
+      "Confirm read-only calendar sharing for field crews",
+      "Path to the September demo for Ron"
     ]
   },
   "contact": {
