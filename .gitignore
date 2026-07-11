@@ -16,3 +16,9 @@ whats-next.md
 **/package.json
 **/package-lock.json
 .netlify/
+
+# Removed from this PUBLIC repo (history-scrubbed 2026-07-11) — keep them out for good.
+# command-center = internal agency dashboard (MRR, client + prospect pipeline). NOT for public hosting.
+# icare-foundation = stale duplicate; live site is icaregives.org (Netlify, client-owned).
+command-center/
+icare-foundation/
