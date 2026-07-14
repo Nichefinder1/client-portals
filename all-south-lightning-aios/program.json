@@ -131,7 +131,7 @@
   "quick_wins": [
     {
       "title": "Email Triage System",
-      "description": "Chuck's Outlook (chuck@aslp.net) — 50+ emails daily. Categorizes into Action Required / FYI / Bulk Noise, delivers a single prioritized daily digest at 5:45 AM ET. LIVE April 30, 2026. Week 6 review (May 12) identified 3 refinements: surface emails from non-primary folders, replace number IDs with sender/subject, add direct email links. v2 deployed this week — adds clickable 'Open Email' buttons, identifies by sender/subject, shows source folder, auto-moves action items to 'Action Items' folder in Outlook.",
+      "description": "Chuck's Outlook (Chuck's inbox) — 50+ emails daily. Categorizes into Action Required / FYI / Bulk Noise, delivers a single prioritized daily digest at 5:45 AM ET. LIVE April 30, 2026. Week 6 review (May 12) identified 3 refinements: surface emails from non-primary folders, replace number IDs with sender/subject, add direct email links. v2 deployed this week — adds clickable 'Open Email' buttons, identifies by sender/subject, shows source folder, auto-moves action items to 'Action Items' folder in Outlook.",
       "status": "live",
       "impact": "Eliminates 1–2 hours of daily inbox paralysis. Delivers one clear action list every morning before the crew heads out. Action items automatically moved to dedicated folder for immediate access.",
       "deployed_date": "2026-04-30"
@@ -244,7 +244,7 @@
         "Business Brain used live for the first time — Chuck logged in and asked Day 1 question",
         "Brain surfaced structural vulnerabilities: personnel backup gaps (Angie), SOP delivery gaps",
         "Security briefing delivered — private server, NicheFinders owns infra, access control explained",
-        "Email triage specs confirmed: chuck@aslp.net, 6am delivery, Action/FYI/Noise categories, single prioritized list",
+        "Email triage specs confirmed: Chuck's inbox, 6am delivery, Action/FYI/Noise categories, single prioritized list",
         "Crystal identified as second triage inbox after Chuck",
         "Morgan's role clarified: tech-forward, will be eager Brain user, point person for architectural AI workflow",
         "Estimating workflow — route AI-assisted prep through Morgan, deliver near-complete files to Jeff for final review",
@@ -291,7 +291,7 @@
       "date": "2026-05-15",
       "topics": [
         "Email triage V3 approach locked — time-based lookback, automatic Action Items folder handling, sender-based rules plus smart judgment for external senders",
-        "V3 scheduled: 5:45 AM daily, 24hr lookback, digest to chuck@aslp.net",
+        "V3 scheduled: 5:45 AM daily, 24hr lookback, digest to Chuck's inbox",
         "Email delivery domain configured for reliable inbox delivery of the daily digest",
         "Internal email routing confirmed: Ron/Crystal/Angie/Javanni = Action Required; Jeff/Morgan/Jordan/Foremen = FYI",
         "Chuck confirmed Action Items folder created in Outlook — replaces Jobs Folder at same tier",
@@ -330,7 +330,7 @@
       "date": "2026-06-10",
       "topics": [
         "Confirmed Javanni (Jovani) = Tampa scheduler only. Calendar access established.",
-        "All crew confirmed: individual @aslp.net Outlook calendars — full crew calendar access path viable",
+        "All crew confirmed: individual staff Outlook calendars — full crew calendar access path viable",
         "New job trigger confirmed: email from Ron/Jeff/Morgan + Trimble assignment",
         "Crew tier matrix locked: Hayden=hospital/any, Nathaniel=govt, Roberto=large commercial/any, Josh/Nate/Adam=simple",
         "Root causes of rescheduling: site not ready (#1), safety/partial install conflicts (#2), double bookings (#3)",
