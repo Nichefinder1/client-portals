@@ -386,14 +386,17 @@
     },
     {
       "week": 16,
-      "label": "Week 16: Scheduler Onboarding — Jovani Live + Real Crews Loaded",
+      "label": "Week 16: Scheduler Onboarding — Jovani Live + Real Crews + New Features",
       "date": "2026-07-14",
       "topics": [
-        "Jovani's first hands-on walkthrough of the Smart Scheduler, with his secure login confirmed.",
-        "Loaded the real crew roster onto the live board — every foreman in place, with installers set to rotate per job.",
-        "Confirmed the job-qualification rules (government, schools, hospital) so the board automatically blocks any crew that isn't cleared for a site.",
-        "Captured the client introduction and notification email template to power automated customer updates.",
-        "Reviewed the short list of remaining crew details to finish before full go-live."
+        "Jovani's first hands-on walkthrough of the Smart Scheduler with his secure login confirmed.",
+        "Loaded the real crew roster onto the live board — every foreman in place, installers rotating per job.",
+        "Crews now labeled by their foreman automatically, so the board reads the way the team talks.",
+        "New: remove a team member from the roster in one click; the board guards against leaving a crew leaderless.",
+        "New: every unscheduled job now shows its next available opening — the earliest day a qualified crew is free.",
+        "New: jobs can be co-led — assign a second supervisor's crew to the same job and day when a project needs it.",
+        "Added a built-in help assistant that answers common scheduling questions on the spot.",
+        "Confirmed the qualification rules (government, schools, hospital) so the board blocks any crew that isn't cleared."
       ]
     }
   ],
