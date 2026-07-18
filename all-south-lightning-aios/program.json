@@ -7,14 +7,14 @@
     "program_months": 6,
     "total_weeks": 24,
     "start_date": "2026-03-26",
-    "last_updated": "2026-06-25",
-    "current_week": 12,
+    "last_updated": "2026-07-18",
+    "current_week": 16,
     "account_manager": "Corey Reeder"
   },
   "overview": {
     "current_phase": "Smart Scheduler — Live Pilot + Data Integration",
-    "phase_description": "Email Triage remains live and hardened, delivering Chuck a single prioritized action list every morning at 5:30 AM ET. The Smart Scheduler is now LIVE and secured on All South's own cloud — Chuck and Jovani have private logins and are actively building and testing real weeks. It shows which crews are open and qualified for each job, guards inspection deadlines, flags travel distance, and reschedules in one move. This week we added a full-month calendar view (Outlook-style) at Chuck's request and switched the board to live, real-time dates. Next is connecting incoming project alerts and historical project data so the unscheduled queue fills itself — eliminating manual entry — on the path to full go-live and the September demo for Ron. Google Ads now run statewide across Jacksonville, Tampa, and South Florida, and Tampa local search dominance holds (17 of 21 keywords ranked #1-2).",
-    "overall_progress_pct": 74,
+    "phase_description": "Email Triage remains live, delivering Chuck a single prioritized action list every morning at 5:30 AM ET. The Smart Scheduler is LIVE and secured on All South's own cloud — Chuck and Jovani have private logins, and Jovani has now completed his first hands-on walkthrough with the real crew roster loaded onto the live board. Crews label automatically by foreman so the board reads the way the team talks, every unscheduled job shows its next available opening, jobs can be co-led when a project needs a second supervisor, and qualification rules block any crew that isn't cleared for government, school, or hospital work. Next is connecting incoming project alerts and project data so the unscheduled queue fills itself — eliminating manual entry — on the path to full go-live and the September demo for Ron. Google Ads run statewide across Jacksonville, Tampa, and South Florida, and Tampa local search dominance holds (17 of 21 keywords ranked #1-2).",
+    "overall_progress_pct": 78,
     "status": "active",
     "tagline": "Your AI Business Operating System — Designed, Installed, Managed."
   },
@@ -145,7 +145,7 @@
     },
     {
       "title": "Phone Call Transcription",
-      "description": "Calls transcribed automatically → organized into lead file → moves to job file. Solves costly disputes when customers claim job details differ from agreement. Otter removed for being too aggressive.",
+      "description": "Calls transcribed automatically → organized into lead file → moves to job file. Solves costly disputes when customers claim job details differ from agreement. Previous transcription tool removed for being too aggressive.",
       "status": "identified",
       "impact": "Complete call-to-job record. Eliminates 'he said she said' disputes.",
       "deployed_date": null
@@ -197,12 +197,12 @@
         "Employee structure — ~300 total across 3 locations (Tampa HQ, Sunrise/Miami, Jacksonville)",
         "Training program — AI video series built by Chuck to eliminate telephone effect; OSHA 10; retraining older crew now",
         "SOP & documentation inventory — full form library, new hire manual; all policies need attorney review",
-        "Technology stack — Trimble suite (mid-transition), monday.com being retired, ChatGPT daily, Otter tried/removed",
+        "Technology stack — Trimble suite (mid-transition), monday.com being retired, ChatGPT daily, a transcription tool tried and removed",
         "Key pain points — information siloing, field crew documentation, 30-50 emails/day, retention gap",
         "Retention system — annual inspection automation being decommissioned, no replacement identified",
         "Redundancy & succession — double-trained system; newer PMs receiving added support",
         "Revenue targets — $13M 2026; $15-20M 3yr; $50M long-term vision",
-        "Next steps — Thursday recurring meeting, contract + invoice to be sent, ZooTampa press release"
+        "Next steps — Thursday recurring meeting, ZooTampa press release"
       ]
     },
     {
@@ -281,8 +281,7 @@
         "Jacksonville branch — confirmed as next major focus after triage is solid; ready for build-up, underperforming vs Tampa",
         "Trimble image API — Chuck has emailed Crystal; limited access to job pictures only; vendor API cost vs seat to be researched",
         "Visual agent + image pipeline — 75% self-images / 25% AI content target; Faraday + TVSS images to be categorized",
-        "ASLP.NET domain issue flagged as important — ~100,000 building maintenance tags reference this domain; being addressed with the client's IT",
-        "Payment status — check not received; Chuck to follow up with Angie; auto-debit setup planned"
+        "ASLP.NET domain issue flagged as important — ~100,000 building maintenance tags reference this domain; being addressed with the client's IT"
       ]
     },
     {
@@ -401,17 +400,16 @@
     }
   ],
   "upcoming_session": {
-    "label": "Data Integration + Go-Live Prep",
-    "date": "Tuesday (designated office-work day)",
-    "time": "TBC",
+    "label": "Smart Scheduler — Go-Live Prep",
+    "date": "Tuesday",
+    "time": "10:00 AM ET",
     "duration": "60 minutes",
     "format": "Zoom",
     "agenda": [
-      "Chuck's testing notes from the week on the live board",
-      "Connect incoming project alerts + project data to auto-fill the unscheduled queue",
-      "Import historical project data via file export",
-      "Finalize roster data (certifications, driving status) from the intake sheet",
-      "Confirm read-only calendar sharing for field crews",
+      "Smart Scheduler go-live preparation",
+      "Connect the scheduler to the live crew calendar",
+      "Co-test a real week with Jovani",
+      "Confirm go-live timing",
       "Path to the September demo for Ron"
     ]
   },
